@@ -66,7 +66,13 @@ export default defineConfig({
     // see uno.config.ts for config
     UnoCSS(),
   ],
-
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@import "@/global.scss";`,
+      },
+    },
+  },
   // https://github.com/vitest-dev/vitest
   test: {
     environment: 'jsdom',
