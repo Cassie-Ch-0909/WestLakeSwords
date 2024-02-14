@@ -53,16 +53,16 @@ onUnmounted(() => frameId && cancelAnimationFrame(frameId))
 <style scoped lang="scss">
 // LIVE 【补充】
 .svg {
-  width: 35px;
+  width: 30px;
   position: absolute;
-  right: -25px;
+  right: -20px;
   top: calc(10% - 98px);
 }
 .container {
   position: relative;
   width: 70px;
   height: 26px;
-  border-radius: 6px;
+  border-radius: 15px;
   background-size: 200% 600%;
   background-image: radial-gradient(
     closest-side,
@@ -75,7 +75,7 @@ onUnmounted(() => frameId && cancelAnimationFrame(frameId))
   align-items: center;
   justify-content: center;
   color: #ffffff;
-  font-size: 13.5px;
+  font-size: 13px;
   cursor: pointer;
 }
 </style>

@@ -29,23 +29,28 @@ function changeActiveIndex(index) {
   <!-- 导航条 -->
   <div class="h-20 w-full flex items-center justify-between bg-slate-50">
     <!-- logo -->
-    <div class="left ml-40">
-      <img src="@/assets/logo.png" alt="" class="h-4/5 w-4/5">
+    <div class="left ml-40 h-full w-17.5% flex items-center justify-center">
+      <img src="@/assets/logo.png" alt="" class="h-auto w-95%">
     </div>
-    <div class="right mr-40 flex items-center justify-center text-sm">
-      <template v-for="(item, index) in navs" :key="index">
-        <router-link :to="`${item.url}`" class="mr-8" :class="index === activeIndex ? 'text-[#005AAD]' : ''" @click="changeActiveIndex(index)">
-          {{ item.name }}
-        </router-link>
-      </template>
-      <router-link to="/" class="mr-8">
+    <div class="right mr-40 h-full w-82.5% flex items-center justify-end text-sm">
+      <div class="h-full w-70% flex">
+        <div v-for="(item, index) in navs" :key="index" class="h-full w-10% w-full flex items-center justify-center">
+          <router-link
+            :to="`${item.url}`" class="inline-block text-[13px]"
+            :class="index === activeIndex ? 'text-[#005AAD]' : ''" @click="changeActiveIndex(index)"
+          >
+            {{ item.name }}
+          </router-link>
+        </div>
+      </div>
+      <div class="h-full w-10% flex items-center justify-center">
         <RotateBgButton />
-      </router-link>
-      <div>
-        <i class="iconfont icon-yonghu text-[#999999]" />&nbsp;
-        <span class="text-xs text-[#999999]">登录</span>&nbsp;
-        <span class="text-[#999999]">|</span>&nbsp;
-        <span class="text-xs text-[#999999]">注册</span>
+      </div>
+      <div class="h-full w-10% flex items-center justify-center text-[12px] color-[#B0B0B0]">
+        <i class="iconfont icon-yonghu" />&nbsp;
+        <span>登录</span>&nbsp;
+        <span>|</span>&nbsp;
+        <span>注册</span>
       </div>
     </div>
   </div>
