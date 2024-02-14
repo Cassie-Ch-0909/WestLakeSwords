@@ -1,11 +1,5 @@
-<script setup>
-import Header from '@/components/Header/index.vue'
-</script>
+<script setup></script>
 
 <template>
-  <div>
-    <Header />
-  </div>
+  <div>home</div>
 </template>
-
-<style lang="scss" scoped></style>
