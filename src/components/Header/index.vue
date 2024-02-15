@@ -1,6 +1,9 @@
 <script setup>
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 import RotateBgButton from '@/components/Header/components/RotateBgButton.vue'
+
+const router = useRouter()// 用于页面的跳转
 
 /* 定义一下导航栏的name url */
 const navs = ref([
@@ -23,37 +26,14 @@ const activeIndex = ref(0)
 function changeActiveIndex(index) {
   activeIndex.value = index
 }
+
+/* 定义一个函数用于页面跳转 */
+function changeRouter(url) {
+  router.push(url)
+}
 </script>
 
 <template>
-  <!-- 导航条 -->
-  <!-- <div class="sm h-20 w-full flex items-center justify-between bg-slate-50">
-    <div class="left ml-40 h-full w-17.5% flex items-center justify-center sm:bg-red">
-      <img src="@/assets/logo.png" alt="" class="h-auto w-95%">
-    </div>
-    <div class="right mr-40 h-full w-82.5% flex items-center justify-end text-sm">
-      <div class="h-full w-70% flex">
-        <div v-for="(item, index) in navs" :key="index" class="h-full w-10% w-full flex items-center justify-center">
-          <router-link
-            :to="`${item.url}`" class="inline-block text-[13px]"
-            :class="index === activeIndex ? 'text-[#005AAD]' : ''" @click="changeActiveIndex(index)"
-          >
-            {{ item.name }}
-          </router-link>
-        </div>
-      </div>
-      <div class="h-full w-10% flex items-center justify-center">
-        <RotateBgButton />
-      </div>
-      <div class="h-full w-10% flex items-center justify-center text-[12px] color-[#B0B0B0]">
-        <i class="iconfont icon-yonghu" />&nbsp;
-        <span>登录</span>&nbsp;
-        <span>|</span>&nbsp;
-        <span>注册</span>
-      </div>
-    </div>
-  </div> -->
-
   <!--
       md:PC端
       其余：手机和ipad
@@ -68,8 +48,7 @@ function changeActiveIndex(index) {
     <div class="center h-full w65% flex items-center justify-end max-md:hidden">
       <!-- <div v-for="(item, index) in navs" :key="index" class="h-full w-10% w-full flex items-center justify-center"> -->
       <router-link
-        v-for="(item, index) in navs" :key="index"
-        :to="`${item.url}`" class="mr3% inline-block text-[13.5px]"
+        v-for="(item, index) in navs" :key="index" :to="`${item.url}`" class="mr3% inline-block text-[13.5px]"
         :class="index === activeIndex ? 'text-[#005AAD]' : ''" @click="changeActiveIndex(index)"
       >
         {{ item.name }}
@@ -79,7 +58,20 @@ function changeActiveIndex(index) {
     <!-- 右边大会直播和iconfont目录折叠图标 移动端 -->
     <div class="rightSide h100% w34% flex items-center justify-evenly md:hidden">
       <RotateBgButton />
-      <i class="iconfont icon-xiangmumulu bg-transparent text-[25px] text-[#2db1ba]" />
+      <!-- 移动端下拉菜单导航条 -->
+      <el-dropdown>
+        <i class="iconfont icon-xiangmumulu bg-transparent text-[25px] text-[#2db1ba]" />
+        <template #dropdown>
+          <el-dropdown-menu>
+            <el-dropdown-item>
+              登陆注册
+            </el-dropdown-item>
+            <el-dropdown-item v-for="(item, index) in navs" :key="index">
+              <span @click="changeRouter(item.url)">{{ item.name }}</span>
+            </el-dropdown-item>
+          </el-dropdown-menu>
+        </template>
+      </el-dropdown>
     </div>
     <!-- 右边大会直播和登陆注册 -->
     <div class="rightSide mr-8% h-full w17% flex items-center justify-between max-md:hidden">
