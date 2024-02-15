@@ -66,9 +66,9 @@ onUnmounted(() => frameId && cancelAnimationFrame(frameId))
   background-size: 200% 600%;
   background-image: radial-gradient(
     closest-side,
-    #d628fe 5%,
+    #14ccc9 5%,
     $buttonColor 50%,
-    #d728fe 100%
+    #14ccc9 100%
   );
   background-position: 0% 50%;
   display: flex;

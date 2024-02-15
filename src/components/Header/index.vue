@@ -27,9 +27,8 @@ function changeActiveIndex(index) {
 
 <template>
   <!-- 导航条 -->
-  <div class="h-20 w-full flex items-center justify-between bg-slate-50">
-    <!-- logo -->
-    <div class="left ml-40 h-full w-17.5% flex items-center justify-center">
+  <!-- <div class="sm h-20 w-full flex items-center justify-between bg-slate-50">
+    <div class="left ml-40 h-full w-17.5% flex items-center justify-center sm:bg-red">
       <img src="@/assets/logo.png" alt="" class="h-auto w-95%">
     </div>
     <div class="right mr-40 h-full w-82.5% flex items-center justify-end text-sm">
@@ -53,7 +52,47 @@ function changeActiveIndex(index) {
         <span>注册</span>
       </div>
     </div>
+  </div> -->
+
+  <!--
+      md:PC端
+      其余：手机和ipad
+      ()*4=px
+   -->
+  <div class="nav h-12.5 w-full flex justify-between bg-slate-50 md:h-20">
+    <!-- logo -->
+    <div class="leftLogo h100% w35% flex items-center justify-center md:ml-11% md:w-18%">
+      <img src="@/assets/logo.png" alt="" class="h-auto w-auto pl5% pr5%">
+    </div>
+    <!-- 中间导航选项 PC端 -->
+    <div class="center h-full w65% flex items-center justify-end max-md:hidden">
+      <!-- <div v-for="(item, index) in navs" :key="index" class="h-full w-10% w-full flex items-center justify-center"> -->
+      <router-link
+        v-for="(item, index) in navs" :key="index"
+        :to="`${item.url}`" class="mr3% inline-block text-[13.5px]"
+        :class="index === activeIndex ? 'text-[#005AAD]' : ''" @click="changeActiveIndex(index)"
+      >
+        {{ item.name }}
+      </router-link>
+      <!-- </div> -->
+    </div>
+    <!-- 右边大会直播和iconfont目录折叠图标 移动端 -->
+    <div class="rightSide h100% w34% flex items-center justify-evenly md:hidden">
+      <RotateBgButton />
+      <i class="iconfont icon-xiangmumulu bg-transparent text-[25px] text-[#2db1ba]" />
+    </div>
+    <!-- 右边大会直播和登陆注册 -->
+    <div class="rightSide mr-8% h-full w17% flex items-center justify-between max-md:hidden">
+      <RotateBgButton />
+      <div class="ml6% flex items-center justify-center text-xs color-[#B0B0B0]">
+        <i class="iconfont icon-yonghu" />&nbsp;
+        <span>登录</span>&nbsp;
+        <span>|</span>&nbsp;
+        <span>注册</span>
+      </div>
+    </div>
   </div>
 </template>
 
-<style scoped lang="scss"></style>"
+<style lang="scss" scoped>
+</style>
