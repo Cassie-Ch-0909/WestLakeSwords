@@ -43,8 +43,10 @@ declare module 'vue-router/auto/routes' {
     '/[...all]': RouteRecordInfo<'/[...all]', '/:all(.*)', { all: ParamValue<true> }, { all: ParamValue<false> }>,
     '/hi/[name]': RouteRecordInfo<'/hi/[name]', '/hi/:name', { name: ParamValue<true> }, { name: ParamValue<false> }>,
     '/Home/': RouteRecordInfo<'/Home/', '/Home', Record<never, never>, Record<never, never>>,
+    '/Home/components/Agenda': RouteRecordInfo<'/Home/components/Agenda', '/Home/components/Agenda', Record<never, never>, Record<never, never>>,
     '/Home/components/BoxReflect': RouteRecordInfo<'/Home/components/BoxReflect', '/Home/components/BoxReflect', Record<never, never>, Record<never, never>>,
-    '/Home/components/ModuleTitle': RouteRecordInfo<'/Home/components/ModuleTitle', '/Home/components/ModuleTitle', Record<never, never>, Record<never, never>>,
+    '/Home/components/Carousel': RouteRecordInfo<'/Home/components/Carousel', '/Home/components/Carousel', Record<never, never>, Record<never, never>>,
+    '/Home/components/WaterCarousel': RouteRecordInfo<'/Home/components/WaterCarousel', '/Home/components/WaterCarousel', Record<never, never>, Record<never, never>>,
     '/jjy/cassie': RouteRecordInfo<'/jjy/cassie', '/jjy/cassie', Record<never, never>, Record<never, never>>,
   }
 }

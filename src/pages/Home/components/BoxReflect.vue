@@ -1,11 +1,9 @@
 <script setup lang="ts">
-import ModuleTitle from './ModuleTitle.vue'
 </script>
 
 <template>
   <div style="width: 100%">
     <div class="container">
-      <ModuleTitle i18n-title="" />
       <div class="content">
         <div class="btn1">
           大会直播
