@@ -78,7 +78,7 @@ const highLightsList = ref([
     border: 3px solid #04d8b0;
     border-radius: 10px;
     // background-image: linear-gradient(to right, #04182c, #000c17, #04182c);
-    background-image: url('src/assets/Time/1.jpg');
+    background-image: url('/1.jpg');
     color: #ffffff;
   }
 }
