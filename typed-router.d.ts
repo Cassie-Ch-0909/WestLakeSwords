@@ -44,6 +44,7 @@ declare module 'vue-router/auto/routes' {
     '/hi/[name]': RouteRecordInfo<'/hi/[name]', '/hi/:name', { name: ParamValue<true> }, { name: ParamValue<false> }>,
     '/Home/': RouteRecordInfo<'/Home/', '/Home', Record<never, never>, Record<never, never>>,
     '/Home/components/Agenda': RouteRecordInfo<'/Home/components/Agenda', '/Home/components/Agenda', Record<never, never>, Record<never, never>>,
+    '/Home/components/AgendaStatistics': RouteRecordInfo<'/Home/components/AgendaStatistics', '/Home/components/AgendaStatistics', Record<never, never>, Record<never, never>>,
     '/Home/components/BoxReflect': RouteRecordInfo<'/Home/components/BoxReflect', '/Home/components/BoxReflect', Record<never, never>, Record<never, never>>,
     '/Home/components/Carousel': RouteRecordInfo<'/Home/components/Carousel', '/Home/components/Carousel', Record<never, never>, Record<never, never>>,
     '/Home/components/WaterCarousel': RouteRecordInfo<'/Home/components/WaterCarousel', '/Home/components/WaterCarousel', Record<never, never>, Record<never, never>>,

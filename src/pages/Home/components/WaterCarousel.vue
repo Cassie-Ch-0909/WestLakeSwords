@@ -698,9 +698,9 @@ function changeEightAM() {
       </div>
       <!-- 按钮绑定点击事件 -->
       <div class="mask relative flex flex-col">
-        <el-button type="primary" plain class="absolute left-53% top-30%" color="#333" @click="changeFiveAM">
-          5th PM
-          6th AM
+        <el-button type="primary" plain class="absolute left-42% top-28%" color="#333" @click="changeFiveAM">
+          5th PM /
+          6th AM /
           7th AM
         </el-button>
         <el-button type="primary" plain class="absolute left-30% top-45%" color="#333" @click="changeSixPM">
@@ -709,7 +709,7 @@ function changeEightAM() {
         <el-button type="primary" plain class="absolute left-30% top-50%" color="#333" @click="changeSevenPM">
           7th PM
         </el-button>
-        <el-button type="primary" plain class="absolute left-50% top-68%" color="#333" @click="changeEightAM">
+        <el-button type="primary" plain class="absolute left-45% top-68%" color="#333" @click="changeEightAM">
           8th AM
         </el-button>
         <el-button type="primary" plain class="absolute left-70% top-68%" color="#333" @click="changeEightPM">

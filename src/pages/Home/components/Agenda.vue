@@ -1,11 +1,13 @@
 <script setup>
 // 流水轮播图
 import WaterCarousel from './WaterCarousel.vue'
+import AgendaStatistics from './AgendaStatistics.vue'
 </script>
 
 <template>
-  <div class="ml10% mr10% h-[800px] w-80% bg-slate-50 container">
-    <WaterCarousel class="animate__slideInRight animation-delay-1 wow animate-duration-3000" />
+  <div class="md:ml10% md:mr10% md:h-[800px] md:w-80% md:flex md:items-center md:justify-between">
+    <AgendaStatistics class="" />
+    <WaterCarousel class="animate__slideInRight animation-delay-1 wow h100% w67% animate-duration-2500" />
   </div>
 </template>
 
