@@ -47,8 +47,12 @@ declare module 'vue-router/auto/routes' {
     '/Home/components/AgendaStatistics': RouteRecordInfo<'/Home/components/AgendaStatistics', '/Home/components/AgendaStatistics', Record<never, never>, Record<never, never>>,
     '/Home/components/BoxReflect': RouteRecordInfo<'/Home/components/BoxReflect', '/Home/components/BoxReflect', Record<never, never>, Record<never, never>>,
     '/Home/components/Carousel': RouteRecordInfo<'/Home/components/Carousel', '/Home/components/Carousel', Record<never, never>, Record<never, never>>,
+    '/Home/components/GlassMimicry1': RouteRecordInfo<'/Home/components/GlassMimicry1', '/Home/components/GlassMimicry1', Record<never, never>, Record<never, never>>,
+    '/Home/components/GlassMimicry2': RouteRecordInfo<'/Home/components/GlassMimicry2', '/Home/components/GlassMimicry2', Record<never, never>, Record<never, never>>,
     '/Home/components/Highlights': RouteRecordInfo<'/Home/components/Highlights', '/Home/components/Highlights', Record<never, never>, Record<never, never>>,
     '/Home/components/LineCombination': RouteRecordInfo<'/Home/components/LineCombination', '/Home/components/LineCombination', Record<never, never>, Record<never, never>>,
+    '/Home/components/PeopleAnimation/': RouteRecordInfo<'/Home/components/PeopleAnimation/', '/Home/components/PeopleAnimation', Record<never, never>, Record<never, never>>,
+    '/Home/components/PeopleAnimation/Animation': RouteRecordInfo<'/Home/components/PeopleAnimation/Animation', '/Home/components/PeopleAnimation/Animation', Record<never, never>, Record<never, never>>,
     '/Home/components/WaterCarousel': RouteRecordInfo<'/Home/components/WaterCarousel', '/Home/components/WaterCarousel', Record<never, never>, Record<never, never>>,
     '/jjy/cassie': RouteRecordInfo<'/jjy/cassie', '/jjy/cassie', Record<never, never>, Record<never, never>>,
   }

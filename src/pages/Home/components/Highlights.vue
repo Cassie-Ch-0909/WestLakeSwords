@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import LineCombination from './LineCombination.vue'
 import useScrollToTop from '@/hooks/useScrollToTop'
+import GlassMimicry1 from '@/pages/Home/components/GlassMimicry1.vue'
+import GlassMimicry2 from '@/pages/Home/components/GlassMimicry2.vue'
+import PeopleAnimation from '@/pages/Home/components/PeopleAnimation/index.vue'
 
 const boxList = [
   { element: LineCombination },
@@ -34,13 +37,26 @@ const highLightsList = ref([
 
 <template>
   <!-- PC端大会亮点 -->
-  <div class="ml10% mt[20px] h-[500px] w80% max-md:hidden">
-    <p class="left-0 top-5% h15% w-full font-size-[30px] font-bold">
+  <div class="ml10% mt[20px] h-[260px] w80% max-md:hidden">
+    <p class="left-0 top-5% h-[80px] w-full font-size-[30px] font-bold">
       大会亮点
     </p>
-    <div class="container2">
+    <div class="container2 w-full">
       <div v-for="(item, index) in boxList" :key="index" class="box">
         <component :is="item.element" />
+      </div>
+    </div>
+    <div class="relative h-[1100px] w-full">
+      <div class="h50% w-full flex">
+        <GlassMimicry1 class="ml-[-15%]" />
+        <GlassMimicry2 class="mr-[-15%]" />
+      </div>
+      <div>
+        <PeopleAnimation class="absolute left-8% top-20%" />
+      </div>
+      <div class="flex">
+        <GlassMimicry2 class="ml-[-15%]" />
+        <GlassMimicry1 class="mr-[-15%]" />
       </div>
     </div>
   </div>

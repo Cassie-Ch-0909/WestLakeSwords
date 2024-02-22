@@ -185,7 +185,7 @@ onUnmounted(() => {
 .container {
   box-sizing: border-box;
   width: 100%;
-  height: 240px;
+  height: 200px;
   display: flex;
   align-items: center;
   border-radius: 10px;
