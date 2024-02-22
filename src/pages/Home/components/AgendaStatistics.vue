@@ -1,31 +1,34 @@
 <script setup>
+function getImageUrl(name) {
+  return new URL(`/src/assets/icon/${name}.png`, import.meta.url).href
+}
 const list = ref([
   {
     num: 10,
     name: '平行论坛',
-    pic: 'src/assets/icon/talk.png',
+    pic: getImageUrl('talk'),
   },
   {
     num: 1,
     name: '科普论坛',
-    pic: 'src/assets/icon/science.png',
+    pic: getImageUrl('science'),
   },
   {
     num: 8,
     name: '掌上论剑',
-    pic: 'src/assets/icon/mobile2.png',
+    pic: getImageUrl('mobile2'),
   },
   {
     num: 1,
     name: '生态合作论坛',
-    pic: 'src/assets/icon/shengTai.png',
+    pic: getImageUrl('shengTai'),
   },
 ])
 </script>
 
 <template>
   <!-- PC端大会议程 -->
-  <div class="animation-delay-1 wow animate__slideInLeft relative h100% w35% flex flex-col animate-duration-2500 items-center justify-center max-md-hidden">
+  <div class="animation-delay-1 animate__slideInLeft wow relative h100% w35% flex flex-col animate-duration-2500 items-center justify-center max-md-hidden">
     <div class="absolute left-0 top-5% font-size-[30px] font-bold">
       大会议程
     </div>
