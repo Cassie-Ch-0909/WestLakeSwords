@@ -1,4 +1,6 @@
 <script setup>
+// 我最爱写备注了~
+// 好的。
 function getImageUrl(name) {
   return new URL(`/src/assets/icon/${name}.png`, import.meta.url).href
 }
@@ -72,8 +74,11 @@ const list = ref([
 
   <!-- 移动端大会议程 -->
   <div class="mt-[20px] h-[150px] w-full md-hidden">
-    <div class="h-25% w-full font-size-[20px] font-bold">
-      大会议程
+    <div class="h-25% w-full">
+      <div class="h-25% w-full">
+        <span class="font-size-[20px] font-bold">大会议程</span>&nbsp;
+        <span class="font-size-[12px]">Conference Agenda</span>
+      </div>
     </div>
     <div class="h-75% w-full flex justify-between">
       <div v-for="(item, index) in list " :key="index" class="relative h-full w23% rounded-[10px] from-[#70E9E4] to-[#139AE6] bg-gradient-to-t">

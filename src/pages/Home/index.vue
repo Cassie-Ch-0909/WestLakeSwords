@@ -7,9 +7,7 @@ import Highlights from '@/pages/Home/components/Highlights.vue'
 <template>
   <!-- 轮播图模块 -->
   <Carousel />
-  <!-- FIXME 大会议程模块 这个指令来源不明
-  v-animate-onscroll.repeat="{ down: 'swing' }"我感觉这个可以去掉
-  -->
+  <!-- 大会议程模块 -->
   <Agenda />
   <!-- 大会亮点模块 -->
   <Highlights />

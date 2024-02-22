@@ -120,10 +120,10 @@ onUnmounted(() => {
       <div class="whiteBox">
         <div class="whiteBoxPoint" />
         <p class="name">
-          Price
+          主题演讲
         </p>
         <p class="value">
-          $656
+          500+
         </p>
       </div>
       <div class="blackBox">
@@ -132,10 +132,10 @@ onUnmounted(() => {
       <div class="whiteBox">
         <div class="whiteBoxPoint" />
         <p class="name">
-          Quantity
+          合作伙伴
         </p>
         <p class="value">
-          84351
+          550+
         </p>
       </div>
       <div class="blackBox">
@@ -144,10 +144,10 @@ onUnmounted(() => {
       <div class="whiteBox">
         <div class="whiteBoxPoint" />
         <p class="name">
-          Number of partners
+          与会嘉宾
         </p>
         <p class="value">
-          64
+          10000+
         </p>
       </div>
       <div class="blackBox">
@@ -156,10 +156,10 @@ onUnmounted(() => {
       <div class="whiteBox">
         <div class="whiteBoxPoint" />
         <p class="name">
-          Date of establishment
+          行业从业者
         </p>
         <p class="value">
-          2008-10-01
+          10万+
         </p>
       </div>
       <div class="blackBox">
@@ -168,10 +168,10 @@ onUnmounted(() => {
       <div class="whiteBox">
         <div class="whiteBoxPoint" />
         <p class="name">
-          Transaction Analyzed
+          直播观看
         </p>
         <p class="value">
-          70Bn
+          2500万+
         </p>
       </div>
       <div class="blackBox">
@@ -198,7 +198,7 @@ onUnmounted(() => {
 
   .blackBox {
     background-color: transparent;
-    border-bottom: 1px solid #bb3dfe50;
+    border-bottom: 1px solid #139ae6;
     border-bottom-left-radius: $radius;
     border-bottom-right-radius: $radius;
     width: $blackBoxWidth;
@@ -239,8 +239,8 @@ onUnmounted(() => {
   .whiteBox {
     background: linear-gradient(
       to bottom,
-      #3f9afd30 10%,
-      #bb3dfe10 70%,
+      #61e3fa 10%,
+      #139ae6 70%,
       transparent
     );
     width: 200px;
@@ -253,7 +253,7 @@ onUnmounted(() => {
     border-top: 1px solid #3f9afd;
     border-left: 1px solid transparent;
     border-right: 1px solid transparent;
-    border-image: linear-gradient(#3f9afd, #bb3dfe50) 2;
+    border-image: linear-gradient(#3f9afd, #61e3fa) 2;
     clip-path: inset(0 round $radius);
     position: relative;
     pointer-events: all;
@@ -300,7 +300,7 @@ onUnmounted(() => {
     }
 
     .name {
-      font-size: 15px;
+      font-size: 16px;
       margin-bottom: 14px;
       text-align: center;
       transform: translateY(100px);
@@ -312,7 +312,7 @@ onUnmounted(() => {
     }
 
     .value {
-      font-size: 32px;
+      font-size: 38px;
       font-weight: 500;
       transform: translateY($boxHeight);
       animation: entrance_totop 1.6s 1 forwards 0.3s alternate;
