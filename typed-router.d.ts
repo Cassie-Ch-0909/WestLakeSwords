@@ -51,9 +51,11 @@ declare module 'vue-router/auto/routes' {
     '/Home/components/GlassMimicry2': RouteRecordInfo<'/Home/components/GlassMimicry2', '/Home/components/GlassMimicry2', Record<never, never>, Record<never, never>>,
     '/Home/components/Highlights': RouteRecordInfo<'/Home/components/Highlights', '/Home/components/Highlights', Record<never, never>, Record<never, never>>,
     '/Home/components/LineCombination': RouteRecordInfo<'/Home/components/LineCombination', '/Home/components/LineCombination', Record<never, never>, Record<never, never>>,
+    '/Home/components/ModuleTitle': RouteRecordInfo<'/Home/components/ModuleTitle', '/Home/components/ModuleTitle', Record<never, never>, Record<never, never>>,
     '/Home/components/PeopleAnimation/': RouteRecordInfo<'/Home/components/PeopleAnimation/', '/Home/components/PeopleAnimation', Record<never, never>, Record<never, never>>,
     '/Home/components/PeopleAnimation/Animation': RouteRecordInfo<'/Home/components/PeopleAnimation/Animation', '/Home/components/PeopleAnimation/Animation', Record<never, never>, Record<never, never>>,
     '/Home/components/WaterCarousel': RouteRecordInfo<'/Home/components/WaterCarousel', '/Home/components/WaterCarousel', Record<never, never>, Record<never, never>>,
+    '/Home/components/WaveFont': RouteRecordInfo<'/Home/components/WaveFont', '/Home/components/WaveFont', Record<never, never>, Record<never, never>>,
     '/jjy/cassie': RouteRecordInfo<'/jjy/cassie', '/jjy/cassie', Record<never, never>, Record<never, never>>,
   }
 }

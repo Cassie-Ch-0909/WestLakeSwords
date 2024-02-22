@@ -243,7 +243,7 @@ const en_US = {
   'page.cssDynamicEffect.richDynamicEffect.searchlightText':
     'Searchlight text dynamic effect',
   'page.cssDynamicEffect.richDynamicEffect.wavyText':
-    'Wavy text dynamic effect',
+    'Xi Hu Lun Jian',
   'page.cssDynamicEffect.richDynamicEffect.textLineDisplay':
     'Text line display dynamic effect',
   'page.cssDynamicEffect.richDynamicEffect.textLineLoop':

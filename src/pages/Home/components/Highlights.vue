@@ -4,6 +4,7 @@ import useScrollToTop from '@/hooks/useScrollToTop'
 import GlassMimicry1 from '@/pages/Home/components/GlassMimicry1.vue'
 import GlassMimicry2 from '@/pages/Home/components/GlassMimicry2.vue'
 import PeopleAnimation from '@/pages/Home/components/PeopleAnimation/index.vue'
+import WaveFont from '@/pages/Home/components/WaveFont.vue'
 
 const boxList = [
   { element: LineCombination },
@@ -48,15 +49,51 @@ const highLightsList = ref([
     </div>
     <div class="relative h-[1100px] w-full">
       <div class="h50% w-full flex">
-        <GlassMimicry1 class="ml-[-15%]" />
-        <GlassMimicry2 class="mr-[-15%]" />
+        <GlassMimicry1 class="ml-[-15%]">
+          <p class="font-size-[28px] color-[#fff] font-bold">
+            议题更前沿
+          </p>
+          <p class="font-size-[16px] color-[#fff]">
+            大会主题及议题、展览锚定数字中国建设要求，助力政企单位从政策、技术、人才、产业等各层面落实工作。
+          </p>
+          <img class="w-full" src="/public/light/1.webp" alt="">
+        </GlassMimicry1>
+        <GlassMimicry2 class="mr-[-15%]">
+          <p class="font-size-[28px] color-[#fff] font-bold">
+            线上更精彩
+          </p>
+          <p class="font-size-[16px] color-[#fff]">
+            “掌上论剑”将进一步丰富内容，增强互动性、趣味性，线上持续精彩。
+          </p>
+          <img class="w-full" src="/public/light/2.webp" alt="">
+        </GlassMimicry2>
       </div>
-      <div>
-        <PeopleAnimation class="absolute left-8% top-20%" />
+      <div class="w-full flex flex-col justify-center">
+        <!-- <p class="m-auto font-size-[50px] font-bold">
+
+        </p> -->
+        <WaveFont />
+        <PeopleAnimation class="absolute left-8% top-0" />
       </div>
       <div class="flex">
-        <GlassMimicry2 class="ml-[-15%]" />
-        <GlassMimicry1 class="mr-[-15%]" />
+        <GlassMimicry2 class="ml-[-15%]">
+          <p class="font-size-[28px] color-[#fff] font-bold">
+            成果更显著
+          </p>
+          <p class="font-size-[16px] color-[#fff]">
+            将推出国内首份《2023中国数字安全能力洞察报告》，报告涵盖趋势、科技、人才、实践等多部分内容，引领行业发展方向。
+          </p>
+          <img class="w-full" src="/public/light/3.webp" alt="">
+        </GlassMimicry2>
+        <GlassMimicry1 class="mr-[-15%]">
+          <p class="font-size-[28px] color-[#fff] font-bold">
+            国际化更深入
+          </p>
+          <p class="font-size-[16px] color-[#fff]">
+            峰会将通过引入国际组织、设置国际话题等，从全球角度研判数字化进程和趋势。
+          </p>
+          <img class="w-full" src="/public/light/4.webp" alt="">
+        </GlassMimicry1>
       </div>
     </div>
   </div>

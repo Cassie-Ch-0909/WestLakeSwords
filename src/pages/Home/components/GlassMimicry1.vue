@@ -1,11 +1,8 @@
 <template>
   <div style="width: 100%">
     <div class="container">
-      <div class="cardd">
-        <h1>TiKi Platinum</h1>
-        <h2>6228 8076 2232 8768</h2>
-        <h3>van conf banck</h3>
-        <h4>03 / 29</h4>
+      <div class="cardd flex flex-col justify-evenly">
+        <slot />
       </div>
       <div class="circle" />
       <div class="rect" />
@@ -32,7 +29,7 @@
 
   .cardd {
     width: 260px;
-    height: 400px;
+    height: 360px;
     position: absolute;
     left: 0;
     right: 0;
@@ -46,8 +43,8 @@
     border-left: 1px solid rgba(255, 255, 255, 0.4);
     background-image: linear-gradient(
       to top right,
-      rgba(90, 149, 207, 0.5),
-      rgba(58, 76, 99, 0.8)
+      rgba(45, 177, 186, 0.5),
+      rgba(35, 139, 201, 0.8)
     );
     box-shadow:
       10px -10px 20px rgba(0, 0, 0, 0.2),
@@ -81,8 +78,8 @@
   }
 
   .circle {
-    width: 160px;
-    height: 160px;
+    width: 120px;
+    height: 120px;
     position: absolute;
     right: 50%;
     bottom: 20px;
@@ -95,8 +92,8 @@
   }
 
   .rect {
-    width: 160px;
-    height: 160px;
+    width: 120px;
+    height: 120px;
     position: absolute;
     left: 50%;
     top: 20px;
