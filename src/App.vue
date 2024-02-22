@@ -4,7 +4,6 @@ import Header from '@/components/Header/index.vue'
 
 <template>
   <main>
-    <div v-animate="'animate__animated animate__fadeInUp'" />
     <Header />
     <RouterView />
   </main>

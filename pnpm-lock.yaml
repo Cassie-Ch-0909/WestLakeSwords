@@ -23,9 +23,6 @@ dependencies:
   vue-router:
     specifier: ^4.2.5
     version: 4.2.5(vue@3.4.15)
-  wow.js:
-    specifier: ^1.2.2
-    version: 1.2.2
 
 devDependencies:
   '@antfu/eslint-config':
@@ -106,6 +103,9 @@ devDependencies:
   vue-tsc:
     specifier: ^1.8.27
     version: 1.8.27(typescript@5.3.3)
+  wow.js:
+    specifier: ^1.2.2
+    version: 1.2.2
 
 packages:
 
@@ -6671,7 +6671,7 @@ packages:
   /wow.js@1.2.2:
     resolution: {integrity: sha512-YTW9eiZimHCJDWofsiz2507txaPteUiQD461I/D8533AiRAn3+Y68/1LDuQ3OTgPjagGZLPYKrpoSgjzeQrO6A==}
     deprecated: deprecated in favour of aos (Animate On Scroll)
-    dev: false
+    dev: true
 
   /wrap-ansi@7.0.0:
     resolution: {integrity: sha512-YVGIj2kamLSTxw6NsZjoBxfSwsn0ycdesmc4p+Q21c5zPuZ1pl+NfxVdxPtdHvmNVOQ6XSYG4AUtyt/Fi7D16Q==}
