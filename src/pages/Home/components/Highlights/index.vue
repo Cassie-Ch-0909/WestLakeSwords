@@ -50,7 +50,7 @@ const highLightsList = ref([
     </div>
     <div class="relative w-full">
       <div class="bg h50% w-full flex bg-no-repeat">
-        <GlassMimicry1 class="animation-delay-1 wow animate__zoomIn ml-[35%] mr-[-5%] animate-duration-2000">
+        <GlassMimicry1 class="animation-delay-1 animate__zoomIn wow ml-[35%] mr-[-5%] animate-duration-2000">
           <p class="font-size-[28px] color-[#fff] font-bold">
             议题更前沿
           </p>
@@ -97,7 +97,7 @@ const highLightsList = ref([
     </div>
   </div>
   <!-- 移动端大会亮点 -->
-  <div class="mt-[15px] h-[350px] w-full md-hidden">
+  <div class="mt-[15px] h-[190px] w-full md-hidden">
     <div class="h-[40px] w-full flex items-center">
       <span class="font-size-[20px] font-bold">大会亮点</span>&nbsp;
       <span class="font-size-[12px]">Conference Highlights</span>
