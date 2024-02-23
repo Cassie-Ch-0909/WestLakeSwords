@@ -2,6 +2,7 @@
 import Carousel from '@/pages/Home/components/Carousel/index.vue'
 import Agenda from '@/pages/Home/components/Agenda/index.vue'
 import Highlights from '@/pages/Home/components/Highlights/index.vue'
+import ExcitingActivities from '@/pages/Home/components/ExcitingActivities/index.vue'
 </script>
 
 <template>
@@ -11,6 +12,8 @@ import Highlights from '@/pages/Home/components/Highlights/index.vue'
   <Agenda />
   <!-- 大会亮点模块 -->
   <Highlights />
+  <!-- 精彩活动模块 -->
+  <ExcitingActivities />
 </template>
 
 <style scoped lang="scss"></style>

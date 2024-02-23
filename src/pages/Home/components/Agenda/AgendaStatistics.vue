@@ -33,7 +33,7 @@ const list = ref([
   <div
     class="animation-delay-1 animate__slideInLeft wow relative h100% w35% flex flex-col animate-duration-2500 items-center justify-center max-md-hidden"
   >
-    <div class="absolute left-0 top-5% font-size-[30px] font-bold">
+    <div class="absolute left-0 top-7% font-size-[30px] font-bold">
       大会议程
       <span class="font-size-[23px]">Conference Agenda</span>
     </div>

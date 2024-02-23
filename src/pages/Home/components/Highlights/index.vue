@@ -39,7 +39,7 @@ const highLightsList = ref([
 
 <template>
   <!-- PC端大会亮点 -->
-  <div class="ml10% mt[20px] h-[260px] w80% max-md:hidden">
+  <div class="ml10% mt[20px] w80% max-md:hidden">
     <p class="left-0 top-5% h-[80px] w-full font-size-[30px] font-bold">
       大会亮点&nbsp;<span class="font-size-[23px]">Conference Highlights</span>
     </p>
@@ -50,7 +50,7 @@ const highLightsList = ref([
     </div>
     <div class="relative w-full">
       <div class="bg h50% w-full flex bg-no-repeat">
-        <GlassMimicry1 class="animation-delay-1 animate__zoomIn wow ml-[35%] mr-[-5%] animate-duration-2000">
+        <GlassMimicry1 class="animation-delay-1 wow animate__zoomIn ml-[35%] mr-[-5%] animate-duration-2000">
           <p class="font-size-[28px] color-[#fff] font-bold">
             议题更前沿
           </p>
