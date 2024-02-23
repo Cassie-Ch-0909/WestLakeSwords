@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import LineCombination from './LineCombination.vue'
+import GlassMimicry1 from './GlassMimicry1.vue'
+import GlassMimicry2 from './GlassMimicry2.vue'
+import PeopleAnimation from './PeopleAnimation/index.vue'
+import WaveFont from './WaveFont.vue'
+import ShakeButton from './ShakeButton.vue'
 import useScrollToTop from '@/hooks/useScrollToTop'
-import GlassMimicry1 from '@/pages/Home/components/GlassMimicry1.vue'
-import GlassMimicry2 from '@/pages/Home/components/GlassMimicry2.vue'
-import PeopleAnimation from '@/pages/Home/components/PeopleAnimation/index.vue'
-import WaveFont from '@/pages/Home/components/WaveFont.vue'
 
 const boxList = [
   { element: LineCombination },
@@ -40,16 +41,16 @@ const highLightsList = ref([
   <!-- PC端大会亮点 -->
   <div class="ml10% mt[20px] h-[260px] w80% max-md:hidden">
     <p class="left-0 top-5% h-[80px] w-full font-size-[30px] font-bold">
-      大会亮点
+      大会亮点&nbsp;<span class="font-size-[23px]">Conference Highlights</span>
     </p>
     <div class="container2 w-full">
       <div v-for="(item, index) in boxList" :key="index" class="box">
         <component :is="item.element" />
       </div>
     </div>
-    <div class="relative h-[1100px] w-full">
-      <div class="h50% w-full flex">
-        <GlassMimicry1 class="ml-[-15%]">
+    <div class="relative w-full">
+      <div class="bg h50% w-full flex bg-no-repeat">
+        <GlassMimicry1 class="animation-delay-1 wow animate__zoomIn ml-[35%] mr-[-5%] animate-duration-2000">
           <p class="font-size-[28px] color-[#fff] font-bold">
             议题更前沿
           </p>
@@ -58,7 +59,7 @@ const highLightsList = ref([
           </p>
           <img class="w-full" src="/public/light/1.webp" alt="">
         </GlassMimicry1>
-        <GlassMimicry2 class="mr-[-15%]">
+        <GlassMimicry2 class="animate__zoomIn animation-delay-1 wow animate-duration-2000">
           <p class="font-size-[28px] color-[#fff] font-bold">
             线上更精彩
           </p>
@@ -69,14 +70,12 @@ const highLightsList = ref([
         </GlassMimicry2>
       </div>
       <div class="w-full flex flex-col justify-center">
-        <!-- <p class="m-auto font-size-[50px] font-bold">
-
-        </p> -->
         <WaveFont />
-        <PeopleAnimation class="absolute left-8% top-0" />
+        <PeopleAnimation class="animate__zoomIn animation-delay-1 wow absolute left-[-30%] top-10 animate-duration-2500" />
+        <ShakeButton class="absolute right-25% top-200" />
       </div>
-      <div class="flex">
-        <GlassMimicry2 class="ml-[-15%]">
+      <div class="bg h50% w-full flex bg-contain bg-right bg-no-repeat">
+        <GlassMimicry2 class="animate__zoomIn animation-delay-1 wow ml-[-35%] mr-[-70%] animate-duration-2000">
           <p class="font-size-[28px] color-[#fff] font-bold">
             成果更显著
           </p>
@@ -85,7 +84,7 @@ const highLightsList = ref([
           </p>
           <img class="w-full" src="/public/light/3.webp" alt="">
         </GlassMimicry2>
-        <GlassMimicry1 class="mr-[-15%]">
+        <GlassMimicry1 class="animate__zoomIn animation-delay-1 wow animate-duration-2000">
           <p class="font-size-[28px] color-[#fff] font-bold">
             国际化更深入
           </p>
@@ -113,6 +112,9 @@ const highLightsList = ref([
 </template>
 
 <style scoped lang="scss">
+.bg {
+  background-image: url('/public/bg/bg1.png');
+}
 .container2 {
   box-sizing: border-box;
   width: 100%;

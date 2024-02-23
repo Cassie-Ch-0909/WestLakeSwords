@@ -30,9 +30,12 @@ const list = ref([
 
 <template>
   <!-- PC端大会议程 -->
-  <div class="animation-delay-1 animate__slideInLeft wow relative h100% w35% flex flex-col animate-duration-2500 items-center justify-center max-md-hidden">
+  <div
+    class="animation-delay-1 animate__slideInLeft wow relative h100% w35% flex flex-col animate-duration-2500 items-center justify-center max-md-hidden"
+  >
     <div class="absolute left-0 top-5% font-size-[30px] font-bold">
       大会议程
+      <span class="font-size-[23px]">Conference Agenda</span>
     </div>
     <div class="mb5% h30% w100% flex justify-between">
       <div class="relative h100% w49% rounded-[10px] from-[#70E9E4] to-[#139AE6] bg-gradient-to-t">
@@ -81,7 +84,10 @@ const list = ref([
       </div>
     </div>
     <div class="h-75% w-full flex justify-between">
-      <div v-for="(item, index) in list " :key="index" class="relative h-full w23% rounded-[10px] from-[#70E9E4] to-[#139AE6] bg-gradient-to-t">
+      <div
+        v-for="(item, index) in list " :key="index"
+        class="relative h-full w23% rounded-[10px] from-[#70E9E4] to-[#139AE6] bg-gradient-to-t"
+      >
         <span class="ml5% font-size-[30px] color-white font-bold">{{ item.num }}</span>
         <span class="color-white font-bold"> 场</span>
         <p class="mt3% font-size-[14px] color-white font-bold">

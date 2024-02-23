@@ -243,7 +243,7 @@ const en_US = {
   'page.cssDynamicEffect.richDynamicEffect.searchlightText':
     'Searchlight text dynamic effect',
   'page.cssDynamicEffect.richDynamicEffect.wavyText':
-    'Xi Hu Lun Jian',
+    'The West Lake Sword leads the new trend of network security',
   'page.cssDynamicEffect.richDynamicEffect.textLineDisplay':
     'Text line display dynamic effect',
   'page.cssDynamicEffect.richDynamicEffect.textLineLoop':

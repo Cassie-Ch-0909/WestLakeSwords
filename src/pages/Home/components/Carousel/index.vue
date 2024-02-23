@@ -1,5 +1,5 @@
 <script setup>
-import BoxReflect from '@/pages/Home/components/BoxReflect.vue'
+import BoxReflect from '@/pages/Home/components/Carousel/BoxReflect.vue'
 
 // 定义一个轮播图数组
 const carouselList = ref([
@@ -27,7 +27,7 @@ const carouselList = ref([
       <img :src="item" alt="" class="h-[200px] w-full md:h-[780px]">
       <!-- button -->
       <BoxReflect
-        class="animate__animated animate__flipInX animate__delay-1s absolute md:left-5% md:top-30%"
+        class="animate__animated animate__flipInX animate__delay-1s absolute md:left-2.5% md:top-30%"
         :class="index !== 0 ? 'hidden' : ''"
       />
     </el-carousel-item>

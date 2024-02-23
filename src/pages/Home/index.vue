@@ -1,7 +1,7 @@
 <script setup>
-import Carousel from '@/pages/Home/components/Carousel.vue'
-import Agenda from '@/pages/Home/components/Agenda.vue'
-import Highlights from '@/pages/Home/components/Highlights.vue'
+import Carousel from '@/pages/Home/components/Carousel/index.vue'
+import Agenda from '@/pages/Home/components/Agenda/index.vue'
+import Highlights from '@/pages/Home/components/Highlights/index.vue'
 </script>
 
 <template>
