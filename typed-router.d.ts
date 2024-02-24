@@ -61,6 +61,8 @@ declare module 'vue-router/auto/routes' {
     '/Home/components/Highlights/ShakeButton': RouteRecordInfo<'/Home/components/Highlights/ShakeButton', '/Home/components/Highlights/ShakeButton', Record<never, never>, Record<never, never>>,
     '/Home/components/Highlights/WaveFont': RouteRecordInfo<'/Home/components/Highlights/WaveFont', '/Home/components/Highlights/WaveFont', Record<never, never>, Record<never, never>>,
     '/Home/components/ImportantGuests/': RouteRecordInfo<'/Home/components/ImportantGuests/', '/Home/components/ImportantGuests', Record<never, never>, Record<never, never>>,
+    '/Home/components/NewsReport/': RouteRecordInfo<'/Home/components/NewsReport/', '/Home/components/NewsReport', Record<never, never>, Record<never, never>>,
+    '/Home/components/NewsReport/OrientationSenseCard': RouteRecordInfo<'/Home/components/NewsReport/OrientationSenseCard', '/Home/components/NewsReport/OrientationSenseCard', Record<never, never>, Record<never, never>>,
     '/jjy/cassie': RouteRecordInfo<'/jjy/cassie', '/jjy/cassie', Record<never, never>, Record<never, never>>,
   }
 }

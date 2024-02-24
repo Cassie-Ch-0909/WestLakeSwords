@@ -4,6 +4,7 @@ import Agenda from '@/pages/Home/components/Agenda/index.vue'
 import Highlights from '@/pages/Home/components/Highlights/index.vue'
 import ExcitingActivities from '@/pages/Home/components/ExcitingActivities/index.vue'
 import ImportantGuests from '@/pages/Home/components/ImportantGuests/index.vue'
+import NewsReport from '@/pages/Home/components/NewsReport/index.vue'
 </script>
 
 <template>
@@ -17,6 +18,8 @@ import ImportantGuests from '@/pages/Home/components/ImportantGuests/index.vue'
   <ExcitingActivities />
   <!-- 重要嘉宾模块 -->
   <ImportantGuests />
+  <!-- 新闻资讯模块 -->
+  <NewsReport />
 </template>
 
 <style scoped lang="scss"></style>

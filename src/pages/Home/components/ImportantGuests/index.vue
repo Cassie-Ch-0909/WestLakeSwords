@@ -20,7 +20,7 @@ const list = ref([
 
 <template>
   <!-- PC端重磅嘉宾 -->
-  <div class="ml10% mt[20px] w80% max-md:hidden">
+  <div class="ml10% mt[50px] w80% max-md:hidden">
     <p class="left-0 top-5% h-[80px] w-full font-size-[30px] font-bold">
       重磅嘉宾&nbsp;<span class="font-size-[23px]">Important Guests</span>
     </p>
