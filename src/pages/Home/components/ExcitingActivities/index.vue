@@ -79,7 +79,7 @@ const btnList = ref([
             <p class="font-size-[14px] font-bold">
               {{ item.sumer }}
             </p>
-            <p class="overflow-hidden text-ellipsis pt5% font-size-[12px]">
+            <p class="ellipsis pt5% font-size-[12px]">
               {{ item.content }}
             </p>
           </div>
@@ -95,5 +95,14 @@ const btnList = ref([
   color: #6b778c;
   font-size: 32px;
   font-weight: 600;
+}
+.ellipsis {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  height: 60px;
+  max-height: 60px;
+  -webkit-line-clamp: 3;
+  text-overflow: ellipsis;
 }
 </style>
