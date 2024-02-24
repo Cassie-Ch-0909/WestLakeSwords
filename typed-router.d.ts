@@ -60,6 +60,7 @@ declare module 'vue-router/auto/routes' {
     '/Home/components/Highlights/PeopleAnimation/Animation': RouteRecordInfo<'/Home/components/Highlights/PeopleAnimation/Animation', '/Home/components/Highlights/PeopleAnimation/Animation', Record<never, never>, Record<never, never>>,
     '/Home/components/Highlights/ShakeButton': RouteRecordInfo<'/Home/components/Highlights/ShakeButton', '/Home/components/Highlights/ShakeButton', Record<never, never>, Record<never, never>>,
     '/Home/components/Highlights/WaveFont': RouteRecordInfo<'/Home/components/Highlights/WaveFont', '/Home/components/Highlights/WaveFont', Record<never, never>, Record<never, never>>,
+    '/Home/components/ImportantGuests/': RouteRecordInfo<'/Home/components/ImportantGuests/', '/Home/components/ImportantGuests', Record<never, never>, Record<never, never>>,
     '/jjy/cassie': RouteRecordInfo<'/jjy/cassie', '/jjy/cassie', Record<never, never>, Record<never, never>>,
   }
 }

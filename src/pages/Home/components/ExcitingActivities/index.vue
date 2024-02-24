@@ -64,7 +64,7 @@ const btnList = ref([
     <SlideButtonTab />
   </div>
   <!-- 移动端精彩活动 -->
-  <div class="mt-[15px] h-[350px] w-full md-hidden">
+  <div class="mt-[15px] h-[235px] w-full md-hidden">
     <div class="h-[40px] w-full flex items-center">
       <span class="font-size-[20px] font-bold">精彩活动</span>&nbsp;
       <span class="font-size-[12px]">Exciting Activities</span>
@@ -104,5 +104,10 @@ const btnList = ref([
   max-height: 60px;
   -webkit-line-clamp: 3;
   text-overflow: ellipsis;
+}
+
+::v-deep .el-tabs__item.is-active {
+  color: #29b2d9;
+  font-weight: bold;
 }
 </style>
