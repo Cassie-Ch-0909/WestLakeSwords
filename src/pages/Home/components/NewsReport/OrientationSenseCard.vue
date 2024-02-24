@@ -16,21 +16,21 @@ const spanList = [
   },
   {
     img: '/public/news/4.jpg',
-    title: '杭州亚运赛事网络安全保护启动，天穹新一代安...',
+    title: '杭州亚运赛事网络安全保护启动，天穹新一代安全运营中心亮相',
     desc: '“西湖论剑·网络安全大会”正式升级为数字安全大会。5月7日，2023西湖论剑·数字安全大会发布“新十年”规划，并举行了亚运赛事网络...',
     news: '南方都市报',
     time: '2023-05-08',
   },
   {
     img: '/public/news/5.jpg',
-    title: '“新十年”扬帆起航 2023西湖论剑·数字安全大会...',
+    title: '“新十年”扬帆起航 2023西湖论剑·数字安全大会举办',
     desc: '5 月7日，以“数字安全@数字中国”为主题的2023西湖论剑·数字安全大会（原西湖论剑·网络安全大会）成功举办。本届大会设一个主...',
     news: '浙江在线',
     time: '2023-05-08',
   },
   {
     img: '/public/news/7.jpg',
-    title: '“数字安全＠数字中国” 2023西湖论剑·数字安...',
+    title: '“数字安全＠数字中国” 2023西湖论剑·数字安全大会今天开幕',
     desc: '简介： 今年，西湖论剑·网络安全大会进入新的十年，大会正式升级为“西湖论剑·数字安全大会”。 在今天的大会上， 新一代的“天穹安全...',
     news: '杭州电视台',
     time: '2023-05-07',
@@ -43,13 +43,14 @@ const spanList = [
     <div class="bg container">
       <div class="content">
         <div v-for="(item, index) in spanList" :key="index" class="card2">
-          <p class="p-5% font-size-[16px] font-bold">
+          <p class="h-35% w-full p-5% font-size-[16px] font-bold">
             {{ item.title }}
           </p>
-          <img :src="item.img" alt="">
-          <p class="p-3% font-size-[12px]">
-            {{ item.desc }}
-          </p>
+          <img :src="item.img" alt="" class="h-45% w-full">
+          <div class="h-20% w-full flex flex-col items-center justify-center bg-[#fff]">
+            <span class="mt-3% h-50% w-60% flex items-center justify-center rounded-[15px] bg-[#05BAB3] color-[#fff] font-bold">{{ item.news }}</span>
+            <span class="mt-2% font-size-[14px]">{{ item.time }}</span>
+          </div>
         </div>
       </div>
     </div>

@@ -24,14 +24,14 @@ const list = ref([
     <p class="left-0 top-5% h-[80px] w-full font-size-[30px] font-bold">
       重磅嘉宾&nbsp;<span class="font-size-[23px]">Important Guests</span>
     </p>
-    <el-carousel :interval="4000" type="card" height="341px" class="animation-delay-1 animate__fadeInLeft wow animate-duration-2500">
+    <el-carousel :interval="4000" type="card" height="341px" class="animation-delay-1 animate__fadeInDown wow animate-duration-2500">
       <el-carousel-item v-for="item in list" :key="item">
         <img :src="item">
       </el-carousel-item>
     </el-carousel>
   </div>
   <!-- 移动端重磅嘉宾 -->
-  <div class="mt-[10px] h-[190px] w-full md-hidden">
+  <div class="mt-[10px] h-[145px] w-full md-hidden">
     <div class="h-[40px] w-full flex items-center">
       <span class="font-size-[20px] font-bold">重磅嘉宾</span>&nbsp;
       <span class="font-size-[12px]">Important Guests</span>
