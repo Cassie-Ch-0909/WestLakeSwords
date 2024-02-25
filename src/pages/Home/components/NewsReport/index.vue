@@ -50,7 +50,7 @@ const spanList = [
   </div>
 
   <!-- 移动端新闻资讯 -->
-  <div class="mt-[10px] h-[190px] w-full md-hidden">
+  <div class="mt-[10px] h-[420px] w-full md-hidden">
     <div class="h-[40px] w-full flex items-center">
       <span class="font-size-[20px] font-bold">新闻资讯</span>&nbsp;
       <span class="font-size-[12px]">News Report</span>
