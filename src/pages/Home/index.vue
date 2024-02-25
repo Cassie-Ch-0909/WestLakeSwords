@@ -5,6 +5,7 @@ import Highlights from '@/pages/Home/components/Highlights/index.vue'
 import ExcitingActivities from '@/pages/Home/components/ExcitingActivities/index.vue'
 import ImportantGuests from '@/pages/Home/components/ImportantGuests/index.vue'
 import NewsReport from '@/pages/Home/components/NewsReport/index.vue'
+import Partner from '@/pages/Home/components/Partner/index.vue'
 </script>
 
 <template>
@@ -20,6 +21,8 @@ import NewsReport from '@/pages/Home/components/NewsReport/index.vue'
   <ImportantGuests />
   <!-- 新闻资讯模块 -->
   <NewsReport />
+  <!-- 合作伙伴 -->
+  <Partner />
 </template>
 
 <style scoped lang="scss"></style>
