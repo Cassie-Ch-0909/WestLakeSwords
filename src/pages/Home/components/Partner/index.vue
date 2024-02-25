@@ -128,7 +128,7 @@ function changeFlag() {
         <img class="h-full w-full" :src="item">
       </span>
     </div>
-    <el-button class="ml47%" @click="changeFlag">
+    <el-button class="ml40%" @click="changeFlag">
       {{ buttonName }}
     </el-button>
   </div>
