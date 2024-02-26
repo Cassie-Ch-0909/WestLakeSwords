@@ -8,7 +8,7 @@ const router = useRouter()// 用于页面的跳转
 /* 定义一下导航栏的name url */
 const navs = ref([
   { name: '首页', url: '/' },
-  { name: '大会议程', url: '/home' },
+  { name: '大会议程', url: '/agenda' },
   { name: '关于大会', url: '/jjy/cassie' },
   { name: '大咖云集', url: '/home' },
   { name: '精彩活动', url: '/home' },
