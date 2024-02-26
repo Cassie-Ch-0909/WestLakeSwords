@@ -8,7 +8,7 @@ import App from './App.vue'
 // element-plus
 import 'element-plus/dist/index.css'
 
-import '@unocss/reset/tailwind.css'
+import '@unocss/reset/tailwind-compat.css'
 import './styles/main.css'
 import 'uno.css'
 import zh_CN from './locale/zh-CN'
