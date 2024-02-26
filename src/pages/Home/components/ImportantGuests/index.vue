@@ -1,20 +1,20 @@
 <script setup>
 const list = ref([
-  '/public/guests/13.webp',
-  '/public/guests/14.webp',
-  '/public/guests/15.webp',
-  '/public/guests/1.webp',
-  '/public/guests/2.webp',
-  '/public/guests/3.webp',
-  '/public/guests/4.webp',
-  '/public/guests/5.webp',
-  '/public/guests/6.webp',
-  '/public/guests/7.webp',
-  '/public/guests/8.webp',
-  '/public/guests/9.webp',
-  '/public/guests/10.webp',
-  '/public/guests/11.webp',
-  '/public/guests/12.webp',
+  '/guests/13.webp',
+  '/guests/14.webp',
+  '/guests/15.webp',
+  '/guests/1.webp',
+  '/guests/2.webp',
+  '/guests/3.webp',
+  '/guests/4.webp',
+  '/guests/5.webp',
+  '/guests/6.webp',
+  '/guests/7.webp',
+  '/guests/8.webp',
+  '/guests/9.webp',
+  '/guests/10.webp',
+  '/guests/11.webp',
+  '/guests/12.webp',
 ])
 </script>
 
@@ -24,7 +24,7 @@ const list = ref([
     <p class="left-0 top-5% h-[80px] w-full font-size-[30px] font-bold">
       重磅嘉宾&nbsp;<span class="font-size-[23px]">Important Guests</span>
     </p>
-    <el-carousel :interval="4000" type="card" height="341px" class="animation-delay-1 animate__fadeInDown wow animate-duration-2500">
+    <el-carousel :interval="4000" type="card" height="341px" class="animation-delay-1 wow animate__fadeInDown animate-duration-2500">
       <el-carousel-item v-for="item in list" :key="item">
         <img :src="item">
       </el-carousel-item>

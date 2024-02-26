@@ -3,35 +3,35 @@ import OrientationSenseCard from './OrientationSenseCard.vue'
 
 const spanList = [
   {
-    img: '/public/news/1.jpg',
+    img: '/news/1.jpg',
     title: '【重磅干货】大家都关心的嘉宾PPT下载指南来啦',
     desc: '指路贴来啦！大家都关心的嘉宾PPT下载指南在这里！一图解锁西湖论剑官网&小程序下载路径，看众多专家真知灼见，干货满满 ，引领行业思辨！',
     news: '西湖论剑',
     time: '2023-05-12',
   },
   {
-    img: '/public/news/2.jpg',
+    img: '/news/2.jpg',
     title: '2023西湖论剑·数字安全大会举办',
     desc: '5月7日，以“数字安全@数字中国”为主题的2023西湖论剑·数字安全大会(原西湖论剑·网络安全大会)成功举办。为更好助推数字中国...',
     news: '央广网',
     time: '2023-05-07',
   },
   {
-    img: '/public/news/4.jpg',
+    img: '/news/4.jpg',
     title: '杭州亚运赛事网络安全保护启动',
     desc: '“西湖论剑·网络安全大会”正式升级为数字安全大会。5月7日，2023西湖论剑·数字安全大会发布“新十年”规划，并举行了亚运赛事网络...',
     news: '南方都市报',
     time: '2023-05-08',
   },
   {
-    img: '/public/news/5.jpg',
+    img: '/news/5.jpg',
     title: '“新十年”扬帆起航 2023西湖论剑·数字安全大会举办',
     desc: '5 月7日，以“数字安全@数字中国”为主题的2023西湖论剑·数字安全大会（原西湖论剑·网络安全大会）成功举办。本届大会设一个主...',
     news: '浙江在线',
     time: '2023-05-08',
   },
   // {
-  //   img: '/public/news/7.jpg',
+  //   img: '/news/7.jpg',
   //   title: '“数字安全＠数字中国” 2023西湖论剑·数字安全大会今天开幕',
   //   desc: '简介： 今年，西湖论剑·网络安全大会进入新的十年，大会正式升级为“西湖论剑·数字安全大会”。 在今天的大会上， 新一代的“天穹安全...',
   //   news: '杭州电视台',
@@ -70,6 +70,6 @@ const spanList = [
 
 <style scoped>
 .bg {
-  background-image: url('/public/bg/3.png');
+  background-image: url('/bg/3.png');
 }
 </style>
