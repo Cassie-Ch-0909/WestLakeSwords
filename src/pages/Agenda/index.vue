@@ -75,7 +75,8 @@ function showMoreContent() {
 </script>
 
 <template>
-  <div class="[#98EAF7] w-full from-[#8EEDF0] to-[#8EC4F7] from-10% to-90% via-30% bg-gradient-to-r pb50px">
+  <!-- PC端大会议程 -->
+  <div class="[#98EAF7] w-full from-[#8EEDF0] to-[#8EC4F7] from-10% to-90% via-30% bg-gradient-to-r pb50px max-md:hidden">
     <div class="ml10% mr10% h-full w-80%">
       <p class="h50% w-full flex items-center justify-center pb30px pt30px font-size-[35px] color-[#2C80BE] font-bold">
         大会议程
@@ -100,7 +101,10 @@ function showMoreContent() {
           <p class="mr5% text-size-[15px] color-[#00B4BC] font-bold">
             类型筛选
           </p>
-          <el-select v-model="selectedOptionValue" class="" placeholder="全部" size="large" style="width: 150px;" @change="selectedOptionChange">
+          <el-select
+            v-model="selectedOptionValue" class="" placeholder="全部" size="large" style="width: 150px;"
+            @change="selectedOptionChange"
+          >
             <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" />
           </el-select>
         </div>
@@ -129,7 +133,9 @@ function showMoreContent() {
                     </p>
                   </div>
                 </div>
-                <div class="ml10% h30px w6% flex items-center justify-center rounded-[13px] bg-[#00B4BC] font-size-13px color-[#fff]">
+                <div
+                  class="ml10% h30px w6% flex items-center justify-center rounded-[13px] bg-[#00B4BC] font-size-13px color-[#fff]"
+                >
                   <p>观看回放</p>
                 </div>
                 <div class="ml40% w5% flex items-center justify-center color-[#00B4BC]" @click="showMoreContent">
@@ -189,6 +195,112 @@ function showMoreContent() {
       </div>
     </div>
   </div>
+
+  <!-- 移动端大会议程 -->
+  <div class="[#98EAF7] w-full from-[#8EEDF0] to-[#8EC4F7] from-10% to-90% via-30% bg-gradient-to-r pb50px md:hidden">
+    <div class="h-50px w-full flex items-center justify-center font-size-[18px] color-[#00B4BC] font-bold">
+      大会议程
+    </div>
+    <div class="w-full flex items-center justify-center">
+      <div
+        v-for="(item, index) in dateList" :key="index"
+        :class="activeIndex === index ? 'bg-[#00B4BC]' : 'bg-[#EFFBFF]'"
+        class="mr2% h-60% w-15% flex items-center justify-center rounded-[10px]" @click="selectDate(index)"
+      >
+        <div
+          :class="activeIndex === index ? 'color-[#EFFBFF]' : 'color-[#00B4BC]'"
+          class="h90% w80% flex flex-col items-center justify-center rounded-[10px]"
+        >
+          <span class="text-size-[13px]">5月</span>
+          <span class="text-size-[18px]">{{ item }}</span>
+        </div>
+      </div>
+    </div>
+    <div v-for="(item, index) in dateList" v-show="activeIndex === index" :key="index">
+      <div v-for="(item2, index2) in options" :key="index2">
+        <div v-show="selectedOptionValue === item2.value || selectedOptionValue === '全部'">
+          <div class="mb15px mt15px flex items-center">
+            <i class="iconfont font-size-30px color-[#0E88A4]" :class="item2.icon" />
+            <span class="ml10px text-size-[19px] color-[#0E88A4] font-bold">{{ item2.value }}</span>
+          </div>
+          <div class="w-full rounded-[15px] bg-[#fff] pb20px pt20px shadow-lg">
+            <div class="w-full flex items-center">
+              <div class="w20% flex flex-col items-center justify-around font-size-12px">
+                <img src="/public/agenda/time.png" alt="" class="mb10px h15px w15px">
+                <span>10:00-11:30</span>
+              </div>
+              <div class="ml1% w-55% flex flex-col justify-center">
+                <p class="pl2% text-size-[14px] color-[#00B4BC] font-bold">
+                  网络安全创新发展高端论坛
+                </p>
+                <div class="flex items-center color-[grey]">
+                  <i class="iconfont icon-dingwei font-size-20px" />
+                  <p class="text-size-[12px]">
+                    杭州市滨江区文化中心剧院一层
+                  </p>
+                </div>
+              </div>
+              <div
+                class="h20px w15% flex items-center justify-center rounded-[10px] bg-[#00B4BC] font-size-12px color-[#fff]"
+              >
+                <p>观看回放</p>
+              </div>
+              <div class="ml3% w3% flex items-center justify-center pr2% color-[#00B4BC]" @click="showMoreContent">
+                <i class="iconfont icon-arrow-down font-size-12px" />
+              </div>
+            </div>
+            <div v-show="showMoreContentFlag" class="mt10px bg-[#EFFBFF] pb15px pl6%">
+              <div class="flex pt15px">
+                <i class="iconfont icon-shijian1" />
+                <span class="pl2%">09:30-12:00</span>
+              </div>
+              <div class="flex pt5px font-size-13px">
+                <p>
+                  第二直播间 精彩干货不间断
+                </p>
+              </div>
+              <div class="flex pt5px font-size-13px">
+                <p>
+                  郝志强
+                </p>
+              </div>
+              <div class="flex pt5px font-size-13px">
+                <p>
+                  工业和信息化部教育与考试中心主任 书记
+                </p>
+              </div>
+            </div>
+            <div v-show="showMoreContentFlag" class="mt10px bg-[#EFFBFF] pb15px pl6%">
+              <div class="flex pt15px">
+                <i class="iconfont icon-shijian1" />
+                <span class="pl2%">09:30-12:00</span>
+              </div>
+              <div class="flex pt5px font-size-13px">
+                <p>
+                  第二直播间 精彩干货不间断
+                </p>
+              </div>
+              <div class="flex pt5px font-size-13px">
+                <p>
+                  郝志强
+                </p>
+              </div>
+              <div class="flex pt5px font-size-13px">
+                <p>
+                  工业和信息化部教育与考试中心主任 书记
+                </p>
+              </div>
+            </div>
+            <div v-show="showMoreContentFlag" class="mt10px h-50px w-full flex items-center justify-center">
+              <button class="putAway" @click="showMoreContent">
+                收起
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <style scoped>
@@ -199,6 +311,7 @@ function showMoreContent() {
   border: 2px solid #00b4bc;
   color: #00b4bc;
 }
+
 .putAway:hover {
   background-color: #00b4bc;
   color: #fff;
