@@ -52,6 +52,45 @@ const highLightsList = ref([
     title: '直播观看',
   },
 ])
+
+// 往期回顾数组
+const pastList = ref([
+  {
+    img: '/public/pastDate/1.webp',
+    title: '2022构建安全可信的数字世界',
+    content: '2022年西湖论剑·网络安全大会由浙江省互联网信息办公室、 浙江省经济和信息化厅、浙江省公安厅、浙江省科学技术协会、浙江省工商业联合会、 浙江省通信管理局、杭州市人民政府主办，拟于2022年7月2日-3日召开，主题为\'构建安全可信的数字世界\' 。  作为国内首个进入十年的网络安全大会，本次大会将首设北京、杭州双主场 ，大会议题聚焦“两法一条例”落地实施、 助力 “ 浙江数字化改革 ”  高质量发展等方向 ， 从关键信息基础设施安全、数字城市安全、个人信息安全、亚运网络安全、 信创安全、云安全、元宇宙安全等网络安全数据安全的新技术、新应用、新场景出发 ， 邀请相关政府部门领导、两院院士、知名专家、 网络安全从业者等一起，分析现状、研判趋势 , 探讨“构建安全可信的数字世界”的可行路径。',
+  },
+  {
+    img: '/public/pastDate/2.webp',
+    title: '2021 安全:数字化改革之根本',
+    content: '2021年的西湖论剑大会于4月24日在杭州国际博览中心举办，本届大会主题为 “安全：数字化改革之根基”。届时，大会邀请相关主管部门领导、国内外知名专家学者、网络信息安全行业从业者们，共同解读中国网络信息安全产业政策、法规、行业标准等，厘清网络信息安全发展方向。',
+  },
+  {
+    img: '/public/pastDate/4.webp',
+    title: '2020 数治安全 智理未来',
+    content: '2020西湖论剑·网络安全线上峰会，主题为“数治安全 智理未来”。通过北京、杭州两地直播间同步连线直播的形式，聚焦后疫情时代的网络安全新业态、新模式，延续两会的热议话题，邀请政府主管部门领导、知名专家学者和网络安全专家“云聚集”，系统解读数字中国发展浪潮中的智慧城市安全、大数据安全、云安全、5G安全、工业互联网安全等多领域方向的最新成果，共推数字世界新时代。峰会设立1个主论坛，6个分论坛，首创青年科学家对话、首推网络安全云上展览，以更为新颖的方式，更多对话替代主题演讲，将“论”进行到底。',
+  },
+  {
+    img: '/public/pastDate/5.webp',
+    title: '2019 安全：赋能数字新时代',
+    content: '2019年4月19日-21日在杭州国际博览中心隆重举行的主题为“安全：赋能数字新时代”的西湖论剑网络安全大会，邀请政府主管部门、知名专家学者和优秀企业家作为主讲嘉宾，系统解读政府在构建数字技术、数字经济、数字政府、数字社会等领域顶层设计，涵盖数字经济时代网络安全最新前沿技术及创新成果分享，包括智慧城市安全、云安全、移动安全、大数据安全、工控安全、物联网安全等多个方向。包含主论坛、网络安全创新成果展、全新升级的网络安全技能大赛和十多个技术、管理及行业分论坛，共话网络安全前沿核心议题，共推数字新时代。',
+  },
+  {
+    img: '/public/pastDate/6.webp',
+    title: '2018 新时代 新安全 新力量',
+    content: '2018年4月27日，2018西湖论剑·网络安全大会在浙江杭州国际博览中心隆重召开，设置了主论坛和工业互联网信息安全、智慧城市信息安全、应急响应及威胁情报等8个分论坛。  中国科学院院士、中国工程院院士、联合国犯罪和司法研究所技术与安全项目负责人、全球顶级网安企业代表、主管部门网络安全业务负责人等国内外知名专家学者和行业内优秀企业家围绕网络空间安全战略、关键信息基础设施保护、产业发展趋势、人才培养等领域进行了深度交流，分享了行业内最佳创新案例和安全技术实践。来自全球网络安全相关行业近3000名嘉宾出席。',
+  },
+  {
+    img: '/public/pastDate/7.webp',
+    title: '2017 智引新安全 数领大未来',
+    content: '2017西湖论剑（中国网络安全创新分享大会）在世界互联网大会永久举办地桐乡乌镇举行。 2017西湖论剑由中央网信办网络安全协调局、公安部网络安全保卫局、国家信息中心、浙江省网信办、浙江省公安厅、浙江省经信委、浙江省科技厅、浙江省通管局联合指导，中国网络空间安全协会、中国信息产业商会信息安全产业分会主办，杭州安恒信息技术有限公司承办。以“智引新安全，数领大未来”为主题，见证大数据、人工智能与网络安全的美丽邂逅，深刻解读《网络安全法》。',
+  },
+  {
+    img: '/public/pastDate/8.webp',
+    title: '2016 安若磐石，云之可栖',
+    content: '2016年10月16日下午，2016杭州·云栖大会火爆了4天之后，在杭州云栖小镇国际会展中心落下帷幕。本届大会是今年继G20杭州峰会之后，杭州举办的首个吸引全球科技人才的大会，也是在国内科技创新及互联网等领域有着极大影响力。 大会以“飞天·进化”为主题涵盖了包括电商、网络安全、人工智能、游戏、多媒体、互联网+、政务、国际、大数据、生命科学、物联网等共计20个方向和领域，数百场主题演讲、数万平米创新展览体验区和国内外顶尖科技亮相，参会人数近4万人。',
+  },
+])
 </script>
 
 <template>
@@ -135,29 +174,18 @@ const highLightsList = ref([
         :slides-per-view="3"
         :space-between="50"
       >
-        <SwiperSlide>
-          <img src="/public/activity/3.webp" alt="">
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="/public/activity/3.webp" alt="">
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="/public/activity/3.webp" alt="">
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="/public/activity/3.webp" alt="">
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="/public/activity/3.webp" alt="">
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="/public/activity/3.webp" alt="">
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="/public/activity/3.webp" alt="">
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="/public/activity/3.webp" alt="">
+        <SwiperSlide v-for="(item, index) in pastList" :key="index">
+          <div class="h-380px w-full">
+            <img class="h-50% w-full" :src="item.img" alt="">
+            <div class="h-full w-full bg-[#659BCD] color-[#fff]">
+              <p class="h16% w-full flex items-center justify-center font-size-20px color-[black] font-bold">
+                {{ item.title }}
+              </p>
+              <p class="ellipsis pb5%% pl5% pr5">
+                {{ item.content }}
+              </p>
+            </div>
+          </div>
         </SwiperSlide>
       </Swiper>
     </div>
@@ -219,6 +247,27 @@ const highLightsList = ref([
           <img class="h-65% w-full" src="/public/light/4.webp" alt="">
         </span>
       </div>
+      <div class="mt20px h-50px w-full flex items-center justify-center font-size-[18px] color-[#00B4BC] font-bold">
+        往期回顾
+      </div>
+      <Swiper
+        :slides-per-view="3"
+        :space-between="4"
+      >
+        <SwiperSlide v-for="(item, index) in pastList" :key="index">
+          <div class="h-170px w-full">
+            <img class="h-50% w-full" :src="item.img" alt="">
+            <div class="h-full w-full bg-[#93CEEA] color-[#fff]">
+              <p class="h22% w-full flex items-center justify-center font-size-12px color-[black] font-bold">
+                {{ item.title }}
+              </p>
+              <p class="ellipsis2 font-size-10px">
+                {{ item.content }}
+              </p>
+            </div>
+          </div>
+        </SwiperSlide>
+      </Swiper>
     </div>
   </div>
 </template>
@@ -235,5 +284,20 @@ const highLightsList = ref([
   height: 20px;
   background-color: #00b4bc;
   color: #fff;
+}
+
+.ellipsis {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  -webkit-line-clamp: 5;
+  text-overflow: ellipsis;
+}
+.ellipsis2 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  -webkit-line-clamp: 3;
+  text-overflow: ellipsis;
 }
 </style>
