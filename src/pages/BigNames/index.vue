@@ -454,6 +454,39 @@ function selectDate(index) {
     <p class="h30px w-full flex items-center font-size-14px color-[#fff] font-bold">
       演讲嘉宾 Speakers
     </p>
+    <div class="w-full flex items-center justify-center">
+      <div
+        v-for="(item, index) in dateList" :key="index"
+        :class="activeIndex === index ? 'bg-[#00B4BC]' : 'bg-[#EFFBFF]'"
+        class="mr2% h-60% w-15% flex items-center justify-center rounded-[10px]" @click="selectDate(index)"
+      >
+        <div
+          :class="activeIndex === index ? 'color-[#EFFBFF]' : 'color-[#00B4BC]'"
+          class="h90% w80% flex flex-col items-center justify-center rounded-[10px]"
+        >
+          <span class="text-size-[13px]">5月</span>
+          <span class="text-size-[18px]">{{ item.date }}</span>
+        </div>
+      </div>
+    </div>
+    <div class="w-full">
+      <div v-for="(item, index) in dateList" v-show="activeIndex === index" :key="index" class="flex flex-wrap justify-between">
+        <div v-for="(item2, index2) in item.childList" :key="index2" class="mt10px w33% flex flex-col bg-[#fff] font-size-10px">
+          <div class="flex items-center pb5px pl5px pt5px">
+            <img class="h50px w50px rounded-50%" :src="item2.img" alt="">
+            <p class="ml15px font-size-13px font-bold">
+              {{ item2.name }}
+            </p>
+          </div>
+          <div class="flex flex-col items-center justify-center pb5px font-size-10px">
+            <p>{{ item2.position }}</p>
+            <p>{{ item2.time }}</p>
+            <p>{{ item2.content }}</p>
+            <p>{{ item2.agenda }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
