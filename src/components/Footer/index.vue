@@ -2,7 +2,7 @@
 
 <template>
   <!-- PC端底部Footer -->
-  <div class="mt[50px] h-[550px] w-full from-[#169E9C] to-[#036CAD] bg-gradient-to-t max-md:hidden">
+  <div class="h-[550px] w-full from-[#169E9C] to-[#036CAD] bg-gradient-to-t max-md:hidden">
     <div class="ml10% mr10% h-full w80% color-[#fff]">
       <!-- 第一行 -->
       <div class="flex">

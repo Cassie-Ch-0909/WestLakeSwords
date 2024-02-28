@@ -10,7 +10,7 @@ const navs = ref([
   { name: '首页', url: '/' },
   { name: '大会议程', url: '/agenda' },
   { name: '关于大会', url: '/about' },
-  { name: '大咖云集', url: '/home' },
+  { name: '大咖云集', url: '/bignames' },
   { name: '精彩活动', url: '/home' },
   { name: '展商风采', url: '/home' },
   { name: '成果发布', url: '/home' },

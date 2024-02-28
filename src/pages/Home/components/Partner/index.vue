@@ -40,7 +40,7 @@ function changeFlag() {
 <template>
   <!-- PC端合作伙伴 -->
   <div
-    class="mt[50px] w100% max-md:hidden"
+    class="mb[50px] mt[50px] w100% max-md:hidden"
   >
     <p class="left-0 ml10% h-[80px] w-80% font-size-[30px] font-bold">
       合作伙伴&nbsp;<span class="font-size-[23px]">Cooperative Partner</span>
