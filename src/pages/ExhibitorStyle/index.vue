@@ -70,7 +70,7 @@ const list = ref([
 
 <template>
   <!-- PC端展商风采 -->
-  <div class="bg [#98EAF7] w-full bg-left bg-no-repeat pb50px max-md:hidden">
+  <div class="bg w-full bg-left bg-no-repeat pb50px max-md:hidden">
     <div class="ml10% mr10% h-full w-80%">
       <p class="h50% w-full flex items-center justify-center pb30px pt30px font-size-[35px] color-[#2C80BE] font-bold">
         展商风采
@@ -88,6 +88,26 @@ const list = ref([
       <div class="mt20px">
         <embed class="h-730px w-1300px" src="https://live.vhall.com/v3/lives/embedclient/subscribe/347881970?embed=video">
       </div>
+    </div>
+  </div>
+
+  <!-- 移动端展商风采 -->
+  <div class="bg w-full bg-left bg-no-repeat md:hidden">
+    <div class="h-50px w-full flex items-center justify-center font-size-[18px] color-[#00B4BC] font-bold">
+      展商风采
+    </div>
+    <div class="ml-[-2%] mt10px w-full flex flex-wrap justify-center">
+      <div v-for="(item, index) in list" :key="index" class="mb15px ml2% w18%">
+        <div class="h80px w80px flex flex-col items-center justify-center rounded-50% from-[#70E9E4] to-[#139AE6] bg-gradient-to-t">
+          <img class="w60px rounded-50%" :src="item.img" alt="">
+          <p class="font-size-10px font-bold">
+            {{ item.name }}
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="mt10px">
+      <embed class="w-full" src="https://live.vhall.com/v3/lives/embedclient/subscribe/347881970?embed=video">
     </div>
   </div>
 </template>
