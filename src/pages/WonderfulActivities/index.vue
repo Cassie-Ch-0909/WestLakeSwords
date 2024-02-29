@@ -247,11 +247,11 @@ const btnList = ref([
       <div>
         <el-tabs v-model="activeName" class="demo-tabs" @tab-click="handleClick">
           <el-tab-pane v-for="(item, index) in btnList" :key="index" class="w-full" :label="item.title" :name="item.name">
-            <div v-for="(item2, index2) in item.list" :key="index2" class="mb10px h100px w-full flex">
+            <div v-for="(item2, index2) in item.list" :key="index2" class="bg mb10px h100px w-full flex">
               <div class="h-full w-50%">
                 <img :src="item2.img" alt="" class="h-full w-full">
               </div>
-              <div class="h-full w50% flex flex-col bg-[#EFFBFF] p10px">
+              <div class="h-full w50% flex flex-col bg-[#EFF9FF] p10px">
                 <div class="h50% w-full font-size-14px font-bold">
                   {{ item2.name }}
                 </div>
@@ -270,4 +270,6 @@ const btnList = ref([
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+
+</style>

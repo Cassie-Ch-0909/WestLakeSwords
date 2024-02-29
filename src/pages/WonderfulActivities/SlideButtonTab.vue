@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
-import SudokuImageAnimation from './SudokuImageAnimation.vue'
 
 // const btnList = Array.from({ length: 6 }).fill(0)
 const btnList = ref([

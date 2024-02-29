@@ -44,6 +44,7 @@ declare module 'vue-router/auto/routes' {
     '/About/': RouteRecordInfo<'/About/', '/About', Record<never, never>, Record<never, never>>,
     '/Agenda/': RouteRecordInfo<'/Agenda/', '/Agenda', Record<never, never>, Record<never, never>>,
     '/BigNames/': RouteRecordInfo<'/BigNames/', '/BigNames', Record<never, never>, Record<never, never>>,
+    '/ExhibitorStyle/': RouteRecordInfo<'/ExhibitorStyle/', '/ExhibitorStyle', Record<never, never>, Record<never, never>>,
     '/hi/[name]': RouteRecordInfo<'/hi/[name]', '/hi/:name', { name: ParamValue<true> }, { name: ParamValue<false> }>,
     '/Home/': RouteRecordInfo<'/Home/', '/Home', Record<never, never>, Record<never, never>>,
     '/Home/components/Agenda/': RouteRecordInfo<'/Home/components/Agenda/', '/Home/components/Agenda', Record<never, never>, Record<never, never>>,
