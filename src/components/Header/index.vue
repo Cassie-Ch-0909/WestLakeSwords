@@ -14,7 +14,7 @@ const navs = ref([
   { name: '精彩活动', url: '/wonderfulactivities' },
   { name: '展商风采', url: '/exhibitorstyle' },
   { name: '成果发布', url: '/achievementrelease' },
-  { name: '媒体中心', url: '/home' },
+  { name: '媒体中心', url: '/mediacenter' },
   { name: '参会指南', url: '/home' },
 ])
 

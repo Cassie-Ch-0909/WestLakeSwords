@@ -30,7 +30,7 @@ const whiteBooksList = ref([
           白皮书
           <span class="font-size-20px">White Paper</span>
         </p>
-        <el-carousel height="400px" direction="vertical" type="card" :autoplay="false" class="w70%">
+        <el-carousel height="400px" direction="vertical" type="card" :autoplay="false" class="w82%">
           <el-carousel-item v-for="item in whiteBooksList" :key="item" class="flex shadow-lg">
             <img class="h-full" :src="item.img" alt="">
             <div class="flex flex-1 flex-col justify-evenly p15px">
@@ -56,7 +56,7 @@ const whiteBooksList = ref([
         <span class="font-size-20px">New Product Launch</span>
       </p>
       <div class="mt30px h300px w-full flex justify-between">
-        <div class="bg h-full w47% bg-blue shadow-lg">
+        <div class="bg animation-delay-1 animate__fadeInLeft wow h-full w47% animate-duration-2500 bg-blue shadow-lg">
           <p class="h-30% w-full flex items-center justify-center font-size-24px color-[#fff] font-bold">
             下一代防火墙
           </p>
@@ -72,7 +72,7 @@ const whiteBooksList = ref([
             </div>
           </div>
         </div>
-        <div class="bg2 h-full w47% bg-blue shadow-lg">
+        <div class="animation-delay-1 wow bg2 animate__fadeInRight h-full w47% animate-duration-2500 bg-blue shadow-lg">
           <p class="h-30% w-full flex items-center justify-center font-size-24px color-[#fff] font-bold">
             安全托管运营服务MSS
           </p>

@@ -76,7 +76,7 @@ const list = ref([
         展商风采
       </p>
       <div class="ml2.5% w-full flex flex-wrap justify-center">
-        <div v-for="(item, index) in list" :key="index" class="mb15px mr5% w10%">
+        <div v-for="(item, index) in list" :key="index" class="animation-delay-1 animate__fadeIn mb15px mr5% w10% animate-duration-2500">
           <div class="h130px w130px flex flex-col items-center justify-center rounded-50% from-[#70E9E4] to-[#139AE6] bg-gradient-to-t shadow-xl">
             <img class="w100px rounded-50%" :src="item.img" alt="">
             <p class="font-size-13px font-bold">

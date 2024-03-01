@@ -70,6 +70,7 @@ declare module 'vue-router/auto/routes' {
     '/Home/components/NewsReport/OrientationSenseCard': RouteRecordInfo<'/Home/components/NewsReport/OrientationSenseCard', '/Home/components/NewsReport/OrientationSenseCard', Record<never, never>, Record<never, never>>,
     '/Home/components/Partner/': RouteRecordInfo<'/Home/components/Partner/', '/Home/components/Partner', Record<never, never>, Record<never, never>>,
     '/jjy/cassie': RouteRecordInfo<'/jjy/cassie', '/jjy/cassie', Record<never, never>, Record<never, never>>,
+    '/MediaCenter/': RouteRecordInfo<'/MediaCenter/', '/MediaCenter', Record<never, never>, Record<never, never>>,
     '/WonderfulActivities/': RouteRecordInfo<'/WonderfulActivities/', '/WonderfulActivities', Record<never, never>, Record<never, never>>,
     '/WonderfulActivities/SlideButtonTab': RouteRecordInfo<'/WonderfulActivities/SlideButtonTab', '/WonderfulActivities/SlideButtonTab', Record<never, never>, Record<never, never>>,
     '/WonderfulActivities/SudokuImageAnimation': RouteRecordInfo<'/WonderfulActivities/SudokuImageAnimation', '/WonderfulActivities/SudokuImageAnimation', Record<never, never>, Record<never, never>>,
