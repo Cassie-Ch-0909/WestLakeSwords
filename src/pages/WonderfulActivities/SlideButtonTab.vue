@@ -297,7 +297,7 @@ onMounted(() => {
       </div>
       <div v-for="(item, index) in btnList" v-show="activedBtnIndex === index" :key="index">
         <div v-for="(item2, index2) in item.list" :key="index2" class="mt20px h300px w-full flex" :class="index2 % 2 === 1 ? ' justify-end' : ' justify-start'">
-          <div class="h-full w90% flex bg-white">
+          <div class="h-full w90% flex bg-white shadow-xl">
             <div v-if="index2 % 2 === 0" class="h-full w50%">
               <img :src="item2.img" alt="" class="h-full w-full">
             </div>

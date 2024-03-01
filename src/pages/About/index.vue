@@ -101,7 +101,7 @@ const pastList = ref([
         关于大会
       </p>
       <div class="h-200px w-full flex">
-        <img class="h-full w-18%" src="/public/about/1.webp" alt="">
+        <img class="h-full w-18% shadow-xl" src="/public/about/1.webp" alt="">
         <div class="ml1% flex-1">
           西湖论剑·网络安全大会自2012年创办，是国内首个已举办十周年的网络安全大会。十届以来，大会线下参会嘉宾累计超过10000人次，线上直播观看累计超过2500万人次，已成为国内网络安全领域的一张“金名片”。历届大会期间，国家部委、省市领导，院士、知名专家和优秀企业代表齐聚杭州，共商数字时代的安全之道。
 
@@ -175,7 +175,7 @@ const pastList = ref([
         :space-between="50"
       >
         <SwiperSlide v-for="(item, index) in pastList" :key="index">
-          <div class="h-380px w-full">
+          <div class="h-380px w-full shadow-xl">
             <img class="h-50% w-full" :src="item.img" alt="">
             <div class="h-full w-full bg-[#659BCD] color-[#fff]">
               <p class="h16% w-full flex items-center justify-center font-size-20px color-[black] font-bold">

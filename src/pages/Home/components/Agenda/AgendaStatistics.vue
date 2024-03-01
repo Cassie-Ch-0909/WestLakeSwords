@@ -38,7 +38,7 @@ const list = ref([
       <span class="font-size-[23px]">Conference Agenda</span>
     </div>
     <div class="mb5% h30% w100% flex justify-between">
-      <div class="relative h100% w49% rounded-[10px] from-[#70E9E4] to-[#139AE6] bg-gradient-to-t">
+      <div class="relative h100% w49% rounded-[10px] from-[#70E9E4] to-[#139AE6] bg-gradient-to-t shadow-xl">
         <div class="ml5%">
           <span class="font-size-[60px] color-white font-bold">10</span>
           <span class="font-size-[20px] color-white font-bold"> 场</span><br>
@@ -46,7 +46,7 @@ const list = ref([
         </div>
         <img src="@/assets/icon/talk.png" alt="" class="absolute bottom-5% right-3% w47%">
       </div>
-      <div class="relative h100% w49% rounded-[10px] from-[#70E9E4] to-[#139AE6] bg-gradient-to-t">
+      <div class="relative h100% w49% rounded-[10px] from-[#70E9E4] to-[#139AE6] bg-gradient-to-t shadow-xl">
         <div class="ml5%">
           <span class="font-size-[60px] color-white font-bold">1</span>
           <span class="font-size-[20px] color-white font-bold"> 场</span><br>
@@ -56,7 +56,7 @@ const list = ref([
       </div>
     </div>
     <div class="mb5% h30% w100% flex justify-between">
-      <div class="relative h100% w49% rounded-[10px] from-[#70E9E4] to-[#139AE6] bg-gradient-to-t">
+      <div class="relative h100% w49% rounded-[10px] from-[#70E9E4] to-[#139AE6] bg-gradient-to-t shadow-xl">
         <div class="ml5%">
           <span class="font-size-[60px] color-white font-bold">8</span>
           <span class="font-size-[20px] color-white font-bold"> 场</span><br>
@@ -64,7 +64,7 @@ const list = ref([
         </div>
         <img src="@/assets/icon/mobile2.png" alt="" class="absolute bottom-5% right-1% w56%">
       </div>
-      <div class="relative h100% w49% rounded-[10px] from-[#70E9E4] to-[#139AE6] bg-gradient-to-t">
+      <div class="relative h100% w49% rounded-[10px] from-[#70E9E4] to-[#139AE6] bg-gradient-to-t shadow-xl">
         <div class="ml5%">
           <span class="font-size-[60px] color-white font-bold">1</span>
           <span class="font-size-[20px] color-white font-bold"> 场</span><br>

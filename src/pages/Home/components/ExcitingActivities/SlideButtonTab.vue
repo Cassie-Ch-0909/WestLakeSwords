@@ -88,7 +88,7 @@ onMounted(() => {
     <div class="animation-delay-1 wow animate__slideInLeft animate-duration-2500">
       <div class="container">
         <ModuleTitle i18n-title="page.htmlVision.interactiveDesign.swipeTab" />
-        <div ref="contentRef" class="content from-[#70E9E4] to-[#0EBEFF] bg-gradient-to-b">
+        <div ref="contentRef" class="content from-[#70E9E4] to-[#0EBEFF] bg-gradient-to-b shadow-xl">
           <div
             v-for="(item, index) in btnList" :key="index" class="btn22" :class="{ actived: activedBtnIndex === index }"
             @click="() => onBtnClick(index)"
@@ -99,7 +99,7 @@ onMounted(() => {
       </div>
       <div
         v-for="(item, index) in btnList" v-show="activedBtnIndex === index" :key="index"
-        class="mt-[15px] h-[270px] w-[900px] flex bg-red"
+        class="mt-[15px] h-[270px] w-[900px] flex bg-red shadow-xl"
       >
         <div class="h-full w-[900px] bg-yellow">
           <img :src="item.img" class="h-full w-full">
@@ -118,7 +118,7 @@ onMounted(() => {
       </div>
     </div>
     <div class="flex flex-1 flex-col items-center justify-center">
-      <el-button type="primary" plain class="animation-delay-1 wow animate__slideInRight mt-[70px] w-50% animate-duration-2500">
+      <el-button type="primary" plain class="animation-delay-1 wow animate__slideInRight mt-[70px] w-50% animate-duration-2500 shadow-xl">
         查看详情+
       </el-button>
       <SudokuImageAnimation class="animation-delay-1 wow animate__slideInRight animate-duration-2500" />

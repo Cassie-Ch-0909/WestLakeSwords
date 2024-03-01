@@ -209,7 +209,7 @@ function showMoreContent() {
       >
         <div
           :class="activeIndex === index ? 'color-[#EFFBFF]' : 'color-[#00B4BC]'"
-          class="h90% w80% flex flex-col items-center justify-center rounded-[10px]"
+          class="h90% w80% flex flex-col items-center justify-center rounded-[10px] shadow-xl"
         >
           <span class="text-size-[13px]">5月</span>
           <span class="text-size-[18px]">{{ item }}</span>

@@ -77,7 +77,7 @@ const list = ref([
       </p>
       <div class="ml2.5% w-full flex flex-wrap justify-center">
         <div v-for="(item, index) in list" :key="index" class="mb15px mr5% w10%">
-          <div class="h130px w130px flex flex-col items-center justify-center rounded-50% from-[#70E9E4] to-[#139AE6] bg-gradient-to-t">
+          <div class="h130px w130px flex flex-col items-center justify-center rounded-50% from-[#70E9E4] to-[#139AE6] bg-gradient-to-t shadow-xl">
             <img class="w100px rounded-50%" :src="item.img" alt="">
             <p class="font-size-13px font-bold">
               {{ item.name }}
@@ -99,7 +99,7 @@ const list = ref([
     <div class="ml-[-2%] mt10px w-full flex flex-wrap justify-center">
       <div v-for="(item, index) in list" :key="index" class="mb15px ml2% w18%">
         <div class="h80px w80px flex flex-col items-center justify-center rounded-50% from-[#70E9E4] to-[#139AE6] bg-gradient-to-t">
-          <img class="w60px rounded-50%" :src="item.img" alt="">
+          <img class="w61px rounded-50%" :src="item.img" alt="">
           <p class="font-size-10px font-bold">
             {{ item.name }}
           </p>
