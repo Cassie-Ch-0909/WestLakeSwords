@@ -285,7 +285,6 @@ onMounted(() => {
   <div style="width: 100%" class="flex items-center">
     <div class="">
       <div class="container">
-        <ModuleTitle i18n-title="page.htmlVision.interactiveDesign.swipeTab" />
         <div ref="contentRef" class="content from-[#00B4BC] to-[#2FABF3] bg-gradient-to-t">
           <div
             v-for="(item, index) in btnList" :key="index" class="btn22" :class="{ actived: activedBtnIndex === index }"

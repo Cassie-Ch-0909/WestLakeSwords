@@ -85,9 +85,8 @@ onMounted(() => {
 
 <template>
   <div style="width: 100%" class="flex items-center">
-    <div class="animation-delay-1 wow animate__slideInLeft animate-duration-2500">
+    <div class="animation-delay-1 animate__slideInLeft wow animate-duration-2500">
       <div class="container">
-        <ModuleTitle i18n-title="page.htmlVision.interactiveDesign.swipeTab" />
         <div ref="contentRef" class="content from-[#70E9E4] to-[#0EBEFF] bg-gradient-to-b shadow-xl">
           <div
             v-for="(item, index) in btnList" :key="index" class="btn22" :class="{ actived: activedBtnIndex === index }"
