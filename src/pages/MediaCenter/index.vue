@@ -129,11 +129,20 @@ function changeActiveIndex(index) {
         媒体中心
       </p>
       <div class="h60px w-full flex items-center justify-center">
-        <div v-for="(item, index) in titleList" :key="index" class="mr40px h-full w10% flex items-center justify-center font-size-18px color-[#00B4BC] font-bold" :class="index === activeIndex ? 'border-b-2 border-solid border-[#00B4BC]' : ''" @click="changeActiveIndex(index)">
+        <div
+          v-for="(item, index) in titleList" :key="index"
+          class="mr40px h-full w10% flex items-center justify-center font-size-18px color-[#00B4BC] font-bold"
+          :class="index === activeIndex ? 'border-b-2 border-solid border-[#00B4BC]' : ''"
+          @click="changeActiveIndex(index)"
+        >
           {{ item }}
         </div>
       </div>
-      <div v-for="(item, index) in newsCenterList" v-show="activeIndex === 0" :key="index" class="mt25px h-180px w-80% flex bg-[#4D8EBF]" :class="index % 2 === 1 ? 'ml20% animation-delay-1 animate__fadeInRight wow  animate-duration-2000' : 'animation-delay-1 animate__fadeInLeft wow  animate-duration-2000'">
+      <div
+        v-for="(item, index) in newsCenterList" v-show="activeIndex === 0" :key="index"
+        class="mt25px h-180px w-80% flex bg-[#4D8EBF]"
+        :class="index % 2 === 1 ? 'ml20% animation-delay-1 animate__fadeInRight wow  animate-duration-2000' : 'animation-delay-1 animate__fadeInLeft wow  animate-duration-2000'"
+      >
         <img :src="item.img" alt="" class="h-full w30%">
         <div class="flex flex-col justify-evenly pl10px pr10px">
           <p class="font-bold">
@@ -151,16 +160,76 @@ function changeActiveIndex(index) {
         </div>
       </div>
       <div v-show="activeIndex === 1" class="w-full flex flex-wrap justify-between">
-        <div v-for="(item, index) in wonderfulPicList" :key="index" class="mt25px h250px w-33% flex flex-col items-center justify-center">
+        <div
+          v-for="(item, index) in wonderfulPicList" :key="index"
+          class="mt25px h250px w-33% flex flex-col items-center justify-center"
+        >
           <img :src="item.img" alt="" class="h-80% w-full">
           <div>{{ item.title }}</div>
         </div>
       </div>
       <div v-show="activeIndex === 2" class="w-full flex flex-wrap justify-between">
-        <div v-for="(item, index) in wonderfulVideoList" :key="index" class="mt25px h250px w-33% flex flex-col items-center justify-center">
+        <div
+          v-for="(item, index) in wonderfulVideoList" :key="index"
+          class="mt25px h250px w-33% flex flex-col items-center justify-center"
+        >
           <img :src="item.img" alt="" class="h-80% w-full">
           <div>{{ item.title }}</div>
         </div>
+      </div>
+    </div>
+  </div>
+  <!-- 移动端媒体中心 -->
+  <div class="[#98EAF7] w-full pb50px md:hidden">
+    <div class="h-50px w-full flex items-center justify-center font-size-[18px] color-[#00B4BC] font-bold">
+      媒体中心
+    </div>
+    <div class="h60px w-full flex items-center justify-center">
+      <div
+        v-for="(item, index) in titleList" :key="index"
+        class="mr40px h-full w15% flex items-center justify-center font-size-14px color-[#00B4BC] font-bold"
+        :class="index === activeIndex ? 'border-b-2 border-solid border-[#00B4BC]' : ''"
+        @click="changeActiveIndex(index)"
+      >
+        {{ item }}
+      </div>
+    </div>
+    <div
+      v-for="(item, index) in newsCenterList" v-show="activeIndex === 0" :key="index"
+      class="mt10px h-120px w-full flex bg-[#4D8EBF]"
+    >
+      <img :src="item.img" alt="" class="h-full w30%">
+      <div class="flex flex-col justify-evenly pl10px pr10px">
+        <p class="ellipsis font-bold">
+          {{ item.title }}
+        </p>
+        <p class="ellipsis2 font-size-13px color-[#fff]">
+          {{ item.content }}
+        </p>
+        <div class="flex justify-between font-size-13px">
+          <div class="h22px w120px flex items-center justify-center rounded-15px bg-[#00B4BC] color-[#fff]">
+            {{ item.channel }}
+          </div>
+          <div>{{ item.time }}</div>
+        </div>
+      </div>
+    </div>
+    <div v-show="activeIndex === 1" class="w-full flex flex-wrap justify-between">
+      <div
+        v-for="(item, index) in wonderfulPicList" :key="index"
+        class="ellipsis mt10px h120px w-33% flex flex-col items-center justify-center"
+      >
+        <img :src="item.img" alt="" class="h-80% w-full">
+        <div>{{ item.title }}</div>
+      </div>
+    </div>
+    <div v-show="activeIndex === 2" class="w-full flex flex-wrap justify-between">
+      <div
+        v-for="(item, index) in wonderfulVideoList" :key="index"
+        class="ellipsis mt10px h120px w-33% flex flex-col items-center justify-center"
+      >
+        <img :src="item.img" alt="" class="h-80% w-full">
+        <div>{{ item.title }}</div>
       </div>
     </div>
   </div>
@@ -169,5 +238,20 @@ function changeActiveIndex(index) {
 <style scoped>
 ::v-deep.el-tabs__item {
   font-size: 18px;
+}
+
+.ellipsis {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  -webkit-line-clamp: 1;
+  text-overflow: ellipsis;
+}
+.ellipsis2 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  text-overflow: ellipsis;
 }
 </style>
