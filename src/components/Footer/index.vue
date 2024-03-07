@@ -96,11 +96,11 @@
         <div
           class="ml13% mt-[30px] h[165px] w-[150px] flex flex-col items-center justify-center border-[1px] border-[#fff] border-solid"
         >
-          <img src="/public/footer/1.webp" class="w-[130px]">
+          <img src="/footer/1.webp" class="w-[130px]">
           <p>扫码进入小程序</p>
         </div>
         <div class="ml10% mt-[55px]">
-          <img src="/public/footer/logo.png" class="w-[300px]">
+          <img src="/footer/logo.png" class="w-[300px]">
         </div>
       </div>
       <!-- 第三行 -->

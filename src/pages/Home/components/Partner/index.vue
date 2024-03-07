@@ -1,23 +1,23 @@
 <script setup>
 // mock data
 const list = ref([
-  '/public/partner/1.webp',
-  '/public/partner/1.webp',
-  '/public/partner/1.webp',
-  '/public/partner/1.webp',
-  '/public/partner/1.webp',
-  '/public/partner/1.webp',
-  '/public/partner/1.webp',
+  '/partner/1.webp',
+  '/partner/1.webp',
+  '/partner/1.webp',
+  '/partner/1.webp',
+  '/partner/1.webp',
+  '/partner/1.webp',
+  '/partner/1.webp',
 ])
 const list2 = ref([
-  '/public/partner/1.webp',
-  '/public/partner/1.webp',
-  '/public/partner/1.webp',
-  '/public/partner/1.webp',
-  '/public/partner/1.webp',
-  '/public/partner/1.webp',
-  '/public/partner/1.webp',
-  '/public/partner/1.webp',
+  '/partner/1.webp',
+  '/partner/1.webp',
+  '/partner/1.webp',
+  '/partner/1.webp',
+  '/partner/1.webp',
+  '/partner/1.webp',
+  '/partner/1.webp',
+  '/partner/1.webp',
 ])
 
 // 定义一个flag，用来控制是否显示全部

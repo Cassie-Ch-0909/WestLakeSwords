@@ -43,7 +43,7 @@ const list = Array.from({ length: 9 }).fill(0)
       height: $itemWidth;
       border: 1px solid;
       border-image: linear-gradient(45deg, #293a53, #7cb1c5) 1;
-      background-image: url('/public/activity/kw.png');
+      background-image: url('/activity/kw.png');
       background-size: calc($itemWidth * 3) calc($itemWidth * 3);
     }
 
