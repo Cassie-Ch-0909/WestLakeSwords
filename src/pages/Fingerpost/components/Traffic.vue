@@ -1,9 +1,11 @@
 <script setup>
+import Map from './Map.vue'
 </script>
 
 <template>
-  <div>crvr</div>
+  <div class="mt40px">
+    <Map />
+  </div>
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>

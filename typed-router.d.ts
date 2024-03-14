@@ -48,6 +48,7 @@ declare module 'vue-router/auto/routes' {
     '/ExhibitorStyle/': RouteRecordInfo<'/ExhibitorStyle/', '/ExhibitorStyle', Record<never, never>, Record<never, never>>,
     '/Fingerpost/': RouteRecordInfo<'/Fingerpost/', '/Fingerpost', Record<never, never>, Record<never, never>>,
     '/Fingerpost/components/Hotel': RouteRecordInfo<'/Fingerpost/components/Hotel', '/Fingerpost/components/Hotel', Record<never, never>, Record<never, never>>,
+    '/Fingerpost/components/Map': RouteRecordInfo<'/Fingerpost/components/Map', '/Fingerpost/components/Map', Record<never, never>, Record<never, never>>,
     '/Fingerpost/components/Relationship': RouteRecordInfo<'/Fingerpost/components/Relationship', '/Fingerpost/components/Relationship', Record<never, never>, Record<never, never>>,
     '/Fingerpost/components/SignIn': RouteRecordInfo<'/Fingerpost/components/SignIn', '/Fingerpost/components/SignIn', Record<never, never>, Record<never, never>>,
     '/Fingerpost/components/Traffic': RouteRecordInfo<'/Fingerpost/components/Traffic', '/Fingerpost/components/Traffic', Record<never, never>, Record<never, never>>,
