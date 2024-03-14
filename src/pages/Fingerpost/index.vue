@@ -32,8 +32,9 @@ function changeActiveIndex(index) {
       <div class="h-50px w-full flex">
         <ul class="h-full w-full flex items-center justify-around">
           <li
-            v-for="(item, index) in titleList"
-            :key="index" :class="activeIndex === index ? 'from-[#2B77BC] to-[#2DB1BA] bg-gradient-to-r color-[#fff]' : ''" class="hoverTitleLi h-60% w-135px flex items-center justify-center border-1px border-[#2DB1BA] rounded-15px border-solid font-size-13px color-[#2DB1BA]"
+            v-for="(item, index) in titleList" :key="index"
+            :class="activeIndex === index ? 'from-[#2B77BC] to-[#2DB1BA] bg-gradient-to-r color-[#fff]' : ''"
+            class="hoverTitleLi h-60% w-135px flex items-center justify-center border-1px border-[#2DB1BA] rounded-15px border-solid font-size-13px color-[#2DB1BA]"
             @click="changeActiveIndex(index)"
           >
             {{ item }}
