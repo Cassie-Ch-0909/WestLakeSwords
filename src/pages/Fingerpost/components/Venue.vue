@@ -47,7 +47,7 @@ const list = ref([
 
 <template>
   <!-- PC端大会场馆 -->
-  <div class="w-full">
+  <div class="w-full max-md:hidden">
     <!-- 杭州洲际酒店 -->
     <p class="mb20px mt40px font-size-22px color-[#00B4BC] font-bold">
       杭州洲际酒店
@@ -78,6 +78,25 @@ const list = ref([
     </div>
     <!-- 会场平面图 -->
     <p class="mb20px mt60px font-size-22px color-[#00B4BC] font-bold">
+      会场平面图
+    </p>
+    <img class="w-full" src="https://img2023.gcsis.cn/2023/5/ddd7d65178194490ae1f576865602b50.jpg" alt="">
+  </div>
+  <!-- 移动端大会场馆 -->
+  <div class="w-full md-hidden">
+    <div class="h-[40px] w-full flex items-center">
+      <span class="font-size-[20px] font-bold">大会场馆</span>&nbsp;
+      <span class="font-size-[12px]">Conference venue</span>
+    </div>
+    <p class="mb5px font-size-14px color-[#00B4BC] font-bold">
+      杭州洲际酒店
+    </p>
+    <img
+      class="w-full"
+      src="https://cf.bstatic.com/xdata/images/hotel/max1280x900/245807411.jpg?k=643da2ec12f97868098ebd5cf9be403636759e2c109d415eb52864a3909b3314&o=&hp=1"
+      alt=""
+    >
+    <p class="mb5px pt5px font-size-14px color-[#00B4BC] font-bold">
       会场平面图
     </p>
     <img class="w-full" src="https://img2023.gcsis.cn/2023/5/ddd7d65178194490ae1f576865602b50.jpg" alt="">

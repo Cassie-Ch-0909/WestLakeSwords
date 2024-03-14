@@ -101,7 +101,7 @@ initMap()
 </script>
 
 <template>
-  <div id="container" />
+  <div id="container" class="max-md:hidden" />
 </template>
 
 <style scoped>

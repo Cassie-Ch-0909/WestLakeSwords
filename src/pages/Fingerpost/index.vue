@@ -23,7 +23,7 @@ function changeActiveIndex(index) {
 </script>
 
 <template>
-  <!-- PC端关于大会 -->
+  <!-- PC端参会指南 -->
   <div class="bg [#98EAF7] w-full bg-contain bg-left bg-no-repeat pb50px max-md:hidden">
     <div class="ml10% mr10% h-full w-80%">
       <p class="h50% w-full flex items-center justify-center pb30px pt30px font-size-[35px] color-[#2C80BE] font-bold">
@@ -41,12 +41,33 @@ function changeActiveIndex(index) {
           </li>
         </ul>
       </div>
+      <!-- 大会场馆 -->
       <Venue v-if="activeIndex === 0" />
+      <!-- 大会交通 -->
       <Traffic v-if="activeIndex === 1" />
+      <!-- 酒店住宿 -->
       <Hotel v-if="activeIndex === 2" />
+      <!-- 大会签到 -->
       <SignIn v-if="activeIndex === 3" />
+      <!-- 联系我们 -->
       <Relationship v-if="activeIndex === 4" />
     </div>
+  </div>
+  <!-- 移动端参会指南 -->
+  <div class="w-full md-hidden">
+    <div class="h-50px w-full flex items-center justify-center font-size-[18px] color-[#00B4BC] font-bold">
+      大咖云集
+    </div>
+    <!-- 大会场馆 -->
+    <Venue />
+    <!-- 大会交通 -->
+    <Traffic />
+    <!-- 酒店住宿 -->
+    <Hotel />
+    <!-- 大会签到 -->
+    <SignIn />
+    <!-- 联系我们 -->
+    <Relationship />
   </div>
 </template>
 
