@@ -3,6 +3,16 @@ import { createRouter, createWebHistory } from 'vue-router/auto'
 import ElementPlus from 'element-plus'
 import { createI18n } from 'vue-i18n'
 import WOW from 'wow.js'
+import {
+  Button,
+  Checkbox,
+  Input,
+  InputNumber,
+  Menu,
+  Select,
+  Slider,
+  Tooltip,
+} from 'ant-design-vue'
 import App from './App.vue'
 
 // element-plus
@@ -13,7 +23,6 @@ import './styles/main.css'
 import 'uno.css'
 import zh_CN from './locale/zh-CN'
 import en_US from './locale/en-US'
-
 new WOW({
   boxClass: 'wow', // 类名，在用户滚动时显示隐藏的框。
   animateClass: 'animate__animated', // 触发CSS动画的类名称
@@ -43,4 +52,12 @@ const i18n = createI18n({
 app.use(ElementPlus)
 app.use(router)
 app.use(i18n)
+app.use(Menu)
+app.use(Button)
+app.use(Tooltip)
+app.use(Input)
+app.use(InputNumber)
+app.use(Select)
+app.use(Slider)
+app.use(Checkbox)
 app.mount('#app')

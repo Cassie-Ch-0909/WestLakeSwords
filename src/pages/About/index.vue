@@ -120,7 +120,7 @@ const pastList = ref([
       </div>
       <div class="relative w-full">
         <div class="h50% w-full flex">
-          <GlassMimicry1 class="animation-delay-1 animate__zoomIn wow ml-[35%] mr-[-5%] animate-duration-2000">
+          <GlassMimicry1 class="animation-delay-1 wow animate__zoomIn ml-[35%] mr-[-5%] animate-duration-2000">
             <p class="font-size-[28px] color-[#fff] font-bold">
               议题更前沿
             </p>

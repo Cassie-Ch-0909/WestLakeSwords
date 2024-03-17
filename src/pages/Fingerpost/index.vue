@@ -56,7 +56,7 @@ function changeActiveIndex(index) {
   <!-- 移动端参会指南 -->
   <div class="w-full md-hidden">
     <div class="h-50px w-full flex items-center justify-center font-size-[18px] color-[#00B4BC] font-bold">
-      大咖云集
+      参会指南
     </div>
     <!-- 大会场馆 -->
     <Venue />

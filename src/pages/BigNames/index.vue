@@ -341,7 +341,9 @@ function selectDate(index) {
 
 <template>
   <!-- PC端大咖云集 -->
-  <div class="[#98EAF7] w-full from-[#8EEDF0] to-[#8EC4F7] from-10% to-90% via-30% bg-gradient-to-r pb50px max-md:hidden">
+  <div
+    class="[#98EAF7] w-full from-[#8EEDF0] to-[#8EC4F7] from-10% to-90% via-30% bg-gradient-to-r pb50px max-md:hidden"
+  >
     <div class="ml10% mr10% h-full w-80%">
       <p class="h50% w-full flex items-center justify-center pb30px pt30px font-size-[35px] color-[#2C80BE] font-bold">
         大咖云集
@@ -411,7 +413,10 @@ function selectDate(index) {
           </div>
         </div>
         <div v-for="(item, index) in dateList" v-show="activeIndex === index" :key="index" class="flex justify-between">
-          <div v-for="(item2, index2) in item.childList" :key="index2" class="sideBox mb15px h200px w22% flex flex-col items-center justify-evenly rounded-10px bg-[#fff] pl10px pr10px shadow-xl hover:bg-[#00B4BC] hover:color-[#fff]">
+          <div
+            v-for="(item2, index2) in item.childList" :key="index2"
+            class="sideBox mb15px h200px w22% flex flex-col items-center justify-evenly rounded-10px bg-[#fff] pl10px pr10px shadow-xl hover:bg-[#00B4BC] hover:color-[#fff]"
+          >
             <div class="w-full flex items-center justify-between">
               <img class="h-90px w-90px rounded-50%" :src="item2.img" alt="">
               <div class="h-full flex flex-1 flex-col justify-center pl3% pr3%">
@@ -444,7 +449,10 @@ function selectDate(index) {
       专家委员会 Expert Committee (专家排名不分先后)
     </p>
     <div class="w-full flex flex-wrap items-center justify-between">
-      <div v-for="(item, index) in specialList3" :key="index" class="mb10px w-18% flex flex-col items-center justify-center bg-[#fff]">
+      <div
+        v-for="(item, index) in specialList3" :key="index"
+        class="mb10px w-18% flex flex-col items-center justify-center bg-[#fff]"
+      >
         <img :src="item.img" alt="">
         <p class="font-size-12px">
           {{ item.name }}
@@ -470,8 +478,14 @@ function selectDate(index) {
       </div>
     </div>
     <div class="w-full">
-      <div v-for="(item, index) in dateList" v-show="activeIndex === index" :key="index" class="flex flex-wrap justify-between">
-        <div v-for="(item2, index2) in item.childList" :key="index2" class="mt10px w33% flex flex-col bg-[#fff] font-size-10px">
+      <div
+        v-for="(item, index) in dateList" v-show="activeIndex === index" :key="index"
+        class="flex flex-wrap justify-between"
+      >
+        <div
+          v-for="(item2, index2) in item.childList" :key="index2"
+          class="mt10px w33% flex flex-col bg-[#fff] font-size-10px"
+        >
           <div class="flex items-center pb5px pl5px pt5px">
             <img class="h50px w50px rounded-50%" :src="item2.img" alt="">
             <p class="ml15px font-size-13px font-bold">
@@ -498,6 +512,7 @@ function selectDate(index) {
   -webkit-line-clamp: 2;
   text-overflow: ellipsis;
 }
+
 .sideBox:hover {
   .insideContent {
     color: #fff;

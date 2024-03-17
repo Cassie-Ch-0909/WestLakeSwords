@@ -56,7 +56,7 @@ const whiteBooksList = ref([
         <span class="font-size-20px">New Product Launch</span>
       </p>
       <div class="mt30px h300px w-full flex justify-between">
-        <div class="bg animation-delay-1 animate__fadeInLeft wow h-full w47% animate-duration-2500 bg-blue shadow-lg">
+        <div class="animation-delay-1 bg animate__fadeInLeft wow h-full w47% animate-duration-2500 bg-blue shadow-lg">
           <p class="h-30% w-full flex items-center justify-center font-size-24px color-[#fff] font-bold">
             下一代防火墙
           </p>
@@ -72,7 +72,7 @@ const whiteBooksList = ref([
             </div>
           </div>
         </div>
-        <div class="animation-delay-1 wow bg2 animate__fadeInRight h-full w47% animate-duration-2500 bg-blue shadow-lg">
+        <div class="animation-delay-1 wow animate__fadeInRight bg2 h-full w47% animate-duration-2500 bg-blue shadow-lg">
           <p class="h-30% w-full flex items-center justify-center font-size-24px color-[#fff] font-bold">
             安全托管运营服务MSS
           </p>

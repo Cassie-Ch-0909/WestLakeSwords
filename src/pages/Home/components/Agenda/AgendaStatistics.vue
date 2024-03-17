@@ -31,7 +31,7 @@ const list = ref([
 <template>
   <!-- PC端大会议程 -->
   <div
-    class="animation-delay-1 animate__slideInLeft wow relative h100% w35% flex flex-col animate-duration-2500 items-center justify-center max-md-hidden"
+    class="animation-delay-1 wow animate__slideInLeft relative h100% w35% flex flex-col animate-duration-2500 items-center justify-center max-md-hidden"
   >
     <div class="absolute left-0 top-7% font-size-[30px] font-bold">
       大会议程
