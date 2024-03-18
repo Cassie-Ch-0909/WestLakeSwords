@@ -83,6 +83,7 @@ declare module 'vue-router/auto/routes' {
     '/MeetingDetails/components/RightDetails': RouteRecordInfo<'/MeetingDetails/components/RightDetails', '/MeetingDetails/components/RightDetails', Record<never, never>, Record<never, never>>,
     '/MeetingDetails/components/RotateBgButton': RouteRecordInfo<'/MeetingDetails/components/RotateBgButton', '/MeetingDetails/components/RotateBgButton', Record<never, never>, Record<never, never>>,
     '/MeetingDetails/components/RotateBgButtonD': RouteRecordInfo<'/MeetingDetails/components/RotateBgButtonD', '/MeetingDetails/components/RotateBgButtonD', Record<never, never>, Record<never, never>>,
+    '/MeetingDetails/components/UserComment': RouteRecordInfo<'/MeetingDetails/components/UserComment', '/MeetingDetails/components/UserComment', Record<never, never>, Record<never, never>>,
     '/WonderfulActivities/': RouteRecordInfo<'/WonderfulActivities/', '/WonderfulActivities', Record<never, never>, Record<never, never>>,
     '/WonderfulActivities/SlideButtonTab': RouteRecordInfo<'/WonderfulActivities/SlideButtonTab', '/WonderfulActivities/SlideButtonTab', Record<never, never>, Record<never, never>>,
     '/WonderfulActivities/SudokuImageAnimation': RouteRecordInfo<'/WonderfulActivities/SudokuImageAnimation', '/WonderfulActivities/SudokuImageAnimation', Record<never, never>, Record<never, never>>,
