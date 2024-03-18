@@ -1,10 +1,14 @@
 <script setup>
 import NotBlockPeopleBarrage from './components/NotBlockPeopleBarrage.vue'
+import RightDetails from './components/RightDetails.vue'
 </script>
 
 <template>
-  <div class="bg">
-    <NotBlockPeopleBarrage />
+  <div class="bg w-full">
+    <div class="ml10% mr10% flex justify-between pt20px">
+      <NotBlockPeopleBarrage />
+      <RightDetails />
+    </div>
   </div>
 </template>
 

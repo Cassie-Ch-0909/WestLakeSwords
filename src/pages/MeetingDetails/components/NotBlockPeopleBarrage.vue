@@ -16,8 +16,8 @@ enum VideoStatus {
   'pause',
 }
 
-const videoWidth = 1075
-const videoHeight = 600
+const videoWidth = 860
+const videoHeight = 485
 const barrageMoveSpeed = 2 // 弹幕移动速度
 const barrageRowNum = 10 // 弹幕行数
 const barrageTextFontSize = 20 // 弹幕文字大小
@@ -180,39 +180,44 @@ onUnmounted(() => {
         preload="true" loop x5-video-player-fullscreen="true" x5-playsinline="true" playsInline
         webkit-playsinline="true" crossOrigin="anonymous"
       >
-        <source src="/public/yhyl.mp4">
+        <source src="/public/video.mp4">
+        <!-- <embed src="https://live.vhall.com/v3/lives/embedclient/subscribe/347881970?embed=video"> -->
       </video>
       <div ref="barrageBoxRef" class="barrageBox" />
-      <a-button v-if="videoStatus !== VideoStatus.ready" type="primary" ghost @click="onTogglePlay">
-        {{ videoStatus === VideoStatus.playing
-          ? t("common.pause")
-          : t("common.play") }}
-      </a-button>
     </div>
-    <div class="bottomBox">
-      <a-input
-        v-model:value="inputText" :placeholder="t('page.AIApplication.sendBarrage')" :max-length="20" @keydown="(e: any) => {
-          if (e?.key === 'Enter') {
-            onSend();
-          }
-        }
-        "
-      />
-      <a-button type="primary" @click="onSend">
-        {{ t("page.AIApplication.send") }}
+    <div class="bottomBox relative">
+      <a-button v-if="videoStatus !== VideoStatus.ready" class="absolute left-[-10px] w-70px" type="primary" ghost @click="onTogglePlay">
+        {{ videoStatus === VideoStatus.playing
+          ? "暂停"
+          : "播放" }}
       </a-button>
+      <div class="ml180px">
+        <span class="mr20px">发送弹幕</span>
+        <a-input
+          v-model:value="inputText" :placeholder="t('page.AIApplication.sendBarrage')" :max-length="20" @keydown="(e: any) => {
+            if (e?.key === 'Enter') {
+              onSend();
+            }
+          }
+          "
+        />
+        <a-button type="primary" @click="onSend">
+          {{ t("page.AIApplication.send") }}
+        </a-button>
+      </div>
     </div>
   </div>
 </template>
 
 <style scoped lang="scss">
 .container {
-  width: 100%;
-  height: 100%;
+  width: 860px;
+  height: 540px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  // align-items: center;
+  // justify-content: center;
+  // background-color: #fff;
   // background-image: $globalBackgroundImage;
 
   .content {
@@ -243,9 +248,12 @@ onUnmounted(() => {
   }
 
   .bottomBox {
-    margin-top: 10px;
+    background-color: #fff;
+    height: 50px;
+    // margin-top: 10px;
     display: flex;
-
+    justify-content: space-between;
+    align-items: center;
     input {
       width: 520px;
     }
