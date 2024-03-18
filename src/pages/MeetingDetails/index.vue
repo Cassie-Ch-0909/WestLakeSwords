@@ -2,6 +2,7 @@
 import NotBlockPeopleBarrage from './components/NotBlockPeopleBarrage.vue'
 import RightDetails from './components/RightDetails.vue'
 import UserComment from './components/UserComment.vue'
+import RelatedRecommendation from './components/RelatedRecommendation.vue'
 </script>
 
 <template>
@@ -12,6 +13,7 @@ import UserComment from './components/UserComment.vue'
     </div>
     <div class="ml10% mr10% flex justify-between pt20px">
       <UserComment />
+      <RelatedRecommendation />
     </div>
   </div>
 </template>
