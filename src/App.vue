@@ -3,6 +3,7 @@ import { useScroll } from '@vueuse/core'
 import Header from '@/components/Header/index.vue'
 import Footer from '@/components/Footer/index.vue'
 import { useGlobalProvide } from '@/hooks/useGlobalContext'
+import { loginAPI } from '@/apis/login'
 
 useGlobalProvide()
 const { y } = useScroll(window)
@@ -15,6 +16,15 @@ function scrollToTop() {
     behavior: 'smooth', // smooth 平滑；auto:瞬间
   })
 }
+// async function login() {
+//   const { data } = await loginAPI({
+//     username: 'zhangsan',
+//     password: '123456',
+//   })
+//   console.log(data)
+// }
+
+login()
 </script>
 
 <template>
