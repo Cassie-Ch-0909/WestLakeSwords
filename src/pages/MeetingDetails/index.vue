@@ -1,12 +1,61 @@
 <script setup>
-import NotBlockPeopleBarrage from './components/NotBlockPeopleBarrage.vue'
+import NotBlockPeoplePhone from './components/NotBlockPeoplePhone.vue'
 import RightDetails from './components/RightDetails.vue'
 import UserComment from './components/UserComment.vue'
 import RelatedRecommendation from './components/RelatedRecommendation.vue'
+
+// 移动端的点赞收藏保存转发
+const iconList = ref(
+  [
+    {
+      icon: 'icon-dianzan_kuai',
+      name: 8995,
+    },
+    {
+      icon: 'icon-toubi-copy',
+      name: '投币',
+    },
+    {
+      icon: 'icon-shoucang',
+      name: '收藏',
+    },
+    {
+      icon: 'icon-zhuanfa',
+      name: '转发',
+    },
+    {
+      icon: 'icon-icon204',
+      name: 5677,
+    },
+    {
+      icon: 'icon-baocundaobendi',
+      name: '保存',
+    },
+  ],
+)
+
+/*
+    定义函数和变量来实现点赞和取消点赞功能
+*/
+const iconActiveIndex = ref()
+const iconActiveFlag = ref(false)
+function selectIconOperate(index) {
+  if (index === 0 && !iconActiveFlag.value) {
+    iconActiveIndex.value = index
+    iconList.value[0].name++
+    iconActiveFlag.value = true
+  }
+  else {
+    iconList.value[0].name--
+    iconActiveFlag.value = false
+    iconActiveIndex.value = 9
+  }
+}
 </script>
 
 <template>
-  <div class="bg mb50px w-full bg-contain bg-top bg-no-repeat">
+  <!-- PC端会议详情 -->
+  <div class="bg mb50px w-full bg-contain bg-top bg-no-repeat max-md:hidden">
     <div class="ml10% mr10% flex justify-between pt20px">
       <NotBlockPeopleBarrage />
       <RightDetails />
@@ -14,6 +63,29 @@ import RelatedRecommendation from './components/RelatedRecommendation.vue'
     <div class="ml10% mr10% flex justify-between pt20px">
       <UserComment />
       <RelatedRecommendation />
+    </div>
+  </div>
+  <!-- 移动端会议详情 -->
+  <div class="w-full md:hidden">
+    <div class="h-50px w-full flex items-center justify-center font-size-[18px] color-[#00B4BC] font-bold">
+      <p>
+        教育技术产业融合创新发展论坛
+      </p>
+    </div>
+    <NotBlockPeoplePhone />
+    <!-- 点赞投币。。。 -->
+    <div class="mt-[-200px] h80px w-full flex items-center justify-between pl30px pr30px">
+      <div
+        v-for="(item, index) in iconList" :key="index" class="flex flex-col color-[#00B4BC] hover:color-[#00F5FF]"
+        :class="iconActiveIndex === index ? 'color-[#00F5FF]' : ''" @click="selectIconOperate(index)"
+      >
+        <i :class="item.icon" class="iconfont font-size-20px" />
+        <span class="font-size-12px">{{ item.name }}</span>
+      </div>
+    </div>
+    <!-- 评论 -->
+    <div class="w-full flex items-center justify-center font-size-[18px]">
+      <UserComment />
     </div>
   </div>
 </template>

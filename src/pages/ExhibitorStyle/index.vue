@@ -76,8 +76,13 @@ const list = ref([
         展商风采
       </p>
       <div class="ml2.5% w-full flex flex-wrap justify-center">
-        <div v-for="(item, index) in list" :key="index" class="animation-delay-1 animate__fadeIn mb15px mr5% w10% animate-duration-2500">
-          <div class="h130px w130px flex flex-col items-center justify-center rounded-50% from-[#70E9E4] to-[#139AE6] bg-gradient-to-t shadow-xl">
+        <div
+          v-for="(item, index) in list" :key="index"
+          class="animation-delay-1 animate__fadeIn mb15px mr5% w10% animate-duration-2500"
+        >
+          <div
+            class="h130px w130px flex flex-col items-center justify-center rounded-50% from-[#70E9E4] to-[#139AE6] bg-gradient-to-t shadow-xl"
+          >
             <img class="w100px rounded-50%" :src="item.img" alt="">
             <p class="font-size-13px font-bold">
               {{ item.name }}
@@ -86,7 +91,10 @@ const list = ref([
         </div>
       </div>
       <div class="mt20px">
-        <embed class="h-730px w-1300px" src="https://live.vhall.com/v3/lives/embedclient/subscribe/347881970?embed=video">
+        <embed
+          class="h-730px w-1300px"
+          src="https://live.vhall.com/v3/lives/embedclient/subscribe/347881970?embed=video"
+        >
       </div>
     </div>
   </div>
@@ -98,7 +106,9 @@ const list = ref([
     </div>
     <div class="ml-[-2%] mt10px w-full flex flex-wrap justify-center">
       <div v-for="(item, index) in list" :key="index" class="mb15px ml2% w18%">
-        <div class="h80px w80px flex flex-col items-center justify-center rounded-50% from-[#70E9E4] to-[#139AE6] bg-gradient-to-t">
+        <div
+          class="h80px w80px flex flex-col items-center justify-center rounded-50% from-[#70E9E4] to-[#139AE6] bg-gradient-to-t"
+        >
           <img class="w61px rounded-50%" :src="item.img" alt="">
           <p class="font-size-10px font-bold">
             {{ item.name }}

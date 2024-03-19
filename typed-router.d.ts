@@ -80,6 +80,7 @@ declare module 'vue-router/auto/routes' {
     '/MediaCenter/': RouteRecordInfo<'/MediaCenter/', '/MediaCenter', Record<never, never>, Record<never, never>>,
     '/MeetingDetails/': RouteRecordInfo<'/MeetingDetails/', '/MeetingDetails', Record<never, never>, Record<never, never>>,
     '/MeetingDetails/components/NotBlockPeopleBarrage': RouteRecordInfo<'/MeetingDetails/components/NotBlockPeopleBarrage', '/MeetingDetails/components/NotBlockPeopleBarrage', Record<never, never>, Record<never, never>>,
+    '/MeetingDetails/components/NotBlockPeoplePhone': RouteRecordInfo<'/MeetingDetails/components/NotBlockPeoplePhone', '/MeetingDetails/components/NotBlockPeoplePhone', Record<never, never>, Record<never, never>>,
     '/MeetingDetails/components/RelatedRecommendation': RouteRecordInfo<'/MeetingDetails/components/RelatedRecommendation', '/MeetingDetails/components/RelatedRecommendation', Record<never, never>, Record<never, never>>,
     '/MeetingDetails/components/RightDetails': RouteRecordInfo<'/MeetingDetails/components/RightDetails', '/MeetingDetails/components/RightDetails', Record<never, never>, Record<never, never>>,
     '/MeetingDetails/components/RotateBgButton': RouteRecordInfo<'/MeetingDetails/components/RotateBgButton', '/MeetingDetails/components/RotateBgButton', Record<never, never>, Record<never, never>>,
