@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
+import { useRouter } from 'vue-router'
 import SudokuImageAnimation from './SudokuImageAnimation.vue'
+import RotateBgButton from './RotateBgButton.vue'
 
 // const btnList = Array.from({ length: 6 }).fill(0)
 const btnList = ref([
@@ -81,6 +83,14 @@ onMounted(() => {
     contentRef.value.style.setProperty('--btnWidth', `${btnWidth}px`)
   }
 })
+
+/*
+    点击精彩活动跳转到精彩活动页面
+*/
+const router = useRouter()
+function gotoWonderfulActivities() {
+  router.push({ path: '/wonderfulactivities' })
+}
 </script>
 
 <template>
@@ -103,7 +113,7 @@ onMounted(() => {
         <div class="h-full w-[900px] bg-yellow">
           <img :src="item.img" class="h-full w-full">
         </div>
-        <div class="h-full w60% flex flex-col bg-[#F5F7FA] p2%">
+        <div class="relative h-full w60% flex flex-col bg-[#F5F7FA] p2%">
           <p class="font-size-[30px] font-bold">
             {{ item.title }}
           </p>
@@ -113,11 +123,12 @@ onMounted(() => {
           <p class="pt-[10px] font-size-[14.5px]">
             {{ item.content }}
           </p>
+          <RotateBgButton class="absolute bottom-20px right-10px" @click="gotoWonderfulActivities" />
         </div>
       </div>
     </div>
     <div class="flex flex-1 flex-col items-center justify-center">
-      <el-button type="primary" plain class="animation-delay-1 wow animate__slideInRight mt-[70px] w-50% animate-duration-2500 shadow-xl">
+      <el-button type="primary" plain class="animation-delay-1 wow animate__slideInRight mt-[70px] w-50% animate-duration-2500 shadow-xl" @click="gotoWonderfulActivities">
         查看详情+
       </el-button>
       <SudokuImageAnimation class="animation-delay-1 wow animate__slideInRight animate-duration-2500" />

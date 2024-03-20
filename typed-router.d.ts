@@ -61,6 +61,7 @@ declare module 'vue-router/auto/routes' {
     '/Home/components/Carousel/': RouteRecordInfo<'/Home/components/Carousel/', '/Home/components/Carousel', Record<never, never>, Record<never, never>>,
     '/Home/components/Carousel/BoxReflect': RouteRecordInfo<'/Home/components/Carousel/BoxReflect', '/Home/components/Carousel/BoxReflect', Record<never, never>, Record<never, never>>,
     '/Home/components/ExcitingActivities/': RouteRecordInfo<'/Home/components/ExcitingActivities/', '/Home/components/ExcitingActivities', Record<never, never>, Record<never, never>>,
+    '/Home/components/ExcitingActivities/RotateBgButton': RouteRecordInfo<'/Home/components/ExcitingActivities/RotateBgButton', '/Home/components/ExcitingActivities/RotateBgButton', Record<never, never>, Record<never, never>>,
     '/Home/components/ExcitingActivities/SlideButtonTab': RouteRecordInfo<'/Home/components/ExcitingActivities/SlideButtonTab', '/Home/components/ExcitingActivities/SlideButtonTab', Record<never, never>, Record<never, never>>,
     '/Home/components/ExcitingActivities/SudokuImageAnimation': RouteRecordInfo<'/Home/components/ExcitingActivities/SudokuImageAnimation', '/Home/components/ExcitingActivities/SudokuImageAnimation', Record<never, never>, Record<never, never>>,
     '/Home/components/Highlights/': RouteRecordInfo<'/Home/components/Highlights/', '/Home/components/Highlights', Record<never, never>, Record<never, never>>,

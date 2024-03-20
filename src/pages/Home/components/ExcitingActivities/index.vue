@@ -1,6 +1,7 @@
 <script setup lang="ts">
 // import { ref } from 'vue'
 // import type { TabsPaneContext } from 'element-plus'
+import { useRouter } from 'vue-router'
 import SlideButtonTab from './SlideButtonTab.vue'
 
 const activeName = ref('first')
@@ -53,6 +54,14 @@ const btnList = ref([
     name: 'sixth',
   },
 ])
+
+/*
+    点击精彩活动跳转到精彩活动页面
+*/
+const router = useRouter()
+function gotoWonderfulActivities() {
+  router.push({ path: '/wonderfulactivities' })
+}
 </script>
 
 <template>
@@ -71,7 +80,7 @@ const btnList = ref([
     </div>
     <div>
       <el-tabs v-model="activeName" class="demo-tabs" @tab-click="handleClick">
-        <el-tab-pane v-for="(item, index) in btnList" :key="index" class="h-[140px] w-full flex bg-[#EFFBFF]" :label="item.title" :name="item.name">
+        <el-tab-pane v-for="(item, index) in btnList" :key="index" class="h-[140px] w-full flex bg-[#EFFBFF]" :label="item.title" :name="item.name" @click="gotoWonderfulActivities">
           <div class="h-full w-60%">
             <img :src="item.img" class="h-full w-full" alt="">
           </div>
