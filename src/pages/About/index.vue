@@ -95,7 +95,7 @@ const pastList = ref([
 
 <template>
   <!-- PC端关于大会 -->
-  <div class="bg [#98EAF7] w-full bg-contain bg-left bg-no-repeat pb50px max-md:hidden">
+  <div class="[#98EAF7] bg w-full bg-contain bg-left bg-no-repeat pb50px max-md:hidden">
     <div class="ml10% mr10% h-full w-80%">
       <p class="h50% w-full flex items-center justify-center pb30px pt30px font-size-[35px] color-[#2C80BE] font-bold">
         关于大会
@@ -120,7 +120,7 @@ const pastList = ref([
       </div>
       <div class="relative w-full">
         <div class="h50% w-full flex">
-          <GlassMimicry1 class="animation-delay-1 wow animate__zoomIn ml-[35%] mr-[-5%] animate-duration-2000">
+          <GlassMimicry1 class="animation-delay-1 animate__zoomIn wow ml-[35%] mr-[-5%] animate-duration-2000">
             <p class="font-size-[28px] color-[#fff] font-bold">
               议题更前沿
             </p>
@@ -170,10 +170,7 @@ const pastList = ref([
       <p class="h50% w-full flex items-center justify-center pb30px pt30px font-size-[35px] color-[#2C80BE] font-bold">
         往期回顾
       </p>
-      <Swiper
-        :slides-per-view="3"
-        :space-between="50"
-      >
+      <Swiper :slides-per-view="3" :space-between="50">
         <SwiperSlide v-for="(item, index) in pastList" :key="index">
           <div class="h-380px w-full shadow-xl">
             <img class="h-50% w-full" :src="item.img" alt="">
@@ -216,7 +213,10 @@ const pastList = ref([
         大会亮点
       </div>
       <div class="h-[55px] w-full flex justify-between">
-        <div v-for="(item, index) in highLightsList" :key="index" class="w-20% flex flex-col items-center justify-start">
+        <div
+          v-for="(item, index) in highLightsList" :key="index"
+          class="w-20% flex flex-col items-center justify-start"
+        >
           <span class="font-size-[18px] color-[#29B2D0] font-bold">{{ item.number }}</span>
           <span class="font-size-[12px] color-[#2A7DBE]">{{ item.title }}</span>
         </div>
@@ -250,10 +250,7 @@ const pastList = ref([
       <div class="mt20px h-50px w-full flex items-center justify-center font-size-[18px] color-[#00B4BC] font-bold">
         往期回顾
       </div>
-      <Swiper
-        :slides-per-view="3"
-        :space-between="4"
-      >
+      <Swiper :slides-per-view="3" :space-between="4">
         <SwiperSlide v-for="(item, index) in pastList" :key="index">
           <div class="h-170px w-full">
             <img class="h-50% w-full" :src="item.img" alt="">
@@ -293,6 +290,7 @@ const pastList = ref([
   -webkit-line-clamp: 5;
   text-overflow: ellipsis;
 }
+
 .ellipsis2 {
   display: -webkit-box;
   -webkit-box-orient: vertical;
