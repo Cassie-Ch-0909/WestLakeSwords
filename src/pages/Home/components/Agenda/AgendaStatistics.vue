@@ -95,8 +95,9 @@ function gotoAgenda() {
     </div>
     <div class="h-75% w-full flex justify-between">
       <div
-        v-for="(item, index) in list " :key="index"
-        class="relative h-full w23% rounded-[10px] from-[#70E9E4] to-[#139AE6] bg-gradient-to-t"
+        v-for="(item, index) in list "
+        :key="index" class="relative h-full w23% rounded-[10px] from-[#70E9E4] to-[#139AE6] bg-gradient-to-t"
+        @click="gotoAgenda"
       >
         <span class="ml5% font-size-[30px] color-white font-bold">{{ item.num }}</span>
         <span class="color-white font-bold"> 场</span>
