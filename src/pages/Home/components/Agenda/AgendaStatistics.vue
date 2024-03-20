@@ -1,6 +1,8 @@
 <script setup>
 // 我最爱写备注了~
 // 好的。
+import { useRouter } from 'vue-router'
+
 function getImageUrl(name) {
   return new URL(`/src/assets/icon/${name}.png`, import.meta.url).href
 }
@@ -26,19 +28,27 @@ const list = ref([
     pic: getImageUrl('shengTai'),
   },
 ])
+
+/*
+    点击10场平行论坛跳转到大会议程页面
+*/
+const router = useRouter()
+function gotoAgenda() {
+  router.push({ path: '/agenda' })
+}
 </script>
 
 <template>
   <!-- PC端大会议程 -->
   <div
-    class="animation-delay-1 wow animate__slideInLeft relative h100% w35% flex flex-col animate-duration-2500 items-center justify-center max-md-hidden"
+    class="animation-delay-1 animate__slideInLeft wow relative h100% w35% flex flex-col animate-duration-2500 items-center justify-center max-md-hidden"
   >
     <div class="absolute left-0 top-7% font-size-[30px] font-bold">
       大会议程
       <span class="font-size-[23px]">Conference Agenda</span>
     </div>
     <div class="mb5% h30% w100% flex justify-between">
-      <div class="relative h100% w49% rounded-[10px] from-[#70E9E4] to-[#139AE6] bg-gradient-to-t shadow-xl">
+      <div class="relative h100% w49% rounded-[10px] from-[#70E9E4] to-[#139AE6] bg-gradient-to-t shadow-xl" @click="gotoAgenda">
         <div class="ml5%">
           <span class="font-size-[60px] color-white font-bold">10</span>
           <span class="font-size-[20px] color-white font-bold"> 场</span><br>
@@ -46,7 +56,7 @@ const list = ref([
         </div>
         <img src="@/assets/icon/talk.png" alt="" class="absolute bottom-5% right-3% w47%">
       </div>
-      <div class="relative h100% w49% rounded-[10px] from-[#70E9E4] to-[#139AE6] bg-gradient-to-t shadow-xl">
+      <div class="relative h100% w49% rounded-[10px] from-[#70E9E4] to-[#139AE6] bg-gradient-to-t shadow-xl" @click="gotoAgenda">
         <div class="ml5%">
           <span class="font-size-[60px] color-white font-bold">1</span>
           <span class="font-size-[20px] color-white font-bold"> 场</span><br>
@@ -56,7 +66,7 @@ const list = ref([
       </div>
     </div>
     <div class="mb5% h30% w100% flex justify-between">
-      <div class="relative h100% w49% rounded-[10px] from-[#70E9E4] to-[#139AE6] bg-gradient-to-t shadow-xl">
+      <div class="relative h100% w49% rounded-[10px] from-[#70E9E4] to-[#139AE6] bg-gradient-to-t shadow-xl" @click="gotoAgenda">
         <div class="ml5%">
           <span class="font-size-[60px] color-white font-bold">8</span>
           <span class="font-size-[20px] color-white font-bold"> 场</span><br>
@@ -64,7 +74,7 @@ const list = ref([
         </div>
         <img src="@/assets/icon/mobile2.png" alt="" class="absolute bottom-5% right-1% w56%">
       </div>
-      <div class="relative h100% w49% rounded-[10px] from-[#70E9E4] to-[#139AE6] bg-gradient-to-t shadow-xl">
+      <div class="relative h100% w49% rounded-[10px] from-[#70E9E4] to-[#139AE6] bg-gradient-to-t shadow-xl" @click="gotoAgenda">
         <div class="ml5%">
           <span class="font-size-[60px] color-white font-bold">1</span>
           <span class="font-size-[20px] color-white font-bold"> 场</span><br>

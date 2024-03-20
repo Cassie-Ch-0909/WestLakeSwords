@@ -1,4 +1,6 @@
 <script setup>
+import { useRouter } from 'vue-router'
+
 // 定义变量控制ul的显示隐藏
 const fiveAM = ref(true)
 const sixPM = ref(false)
@@ -41,6 +43,14 @@ function changeEightAM() {
   sixPM.value = false
   fiveAM.value = false
 }
+
+/*
+    点击每个小卡片跳转到大会议程页面
+*/
+const router = useRouter()
+function gotoAgenda() {
+  router.push({ path: '/agenda' })
+}
 </script>
 
 <template>
@@ -50,13 +60,13 @@ function changeEightAM() {
         <!-- 最多支持6个小li -->
         <!-- 5thPM && 6thAM && 7thAM -->
         <ul v-if="fiveAM" id="ul" class="card-list" style="--count: 6">
-          <li class="li">
+          <li class="li" @click="gotoAgenda">
             <div class="card flex">
               <img src="@/assets/Time/56A.png" alt="">
               <span class="span font-bold">主论坛</span>
             </div>
           </li>
-          <li class="li">
+          <li class="li" @click="gotoAgenda">
             <div class="card">
               <div class="card-top flex justify-between text-xs">
                 <div class="type text-xs text-slate-50 font-bold">
@@ -87,13 +97,13 @@ function changeEightAM() {
               </div>
             </div>
           </li>
-          <li class="li">
+          <li class="li" @click="gotoAgenda">
             <div class="card flex">
               <img src="@/assets/Time/56A.png" alt="">
               <span class="span font-bold">95后极客青年Talk</span>
             </div>
           </li>
-          <li class="li">
+          <li class="li" @click="gotoAgenda">
             <div class="card">
               <div class="card-top flex justify-between text-xs">
                 <div class="type text-xs text-slate-50 font-bold">
@@ -124,13 +134,13 @@ function changeEightAM() {
               </div>
             </div>
           </li>
-          <li class="li">
+          <li class="li" @click="gotoAgenda">
             <div class="card flex">
               <img src="@/assets/Time/textPic.png" alt="">
               <span class="span font-bold">教育技术产业融合创新发展论坛</span>
             </div>
           </li>
-          <li class="li">
+          <li class="li" @click="gotoAgenda">
             <div class="card">
               <div class="card-top flex justify-between text-xs">
                 <div class="type text-xs text-slate-50 font-bold">
@@ -164,13 +174,13 @@ function changeEightAM() {
         </ul>
         <!-- 6th PM -->
         <ul v-if="sixPM" id="ul" class="card-list" style="--count: 6">
-          <li class="li">
+          <li class="li" @click="gotoAgenda">
             <div class="card flex">
               <img src="@/assets/Time/56P1.png" alt="">
               <span class="span font-bold">当科幻照进显示我们会更安全吗？</span>
             </div>
           </li>
-          <li class="li">
+          <li class="li" @click="gotoAgenda">
             <div class="card">
               <div class="card-top flex justify-between text-xs">
                 <div class="type text-xs text-slate-50 font-bold">
@@ -201,13 +211,13 @@ function changeEightAM() {
               </div>
             </div>
           </li>
-          <li class="li">
+          <li class="li" @click="gotoAgenda">
             <div class="card flex">
               <img src="@/assets/Time/56P2.png" alt="">
               <span class="span font-bold"> 人工智能会颠覆安全行业吗？</span>
             </div>
           </li>
-          <li class="li">
+          <li class="li" @click="gotoAgenda">
             <div class="card">
               <div class="card-top flex justify-between text-xs">
                 <div class="type text-xs text-slate-50 font-bold">
@@ -238,13 +248,13 @@ function changeEightAM() {
               </div>
             </div>
           </li>
-          <li class="li">
+          <li class="li" @click="gotoAgenda">
             <div class="card flex">
               <img src="@/assets/Time/56P3.png" alt="">
               <span class="span font-bold"> 反炸直播间@西湖论剑</span>
             </div>
           </li>
-          <li class="li">
+          <li class="li" @click="gotoAgenda">
             <div class="card">
               <div class="card-top flex justify-between text-xs">
                 <div class="type text-xs text-slate-50 font-bold">
@@ -278,7 +288,7 @@ function changeEightAM() {
         </ul>
         <!-- 7th PM -->
         <ul v-if="sevenPM" id="ul" class="card-list" style="--count: 6">
-          <li class="li lii">
+          <li class="li lii" @click="gotoAgenda">
             <div class="card">
               <div class="card-top flex justify-between text-xs">
                 <div class="type text-xs text-slate-50 font-bold">
@@ -309,7 +319,7 @@ function changeEightAM() {
               </div>
             </div>
           </li>
-          <li class="li">
+          <li class="li" @click="gotoAgenda">
             <div class="card">
               <div class="card-top flex justify-between text-xs">
                 <div class="type text-xs text-slate-50 font-bold">
@@ -340,7 +350,7 @@ function changeEightAM() {
               </div>
             </div>
           </li>
-          <li class="li lii">
+          <li class="li lii" @click="gotoAgenda">
             <div class="card">
               <div class="card-top flex justify-between text-xs">
                 <div class="type text-xs text-slate-50 font-bold">
@@ -371,7 +381,7 @@ function changeEightAM() {
               </div>
             </div>
           </li>
-          <li class="li">
+          <li class="li" @click="gotoAgenda">
             <div class="card">
               <div class="card-top flex justify-between text-xs">
                 <div class="type text-xs text-slate-50 font-bold">
@@ -402,7 +412,7 @@ function changeEightAM() {
               </div>
             </div>
           </li>
-          <li class="li lii">
+          <li class="li lii" @click="gotoAgenda">
             <div class="card">
               <div class="card-top flex justify-between text-xs">
                 <div class="type text-xs text-slate-50 font-bold">
@@ -433,7 +443,7 @@ function changeEightAM() {
               </div>
             </div>
           </li>
-          <li class="li">
+          <li class="li" @click="gotoAgenda">
             <div class="card">
               <div class="card-top flex justify-between text-xs">
                 <div class="type text-xs text-slate-50 font-bold">
@@ -467,13 +477,13 @@ function changeEightAM() {
         </ul>
         <!-- 8th AM -->
         <ul v-if="eightAM" id="ul" class="card-list" style="--count: 6">
-          <li class="li">
+          <li class="li" @click="gotoAgenda">
             <div class="card flex">
               <img src="@/assets/Time/58A1.png" alt="">
               <span class="span font-bold">教育技术产业融合创新发展论坛</span>
             </div>
           </li>
-          <li class="li">
+          <li class="li" @click="gotoAgenda">
             <div class="card">
               <div class="card-top flex justify-between text-xs">
                 <div class="type text-xs text-slate-50 font-bold">
@@ -504,13 +514,13 @@ function changeEightAM() {
               </div>
             </div>
           </li>
-          <li class="li">
+          <li class="li" @click="gotoAgenda">
             <div class="card flex">
               <img src="@/assets/Time/58A2.png" alt="">
               <span class="span font-bold"> 商用密码应用论坛</span>
             </div>
           </li>
-          <li class="li">
+          <li class="li" @click="gotoAgenda">
             <div class="card">
               <div class="card-top flex justify-between text-xs">
                 <div class="type text-xs text-slate-50 font-bold">
@@ -541,13 +551,13 @@ function changeEightAM() {
               </div>
             </div>
           </li>
-          <li class="li">
+          <li class="li" @click="gotoAgenda">
             <div class="card flex">
               <img src="@/assets/Time/58A3.png" alt="">
               <span class="span font-bold"> 第二直播间</span>
             </div>
           </li>
-          <li class="li">
+          <li class="li" @click="gotoAgenda">
             <div class="card">
               <div class="card-top flex justify-between text-xs">
                 <div class="type text-xs text-slate-50 font-bold">
@@ -581,13 +591,13 @@ function changeEightAM() {
         </ul>
         <!-- 8th PM -->
         <ul v-if="eightPM" id="ul" class="card-list" style="--count: 6">
-          <li class="li">
+          <li class="li" @click="gotoAgenda">
             <div class="card flex">
               <img src="@/assets/Time/58PM1.png" alt="">
               <span class="span font-bold">MSS安全托管运营服务论坛</span>
             </div>
           </li>
-          <li class="li">
+          <li class="li" @click="gotoAgenda">
             <div class="card">
               <div class="card-top flex justify-between text-xs">
                 <div class="type text-xs text-slate-50 font-bold">
@@ -618,13 +628,13 @@ function changeEightAM() {
               </div>
             </div>
           </li>
-          <li class="li">
+          <li class="li" @click="gotoAgenda">
             <div class="card flex">
               <img src="@/assets/Time/58PM2.png" alt="">
               <span class="span font-bold"> 金融行业网络安全论坛</span>
             </div>
           </li>
-          <li class="li">
+          <li class="li" @click="gotoAgenda">
             <div class="card">
               <div class="card-top flex justify-between text-xs">
                 <div class="type text-xs text-slate-50 font-bold">
@@ -655,13 +665,13 @@ function changeEightAM() {
               </div>
             </div>
           </li>
-          <li class="li">
+          <li class="li" @click="gotoAgenda">
             <div class="card flex">
               <img src="@/assets/Time/58PM3.png" alt="">
               <span class="span font-bold"> 生态“朋友圈”</span>
             </div>
           </li>
-          <li class="li">
+          <li class="li" @click="gotoAgenda">
             <div class="card">
               <div class="card-top flex justify-between text-xs">
                 <div class="type text-xs text-slate-50 font-bold">
@@ -717,7 +727,7 @@ function changeEightAM() {
         </el-button>
       </div>
       <!-- 大会议程 -->
-      <div class="center-circle flex flex-col items-center justify-center from-sky-500 to-indigo-700 bg-gradient-to-r">
+      <div class="center-circle flex flex-col items-center justify-center from-sky-500 to-indigo-700 bg-gradient-to-r" @click="gotoAgenda">
         <div class="h20% w45% flex items-center justify-evenly text-[40px] font-bold">
           <span>大</span>
           <span>会</span>

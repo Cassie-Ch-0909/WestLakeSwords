@@ -177,7 +177,7 @@ function changeImgToColor(index) {
         <!-- 右侧底下模块 -->
         <div class="mt10px w-full flex-1 bg-#fff shadow-lg">
           <ul class="rightBottomUl h-full w-full flex flex-wrap justify-evenly pb50px pt50px">
-            <li v-for="(item, index) in list" :key="index" :class="activeIndex === index ? 'active' : ''" class="lii h120px w200px flex items-center justify-evenly border-2.5px border-[#00B4BC] rounded-10px border-solid bg-#EFFBFF shadow-2xl hover:bg-[#00B4BC]" @mouseleave="changeImgToColor(index)" @mouseover="changeImgToWhite(index)">
+            <li v-for="(item, index) in list" :key="index" :class="activeIndex === index ? 'active' : ''" class="lii h120px w200px flex items-center justify-evenly border-0.1px border-[#00B4BC] rounded-10px border-solid bg-#EFFBFF shadow-2xl hover:bg-[#00B4BC]" @mouseleave="changeImgToColor(index)" @mouseover="changeImgToWhite(index)">
               <img :src="item.img" alt="" class="w50px" :class="index === 8 || index === 5 ? 'w70px ' : ''">
               <div>
                 <p class="color-[#333] font-bold">
@@ -206,7 +206,9 @@ function changeImgToColor(index) {
 }
 .lii:hover {
   border: 0px solid #fff;
-  background: linear-gradient(to right, #2b77bc, #2db1ba);
+  /* background: linear-gradient(to right, #2b77bc, #2db1ba); */
+  background: url('https://www.gcsis.cn/img/bg_index.jpg');
+  background-repeat: no-repeat;
 }
 .aa {
   transition: all 0.4s ease;
