@@ -1,4 +1,6 @@
 <script setup>
+import { useRouter } from 'vue-router'
+
 const list = ref([
   '/public/guests/13.webp',
   '/public/guests/14.webp',
@@ -16,6 +18,13 @@ const list = ref([
   '/public/guests/11.webp',
   '/public/guests/12.webp',
 ])
+/*
+    点击重磅嘉宾跳转到大咖云集页面
+*/
+const router = useRouter()
+function gotoBigNames() {
+  router.push({ path: '/bignames' })
+}
 </script>
 
 <template>
@@ -24,8 +33,8 @@ const list = ref([
     <p class="left-0 top-5% h-[80px] w-full font-size-[30px] font-bold">
       重磅嘉宾&nbsp;<span class="font-size-[23px]">Important Guests</span>
     </p>
-    <el-carousel :interval="4000" type="card" height="341px" class="animation-delay-1 wow animate__fadeInDown animate-duration-2500">
-      <el-carousel-item v-for="item in list" :key="item">
+    <el-carousel :interval="4000" type="card" height="341px" class="animation-delay-1 animate__fadeInDown wow animate-duration-2500">
+      <el-carousel-item v-for="item in list" :key="item" @click="gotoBigNames">
         <img :src="item">
       </el-carousel-item>
     </el-carousel>
@@ -37,7 +46,7 @@ const list = ref([
       <span class="font-size-[12px]">Important Guests</span>
     </div>
     <el-carousel :interval="4000" type="card" height="100px" class="">
-      <el-carousel-item v-for="item in list" :key="item">
+      <el-carousel-item v-for="item in list" :key="item" @click="gotoBigNames">
         <img :src="item">
       </el-carousel-item>
     </el-carousel>
