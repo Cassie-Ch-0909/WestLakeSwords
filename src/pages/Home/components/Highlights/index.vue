@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useRouter } from 'vue-router'
 import LineCombination from './LineCombination.vue'
 import GlassMimicry1 from './GlassMimicry1.vue'
 import GlassMimicry2 from './GlassMimicry2.vue'
@@ -35,6 +36,13 @@ const highLightsList = ref([
     title: '直播观看',
   },
 ])
+/*
+    点击四个亮点和查看详情按钮跳转到大会议程页面
+*/
+const router = useRouter()
+function gotoAgenda() {
+  router.push({ path: '/agenda' })
+}
 </script>
 
 <template>
@@ -50,7 +58,7 @@ const highLightsList = ref([
     </div>
     <div class="relative w-full">
       <div class="bg h50% w-full flex bg-no-repeat">
-        <GlassMimicry1 class="animation-delay-1 animate__zoomIn wow ml-[35%] mr-[-5%] animate-duration-2000">
+        <GlassMimicry1 class="animation-delay-1 animate__zoomIn wow ml-[35%] mr-[-5%] animate-duration-2000" @click="gotoAgenda">
           <p class="font-size-[28px] color-[#fff] font-bold">
             议题更前沿
           </p>
@@ -59,7 +67,7 @@ const highLightsList = ref([
           </p>
           <img class="w-full" src="/public/light/1.webp" alt="">
         </GlassMimicry1>
-        <GlassMimicry2 class="animate__zoomIn animation-delay-1 wow animate-duration-2000">
+        <GlassMimicry2 class="animate__zoomIn animation-delay-1 wow animate-duration-2000" @click="gotoAgenda">
           <p class="font-size-[28px] color-[#fff] font-bold">
             线上更精彩
           </p>
@@ -72,10 +80,10 @@ const highLightsList = ref([
       <div class="w-full flex flex-col justify-center">
         <WaveFont />
         <PeopleAnimation class="animate__zoomIn animation-delay-1 wow absolute left-[-30%] top-10 animate-duration-2500" />
-        <ShakeButton class="absolute right-25% top-200" />
+        <ShakeButton class="absolute right-25% top-200" @click="gotoAgenda" />
       </div>
       <div class="bg h50% w-full flex bg-contain bg-right bg-no-repeat">
-        <GlassMimicry2 class="animate__zoomIn animation-delay-1 wow ml-[-35%] mr-[-70%] animate-duration-2000">
+        <GlassMimicry2 class="animate__zoomIn animation-delay-1 wow ml-[-35%] mr-[-70%] animate-duration-2000" @click="gotoAgenda">
           <p class="font-size-[28px] color-[#fff] font-bold">
             成果更显著
           </p>
@@ -84,7 +92,7 @@ const highLightsList = ref([
           </p>
           <img class="w-full" src="/public/light/3.webp" alt="">
         </GlassMimicry2>
-        <GlassMimicry1 class="animate__zoomIn animation-delay-1 wow animate-duration-2000">
+        <GlassMimicry1 class="animate__zoomIn animation-delay-1 wow animate-duration-2000" @click="gotoAgenda">
           <p class="font-size-[28px] color-[#fff] font-bold">
             国际化更深入
           </p>
@@ -109,19 +117,19 @@ const highLightsList = ref([
       </div>
     </div>
     <div class="h-[90px] flex justify-between bg-[#EFFBFF]">
-      <span class="h-full w-24% flex flex-col items-center justify-between">
+      <span class="h-full w-24% flex flex-col items-center justify-between" @click="gotoAgenda">
         <span class="h-35% w-full flex items-center justify-center font-size-[14px] font-size-[14px] color-[#29B2D0] font-bold">议题更前沿</span>
         <img class="h-65% w-full" src="/public/light/1.webp" alt="">
       </span>
-      <span class="h-full w-24% flex flex-col items-center justify-between">
+      <span class="h-full w-24% flex flex-col items-center justify-between" @click="gotoAgenda">
         <span class="h-35% w-full flex items-center justify-center font-size-[14px] font-size-[14px] color-[#2A7DBE] font-bold">线上更精彩</span>
         <img class="h-65% w-full" src="/public/light/2.webp" alt="">
       </span>
-      <span class="h-full w-24% flex flex-col items-center justify-between">
+      <span class="h-full w-24% flex flex-col items-center justify-between" @click="gotoAgenda">
         <span class="h-35% w-full flex items-center justify-center font-size-[14px] font-size-[14px] color-[#29B2D0] font-bold">成果更显著</span>
         <img class="h-65% w-full" src="/public/light/3.webp" alt="">
       </span>
-      <span class="h-full w-24% flex flex-col items-center justify-between">
+      <span class="h-full w-24% flex flex-col items-center justify-between" @click="gotoAgenda">
         <span class="h-35% w-full flex items-center justify-center font-size-[14px] color-[#2A7DBE] font-bold">国际化更深入</span>
         <img class="h-65% w-full" src="/public/light/4.webp" alt="">
       </span>
