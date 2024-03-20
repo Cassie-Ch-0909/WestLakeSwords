@@ -23,7 +23,9 @@ httpInstance.interceptors.request.use(
 // axios响应拦截器
 httpInstance.interceptors.response.use(
   res => res.data,
-  (e) => {
+  () => {
+
+  // (e) => {
     // const userStore = useUserStore();
     // 控制台 network 离线模式进行测试
     // console.log("dede", e);
@@ -36,11 +38,11 @@ httpInstance.interceptors.response.use(
     // 403 token 失效处理
     // 1. 清除本地用户数据
     // 2. 跳转到登录页
-    if (e.response.data.code === 'H403') {
-      localStorage.clear()
-      router.push('/login')
-    }
-    return Promise.reject(e)
+    // if (e.response.data.code === 'H403') {
+    //   localStorage.clear()
+    //   router.push('/login')
+    // }
+    // return Promise.reject(e)
   },
 )
 export default httpInstance

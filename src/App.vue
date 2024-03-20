@@ -3,7 +3,8 @@ import { useScroll } from '@vueuse/core'
 import Header from '@/components/Header/index.vue'
 import Footer from '@/components/Footer/index.vue'
 import { useGlobalProvide } from '@/hooks/useGlobalContext'
-import { loginAPI } from '@/apis/login'
+
+// import { loginAPI } from '@/apis/login'
 
 useGlobalProvide()
 const { y } = useScroll(window)
@@ -23,8 +24,7 @@ function scrollToTop() {
 //   })
 //   console.log(data)
 // }
-
-login()
+// login()
 </script>
 
 <template>
@@ -72,4 +72,4 @@ login()
 
 <style scoped>
 
-</style>
+</style>~/apis/testInterface

@@ -1,6 +1,26 @@
 <script setup>
 // TODO: 下拉展示更多和收起内容会触发全部的,应该是单个控制(调接口时再说)
 
+import { getAgendaByDateAPI, getAgendaByTypeAPI } from '@/apis/agenda'
+
+/*
+    调接口：根据日期查询大会议程  5 6 7 8
+*/
+async function getAgendaByDate() {
+  // const res = await getAgendaByDateAPI(5)
+  // console.log(res)
+}
+getAgendaByDate()
+
+/*
+    调接口：根据大会类型查询大会议程 主论坛 平行论坛...
+*/
+async function getAgendaByType() {
+  // const res = await getAgendaByTypeAPI(params)
+  // console.log(res)
+}
+getAgendaByType('主论坛')
+
 // 日期数组
 const dateList = ref([
   5,
