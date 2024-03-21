@@ -1,4 +1,6 @@
 <script setup>
+import { useRouter } from 'vue-router'
+
 /*
     生态合作媒体的三行数据
 */
@@ -265,6 +267,16 @@ function changeFlag() {
   else
     buttonName.value = '查看更多'
 }
+
+/*
+    点击合作伙伴的logo跳转到合作伙伴介绍页面
+*/
+// const router = useRouter()
+// function gotoPartnerDetails(index) {
+//   const path = list.value[index].url
+//   // console.log(gotoPath)
+//   router.push({ path })
+// }
 </script>
 
 <template>
@@ -278,54 +290,55 @@ function changeFlag() {
     </p>
     <!-- 生态合作媒体 一共三行 -->
     <div class="ml10% mr10% h-[120px] w-80% flex flex-wrap justify-between">
-      <span v-for="(item, index) in list" :key="index" class="inline-block w120px">
+      <a v-for="(item, index) in list" :key="index" :href="item.url" class="inline-block w120px">
         <img class="h120px w120px" :src="item.image1">
-      </span>
+      </a>
     </div>
     <div class="ml10% mr10% h-[120px] w-80% flex justify-between">
-      <span v-for="(item, index) in list2" :key="index" class="h-full">
+      <a v-for="(item, index) in list2" :key="index" :href="item.url" class="h-full">
         <img class="h-full w-full" :src="item.image1">
-      </span>
+      </a>
     </div>
     <div class="% ml10% mr10% h-[120px] w-80% flex">
-      <span v-for="(item, index) in list3" :key="index" class="h-full" :class="index === 0 ? '' : 'ml5%'">
+      <a v-for="(item, index) in list3" :key="index" :href="item.url" class="h-full" :class="index === 0 ? '' : 'ml5%'">
         <img class="h-full w-full" :src="item.image1">
-      </span>
+      </a>
     </div>
     <p class="ml10% font-size-[20px] color-[#05BAB3] font-bold">
       战略合作媒体
     </p>
     <div class="ml10% mr10% h-[120px] w-80% flex flex-wrap justify-between">
-      <span
-        v-for="(item, index) in strategicCooperativeMediaList" :key="index"
+      <a
+        v-for="(item, index) in strategicCooperativeMediaList"
+        :key="index" :href="item.url"
         class="inline-block w120px flex items-center"
       >
         <img class="w120px" :src="item.image1">
-      </span>
+      </a>
     </div>
     <!-- 55+42 -->
     <p class="ml10% font-size-[20px] color-[#05BAB3] font-bold">
       新闻媒体
     </p>
     <div class="ml10% mr10% h-[120px] w-80% flex justify-between">
-      <span v-for="(item, index) in list" :key="index" class="h-full">
+      <a v-for="(item, index) in list" :key="index" :href="item.url" class="h-full">
         <img class="h-full w-full" :src="item">
-      </span>
+      </a>
     </div>
     <div class="ml10% mr10% h-[120px] w-80% flex justify-between">
-      <span v-for="(item, index) in list" :key="index" class="h-full">
+      <a v-for="(item, index) in list" :key="index" :href="item.url" class="h-full">
         <img class="h-full w-full" :src="item">
-      </span>
+      </a>
     </div>
     <div v-if="flag" class="ml10% mr10% h-[120px] w-80% flex justify-between">
-      <span v-for="(item, index) in list" :key="index" class="h-full">
+      <a v-for="(item, index) in list" :key="index" :href="item.url" class="h-full">
         <img class="h-full w-full" :src="item">
-      </span>
+      </a>
     </div>
     <div v-if="flag" class="ml10% mr10% h-[120px] w-80% flex justify-between">
-      <span v-for="(item, index) in list" :key="index" class="h-full">
+      <a v-for="(item, index) in list" :key="index" :href="item.url" class="h-full">
         <img class="h-full w-full" :src="item">
-      </span>
+      </a>
     </div>
     <el-button class="ml47%" @click="changeFlag">
       {{ buttonName }}
@@ -338,32 +351,32 @@ function changeFlag() {
       <span class="font-size-[12px]">Ecological partner</span>
     </div>
     <div class="w-full flex flex-wrap">
-      <span v-for="(item, index) in phoneList1" :key="index" class="h-full w-16%" :class="index % 5 === 0 ? '' : 'ml4%'">
+      <a v-for="(item, index) in phoneList1" :key="index" :href="item.url" class="h-full w-16%" :class="index % 5 === 0 ? '' : 'ml4%'">
         <img class="h-full w-full" :src="item.image1">
-      </span>
+      </a>
     </div>
     <div class="h-[40px] w-full flex items-center">
       <span class="font-size-[20px] font-bold">战略合作媒体</span>&nbsp;
       <span class="font-size-[12px]">Strategic cooperative media</span>
     </div>
     <div class="w-full flex flex-wrap justify-between">
-      <span v-for="(item, index) in strategicCooperativeMediaList" :key="index" class="h-full w-22%">
+      <a v-for="(item, index) in strategicCooperativeMediaList" :key="index" :href="item.url" class="h-full w-22%">
         <img class="h-full w-full" :src="item.image1">
-      </span>
+      </a>
     </div>
     <div class="h-[40px] w-full flex items-center">
       <span class="font-size-[20px] font-bold">合作媒体</span>&nbsp;
       <span class="font-size-[12px]">Partner Media</span>
     </div>
     <div class="w-full flex flex-wrap justify-between">
-      <span v-for="(item, index) in list2" :key="index" class="h-full w-22%">
+      <a v-for="(item, index) in list2" :key="index" :href="item.url" class="h-full w-22%">
         <img class="h-full w-full" :src="item">
-      </span>
+      </a>
     </div>
     <div v-if="flag" class="w-full flex flex-wrap justify-between">
-      <span v-for="(item, index) in list" :key="index" class="h-full w-22%">
+      <a v-for="(item, index) in list" :key="index" :href="item.url" class="h-full w-22%">
         <img class="h-full w-full" :src="item">
-      </span>
+      </a>
     </div>
     <el-button class="ml40%" @click="changeFlag">
       {{ buttonName }}
