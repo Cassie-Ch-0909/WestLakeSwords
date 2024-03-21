@@ -1,10 +1,9 @@
 <script setup>
 import { useScroll } from '@vueuse/core'
+import { useRoute } from 'vue-router'
 import Header from '@/components/Header/index.vue'
 import Footer from '@/components/Footer/index.vue'
 import { useGlobalProvide } from '@/hooks/useGlobalContext'
-
-// import { loginAPI } from '@/apis/login'
 
 useGlobalProvide()
 const { y } = useScroll(window)
@@ -25,6 +24,17 @@ function scrollToTop() {
 //   console.log(data)
 // }
 // login()
+
+const route = useRoute()
+const footerFlag = ref(true)
+// 监听当前路由变化
+watch(() => route.path, (newPath) => {
+  if (newPath === '/mobilelogin')
+    footerFlag.value = false
+
+  else
+    footerFlag.value = true
+}, { immediate: true, deep: true })
 </script>
 
 <template>
@@ -66,10 +76,8 @@ function scrollToTop() {
       </div>
     </div>
     <RouterView />
-    <Footer />
+    <Footer v-if="footerFlag" />
   </main>
 </template>
 
-<style scoped>
-
-</style>~/apis/testInterface
+<style scoped></style>

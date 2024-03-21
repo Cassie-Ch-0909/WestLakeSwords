@@ -8,7 +8,6 @@ const router = useRouter()// 用于页面的跳转
 /* 定义一下导航栏的name url */
 const navs = ref([
   { name: '首页', url: '/' },
-  { name: '登陆注册', url: '/mobilelogin' },
   { name: '大会议程', url: '/agenda' },
   { name: '关于大会', url: '/about' },
   { name: '大咖云集', url: '/bignames' },
@@ -32,6 +31,13 @@ function changeActiveIndex(index) {
 function changeRouter(url) {
   router.push(url)
 }
+
+/*
+    移动端点击登陆注册 跳转到登陆注册页面
+*/
+function gotoLogin() {
+  router.push('/mobilelogin')
+}
 </script>
 
 <template>
@@ -50,8 +56,7 @@ function changeRouter(url) {
     <div class="center h-full w65% flex items-center justify-end">
       <!-- <div v-for="(item, index) in navs" :key="index" class="h-full w-10% w-full flex items-center justify-center"> -->
       <router-link
-        v-for="(item, index) in navs"
-        v-show="index !== 1" :key="index" :to="`${item.url}`" class="mr3% inline-block text-[13.5px]"
+        v-for="(item, index) in navs" :key="index" :to="`${item.url}`" class="mr3% inline-block text-[13.5px]"
         :class="index === activeIndex ? 'text-[#005AAD]' : ''" @click="changeActiveIndex(index)"
       >
         {{ item.name }}
@@ -84,9 +89,9 @@ function changeRouter(url) {
         <i class="iconfont icon-xiangmumulu bg-transparent text-[25px] text-[#2db1ba]" />
         <template #dropdown>
           <el-dropdown-menu>
-            <!-- <el-dropdown-item>
+            <el-dropdown-item @click="gotoLogin">
               登陆注册
-            </el-dropdown-item> -->
+            </el-dropdown-item>
             <el-dropdown-item v-for="(item, index) in navs" :key="index">
               <span @click="changeRouter(item.url)">{{ item.name }}</span>
             </el-dropdown-item>
