@@ -39,7 +39,7 @@ watch(() => route.path, (newPath) => {
 
 <template>
   <main>
-    <Header />
+    <Header v-if="footerFlag" />
     <div
       v-show="y > 50"
       class="animation-delay-1 animate__fadeInRight wow fixed right-0px top-175px z-999 h485px w100px flex flex-col animate-duration-2000 justify-between rounded-l-lg bg-blue from-[#2DB0BA] to-[#2B78BB] bg-gradient-to-b max-md:hidden"
