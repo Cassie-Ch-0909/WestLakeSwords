@@ -149,7 +149,7 @@ function changeImgToColor(index) {
         </div>
         <div class="ml40px mt10px">
           <span class="font-size-14px color-#555">邮箱：</span>
-          <span>3082243978@qq.com</span>
+          <span>30822343978@qq.com</span>
         </div>
         <div class="mt30px w-full flex justify-center">
           <RotateBgButton />
