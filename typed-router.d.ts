@@ -87,6 +87,7 @@ declare module 'vue-router/auto/routes' {
     '/MeetingDetails/components/RotateBgButton': RouteRecordInfo<'/MeetingDetails/components/RotateBgButton', '/MeetingDetails/components/RotateBgButton', Record<never, never>, Record<never, never>>,
     '/MeetingDetails/components/RotateBgButtonD': RouteRecordInfo<'/MeetingDetails/components/RotateBgButtonD', '/MeetingDetails/components/RotateBgButtonD', Record<never, never>, Record<never, never>>,
     '/MeetingDetails/components/UserComment': RouteRecordInfo<'/MeetingDetails/components/UserComment', '/MeetingDetails/components/UserComment', Record<never, never>, Record<never, never>>,
+    '/NewsInfo/': RouteRecordInfo<'/NewsInfo/', '/NewsInfo', Record<never, never>, Record<never, never>>,
     '/PersonalCenter/': RouteRecordInfo<'/PersonalCenter/', '/PersonalCenter', Record<never, never>, Record<never, never>>,
     '/PersonalCenter/components/RotateBgButton': RouteRecordInfo<'/PersonalCenter/components/RotateBgButton', '/PersonalCenter/components/RotateBgButton', Record<never, never>, Record<never, never>>,
     '/PersonalCenter/components/SignInRotateBgButton': RouteRecordInfo<'/PersonalCenter/components/SignInRotateBgButton', '/PersonalCenter/components/SignInRotateBgButton', Record<never, never>, Record<never, never>>,
