@@ -92,6 +92,7 @@ declare module 'vue-router/auto/routes' {
     '/PersonalCenter/': RouteRecordInfo<'/PersonalCenter/', '/PersonalCenter', Record<never, never>, Record<never, never>>,
     '/PersonalCenter/components/RotateBgButton': RouteRecordInfo<'/PersonalCenter/components/RotateBgButton', '/PersonalCenter/components/RotateBgButton', Record<never, never>, Record<never, never>>,
     '/PersonalCenter/components/SignInRotateBgButton': RouteRecordInfo<'/PersonalCenter/components/SignInRotateBgButton', '/PersonalCenter/components/SignInRotateBgButton', Record<never, never>, Record<never, never>>,
+    '/Test/': RouteRecordInfo<'/Test/', '/Test', Record<never, never>, Record<never, never>>,
     '/WonderfulActivities/': RouteRecordInfo<'/WonderfulActivities/', '/WonderfulActivities', Record<never, never>, Record<never, never>>,
     '/WonderfulActivities/SlideButtonTab': RouteRecordInfo<'/WonderfulActivities/SlideButtonTab', '/WonderfulActivities/SlideButtonTab', Record<never, never>, Record<never, never>>,
     '/WonderfulActivities/SudokuImageAnimation': RouteRecordInfo<'/WonderfulActivities/SudokuImageAnimation', '/WonderfulActivities/SudokuImageAnimation', Record<never, never>, Record<never, never>>,
