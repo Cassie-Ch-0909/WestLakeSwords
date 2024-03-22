@@ -110,6 +110,8 @@ function changeImgToColor(index) {
   list.value[index].img = list.value[index].img2
   activeIndex.value = 100
 }
+
+const dialogTableVisible = ref(false)
 </script>
 
 <template>
@@ -152,7 +154,7 @@ function changeImgToColor(index) {
           <span>30822343978@qq.com</span>
         </div>
         <div class="mt30px w-full flex justify-center">
-          <RotateBgButton />
+          <RotateBgButton @click="dialogTableVisible = true" />
         </div>
       </div>
       <!-- TODO：签到功能 -->
@@ -177,7 +179,11 @@ function changeImgToColor(index) {
         <!-- 右侧底下模块 -->
         <div class="mt10px w-full flex-1 bg-#fff shadow-lg">
           <ul class="rightBottomUl h-full w-full flex flex-wrap justify-evenly pb50px pt50px">
-            <li v-for="(item, index) in list" :key="index" :class="activeIndex === index ? 'active' : ''" class="lii h120px w200px flex items-center justify-evenly border-0.1px border-[#00B4BC] rounded-10px border-solid bg-#EFFBFF shadow-2xl hover:bg-[#00B4BC]" @mouseleave="changeImgToColor(index)" @mouseover="changeImgToWhite(index)">
+            <li
+              v-for="(item, index) in list" :key="index" :class="activeIndex === index ? 'active' : ''"
+              class="lii h120px w200px flex items-center justify-evenly border-0.1px border-[#00B4BC] rounded-10px border-solid bg-#EFFBFF shadow-2xl hover:bg-[#00B4BC]"
+              @mouseleave="changeImgToColor(index)" @mouseover="changeImgToWhite(index)"
+            >
               <img :src="item.img" alt="" class="w50px" :class="index === 8 || index === 5 ? 'w70px ' : ''">
               <div>
                 <p class="color-[#333] font-bold">
@@ -192,6 +198,48 @@ function changeImgToColor(index) {
         </div>
       </div>
     </div>
+
+    <!-- 完善/修改资料的弹框 -->
+    <el-dialog v-model="dialogTableVisible" width="500">
+      <div class="h70px w-full flex items-center justify-center font-size-20px">
+        修改资料
+      </div>
+      <div class="h45px w-full flex flex items-center pl50px pr50px">
+        <span class="color-red">*</span>
+        <span>姓名：</span>
+        <input type="text" class="h30px flex-1 border-1px border-#EAEAEA border-solid">
+      </div>
+      <div class="h45px w-full flex flex items-center pl50px pr50px">
+        <span class="color-red">*</span>
+        <span>公司：</span>
+        <input type="text" class="h30px flex-1 border-1px border-#EAEAEA border-solid">
+      </div>
+      <div class="h45px w-full flex flex items-center pl50px pr50px">
+        <span class="color-red">*</span>
+        <span>部门：</span>
+        <input type="text" class="h30px flex-1 border-1px border-#EAEAEA border-solid">
+      </div>
+      <div class="h45px w-full flex flex items-center pl50px pr50px">
+        <span class="color-red">*</span>
+        <span>职位：</span>
+        <input type="text" class="h30px flex-1 border-1px border-#EAEAEA border-solid">
+      </div>
+      <div class="h45px w-full flex flex items-center pl23px pr50px">
+        <span class="color-red">*</span>
+        <span>手机号码：</span>
+        <input type="text" class="h30px flex-1 border-1px border-#EAEAEA border-solid">
+      </div>
+      <div class="h45px w-full flex flex items-center pl23px pr50px">
+        <span class="color-red">*</span>
+        <span>邮箱地址：</span>
+        <input type="text" class="h30px flex-1 border-1px border-#EAEAEA border-solid">
+      </div>
+      <div class="w-full flex justify-center">
+        <button class="mb40px mt30px h40px w350px from-[#00B4BC] to-[#37C0F7] bg-gradient-to-r color-#fff">
+          登录/注册
+        </button>
+      </div>
+    </el-dialog>
   </div>
 </template>
 
@@ -201,15 +249,18 @@ function changeImgToColor(index) {
   width: 100%;
   height: 200px;
 }
+
 .lii:hover p {
   color: #fff;
 }
+
 .lii:hover {
   border: 0px solid #fff;
   /* background: linear-gradient(to right, #2b77bc, #2db1ba); */
   background: url('https://www.gcsis.cn/img/bg_index.jpg');
   background-repeat: no-repeat;
 }
+
 .aa {
   transition: all 0.4s ease;
 }
