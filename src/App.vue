@@ -29,7 +29,7 @@ const route = useRoute()
 const footerFlag = ref(true)
 // 监听当前路由变化
 watch(() => route.path, (newPath) => {
-  if (newPath === '/mobilelogin')
+  if (newPath === '/mobilelogin' || newPath === '/personalcenter')
     footerFlag.value = false
 
   else

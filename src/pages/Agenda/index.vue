@@ -3,12 +3,16 @@
 
 import { getAgendaByDateAPI, getAgendaByTypeAPI } from '@/apis/agenda'
 
+// 需要v-for的数组
+const agendaList = ref([])
+
 /*
     调接口：根据日期查询大会议程  5 6 7 8
 */
-async function getAgendaByDate() {
-  // const res = await getAgendaByDateAPI(5)
+async function getAgendaByDate(date) {
+  const res = await getAgendaByDateAPI(date)
   // console.log(res)
+  agendaList.value = res.data
 }
 getAgendaByDate()
 
@@ -23,6 +27,7 @@ getAgendaByType('主论坛')
 
 // 日期数组
 const dateList = ref([
+  '全部',
   5,
   6,
   7,
@@ -30,11 +35,13 @@ const dateList = ref([
 ])
 // 选中的日期的标记
 const activeIndex = ref(0)
+
 /*
     定义一个方法 选中日期
 */
 function selectDate(index) {
   activeIndex.value = index
+  getAgendaByDate(dateList.value[index])
 }
 
 const options = [
@@ -131,27 +138,27 @@ function showMoreContent() {
           </el-select>
         </div>
       </div>
-      <div v-for="(item, index) in dateList" v-show="activeIndex === index" :key="index">
-        <div v-for="(item2, index2) in options" :key="index2">
+      <!-- <div v-for="(item, index) in dateList" v-show="activeIndex === index" :key="index">
+        <div v-for="(item2, index2) in options"  :key="index2">
           <div v-show="selectedOptionValue === item2.value || selectedOptionValue === '全部'">
             <div class="mb15px mt15px flex items-center">
               <i class="iconfont font-size-30px color-[#00B4BC]" :class="item2.icon" />
               <span class="ml10px text-size-[19px] color-[#00B4BC] font-bold">{{ item2.value }}</span>
             </div>
-            <div class="w-full rounded-[15px] bg-[#fff] pb20px pt20px shadow-lg">
+            <div v-for="(item3, index3) in agendaList" :key="index3" class="w-full rounded-[15px] bg-[#fff] pb20px pt20px shadow-lg">
               <div class="w-full flex items-center">
                 <div class="ml5% w12% flex items-center justify-around">
                   <img src="/public/agenda/time.png" alt="" class="h22px w22px">
-                  <span>10:00-11:30</span>
+                  <span>{{ item3.time }}</span>
                 </div>
                 <div class="ml5% flex flex-col justify-center">
                   <p class="text-size-[17px] color-[#00B4BC] font-bold">
-                    加速行业智能化
+                    {{ item3.title }}
                   </p>
                   <div class="flex items-center color-[grey]">
                     <i class="iconfont icon-dingwei font-size-20px" />
                     <p class="text-size-[12px]">
-                      上海世博展览馆HALL1
+                      {{ item3.place }}
                     </p>
                   </div>
                 </div>
@@ -171,7 +178,7 @@ function showMoreContent() {
                 </div>
                 <div class="flex pt5px font-size-13px">
                   <p>
-                    第二直播间 精彩干货不间断
+                    {{ item3.channel }} 精彩干货不间断
                   </p>
                 </div>
                 <div class="flex pt5px font-size-13px">
@@ -214,7 +221,7 @@ function showMoreContent() {
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 

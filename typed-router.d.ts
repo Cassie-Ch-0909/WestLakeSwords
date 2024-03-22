@@ -90,6 +90,7 @@ declare module 'vue-router/auto/routes' {
     '/MobileLogin/': RouteRecordInfo<'/MobileLogin/', '/MobileLogin', Record<never, never>, Record<never, never>>,
     '/NewsInfo/': RouteRecordInfo<'/NewsInfo/', '/NewsInfo', Record<never, never>, Record<never, never>>,
     '/PersonalCenter/': RouteRecordInfo<'/PersonalCenter/', '/PersonalCenter', Record<never, never>, Record<never, never>>,
+    '/PersonalCenter/components/DynamicTime': RouteRecordInfo<'/PersonalCenter/components/DynamicTime', '/PersonalCenter/components/DynamicTime', Record<never, never>, Record<never, never>>,
     '/PersonalCenter/components/RotateBgButton': RouteRecordInfo<'/PersonalCenter/components/RotateBgButton', '/PersonalCenter/components/RotateBgButton', Record<never, never>, Record<never, never>>,
     '/PersonalCenter/components/SignInRotateBgButton': RouteRecordInfo<'/PersonalCenter/components/SignInRotateBgButton', '/PersonalCenter/components/SignInRotateBgButton', Record<never, never>, Record<never, never>>,
     '/Test/': RouteRecordInfo<'/Test/', '/Test', Record<never, never>, Record<never, never>>,

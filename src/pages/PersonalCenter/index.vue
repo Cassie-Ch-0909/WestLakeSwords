@@ -1,6 +1,7 @@
 <script setup>
 import RotateBgButton from './components/RotateBgButton.vue'
 import SignInRotateBgButton from './components/SignInRotateBgButton.vue'
+import DynamicTime from './components/DynamicTime.vue'
 
 /*
     定义一个变量用来切换是否签到的按钮状态
@@ -240,6 +241,54 @@ const dialogTableVisible = ref(false)
         </button>
       </div>
     </el-dialog>
+  </div>
+
+  <!-- 移动端个人中心  from-#37C2C9 to-#2CA5F5 bg-gradient-to-b -->
+  <div class="h888px md:hidden">
+    <DynamicTime class="from-blue-400 to-blue-200 bg-gradient-to-l" />
+    <div class="mt20px flex justify-evenly">
+      <div
+        v-for="(item, index) in list.slice(0, 4)" :key="index"
+        class="h90px w80px flex flex-col items-center justify-evenly bg-#E0FCFF shadow-2xl"
+      >
+        <img :src="item.img" class="w35px" alt="">
+        <p class="font-size-13px">
+          {{ item.name }}
+        </p>
+      </div>
+    </div>
+    <div class="mt15px flex justify-evenly">
+      <div
+        v-for="(item, index) in list.slice(4, 8)" :key="index"
+        class="h90px w80px flex flex-col items-center justify-evenly bg-#E0FCFF shadow-2xl"
+      >
+        <img :src="item.img" class="w35px" alt="">
+        <p class="font-size-13px">
+          {{ item.name }}
+        </p>
+      </div>
+    </div>
+    <div class="mt15px flex justify-evenly">
+      <div
+        v-for="(item, index) in list.slice(8, 12)" :key="index"
+        class="h90px w80px flex flex-col items-center justify-evenly bg-#E0FCFF shadow-2xl"
+      >
+        <img :src="item.img" class="w35px" alt="">
+        <p class="font-size-13px">
+          {{ item.name }}
+        </p>
+      </div>
+    </div>
+    <div class="w-full flex justify-center">
+      <button class="mb40px mt25px h40px w350px rounded-15px from-[#5FD6E3] to-[#00A7F5] bg-gradient-to-r color-#fff">
+        退出登录
+      </button>
+    </div>
+    <div class="w-full flex justify-center">
+      <button class="mb40px mt-[-25px] h40px w350px rounded-15px from-[#00A7F5] to-[#5FD6E3] bg-gradient-to-r color-#fff">
+        注销账号
+      </button>
+    </div>
   </div>
 </template>
 
