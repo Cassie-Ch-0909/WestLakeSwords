@@ -16,7 +16,7 @@ defineProps({
   <div class="mt15px w-full pb20px pl20px">
     <div class="w220px">
       <img class="h120px w-full" :src="img" alt="">
-      <div class="bg-#EDF9FD">
+      <div class="bg-#fff shadow-lg">
         <div class="h30px w-full flex items-center font-size-13px">
           {{ title }}
         </div>

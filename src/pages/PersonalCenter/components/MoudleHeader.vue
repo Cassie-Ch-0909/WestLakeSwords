@@ -20,7 +20,7 @@ function clickPersonalCenter() {
 </script>
 
 <template>
-  <div class="full h50px flex items-center">
+  <div class="h50px w-full flex items-center bg-#fff">
     <p class="ml20px font-size-16px font-bold" @click="clickPersonalCenter()">
       个人中心
     </p>

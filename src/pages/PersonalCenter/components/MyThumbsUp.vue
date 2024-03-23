@@ -5,7 +5,7 @@ import MyComponents from './MyComponents.vue'
 
 <template>
   <!-- 原始高度是h600px -->
-  <div class="mt10px w-full flex-1 bg-#fff shadow-lg">
+  <div class="mt10px w-full flex-1 shadow-lg">
     <MoudleHeader title="我的点赞" />
 
     <!-- 每个订阅的议程 -->
