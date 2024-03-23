@@ -38,6 +38,7 @@ import FunActivities from './components/FunActivities.vue'
 
 // 热点话题讨论
 import HotTopicDiscussion from './components/HotTopicDiscussion.vue'
+import { useTwelveStore } from '@/stores/twelve.js'
 
 /*
     定义一个变量用来切换是否签到的按钮状态
@@ -163,21 +164,23 @@ function changeImgToColor(index) {
 const dialogTableVisible = ref(false)
 
 /*
-    控制12个模块面板的显示和隐藏
+    执行方法得到twelveStore对象
 */
-const twelveMoudlesFlag = ref(true)
-/*
-    控制12个模块的显示和隐藏
-*/
-const activeMoudleIndex = ref(999)
+const twelveStore = useTwelveStore()
+// /*
+//     控制12个模块的显示和隐藏
+// */
+// const activeMoudleIndex = twelveStore.activeMoudleIndex
+// console.log(activeMoudleIndex.value);
 
 /*
     定义一个函数用来灵活控制模块之间的显示和隐藏
 */
 function changeActiveMoudleIndex(index) {
-  activeMoudleIndex.value = index
-  list.value[activeMoudleIndex.value].showMoudleFlag = true
-  twelveMoudlesFlag.value = false
+  // 开启对应模块的v-show
+  twelveStore.changeActiveIndex(index)
+  // 关闭12的v-show
+  twelveStore.changeTwelveFlagtoFalse()
 }
 </script>
 
@@ -244,7 +247,7 @@ function changeActiveMoudleIndex(index) {
           </button>
         </div>
         <!-- 右侧底下模块 点击可进入分模块 -->
-        <div v-show="twelveMoudlesFlag" class="mt10px w-full flex-1 bg-#fff shadow-lg">
+        <div v-show="twelveStore.twelve" class="mt10px w-full flex-1 bg-#fff shadow-lg">
           <ul class="rightBottomUl h-full w-full flex flex-wrap justify-evenly pb50px pt50px">
             <li
               v-for="(item, index) in list" :key="index" :class="activeIndex === index ? 'active' : ''"
@@ -265,29 +268,29 @@ function changeActiveMoudleIndex(index) {
           </ul>
         </div>
         <!-- 我的订阅 -->
-        <MySubscriptions v-show="list[0].showMoudleFlag" />
+        <MySubscriptions v-show="twelveStore.activeMoudleIndex === 0" />
         <!-- 我的点赞 -->
-        <MyThumbsUp v-show="list[1].showMoudleFlag" />
+        <MyThumbsUp v-show="twelveStore.activeMoudleIndex === 1" />
         <!-- 我的收藏 -->
-        <MyCollection v-show="list[2].showMoudleFlag" />
+        <MyCollection v-show="twelveStore.activeMoudleIndex === 2" />
         <!-- 我的商品 -->
-        <MyProducts v-show="list[3].showMoudleFlag" />
+        <MyProducts v-show="twelveStore.activeMoudleIndex === 3" />
         <!-- 我的积分 -->
-        <MyIntegral v-show="list[4].showMoudleFlag" />
+        <MyIntegral v-show="twelveStore.activeMoudleIndex === 4" />
         <!-- 积分兑换 -->
-        <IntegralExchange v-show="list[5].showMoudleFlag" />
+        <IntegralExchange v-show="twelveStore.activeMoudleIndex === 5" />
         <!-- 积分抽奖 -->
-        <IntegralLottery v-show="list[6].showMoudleFlag" />
+        <IntegralLottery v-show="twelveStore.activeMoudleIndex === 6" />
         <!-- 拍照打卡 -->
-        <TakePhotos v-show="list[7].showMoudleFlag" />
+        <TakePhotos v-show="twelveStore.activeMoudleIndex === 7" />
         <!-- 已报名的活动 -->
-        <MyActivities v-show="list[8].showMoudleFlag" />
+        <MyActivities v-show="twelveStore.activeMoudleIndex === 8" />
         <!-- 个性化定制 -->
-        <Personalized v-show="list[9].showMoudleFlag" />
+        <Personalized v-show="twelveStore.activeMoudleIndex === 9" />
         <!-- 趣味活动 -->
-        <FunActivities v-show="list[10].showMoudleFlag" />
+        <FunActivities v-show="twelveStore.activeMoudleIndex === 10" />
         <!-- 热点话题讨论 -->
-        <HotTopicDiscussion v-show="list[11].showMoudleFlag" />
+        <HotTopicDiscussion v-show="twelveStore.activeMoudleIndex === 11" />
       </div>
     </div>
 

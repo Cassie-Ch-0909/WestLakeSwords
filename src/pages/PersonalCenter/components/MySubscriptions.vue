@@ -5,7 +5,7 @@ import MoudleHeader from './MoudleHeader.vue'
 <template>
   <!-- 原始高度是h600px -->
   <div class="mt10px w-full flex-1 bg-#fff shadow-lg">
-    <MoudleHeader @goto-twelve-moudles="gotoTwelveMoudles" />
+    <MoudleHeader title="我的订阅" />
     my dingyue
   </div>
 </template>

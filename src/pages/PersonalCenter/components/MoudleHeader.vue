@@ -1,5 +1,6 @@
 <script setup>
-import { defineEmits, defineProps } from 'vue'
+import { defineProps } from 'vue'
+import { useTwelveStore } from '@/stores/twelve.js'
 
 /*
     封装12个模块的标题部分以实现多次复用的效果
@@ -8,18 +9,19 @@ defineProps({
   title: String,
 })
 
-// /*
-//     子传父控制12个模块区域的显示
-// */
-// const emit = defineEmits(['gotoTwelveMoudles'])
-// function gotoTwelveMoudles(flag) {
-//   emit('gotoTwelveMoudles', flag)
-// }
+/*
+    执行方法得到twelveStore对象
+*/
+const twelveStore = useTwelveStore()
+function clickPersonalCenter() {
+  twelveStore.changeTwelveFlagtoTrue()
+  twelveStore.noActiveIndex()
+}
 </script>
 
 <template>
   <div class="full h50px flex items-center">
-    <p class="ml20px font-size-16px font-bold">
+    <p class="ml20px font-size-16px font-bold" @click="clickPersonalCenter()">
       个人中心
     </p>
     <p class="ml5px mr5px font-size-26px font-bold">
