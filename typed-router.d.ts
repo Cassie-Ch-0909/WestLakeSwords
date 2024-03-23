@@ -98,6 +98,7 @@ declare module 'vue-router/auto/routes' {
     '/PersonalCenter/components/MoudleHeader': RouteRecordInfo<'/PersonalCenter/components/MoudleHeader', '/PersonalCenter/components/MoudleHeader', Record<never, never>, Record<never, never>>,
     '/PersonalCenter/components/MyActivities': RouteRecordInfo<'/PersonalCenter/components/MyActivities', '/PersonalCenter/components/MyActivities', Record<never, never>, Record<never, never>>,
     '/PersonalCenter/components/MyCollection': RouteRecordInfo<'/PersonalCenter/components/MyCollection', '/PersonalCenter/components/MyCollection', Record<never, never>, Record<never, never>>,
+    '/PersonalCenter/components/MyComponents': RouteRecordInfo<'/PersonalCenter/components/MyComponents', '/PersonalCenter/components/MyComponents', Record<never, never>, Record<never, never>>,
     '/PersonalCenter/components/MyIntegral': RouteRecordInfo<'/PersonalCenter/components/MyIntegral', '/PersonalCenter/components/MyIntegral', Record<never, never>, Record<never, never>>,
     '/PersonalCenter/components/MyProducts': RouteRecordInfo<'/PersonalCenter/components/MyProducts', '/PersonalCenter/components/MyProducts', Record<never, never>, Record<never, never>>,
     '/PersonalCenter/components/MySubscriptions': RouteRecordInfo<'/PersonalCenter/components/MySubscriptions', '/PersonalCenter/components/MySubscriptions', Record<never, never>, Record<never, never>>,
