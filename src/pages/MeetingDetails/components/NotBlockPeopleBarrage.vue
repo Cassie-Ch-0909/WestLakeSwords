@@ -176,9 +176,12 @@ onUnmounted(() => {
   <div class="container">
     <div class="content" :style="{ width: `${videoWidth}px`, height: `${videoHeight}px` }">
       <video
-        ref="videoRef" :style="{ width: `${videoWidth}px`, height: `${videoHeight}px` }" :muted="false"
+        ref="videoRef"
+        :style="{ width: `${videoWidth}px`, height: `${videoHeight}px` }" :muted="false"
         preload="true" loop x5-video-player-fullscreen="true" x5-playsinline="true" playsInline
         webkit-playsinline="true" crossOrigin="anonymous"
+        autoplay="true"
+        controls="true"
       >
         <source src="/public/video.mp4">
         <!-- <embed src="https://live.vhall.com/v3/lives/embedclient/subscribe/347881970?embed=video"> -->
@@ -186,7 +189,7 @@ onUnmounted(() => {
       <div ref="barrageBoxRef" class="barrageBox" />
     </div>
     <div class="bottomBox relative">
-      <a-button v-if="videoStatus !== VideoStatus.ready" class="absolute left-[-10px] w-70px" type="primary" ghost @click="onTogglePlay">
+      <a-button v-if="videoStatus !== VideoStatus.ready" class="mr10px" type="primary" ghost @click="onTogglePlay">
         {{ videoStatus === VideoStatus.playing
           ? "暂停"
           : "播放" }}

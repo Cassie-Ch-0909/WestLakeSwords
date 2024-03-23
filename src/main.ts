@@ -13,6 +13,7 @@ import {
   Slider,
   Tooltip,
 } from 'ant-design-vue'
+import { createPinia } from 'pinia'
 import App from './App.vue'
 
 // element-plus
@@ -48,6 +49,7 @@ const i18n = createI18n({
     'zh-cn': zh_CN,
   },
 })
+const pinia = createPinia()
 
 app.use(ElementPlus)
 app.use(router)
@@ -60,4 +62,5 @@ app.use(InputNumber)
 app.use(Select)
 app.use(Slider)
 app.use(Checkbox)
+app.use(pinia)
 app.mount('#app')

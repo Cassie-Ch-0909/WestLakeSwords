@@ -3,6 +3,42 @@ import RotateBgButton from './components/RotateBgButton.vue'
 import SignInRotateBgButton from './components/SignInRotateBgButton.vue'
 import DynamicTime from './components/DynamicTime.vue'
 
+// 我的订阅
+import MySubscriptions from './components/MySubscriptions.vue'
+
+// 我的点赞
+import MyThumbsUp from './components/MyThumbsUp.vue'
+
+// 我的收藏
+import MyCollection from './components/MyCollection.vue'
+
+// 我的商品
+import MyProducts from './components/MyProducts.vue'
+
+// 我的积分
+import MyIntegral from './components/MyIntegral.vue'
+
+// 积分兑换
+import IntegralExchange from './components/IntegralExchange.vue'
+
+// 积分抽奖
+import IntegralLottery from './components/IntegralLottery.vue'
+
+// 拍照打卡
+import TakePhotos from './components/TakePhotos.vue'
+
+// 已报名的活动
+import MyActivities from './components/MyActivities.vue'
+
+// 个性化定制
+import Personalized from './components/Personalized.vue'
+
+// 趣味活动
+import FunActivities from './components/FunActivities.vue'
+
+// 热点话题讨论
+import HotTopicDiscussion from './components/HotTopicDiscussion.vue'
+
 /*
     定义一个变量用来切换是否签到的按钮状态
 */
@@ -18,6 +54,7 @@ const list = ref([
     img2: '/public/personalInfonmation/dingyue.png',
     english: 'My Subscriptions',
     hoverImg: '/public/personalInfonmation/2dingyue.png',
+    showMoudleFlag: false,
   },
   {
     name: '我的点赞',
@@ -25,6 +62,7 @@ const list = ref([
     img2: '/public/personalInfonmation/dianzan.png',
     hoverImg: '/public/personalInfonmation/2dianzan.png',
     english: 'My thumbs up',
+    showMoudleFlag: false,
   },
   {
     name: '我的收藏',
@@ -32,6 +70,7 @@ const list = ref([
     img2: '/public/personalInfonmation/shoucang.png',
     hoverImg: '/public/personalInfonmation/2shoucang.png',
     english: 'My Collection',
+    showMoudleFlag: false,
   },
   {
     name: '我的商品',
@@ -39,6 +78,7 @@ const list = ref([
     img2: '/public/personalInfonmation/myShangpin.png',
     hoverImg: '/public/personalInfonmation/2wodeshangpin.png',
     english: 'My products',
+    showMoudleFlag: false,
   },
   {
     name: '我的积分',
@@ -46,13 +86,15 @@ const list = ref([
     img2: '/public/personalInfonmation/wodejifen.png',
     hoverImg: '/public/personalInfonmation/2wodejifen.png',
     english: 'My integral',
+    showMoudleFlag: false,
   },
   {
     name: '积分兑换',
     img: '/public/personalInfonmation/jifenduihuan.png',
     img2: '/public/personalInfonmation/jifenduihuan.png',
     hoverImg: '/public/personalInfonmation/2jifenduihuan.png',
-    english: 'Integral lottery',
+    english: 'Integral exchange',
+    showMoudleFlag: false,
   },
   {
     name: '积分抽奖',
@@ -60,6 +102,7 @@ const list = ref([
     img2: '/public/personalInfonmation/jifenchoujiang.png',
     hoverImg: '/public/personalInfonmation/2jifenchoujiang.png',
     english: 'Integral lottery',
+    showMoudleFlag: false,
   },
   {
     name: '拍照打卡',
@@ -67,6 +110,7 @@ const list = ref([
     img2: '/public/personalInfonmation/paizhao.png',
     hoverImg: '/public/personalInfonmation/2paizhaodaka.png',
     english: 'Take photos',
+    showMoudleFlag: false,
   },
   {
     name: '已报名的活动',
@@ -74,6 +118,7 @@ const list = ref([
     img2: '/public/personalInfonmation/yibaoming.png',
     hoverImg: '/public/personalInfonmation/2jijiangkaishi.png',
     english: 'Activities',
+    showMoudleFlag: false,
   },
   {
     name: '个性化定制',
@@ -81,6 +126,7 @@ const list = ref([
     img2: '/public/personalInfonmation/gexing.png',
     hoverImg: '/public/personalInfonmation/2gexinghua.png',
     english: 'Personalized',
+    showMoudleFlag: false,
   },
   {
     name: '趣味活动',
@@ -88,6 +134,7 @@ const list = ref([
     img2: '/public/personalInfonmation/quweihuodong.png',
     hoverImg: '/public/personalInfonmation/2quwei.png',
     english: 'Fun activities',
+    showMoudleFlag: false,
   },
   {
     name: '热点话题讨论',
@@ -95,6 +142,7 @@ const list = ref([
     img2: '/public/personalInfonmation/taolun.png',
     hoverImg: '/public/personalInfonmation/2redianhuodong.png',
     english: 'Hot topic discussion',
+    showMoudleFlag: false,
   },
 ])
 
@@ -113,6 +161,24 @@ function changeImgToColor(index) {
 }
 
 const dialogTableVisible = ref(false)
+
+/*
+    控制12个模块面板的显示和隐藏
+*/
+const twelveMoudlesFlag = ref(true)
+/*
+    控制12个模块的显示和隐藏
+*/
+const activeMoudleIndex = ref(999)
+
+/*
+    定义一个函数用来灵活控制模块之间的显示和隐藏
+*/
+function changeActiveMoudleIndex(index) {
+  activeMoudleIndex.value = index
+  list.value[activeMoudleIndex.value].showMoudleFlag = true
+  twelveMoudlesFlag.value = false
+}
 </script>
 
 <template>
@@ -123,12 +189,12 @@ const dialogTableVisible = ref(false)
         个人中心
       </p>
     </div>
-    <div class="ml10% mr10% mt20px h600px w80% flex">
+    <div class="ml10% mr10% mt20px w80% flex">
       <!-- 用户的资料 -->
-      <div class="h100% w23% flex flex-col bg-#fff shadow-lg">
+      <div class="h100% h600px w23% flex flex-col bg-#fff shadow-lg">
         <!-- username and avator -->
         <div class="w-full flex flex-col items-center">
-          <img class="mt50px h70px w70px rounded-50%" src="/public/avator.jpeg" alt="">
+          <img class="rousnded-50% mt50px h70px w70px" src="/public/avator.jpeg" alt="">
           <p class="mt20px font-size-20px">
             Cassie
           </p>
@@ -177,13 +243,14 @@ const dialogTableVisible = ref(false)
             已签到
           </button>
         </div>
-        <!-- 右侧底下模块 -->
-        <div class="mt10px w-full flex-1 bg-#fff shadow-lg">
+        <!-- 右侧底下模块 点击可进入分模块 -->
+        <div v-show="twelveMoudlesFlag" class="mt10px w-full flex-1 bg-#fff shadow-lg">
           <ul class="rightBottomUl h-full w-full flex flex-wrap justify-evenly pb50px pt50px">
             <li
               v-for="(item, index) in list" :key="index" :class="activeIndex === index ? 'active' : ''"
               class="lii h120px w200px flex items-center justify-evenly border-0.1px border-[#00B4BC] rounded-10px border-solid bg-#EFFBFF shadow-2xl hover:bg-[#00B4BC]"
               @mouseleave="changeImgToColor(index)" @mouseover="changeImgToWhite(index)"
+              @click="changeActiveMoudleIndex(index)"
             >
               <img :src="item.img" alt="" class="w50px" :class="index === 8 || index === 5 ? 'w70px ' : ''">
               <div>
@@ -197,6 +264,30 @@ const dialogTableVisible = ref(false)
             </li>
           </ul>
         </div>
+        <!-- 我的订阅 -->
+        <MySubscriptions v-show="list[0].showMoudleFlag" />
+        <!-- 我的点赞 -->
+        <MyThumbsUp v-show="list[1].showMoudleFlag" />
+        <!-- 我的收藏 -->
+        <MyCollection v-show="list[2].showMoudleFlag" />
+        <!-- 我的商品 -->
+        <MyProducts v-show="list[3].showMoudleFlag" />
+        <!-- 我的积分 -->
+        <MyIntegral v-show="list[4].showMoudleFlag" />
+        <!-- 积分兑换 -->
+        <IntegralExchange v-show="list[5].showMoudleFlag" />
+        <!-- 积分抽奖 -->
+        <IntegralLottery v-show="list[6].showMoudleFlag" />
+        <!-- 拍照打卡 -->
+        <TakePhotos v-show="list[7].showMoudleFlag" />
+        <!-- 已报名的活动 -->
+        <MyActivities v-show="list[8].showMoudleFlag" />
+        <!-- 个性化定制 -->
+        <Personalized v-show="list[9].showMoudleFlag" />
+        <!-- 趣味活动 -->
+        <FunActivities v-show="list[10].showMoudleFlag" />
+        <!-- 热点话题讨论 -->
+        <HotTopicDiscussion v-show="list[11].showMoudleFlag" />
       </div>
     </div>
 
@@ -249,7 +340,7 @@ const dialogTableVisible = ref(false)
     <div class="mt20px flex justify-evenly">
       <div
         v-for="(item, index) in list.slice(0, 4)" :key="index"
-        class="h90px w80px flex flex-col items-center justify-evenly bg-#E0FCFF shadow-2xl"
+        class="h90px w80px flex flex-col items-center justify-evenly bg-#EFFBFF shadow-2xl"
       >
         <img :src="item.img" class="w35px" alt="">
         <p class="font-size-13px">
@@ -260,7 +351,7 @@ const dialogTableVisible = ref(false)
     <div class="mt15px flex justify-evenly">
       <div
         v-for="(item, index) in list.slice(4, 8)" :key="index"
-        class="h90px w80px flex flex-col items-center justify-evenly bg-#E0FCFF shadow-2xl"
+        class="h90px w80px flex flex-col items-center justify-evenly bg-#EFFBFF shadow-2xl"
       >
         <img :src="item.img" class="w35px" alt="">
         <p class="font-size-13px">
@@ -271,7 +362,7 @@ const dialogTableVisible = ref(false)
     <div class="mt15px flex justify-evenly">
       <div
         v-for="(item, index) in list.slice(8, 12)" :key="index"
-        class="h90px w80px flex flex-col items-center justify-evenly bg-#E0FCFF shadow-2xl"
+        class="h90px w80px flex flex-col items-center justify-evenly bg-#EFFBFF shadow-2xl"
       >
         <img :src="item.img" class="w35px" alt="">
         <p class="font-size-13px">
@@ -285,7 +376,9 @@ const dialogTableVisible = ref(false)
       </button>
     </div>
     <div class="w-full flex justify-center">
-      <button class="mb40px mt-[-25px] h40px w350px rounded-15px from-[#00A7F5] to-[#5FD6E3] bg-gradient-to-r color-#fff">
+      <button
+        class="mb40px mt-[-25px] h40px w350px rounded-15px from-[#00A7F5] to-[#5FD6E3] bg-gradient-to-r color-#fff"
+      >
         注销账号
       </button>
     </div>

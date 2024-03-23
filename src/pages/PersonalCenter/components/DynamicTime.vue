@@ -82,26 +82,26 @@ function gotoHome() {
       </div>
       <div class="absolute right-5px top-140px w120px flex items-center">
         <p class="color-#fff">
-          订阅
+          点赞
         </p>
         <div class="ml5px h65px w65px flex items-center justify-center rounded-50% from-[#00A5F7] to-[#46EDF5] bg-gradient-to-r font-size-25px color-#fff">
-          67
+          32
         </div>
       </div>
       <div class="absolute left-25px top-300px w120px flex items-center">
         <div class="h65px w65px flex items-center justify-center rounded-50% from-[#00A5F7] to-[#46EDF5] bg-gradient-to-r font-size-25px color-#fff">
-          67
+          11
         </div>
         <p class="ml5px color-#fff">
-          订阅
+          收藏
         </p>
       </div>
       <div class="absolute right-5px top-300px w120px flex items-center">
         <p class="color-#fff">
-          订阅
+          商品
         </p>
         <div class="ml5px h65px w65px flex items-center justify-center rounded-50% from-[#46EDF5] to-[#00A5F7] bg-gradient-to-r font-size-25px color-#fff">
-          67
+          5
         </div>
       </div>
       <div class="circle seconds ml30px mt75px">

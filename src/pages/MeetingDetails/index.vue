@@ -3,6 +3,7 @@ import NotBlockPeoplePhone from './components/NotBlockPeoplePhone.vue'
 import RightDetails from './components/RightDetails.vue'
 import UserComment from './components/UserComment.vue'
 import RelatedRecommendation from './components/RelatedRecommendation.vue'
+import NotBlockPeopleBarrage from './components/NotBlockPeopleBarrage.vue'
 
 // 移动端的点赞收藏保存转发
 const iconList = ref(
