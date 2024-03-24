@@ -10,6 +10,7 @@ declare module 'vue' {
     ActivityCountDown: typeof import('./src/components/ActivityCountDown/index.vue')['default']
     Footer: typeof import('./src/components/Footer/index.vue')['default']
     Header: typeof import('./src/components/Header/index.vue')['default']
+    MessageBox: typeof import('./src/components/Public/MessageBox.vue')['default']
     RotateBgButton: typeof import('./src/components/Header/components/RotateBgButton.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']

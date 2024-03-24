@@ -1,5 +1,6 @@
 <script setup>
 import { defineProps, ref } from 'vue'
+import { ElMessage, ElMessageBox } from 'element-plus'
 import MagnifyingGlass from './MagnifyingGlass.vue'
 import ExchangeButton from './ExchangeButton.vue'
 import BuyButtom from './BuyButtom.vue'
@@ -38,11 +39,61 @@ function showDialog(index) {
   else if (index === 2)
     buyOrExchangeFlag.value = false
 }
+
+/*
+    打开是否确认兑换或购买
+*/
+
+function confirmExchange() {
+  ElMessageBox.confirm(
+    '您确认用积分兑换这件商品吗',
+    {
+      confirmButtonText: 'OK',
+      cancelButtonText: 'Cancel',
+      type: 'warning',
+    },
+  )
+    .then(() => {
+      ElMessage({
+        type: 'success',
+        message: '兑换成功',
+      })
+    })
+    .catch(() => {
+      ElMessage({
+        type: 'info',
+        message: '取消兑换',
+      })
+    })
+}
+
+function confirmBuyNow() {
+  ElMessageBox.confirm(
+    '您确认用购买这件商品吗',
+    {
+      confirmButtonText: 'OK',
+      cancelButtonText: 'Cancel',
+      type: 'warning',
+    },
+  )
+    .then(() => {
+      ElMessage({
+        type: 'success',
+        message: '购买成功',
+      })
+    })
+    .catch(() => {
+      ElMessage({
+        type: 'info',
+        message: '取消购买',
+      })
+    })
+}
 </script>
 
 <template>
-  <div class="mt10px w-full flex justify-evenly">
-    <div class="w280px flex flex-col items-center bg-#fff shadow-xl">
+  <div class="mt20px w-full flex flex-wrap justify-evenly">
+    <div v-for="(item, index) in 12" :key="index" class="mb20px w280px flex flex-col items-center bg-#fff shadow-xl">
       <img
         class="w-full"
         src="https://obs-xhlj.obs.cn-east-3.myhuaweicloud.com/2023/5/32766db3c132417ea4a09924efe87025.jpg"
@@ -52,19 +103,13 @@ function showDialog(index) {
       </p>
       <div class="w-full flex font-size-15px color-[#00B4BC]">
         <span class="ml50px font-bold">￥2000</span>
-        <button
-          class="ml30px w100px rounded-10px bg-[#00B4BC] font-size-13px color-#fff"
-          @click="showDialog(1)"
-        >
+        <button class="ml30px w100px rounded-10px bg-[#00B4BC] font-size-13px color-#fff" @click="showDialog(1)">
           去购买
         </button>
       </div>
       <div class="mt10px w-full flex pb10px font-size-15px">
         <span class="ml20px font-bold">兑换：2000</span>
-        <button
-          class="ml30px w100px rounded-10px bg-[#00B4BC] font-size-13px color-#fff"
-          @click="showDialog(2)"
-        >
+        <button class="ml30px w100px rounded-10px bg-[#00B4BC] font-size-13px color-#fff" @click="showDialog(2)">
           去兑换
         </button>
       </div>
@@ -79,11 +124,19 @@ function showDialog(index) {
         <p class="font-size-20px font-bold">
           2021年成都大运会赛事门票
         </p>
+        <p v-if="!buyOrExchangeFlag" class="mb10px mt15px flex items-center">
+          <span class="font-size-13px">价格：</span>
+          <span class="font-size-20px color-[#00B4BC] font-bold">￥2000</span>
+        </p>
+        <p v-else class="mb10px mt15px flex items-center">
+          <span class="font-size-13px">积分兑换：</span>
+          <span class="font-size-20px color-[#00B4BC] font-bold">2000</span>
+        </p>
         <p class="mt15px">
           2021年成都大运会赛事门票
         </p>
-        <ExchangeButton v-if="!buyOrExchangeFlag" class="mt100px" />
-        <BuyButtom v-else class="mt100px" />
+        <ExchangeButton v-if="!buyOrExchangeFlag" class="mt100px" @click="confirmExchange" />
+        <BuyButtom v-else class="mt100px" @click="confirmBuyNow" />
       </div>
     </div>
     <div class="w-full flex pt20px">
