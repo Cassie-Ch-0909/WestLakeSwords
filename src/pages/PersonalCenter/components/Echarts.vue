@@ -1,10 +1,10 @@
 <script setup>
-import { onMounted } from 'vue'
+import { onMounted, ref } from 'vue'
 import * as echarts from 'echarts'
 
+const chartDom = ref()
 onMounted(() => {
-  const chartDom = document.getElementById('main')
-  const myChart = echarts.init(chartDom)
+  const myChart = echarts.init(chartDom.value)
   const option = {
     tooltip: {
       trigger: 'item',
@@ -54,5 +54,5 @@ onMounted(() => {
 </script>
 
 <template>
-  <div id="main" style="width:1000px;height:400px" />
+  <div ref="chartDom" style="width:1000px;height:400px" />
 </template>
