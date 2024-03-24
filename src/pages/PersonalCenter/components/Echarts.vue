@@ -6,11 +6,16 @@ const chartDom = ref()
 onMounted(() => {
   const myChart = echarts.init(chartDom.value)
   const option = {
+    title: {
+      text: '积分明细一览表',
+      subtext: 'Fake Data',
+      left: 'center',
+    },
     tooltip: {
       trigger: 'item',
     },
     legend: {
-      top: '5%',
+      top: '88%',
       left: 'center',
     },
     series: [
@@ -39,11 +44,14 @@ onMounted(() => {
           show: false,
         },
         data: [
-          { value: 1048, name: 'Search Engine' },
-          { value: 735, name: 'Direct' },
-          { value: 580, name: 'Email' },
-          { value: 484, name: 'Union Ads' },
-          { value: 300, name: 'Video Ads' },
+          { value: 1048, name: '用户注册' },
+          { value: 735, name: '签到' },
+          { value: 580, name: '完善信息' },
+          { value: 484, name: '观看直播（5分钟以上）' },
+          { value: 300, name: '订阅' },
+          { value: 300, name: '分享' },
+          { value: 300, name: '线下展商打卡' },
+          { value: 300, name: '邀请好友参会' },
         ],
       },
     ],
@@ -54,5 +62,5 @@ onMounted(() => {
 </script>
 
 <template>
-  <div ref="chartDom" style="width:1000px;height:400px" />
+  <div ref="chartDom" style="width:400px;height:400px" class="mt25px pl10px" />
 </template>
