@@ -50,7 +50,8 @@ const position = computed(() => {
 
 <style scoped lang="scss">
 .goods-image {
-  width: 480px;
+  // background-color: red;
+  width: 400px;
   height: 400px;
   position: relative;
   display: flex;
@@ -71,7 +72,7 @@ const position = computed(() => {
     width: 400px;
     // height: 400px;
     height: 200px;
-    background: #f5f5f5;
+    // background: #f5f5f5;
     position: relative;
     cursor: move;
     img {
