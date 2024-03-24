@@ -14,6 +14,7 @@ import {
   Tooltip,
 } from 'ant-design-vue'
 import { createPinia } from 'pinia'
+import VueLuckyCanvas from '@lucky-canvas/vue'
 import App from './App.vue'
 
 // element-plus
@@ -63,4 +64,5 @@ app.use(Select)
 app.use(Slider)
 app.use(Checkbox)
 app.use(pinia)
+app.use(VueLuckyCanvas)
 app.mount('#app')

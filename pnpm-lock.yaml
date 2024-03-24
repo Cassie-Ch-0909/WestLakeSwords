@@ -8,6 +8,9 @@ dependencies:
   '@amap/amap-jsapi-loader':
     specifier: ^1.0.1
     version: 1.0.1
+  '@lucky-canvas/vue':
+    specifier: ^0.1.11
+    version: 0.1.11(vue@3.4.21)
   '@tensorflow-models/body-segmentation':
     specifier: ^1.0.2
     version: 1.0.2(@mediapipe/selfie_segmentation@0.1.1675465747)(@tensorflow/tfjs-backend-webgl@4.17.0)(@tensorflow/tfjs-converter@4.17.0)(@tensorflow/tfjs-core@4.17.0)
@@ -1042,6 +1045,20 @@ packages:
       '@jridgewell/resolve-uri': 3.1.1
       '@jridgewell/sourcemap-codec': 1.4.15
     dev: true
+
+  /@lucky-canvas/vue@0.1.11(vue@3.4.21):
+    resolution: {integrity: sha512-5vm0txSKRBtMgrE/HZEvw1joSTx9NTdAkc8tBp/aX0LxyhQtiTVBLsRgdYUK/OiURCL8bo+046BTGnV+Q4JFlg==}
+    peerDependencies:
+      vue: ^2.0.0 || >=3.0.0-rc.0
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
+    dependencies:
+      '@vue/composition-api': 1.7.2(vue@3.4.21)
+      lucky-canvas: 1.7.27
+      vue: 3.4.21(typescript@5.4.2)
+      vue-demi: 0.7.5(@vue/composition-api@1.7.2)(vue@3.4.21)
+    dev: false
 
   /@mediapipe/selfie_segmentation@0.1.1675465747:
     resolution: {integrity: sha512-IxYxNhwE5VwOm52L1yoFWYLP7q9Pd+NJjzOC5tlepfvEGaY3o9hslhUrx9BgseqdfZtKSDtd/4NfCSMjNzQalA==}
@@ -2179,6 +2196,14 @@ packages:
     dependencies:
       '@vue/compiler-dom': 3.4.21
       '@vue/shared': 3.4.21
+
+  /@vue/composition-api@1.7.2(vue@3.4.21):
+    resolution: {integrity: sha512-M8jm9J/laYrYT02665HkZ5l2fWTK4dcVg3BsDHm/pfz+MjDYwX+9FUaZyGwEyXEDonQYRCo0H7aLgdklcIELjw==}
+    peerDependencies:
+      vue: '>= 2.5 < 2.7'
+    dependencies:
+      vue: 3.4.21(typescript@5.4.2)
+    dev: false
 
   /@vue/devtools-api@6.5.1:
     resolution: {integrity: sha512-+KpckaAQyfbvshdDW5xQylLni1asvNSGme1JFs8I1+/H5pHEhqUKMEQD/qn3Nx5+/nycBq11qAEi8lk+LXI2dA==}
@@ -4516,6 +4541,10 @@ packages:
       yallist: 4.0.0
     dev: true
 
+  /lucky-canvas@1.7.27:
+    resolution: {integrity: sha512-Ftz6qD+863bI7xijBmZg3dw3cNEc7odPr70EZQcGA14y3TgTAzH65HPosOCd6kKUlMwhntBaHMx3onoj9MtJRQ==}
+    dev: false
+
   /magic-string-ast@0.3.0:
     resolution: {integrity: sha512-0shqecEPgdFpnI3AP90epXyxZy9g6CRZ+SZ7BcqFwYmtFEnZ1jpevcV5HoyVnlDS9gCnc1UIg3Rsvp3Ci7r8OA==}
     engines: {node: '>=16.14.0'}
@@ -6382,6 +6411,21 @@ packages:
         optional: true
     dependencies:
       vue: 3.4.21(typescript@5.4.2)
+
+  /vue-demi@0.7.5(@vue/composition-api@1.7.2)(vue@3.4.21):
+    resolution: {integrity: sha512-eFSQSvbQdY7C9ujOzvM6tn7XxwLjn0VQDXQsiYBLBwf28Na+2nTQR4BBBcomhmdP6mmHlBKAwarq6a0BPG87hQ==}
+    hasBin: true
+    requiresBuild: true
+    peerDependencies:
+      '@vue/composition-api': ^1.0.0-beta.1
+      vue: ^2.6.0 || >=3.0.0-rc.1
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
+    dependencies:
+      '@vue/composition-api': 1.7.2(vue@3.4.21)
+      vue: 3.4.21(typescript@5.4.2)
+    dev: false
 
   /vue-eslint-parser@9.4.2(eslint@8.56.0):
     resolution: {integrity: sha512-Ry9oiGmCAK91HrKMtCrKFWmSFWvYkpGglCeFAIqDdr9zdXmMMpJOmUJS7WWsW7fX81h6mwHmUZCQQ1E0PkSwYQ==}
