@@ -91,6 +91,7 @@ declare module 'vue-router/auto/routes' {
     '/NewsInfo/': RouteRecordInfo<'/NewsInfo/', '/NewsInfo', Record<never, never>, Record<never, never>>,
     '/PersonalCenter/': RouteRecordInfo<'/PersonalCenter/', '/PersonalCenter', Record<never, never>, Record<never, never>>,
     '/PersonalCenter/components/DynamicTime': RouteRecordInfo<'/PersonalCenter/components/DynamicTime', '/PersonalCenter/components/DynamicTime', Record<never, never>, Record<never, never>>,
+    '/PersonalCenter/components/Echarts': RouteRecordInfo<'/PersonalCenter/components/Echarts', '/PersonalCenter/components/Echarts', Record<never, never>, Record<never, never>>,
     '/PersonalCenter/components/FunActivities': RouteRecordInfo<'/PersonalCenter/components/FunActivities', '/PersonalCenter/components/FunActivities', Record<never, never>, Record<never, never>>,
     '/PersonalCenter/components/GoodsComponent': RouteRecordInfo<'/PersonalCenter/components/GoodsComponent', '/PersonalCenter/components/GoodsComponent', Record<never, never>, Record<never, never>>,
     '/PersonalCenter/components/HotTopicDiscussion': RouteRecordInfo<'/PersonalCenter/components/HotTopicDiscussion', '/PersonalCenter/components/HotTopicDiscussion', Record<never, never>, Record<never, never>>,
