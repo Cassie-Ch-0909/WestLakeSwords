@@ -10,6 +10,7 @@ defineProps({
   desc: String,
   num: Number,
   logo: String,
+  method: String,
 })
 </script>
 
@@ -26,7 +27,7 @@ defineProps({
         {{ desc }}
       </p>
       <div class="absolute bottom-10px left-0 h45px w-full flex items-center justify-between pl20px pr20px">
-        <span class="font-size-20px color-[#00B4BC] font-bold">￥{{ num }}</span>
+        <span class="font-size-20px color-[#00B4BC] font-bold">{{ method }}{{ num }}</span>
         <img class="mb40px w-70px" :src="logo" alt="">
       </div>
     </div>

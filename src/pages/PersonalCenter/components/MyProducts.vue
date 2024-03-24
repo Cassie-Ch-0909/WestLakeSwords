@@ -35,6 +35,7 @@ function changeActiveIndex(index) {
       img="https://obs-xhlj.obs.cn-east-3.myhuaweicloud.com/2023/5/32766db3c132417ea4a09924efe87025.jpg"
       title="2021年成都大运会赛事门票" desc="2021年成都大运会赛事门票" num="2100"
       logo="/public/personalInfonmation/alreadyBuy.png"
+      method="￥"
     />
     <GoodsComponent
       v-show="activeIndex === 1"
@@ -42,6 +43,7 @@ function changeActiveIndex(index) {
       title="2023数据安全能力洞察报告"
       desc="安恒信息围绕国家数字化建设“2522”顶层布局规划，洞悉各行业和各领域数字化转型中的安全挑战和能力需求，梳理切实解决数字安全本质问题的方法和途径，并从安全模式、架构、能力、产业等方向对未来数字安全发展进行了展望。"
       num="2100" logo="/public/personalInfonmation/alreadyExchange.png"
+      method="积分："
     />
   </div>
 </template>

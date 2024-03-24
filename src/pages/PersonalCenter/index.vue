@@ -18,8 +18,8 @@ import MyProducts from './components/MyProducts.vue'
 // 我的积分
 import MyIntegral from './components/MyIntegral.vue'
 
-// 积分兑换
-import IntegralExchange from './components/IntegralExchange.vue'
+// 好物商城
+import GoodThingsMall from './components/GoodThingsMall.vue'
 
 // 积分抽奖
 import IntegralLottery from './components/IntegralLottery.vue'
@@ -90,11 +90,11 @@ const list = ref([
     showMoudleFlag: false,
   },
   {
-    name: '积分兑换',
-    img: '/public/personalInfonmation/jifenduihuan.png',
-    img2: '/public/personalInfonmation/jifenduihuan.png',
-    hoverImg: '/public/personalInfonmation/2jifenduihuan.png',
-    english: 'Integral exchange',
+    name: '好物商城',
+    img: '/public/personalInfonmation/store.png',
+    img2: '/public/personalInfonmation/store.png',
+    hoverImg: '/public/personalInfonmation/2store.png',
+    english: 'Good things mall',
     showMoudleFlag: false,
   },
   {
@@ -278,7 +278,7 @@ function changeActiveMoudleIndex(index) {
         <!-- 我的积分 -->
         <MyIntegral v-show="twelveStore.activeMoudleIndex === 4" />
         <!-- 积分兑换 -->
-        <IntegralExchange v-show="twelveStore.activeMoudleIndex === 5" />
+        <GoodThingsMall v-show="twelveStore.activeMoudleIndex === 5" />
         <!-- 积分抽奖 -->
         <IntegralLottery v-show="twelveStore.activeMoudleIndex === 6" />
         <!-- 拍照打卡 -->
