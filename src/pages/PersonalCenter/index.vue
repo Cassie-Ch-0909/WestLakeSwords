@@ -1,4 +1,5 @@
 <script setup>
+import { useRouter } from 'vue-router'
 import RotateBgButton from './components/RotateBgButton.vue'
 import SignInRotateBgButton from './components/SignInRotateBgButton.vue'
 import DynamicTime from './components/DynamicTime.vue'
@@ -37,7 +38,7 @@ import Personalized from './components/Personalized.vue'
 import FunActivities from './components/FunActivities.vue'
 
 // 热点话题讨论
-import HotTopicDiscussion from './components/HotTopicDiscussion.vue'
+// import HotTopicDiscussion from './components/HotTopicDiscussion.vue'
 import { useTwelveStore } from '@/stores/twelve.js'
 
 /*
@@ -172,15 +173,21 @@ const twelveStore = useTwelveStore()
 // */
 // const activeMoudleIndex = twelveStore.activeMoudleIndex
 // console.log(activeMoudleIndex.value);
+const router = useRouter()// 用于页面的跳转
 
 /*
     定义一个函数用来灵活控制模块之间的显示和隐藏
 */
 function changeActiveMoudleIndex(index) {
-  // 开启对应模块的v-show
-  twelveStore.changeActiveIndex(index)
-  // 关闭12的v-show
-  twelveStore.changeTwelveFlagtoFalse()
+  if (index === 11) {
+    router.push('/hottopicdiscussion')
+  }
+  else {
+    // 开启对应模块的v-show
+    twelveStore.changeActiveIndex(index)
+    // 关闭12的v-show
+    twelveStore.changeTwelveFlagtoFalse()
+  }
 }
 </script>
 
@@ -290,7 +297,7 @@ function changeActiveMoudleIndex(index) {
         <!-- 趣味活动 -->
         <FunActivities v-show="twelveStore.activeMoudleIndex === 10" />
         <!-- 热点话题讨论 -->
-        <HotTopicDiscussion v-show="twelveStore.activeMoudleIndex === 11" />
+        <!-- <HotTopicDiscussion v-show="twelveStore.activeMoudleIndex === 11" /> -->
       </div>
     </div>
 
