@@ -79,7 +79,7 @@ function draw(index: number) {
 </script>
 
 <template>
-  <div class="container">
+  <div class="shadow-2xl container">
     <div
       v-for="(item, index) in DrawList"
       :key="index"

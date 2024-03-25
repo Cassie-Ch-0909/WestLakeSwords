@@ -129,7 +129,7 @@ function stopRun() {
 <template>
   <!-- <div v-cloak id="app"> -->
   <div class="container">
-    <div ref="prizeWrap" class="prize-list" :style="bgColor">
+    <div ref="prizeWrap" class="prize-list shadow-2xl" :style="bgColor">
       <div
         v-for="(item, index) in state.prizeList" :key="index"
         class="prize-item absolute left-0 right-0 top-[-55px]" :style="prizeStyle(index)"
