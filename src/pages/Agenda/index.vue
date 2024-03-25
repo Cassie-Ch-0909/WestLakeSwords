@@ -208,82 +208,91 @@ function selectedOptionChange(e) {
           <i class="iconfont font-size-30px color-[#00B4BC]" :class="item2.icon" />
           <span class="ml10px text-size-[19px] color-[#00B4BC] font-bold">{{ item2.value }}</span>
         </div>
-        <div
-          v-for="(item3, index3) in agendaList" :key="index3"
-          class="mb15px w-full rounded-[15px] bg-[#fff] pb20px pt20px shadow-lg"
-        >
-          <div class="w-full flex items-center">
-            <div class="ml5% w12% flex items-center justify-around">
-              <img src="/public/agenda/time.png" alt="" class="h22px w22px">
-              <span>{{ item3.time }}</span>
+        <template v-if="agendaList.length !== 0">
+          <div
+            v-for="(item3, index3) in agendaList" :key="index3"
+            class="mb15px w-full rounded-[15px] bg-[#fff] pb20px pt20px shadow-lg"
+          >
+            <div class="w-full flex items-center">
+              <!-- 时间图片和时间 -->
+              <div class="ml5% h-50px w190px flex items-center justify-around">
+                <img src="/public/agenda/time.png" alt="" class="h22px w22px">
+                <span>{{ item3.time }}</span>
+              </div>
+              <!-- 标题和地点 -->
+              <div class="ml5% w370px flex flex-col justify-center">
+                <p class="text-size-[17px] color-[#00B4BC] font-bold">
+                  {{ item3.title }}
+                </p>
+                <div class="flex items-center color-[grey]">
+                  <i class="iconfont icon-dingwei font-size-20px" />
+                  <p class="text-size-[12px]">
+                    {{ item3.place }}
+                  </p>
+                </div>
+              </div>
+              <!-- 观看回放 -->
+              <div
+                class="ml5% h30px w8% flex items-center justify-center rounded-[13px] bg-[#00B4BC] font-size-13px color-[#fff]"
+              >
+                <p>观看回放</p>
+              </div>
+              <!-- 右边箭头 -->
+              <div class="ml40% w5% flex items-center justify-center color-[#00B4BC]" @click="showMoreContent">
+                <i class="iconfont icon-arrow-down" />
+              </div>
             </div>
-            <div class="ml5% flex flex-col justify-center">
-              <p class="text-size-[17px] color-[#00B4BC] font-bold">
-                {{ item3.title }}
-              </p>
-              <div class="flex items-center color-[grey]">
-                <i class="iconfont icon-dingwei font-size-20px" />
-                <p class="text-size-[12px]">
-                  {{ item3.place }}
+            <div v-show="showMoreContentFlag" class="mt10px bg-[#EFFBFF] pb15px pl6%">
+              <div class="flex pt15px">
+                <i class="iconfont icon-shijian1" />
+                <span class="pl2%">{{ item3.time }}</span>
+              </div>
+              <div class="flex pt5px font-size-13px">
+                <p>
+                  {{ item3.channel }} 精彩干货不间断
+                </p>
+              </div>
+              <div class="flex pt5px font-size-13px">
+                <p>
+                  郝志强
+                </p>
+              </div>
+              <div class="flex pt5px font-size-13px">
+                <p>
+                  工业和信息化部教育与考试中心主任 书记
                 </p>
               </div>
             </div>
-            <div
-              class="ml10% h30px w6% flex items-center justify-center rounded-[13px] bg-[#00B4BC] font-size-13px color-[#fff]"
-            >
-              <p>观看回放</p>
+            <div v-show="showMoreContentFlag" class="mt10px bg-[#EFFBFF] pb15px pl6%">
+              <div class="flex pt15px">
+                <i class="iconfont icon-shijian1" />
+                <span class="pl2%">09:30-12:00</span>
+              </div>
+              <div class="flex pt5px font-size-13px">
+                <p>
+                  第二直播间 精彩干货不间断
+                </p>
+              </div>
+              <div class="flex pt5px font-size-13px">
+                <p>
+                  郝志强
+                </p>
+              </div>
+              <div class="flex pt5px font-size-13px">
+                <p>
+                  工业和信息化部教育与考试中心主任 书记
+                </p>
+              </div>
             </div>
-            <div class="ml40% w5% flex items-center justify-center color-[#00B4BC]" @click="showMoreContent">
-              <i class="iconfont icon-arrow-down" />
-            </div>
-          </div>
-          <div v-show="showMoreContentFlag" class="mt10px bg-[#EFFBFF] pb15px pl6%">
-            <div class="flex pt15px">
-              <i class="iconfont icon-shijian1" />
-              <span class="pl2%">{{ item3.time }}</span>
-            </div>
-            <div class="flex pt5px font-size-13px">
-              <p>
-                {{ item3.channel }} 精彩干货不间断
-              </p>
-            </div>
-            <div class="flex pt5px font-size-13px">
-              <p>
-                郝志强
-              </p>
-            </div>
-            <div class="flex pt5px font-size-13px">
-              <p>
-                工业和信息化部教育与考试中心主任 书记
-              </p>
+            <div v-show="showMoreContentFlag" class="mt10px h-50px w-full flex items-center justify-center">
+              <button class="putAway" @click="showMoreContent">
+                收起
+              </button>
             </div>
           </div>
-          <div v-show="showMoreContentFlag" class="mt10px bg-[#EFFBFF] pb15px pl6%">
-            <div class="flex pt15px">
-              <i class="iconfont icon-shijian1" />
-              <span class="pl2%">09:30-12:00</span>
-            </div>
-            <div class="flex pt5px font-size-13px">
-              <p>
-                第二直播间 精彩干货不间断
-              </p>
-            </div>
-            <div class="flex pt5px font-size-13px">
-              <p>
-                郝志强
-              </p>
-            </div>
-            <div class="flex pt5px font-size-13px">
-              <p>
-                工业和信息化部教育与考试中心主任 书记
-              </p>
-            </div>
-          </div>
-          <div v-show="showMoreContentFlag" class="mt10px h-50px w-full flex items-center justify-center">
-            <button class="putAway" @click="showMoreContent">
-              收起
-            </button>
-          </div>
+        </template>
+        <div v-else class="h300px w-full rounded-20px bg-[#fff]">
+          <el-empty description="未查询到任何会议信息" />
         </div>
       </div>
       <!-- </div> -->
