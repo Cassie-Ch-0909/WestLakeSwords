@@ -26,20 +26,28 @@ function scrollToTop() {
 // login()
 
 const route = useRoute()
+const headerFlag = ref(true)
 const footerFlag = ref(true)
-// 监听当前路由变化
+// 监听当前路由变化 || newPath === '/hottopicdiscussion'
 watch(() => route.path, (newPath) => {
-  if (newPath === '/mobilelogin' || newPath === '/personalcenter')
+  if (newPath === '/mobilelogin' || newPath === '/personalcenter') {
     footerFlag.value = false
-
-  else
+    headerFlag.value = false
+  }
+  else if (newPath === '/hottopicdiscussion') {
+    footerFlag.value = false
+    headerFlag.value = true
+  }
+  else {
     footerFlag.value = true
+    headerFlag.value = true
+  }
 }, { immediate: true, deep: true })
 </script>
 
 <template>
   <main>
-    <Header v-if="footerFlag" />
+    <Header v-if="headerFlag" />
     <div
       v-show="y > 50"
       class="animation-delay-1 animate__fadeInRight wow fixed right-0px top-175px z-999 h485px w100px flex flex-col animate-duration-2000 justify-between rounded-l-lg bg-blue from-[#2DB0BA] to-[#2B78BB] bg-gradient-to-b max-md:hidden"
