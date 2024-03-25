@@ -50,7 +50,7 @@ const list = ref([
 </script>
 
 <template>
-  <div class="mt20px w180px border-2px border-#E0E0E0 rounded-10px border-solid pb10px pt10px">
+  <div class="mt20px w180px border-2px border-#E0E0E0 rounded-10px border-solid bg-#fff pb10px pt10px">
     <ul class="w-full">
       <li
         v-for="(item, index) in list " :key="index" class="ml5% h56px w-90% flex items-center rounded-10px hover:bg-[#00B4BC] hover:color-#fff"

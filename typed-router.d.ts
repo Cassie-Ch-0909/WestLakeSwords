@@ -79,6 +79,8 @@ declare module 'vue-router/auto/routes' {
     '/Home/components/Partner/': RouteRecordInfo<'/Home/components/Partner/', '/Home/components/Partner', Record<never, never>, Record<never, never>>,
     '/HotTopicDiscussion/': RouteRecordInfo<'/HotTopicDiscussion/', '/HotTopicDiscussion', Record<never, never>, Record<never, never>>,
     '/HotTopicDiscussion/components/LeftNav': RouteRecordInfo<'/HotTopicDiscussion/components/LeftNav', '/HotTopicDiscussion/components/LeftNav', Record<never, never>, Record<never, never>>,
+    '/HotTopicDiscussion/components/Main': RouteRecordInfo<'/HotTopicDiscussion/components/Main', '/HotTopicDiscussion/components/Main', Record<never, never>, Record<never, never>>,
+    '/HotTopicDiscussion/components/Right': RouteRecordInfo<'/HotTopicDiscussion/components/Right', '/HotTopicDiscussion/components/Right', Record<never, never>, Record<never, never>>,
     '/jjy/cassie': RouteRecordInfo<'/jjy/cassie', '/jjy/cassie', Record<never, never>, Record<never, never>>,
     '/MediaCenter/': RouteRecordInfo<'/MediaCenter/', '/MediaCenter', Record<never, never>, Record<never, never>>,
     '/MeetingDetails/': RouteRecordInfo<'/MeetingDetails/', '/MeetingDetails', Record<never, never>, Record<never, never>>,
