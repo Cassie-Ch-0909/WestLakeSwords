@@ -269,14 +269,14 @@ const newsMediaList = ref([
     image1: 'https://img2023.gcsis.cn/2023/4/a17f2344c0c34931bc2f87e40f76ad72.png',
     title: '央视网',
   },
-])
-
-const newsMediaList2 = ref([
   {
     image1: 'https://img2023.gcsis.cn/2023/4/2933697fbe214fe2aec9457a124ba92f.png',
     title: '学习强国',
     url: '',
   },
+])
+
+const newsMediaList2 = ref([
   {
     image1: 'https://img2023.gcsis.cn/2023/4/e4d7fcbe27f94fa0a1ecb8b9d9b7aa90.png',
     title: '中国网',
@@ -677,7 +677,28 @@ const newsMediaList2 = ref([
     title: '亿欧',
     url: '',
   },
-
+  {
+    image1: 'https://img2023.gcsis.cn/2023/4/5c64dfd9685d4ea0b48a4df497a28669.png',
+    title: '人民日报',
+    url: '',
+    image3: 'https://img2023.gcsis.cn/2023/4/e0ac725f69aa45229e72e8c451393147.png',
+  },
+  {
+    title: '中央电视台',
+    url: '',
+    image1: 'https://img2023.gcsis.cn/2023/4/1ef7fe346f28471a89176ab96cc0f15d.png',
+    title: '科技日报',
+  },
+  {
+    url: '',
+    image1: 'https://img2023.gcsis.cn/2023/4/03bf8c57aff1466ebf866454df40a42d.png',
+    title: '光明网',
+  },
+  {
+    url: '',
+    image1: 'https://img2023.gcsis.cn/2023/4/0347a02665f84bb58b637fc403b5a047.png',
+    title: '经济日报',
+  },
 ])
 
 /*
@@ -864,15 +885,14 @@ function changeFlag() {
     <p class="ml10% font-size-[20px] color-[#05BAB3] font-bold">
       新闻媒体
     </p>
-    <div class="ml10% mr10% w-100% flex flex-wrap">
+    <div class="ml10% mr10% w-80% flex flex-wrap justify-between">
       <a
-        v-for="(item, index) in newsMediaList" :key="index" :href="item.url" class="h-full w14%"
-        :class="index !== 0 ? 'ml%' : ''"
+        v-for="(item, index) in newsMediaList" :key="index" :href="item.url" class="mt30px h-full w14%"
       >
         <img class="w-150px" :src="item.image1">
       </a>
     </div>
-    <div v-if="flag" class="ml10% mr10% w-100% flex flex-wrap">
+    <div v-if="flag" class="ml10% mr10% w-80% flex flex-wrap justify-between">
       <a v-for="(item, index) in newsMediaList2" :key="index" :href="item.url" class="mt30px h-full w14%">
         <img class="w-150px" :src="item.image1">
       </a>

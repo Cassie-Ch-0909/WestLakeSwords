@@ -53,8 +53,8 @@ const { y } = useScroll(window)
     <div class="mt20px w-full flex flex-col bg-#fff">
       <div class="h50px w-full flex items-center justify-between border-b-1 border-#E0E0E0 pl15px pr15px">
         <div class="flex items-center">
-          <img class="w30px" src="/public/hottopic/article.png" alt="">
-          <span class="ml5px">文章榜</span>
+          <img class="w30px" src="/public/hottopic/author.png" alt="">
+          <span class="ml5px">作者榜</span>
         </div>
         <div class="flex items-center color-#999">
           <i class="iconfont icon-huanyihuan mr5px font-size-15px" />
