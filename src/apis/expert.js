@@ -7,6 +7,6 @@ import request from '@/utils/http'
 export function getSpeakerByDateAPI(date) {
   return request({
     url: `/user/expert/${date}`,
-    method: 'get',
+    method: 'GET',
   })
 }

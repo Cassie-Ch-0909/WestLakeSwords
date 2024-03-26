@@ -230,7 +230,9 @@ const btnList = ref([
 
 <template>
   <!-- PC端精彩活动 -->
-  <div class="[#98EAF7] w-full from-[#8EEDF0] to-[#8EC4F7] from-10% to-90% via-30% bg-gradient-to-r pb50px max-md:hidden">
+  <div
+    class="[#98EAF7] w-full from-[#8EEDF0] to-[#8EC4F7] from-10% to-90% via-30% bg-gradient-to-r pb50px max-md:hidden"
+  >
     <div class="ml10% mr10% h-full w-80%">
       <p class="h50% w-full flex items-center justify-center pb30px pt30px font-size-[35px] color-[#2C80BE] font-bold">
         精彩活动
@@ -246,7 +248,10 @@ const btnList = ref([
     <div class="w-full md-hidden">
       <div>
         <el-tabs v-model="activeName" class="demo-tabs" @tab-click="handleClick">
-          <el-tab-pane v-for="(item, index) in btnList" :key="index" class="w-full" :label="item.title" :name="item.name">
+          <el-tab-pane
+            v-for="(item, index) in btnList" :key="index" class="w-full" :label="item.title"
+            :name="item.name"
+          >
             <div v-for="(item2, index2) in item.list" :key="index2" class="bg mb10px h100px w-full flex">
               <div class="h-full w-50%">
                 <img :src="item2.img" alt="" class="h-full w-full">
@@ -259,7 +264,9 @@ const btnList = ref([
                   {{ item2.time }}
                 </div>
                 <div class="w-full flex flex-1 items-center justify-end">
-                  <span class="mr5px h-80% w30% flex items-center justify-center rounded-10px bg-[#00B4BC] font-size-10px color-[#fff]">了解详情</span>
+                  <span
+                    class="mr5px h-80% w30% flex items-center justify-center rounded-10px bg-[#00B4BC] font-size-10px color-[#fff]"
+                  >了解详情</span>
                 </div>
               </div>
             </div>
@@ -270,6 +277,4 @@ const btnList = ref([
   </div>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
