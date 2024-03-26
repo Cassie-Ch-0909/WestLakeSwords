@@ -6,7 +6,7 @@ import request from '@/utils/http'
 export function getCaptchaAPI() {
   return request({
     url: '/captcha', // http://localhost:8080/captcha
-    method: 'get',
+    method: 'GET',
     responseType: 'blob',
   })
 }
@@ -14,9 +14,13 @@ export function getCaptchaAPI() {
 /*
     获取短信验证码
 */
-export function getPhoneCodeAPI() {
+export function getPhoneCodeAPI(phoneNumber) {
   return request({
     url: '/admin/phoneCode/get',
+    method: 'GET',
+    params: {
+      phone: phoneNumber,
+    },
   })
 }
 

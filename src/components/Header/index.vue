@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import RotateBgButton from '@/components/Header/components/RotateBgButton.vue'
-import { getCaptchaAPI } from '@/apis/login'
+import { getCaptchaAPI, getPhoneCodeAPI } from '@/apis/login'
 
 const router = useRouter()// 用于页面的跳转
 
@@ -56,6 +56,15 @@ async function getCaptcha() {
   // console.log(captcha.value);
 }
 getCaptcha()
+
+/*
+    调接口获取短信验证码
+*/
+async function getPhoneCode(phoneNumber) {
+  await getPhoneCodeAPI(phoneNumber)
+  // console.log(res);
+}
+getPhoneCode(13567529804)
 </script>
 
 <template>
