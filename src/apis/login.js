@@ -27,8 +27,14 @@ export function getPhoneCodeAPI(phoneNumber) {
 /*
     登录
 */
-export function loginAPI() {
+export function loginAPI(obj) {
   return request({
-
+    url: '/user/user/login',
+    method: 'POST',
+    data: {
+      captcha: obj.captcha,
+      phone: obj.phone,
+      phoneCode: obj.phoneCode,
+    },
   })
 }

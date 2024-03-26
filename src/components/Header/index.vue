@@ -1,8 +1,9 @@
 <script setup>
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+import { ElMessage } from 'element-plus'
 import RotateBgButton from '@/components/Header/components/RotateBgButton.vue'
-import { getCaptchaAPI, getPhoneCodeAPI } from '@/apis/login'
+import { getCaptchaAPI, getPhoneCodeAPI, loginAPI } from '@/apis/login'
 
 const router = useRouter()// 用于页面的跳转
 
@@ -45,30 +46,127 @@ function gotoLogin() {
 */
 const dialogTableVisible = ref(false)
 
-const captcha = ref()
+// 图形验证码图片的src
+const captcha = ref('')
+// 输入框的电话号码
+const phoneNumer = ref('')
+// 输入框的短信验证码
+const phoneCode = ref('')
+// 输入框的图形验证码
+const captchaValue = ref('')
 
-/*
-    调接口获取图形验证码
-*/
+// TODO1： 验证输入框手机号的输入  手机号非空判断和格式判断
+function checkPhoneNumber() {
+  if (phoneNumer.value === '') {
+    ElMessage({
+      message: '手机号输入不能为空',
+      type: 'error',
+    })
+    return false
+  }
+  const reg = /^1[3456789]\d{9}$/
+  if (!reg.test(phoneNumer.value)) {
+    ElMessage({
+      message: '手机号格式错误',
+      type: 'error',
+    })
+    return false
+  }
+  return true
+}
+
+// 短信倒计时秒数的最大值
+const totalSecond = ref(60)
+// 短信倒计时的秒数
+const second = ref(60)
+// 短信倒计时定时器的id
+const timer = ref(null)
+
+// TODO2：调接口获取短信验证码 发送短信到手机
+async function getPhoneCode() {
+  if (checkPhoneNumber()) {
+    // 倒计时
+    if (!timer.value && second.value === totalSecond.value) {
+      // 开启倒计时
+      timer.value = setInterval(() => {
+        // 短信倒计时秒数 减1
+        second.value--
+        // 当秒数小于1时，清除计时器，将秒数设置为初始值(最大值)60
+        if (second.value < 1) {
+          clearInterval(timer.value)
+          timer.value = null
+          second.value = totalSecond.value
+        }
+      }, 1000)
+      // 发请求获取验证码
+      await getPhoneCodeAPI(phoneNumer.value)
+      // message提示用户短信内容
+      ElMessage({
+        message: '发送短信验证码成功，请注意查收短信',
+        type: 'success',
+      })
+    }
+  }
+}
+
+// TODO3：验证短信验证码输入  短信验证码非空判断 （在点登录的时候触发即可）
+function checkPhoneCode() {
+  if (phoneCode.value === '') {
+    ElMessage({
+      message: '短信验证码不能为空',
+      type: 'error',
+    })
+    return false
+  }
+  return true
+}
+
+// TODO4: 调接口获取图形验证码以及点击图形验证码会切换
 async function getCaptcha() {
   const res = await getCaptchaAPI()
   captcha.value = URL.createObjectURL(new Blob([res], { type: 'image/png' }))
-  // console.log(captcha.value);
 }
 getCaptcha()
+function changeCaptcha() {
+  getCaptcha()
+}
+
+// TODO5：验证图形验证码输入  图形验证码非空判断 （在点登录的时候触发即可）
+function checkCaptchaValue() {
+  if (captchaValue.value === '') {
+    ElMessage({
+      message: '图形验证码不能为空',
+      type: 'error',
+    })
+    return false
+  }
+  return true
+}
+
+// TODO6: 点击登录按钮后判断三个输入框的信息是否非空，如果非空，调登录接口
+async function login() {
+  if (checkPhoneNumber() && checkPhoneCode() && checkCaptchaValue()) {
+    // console.log('可以调登录接口啦')
+    await loginAPI(
+      {
+        captcha: captchaValue.value,
+        phone: phoneNumer.value,
+        phoneCode: phoneCode.value,
+      },
+    )
+    // console.log(res)
+  }
+}
 
 /*
-    调接口获取短信验证码
+    页面销毁时，清除计时器
 */
-async function getPhoneCode(phoneNumber) {
-  await getPhoneCodeAPI(phoneNumber)
-  // console.log(res);
-}
-getPhoneCode(13567529804)
+onUnmounted(() => {
+  clearInterval(timer.value)
+})
 </script>
 
 <template>
-  <img :src="captcha" alt="">
   <!--
       md:PC端
       其余：手机和ipad
@@ -90,29 +188,30 @@ getPhoneCode(13567529804)
           <!-- 请输入手机号码 -->
           <div class="mt30px h40px w-full pl60px">
             <input
-              class="h40px w240px border-1px border-#E0E0E0 border-solid pl10px font-size-12px"
-              placeholder="请输入手机号码"
+              v-model="phoneNumer"
+              class="h40px w240px border-1px border-#E0E0E0 border-solid pl10px font-size-12px" placeholder="请输入手机号码"
             >
           </div>
           <!-- 请输入短信验证码 -->
           <div class="ml60px mt20px h40px w240px flex border-1px border-#E0E0E0 border-solid">
-            <input class="h40px w140px pl10px font-size-12px" placeholder="输入短信验证码">
-            <button class="inline-block h40px w100px font-size-11.5px">
-              59秒后重新发送
+            <input v-model="phoneCode" class="h40px w140px pl10px font-size-12px" placeholder="输入短信验证码">
+            <button class="inline-block h40px w100px font-size-11.5px" @click="getPhoneCode">
+              {{ second === totalSecond ? "获取验证码" : `${second}秒后重新发送` }}
             </button>
           </div>
           <!-- 请输入图形验证码 -->
           <div class="ml60px mt20px h40px w240px flex border-1px border-#E0E0E0 border-solid">
-            <input class="h40px w140px pl10px font-size-12px" placeholder="输入图形验证码">
-            <button class="inline-block h40px w100px font-size-11.5px">
-              59秒后重新发送
-            </button>
+            <input v-model="captchaValue" class="h40px w140px pl10px font-size-12px" placeholder="输入图形验证码">
+            <img :src="captcha" class="inline-block h40px w100px" alt="" @click="changeCaptcha">
           </div>
           <div class="mt15px h30px w-full flex items-center pl60px font-size-12px">
             <input id="scales" type="checkbox" name="scales" checked class="mr5px">
             <span>我已阅读并同意<a class="color-#198CFF" href="#">服务条款</a>、<a class="color-#198CFF" href="#">隐私政策</a></span>
           </div>
-          <button class="ml60px mt15px h40px w240px from-[#00B4BC] to-[#37C0F7] bg-gradient-to-r color-#fff">
+          <button
+            class="ml60px mt15px h40px w240px from-[#00B4BC] to-[#37C0F7] bg-gradient-to-r color-#fff"
+            @click="login"
+          >
             登录/注册
           </button>
           <!-- 其他登陆方式 -->

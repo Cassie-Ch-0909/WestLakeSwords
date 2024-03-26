@@ -1,4 +1,6 @@
 <script setup>
+import { getSpeakerByDateAPI } from '@/apis/expert'
+
 const specialList = ref([
   {
     img: 'https://obs-xhlj.obs.cn-east-3.myhuaweicloud.com/2023/3/45d698748a394f6e923254d06ffdcc76.png',
@@ -329,13 +331,23 @@ const dateList = ref([
     ],
   },
 ])
+
 // 选中的日期的标记
 const activeIndex = ref(0)
+
+// TODO: 调接口根据日期查询演讲嘉宾
+async function getSpeakerByDate(date) {
+  const res = await getSpeakerByDateAPI(date)
+  // console.log(res)
+  dateList.value[activeIndex.value].childList = res.data
+}
+getSpeakerByDate(5)
 /*
     定义一个方法 选中日期
 */
 function selectDate(index) {
   activeIndex.value = index
+  getSpeakerByDate(dateList.value[activeIndex.value].date)
 }
 </script>
 
@@ -412,13 +424,13 @@ function selectDate(index) {
             </div>
           </div>
         </div>
-        <div v-for="(item, index) in dateList" v-show="activeIndex === index" :key="index" class="flex justify-between">
+        <div v-for="(item, index) in dateList" v-show="activeIndex === index" :key="index" class="flex flex-wrap justify-between">
           <div
             v-for="(item2, index2) in item.childList" :key="index2"
             class="sideBox mb15px h200px w22% flex flex-col items-center justify-evenly rounded-10px bg-[#fff] pl10px pr10px shadow-xl hover:bg-[#00B4BC] hover:color-[#fff]"
           >
             <div class="w-full flex items-center justify-between">
-              <img class="h-90px w-90px rounded-50%" :src="item2.img" alt="">
+              <img class="h-90px w-90px rounded-50%" :src="item2.url" alt="">
               <div class="h-full flex flex-1 flex-col justify-center pl3% pr3%">
                 <p class="h-40% w-full font-size-20px font-bold">
                   {{ item2.name }}
