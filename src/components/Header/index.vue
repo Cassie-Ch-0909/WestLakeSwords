@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import RotateBgButton from '@/components/Header/components/RotateBgButton.vue'
+import { getCaptchaAPI } from '@/apis/login'
 
 const router = useRouter()// 用于页面的跳转
 
@@ -43,9 +44,22 @@ function gotoLogin() {
     定义一个变量用来控制登陆注册的Dialog的显示和隐藏
 */
 const dialogTableVisible = ref(false)
+
+const captcha = ref()
+
+/*
+    调接口获取图形验证码
+*/
+async function getCaptcha() {
+  const res = await getCaptchaAPI()
+  captcha.value = URL.createObjectURL(new Blob([res], { type: 'image/png' }))
+  // console.log(captcha.value);
+}
+getCaptcha()
 </script>
 
 <template>
+  <img :src="captcha" alt="">
   <!--
       md:PC端
       其余：手机和ipad
@@ -53,7 +67,6 @@ const dialogTableVisible = ref(false)
    -->
   <!-- PC端Header -->
   <div class="nav sticky left-0 top-0 z-999 w-full flex justify-between bg-slate-50 max-md:hidden md:h-20">
-    <!-- 登陆的dialog -->
     <el-dialog v-model="dialogTableVisible" width="800">
       <div class="relative flex">
         <!-- 左边输入框部分 -->

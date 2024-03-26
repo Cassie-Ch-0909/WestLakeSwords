@@ -1,4 +1,5 @@
 <script setup>
+// import {getNewsListAPI} from '@/apis/media'
 const titleList = ref([
   '新闻中心',
   '精彩图片',
@@ -119,6 +120,15 @@ const activeIndex = ref(0)
 function changeActiveIndex(index) {
   activeIndex.value = index
 }
+
+// /*
+//     调接口获取新闻列表
+// */
+// async function getNewsList(){
+//   const res = await getNewsListAPI()
+//   newsCenterList.value = res.data
+// }
+// getNewsList()
 </script>
 
 <template>
