@@ -35,7 +35,7 @@ import MyActivities from './components/MyActivities.vue'
 import Personalized from './components/Personalized.vue'
 
 // 趣味活动
-import FunActivities from './components/FunActivities.vue'
+// import FunActivities from './components/FunActivities.vue'
 
 // 热点话题讨论
 // import HotTopicDiscussion from './components/HotTopicDiscussion.vue'
@@ -181,6 +181,9 @@ const router = useRouter()// 用于页面的跳转
 function changeActiveMoudleIndex(index) {
   if (index === 11) {
     router.push('/hottopicdiscussion')
+  }
+  else if (index === 7) {
+    router.push('/creativeservices')
   }
   else {
     // 开启对应模块的v-show
