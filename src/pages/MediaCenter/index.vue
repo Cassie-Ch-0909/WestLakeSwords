@@ -1,4 +1,5 @@
 <script setup>
+import { useRouter } from 'vue-router'
 import { getNewsListAPI } from '@/apis/media'
 
 const titleList = ref([
@@ -122,14 +123,21 @@ function changeActiveIndex(index) {
   activeIndex.value = index
 }
 
-/*
-    调接口获取新闻列表
-*/
+// TODO1: 调接口获取新闻列表
 async function getNewsList() {
   const res = await getNewsListAPI()
   newsCenterList.value = res.data
 }
 getNewsList()
+
+// TODO2: 点击新闻跳转到新闻详情页面
+const router = useRouter()
+function gotoNewsInfo(id) {
+  // 通过name跳转传递
+  //  router.push({ name: 'guest', query: { id: 1 } });
+  // 通过path跳转传递
+  router.push({ path: 'newsinfo', query: { id } })
+}
 </script>
 
 <template>
@@ -152,9 +160,9 @@ getNewsList()
       </div>
       <!-- 新闻中心 -->
       <div
-        v-for="(item, index) in newsCenterList" v-show="activeIndex === 0" :key="index"
-        class="mt25px h-180px w-86% flex bg-[#EFFBFF]"
+        v-for="(item, index) in newsCenterList" v-show="activeIndex === 0" :key="index" class="mt25px h-180px w-86% flex bg-[#EFFBFF]"
         :class="index % 2 === 1 ? 'ml20% animation-delay-1 animate__fadeInRight wow  animate-duration-2000' : 'animation-delay-1 animate__fadeInLeft wow  animate-duration-2000'"
+        @click="gotoNewsInfo(item.id)"
       >
         <img v-show="index % 2 === 0" :src="item.img" alt="" class="h-full w30%">
         <div v-show="index % 2 === 0" class="flex flex-col justify-evenly pl3% pr3%">
@@ -287,6 +295,7 @@ getNewsList()
   -webkit-line-clamp: 1;
   text-overflow: ellipsis;
 }
+
 .ellipsis2 {
   display: -webkit-box;
   -webkit-box-orient: vertical;

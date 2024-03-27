@@ -9,3 +9,16 @@ export function getNewsListAPI() {
     method: 'GET',
   })
 }
+
+/*
+    根据新闻id查询新闻详情
+*/
+export function getNewsByNewsIdAPI(newsId) {
+  return request({
+    url: '/user/news/news/id',
+    method: 'GET',
+    params: {
+      id: newsId,
+    },
+  })
+}
