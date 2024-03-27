@@ -1,5 +1,6 @@
 <script setup>
-// import {getNewsListAPI} from '@/apis/media'
+import { getNewsListAPI } from '@/apis/media'
+
 const titleList = ref([
   '新闻中心',
   '精彩图片',
@@ -121,14 +122,14 @@ function changeActiveIndex(index) {
   activeIndex.value = index
 }
 
-// /*
-//     调接口获取新闻列表
-// */
-// async function getNewsList(){
-//   const res = await getNewsListAPI()
-//   newsCenterList.value = res.data
-// }
-// getNewsList()
+/*
+    调接口获取新闻列表
+*/
+async function getNewsList() {
+  const res = await getNewsListAPI()
+  newsCenterList.value = res.data
+}
+getNewsList()
 </script>
 
 <template>
@@ -138,6 +139,7 @@ function changeActiveIndex(index) {
       <p class="h50% w-full flex items-center justify-center pb30px pt30px font-size-[35px] color-[#2C80BE] font-bold">
         媒体中心
       </p>
+      <!-- 三个tab栏切换选项 -->
       <div class="h60px w-full flex items-center justify-center">
         <div
           v-for="(item, index) in titleList" :key="index"
@@ -148,27 +150,54 @@ function changeActiveIndex(index) {
           {{ item }}
         </div>
       </div>
+      <!-- 新闻中心 -->
       <div
         v-for="(item, index) in newsCenterList" v-show="activeIndex === 0" :key="index"
-        class="mt25px h-180px w-80% flex bg-[#4D8EBF]"
+        class="mt25px h-180px w-86% flex bg-[#EFFBFF]"
         :class="index % 2 === 1 ? 'ml20% animation-delay-1 animate__fadeInRight wow  animate-duration-2000' : 'animation-delay-1 animate__fadeInLeft wow  animate-duration-2000'"
       >
-        <img :src="item.img" alt="" class="h-full w30%">
-        <div class="flex flex-col justify-evenly pl10px pr10px">
+        <img v-show="index % 2 === 0" :src="item.img" alt="" class="h-full w30%">
+        <div v-show="index % 2 === 0" class="flex flex-col justify-evenly pl3% pr3%">
           <p class="font-bold">
             {{ item.title }}
           </p>
-          <p class="font-size-13px color-[#fff]">
-            {{ item.content }}
+          <p class="font-size-13px color-[#999]">
+            {{ item.htmlImg }}
           </p>
           <div class="flex justify-between font-size-13px">
             <div class="h22px w120px flex items-center justify-center rounded-15px bg-[#00B4BC] color-[#fff]">
               {{ item.channel }}
             </div>
-            <div>{{ item.time }}</div>
+            <div class="h30px w30% flex items-center justify-between">
+              <button class="h-80% w40% flex items-center justify-center rounded-10px bg-#32A7F8 color-#fff">
+                查看详情
+              </button>
+              <div>{{ item.time }}</div>
+            </div>
           </div>
         </div>
+        <div v-show="index % 2 === 1" class="flex flex-col justify-evenly pl3% pr3%">
+          <p class="font-bold">
+            {{ item.title }}
+          </p>
+          <p class="font-size-13px color-[#999]">
+            {{ item.htmlImg }}
+          </p>
+          <div class="flex justify-between font-size-13px">
+            <div class="h22px w120px flex items-center justify-center rounded-15px bg-[#00B4BC] color-[#fff]">
+              {{ item.channel }}
+            </div>
+            <div class="h30px w30% flex items-center justify-between">
+              <button class="h-80% w40% flex items-center justify-center rounded-10px bg-#32A7F8 color-#fff">
+                查看详情
+              </button>
+              <div>{{ item.time }}</div>
+            </div>
+          </div>
+        </div>
+        <img v-show="index % 2 === 1" :src="item.img" alt="" class="h-full w30%">
       </div>
+      <!-- 精彩图片 -->
       <div v-show="activeIndex === 1" class="w-full flex flex-wrap justify-between">
         <div
           v-for="(item, index) in wonderfulPicList" :key="index"
@@ -178,6 +207,7 @@ function changeActiveIndex(index) {
           <div>{{ item.title }}</div>
         </div>
       </div>
+      <!-- 精彩视频 -->
       <div v-show="activeIndex === 2" class="w-full flex flex-wrap justify-between">
         <div
           v-for="(item, index) in wonderfulVideoList" :key="index"
