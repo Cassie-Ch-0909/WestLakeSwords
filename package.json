@@ -25,6 +25,7 @@
     "element-plus": "^2.5.5",
     "gsap": "^3.12.5",
     "pinia": "^2.1.7",
+    "pinia-plugin-persistedstate": "^3.2.1",
     "swiper": "^11.0.7",
     "three": "0.154.0",
     "vue": "^3.4.21",

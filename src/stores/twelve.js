@@ -25,12 +25,14 @@ export const useTwelveStore = defineStore('twelve', () => {
   }
 
   // 以对象的形式return供组件使用
-  return {
-    twelve,
-    changeTwelveFlagtoTrue,
-    changeTwelveFlagtoFalse,
-    activeMoudleIndex,
-    changeActiveIndex,
-    noActiveIndex,
-  }
+  return (
+    {
+      twelve,
+      changeTwelveFlagtoTrue,
+      changeTwelveFlagtoFalse,
+      activeMoudleIndex,
+      changeActiveIndex,
+      noActiveIndex,
+    }
+  )
 })

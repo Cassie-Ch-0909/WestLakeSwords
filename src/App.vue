@@ -30,11 +30,11 @@ const headerFlag = ref(true)
 const footerFlag = ref(true)
 // 监听当前路由变化 || newPath === '/hottopicdiscussion'
 watch(() => route.path, (newPath) => {
-  if (newPath === '/mobilelogin' || newPath === '/personalcenter') {
+  if (newPath === '/mobilelogin') {
     footerFlag.value = false
     headerFlag.value = false
   }
-  else if (newPath === '/hottopicdiscussion' || newPath === '/creativeservices') {
+  else if (newPath === '/hottopicdiscussion' || newPath === '/creativeservices' || newPath === '/personalcenter') {
     footerFlag.value = false
     headerFlag.value = true
   }

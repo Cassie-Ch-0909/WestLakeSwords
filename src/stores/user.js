@@ -7,8 +7,13 @@ export const useUserStore = defineStore('user', () => {
   username.value = JSON.parse(localStorage.getItem('userInfo'))
   const token = ref('')
   token.value = JSON.parse(localStorage.getItem('token'))
-  return {
-    username,
-    token,
-  }
+  return (
+    {
+      username,
+      token,
+    },
+    {
+      persist: true,
+    }
+  )
 })
