@@ -152,7 +152,7 @@ function checkCaptchaValue() {
 async function login() {
   if (checkPhoneNumber() && checkPhoneCode() && checkCaptchaValue()) {
     // console.log('可以调登录接口啦')
-    await loginAPI(
+    const res = await loginAPI(
       {
         captcha: captchaValue.value,
         phone: phoneNumer.value,
@@ -161,6 +161,8 @@ async function login() {
       },
     )
     // console.log(res)
+    localStorage.setItem('token', res.data.token)
+    localStorage.setItem('userInfo', res.data.userName)
   }
 }
 
