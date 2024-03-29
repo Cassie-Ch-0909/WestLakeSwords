@@ -4,8 +4,23 @@ import { useRouter } from 'vue-router'
 import { ElMessage } from 'element-plus'
 import RotateBgButton from '@/components/Header/components/RotateBgButton.vue'
 import { getCaptchaAPI, getPhoneCodeAPI, loginAPI } from '@/apis/login'
+import { useUserStore } from '@/stores/user.js'
+
+const userStore = useUserStore()
+// TODO：从pinia中拿出token的值判断当前是否处于登陆状态 使用v-if判断 登录|注册 还是 个人中心
+const token = ref('')
+token.value = userStore.token
+// console.log(token.value)
+// 如果token有值 那么loginFlag就是true
+const loginFlag = ref(false)
+if (token.value)
+  loginFlag.value = true
 
 const router = useRouter()// 用于页面的跳转
+
+function gotoPersonalCenter() {
+  router.push('/personalcenter')
+}
 
 /* 定义一下导航栏的name url */
 const navs = ref([
@@ -25,9 +40,6 @@ const navs = ref([
     定义一个函数changeActiveIndex用来改变activeIndex的值
 */
 const activeIndex = ref(0)
-function changeActiveIndex(index) {
-  activeIndex.value = index
-}
 
 /* 定义一个函数用于页面跳转 */
 function changeRouter(url) {
@@ -274,11 +286,18 @@ onUnmounted(() => {
     <!-- 右边大会直播和登陆注册 -->
     <div class="rightSide mr-8% h-full w17% flex items-center justify-between">
       <RotateBgButton />
-      <div class="ml6% flex items-center justify-center text-xs color-[#B0B0B0]" @click="dialogTableVisible = true">
+      <div
+        v-if="!loginFlag" class="ml6% flex items-center justify-center text-xs color-[#B0B0B0]"
+        @click="dialogTableVisible = true"
+      >
         <i class="iconfont icon-yonghu" />&nbsp;
         <span>登录</span>&nbsp;
         <span>|</span>&nbsp;
         <span>注册</span>
+      </div>
+      <div v-else class="w55% flex items-center justify-center text-xs color-[#B0B0B0]" @click="gotoPersonalCenter">
+        <img class="mr5% h35px w35px rounded-50%" src="/public/avator.jpeg" alt="">
+        个人中心
       </div>
     </div>
   </div>

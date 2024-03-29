@@ -11,9 +11,8 @@ export const useUserStore = defineStore('user', () => {
     {
       username,
       token,
-    },
-    {
-      persist: true,
     }
   )
+}, {
+  persist: true,
 })
