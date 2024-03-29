@@ -54,6 +54,8 @@ const phoneNumer = ref('')
 const phoneCode = ref('')
 // 输入框的图形验证码
 const captchaValue = ref('')
+// 登录时uuid的值
+const uuid = ref('')
 
 // TODO1： 验证输入框手机号的输入  手机号非空判断和格式判断
 function checkPhoneNumber() {
@@ -123,8 +125,11 @@ function checkPhoneCode() {
 
 // TODO4: 调接口获取图形验证码以及点击图形验证码会切换
 async function getCaptcha() {
+  // await getCaptchaAPI()
   const res = await getCaptchaAPI()
-  captcha.value = URL.createObjectURL(new Blob([res], { type: 'image/png' }))
+  captcha.value = `data:image/png;base64,${res.img}`
+  uuid.value = res.uuid
+  // console.log(uuid.value)
 }
 getCaptcha()
 function changeCaptcha() {
@@ -152,6 +157,7 @@ async function login() {
         captcha: captchaValue.value,
         phone: phoneNumer.value,
         phoneCode: phoneCode.value,
+        uuid: uuid.value,
       },
     )
     // console.log(res)

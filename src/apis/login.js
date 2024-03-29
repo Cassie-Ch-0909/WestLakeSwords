@@ -7,7 +7,7 @@ export function getCaptchaAPI() {
   return request({
     url: '/captcha', // http://localhost:8080/captcha
     method: 'GET',
-    responseType: 'blob',
+    // responseType: 'blob',
   })
 }
 
@@ -35,6 +35,7 @@ export function loginAPI(obj) {
       captcha: obj.captcha,
       phone: obj.phone,
       phoneCode: obj.phoneCode,
+      uuid: obj.uuid,
     },
   })
 }

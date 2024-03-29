@@ -34,7 +34,7 @@ watch(() => route.path, (newPath) => {
     footerFlag.value = false
     headerFlag.value = false
   }
-  else if (newPath === '/hottopicdiscussion') {
+  else if (newPath === '/hottopicdiscussion' || newPath === '/creativeservices') {
     footerFlag.value = false
     headerFlag.value = true
   }
