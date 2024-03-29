@@ -172,9 +172,17 @@ async function login() {
         uuid: uuid.value,
       },
     )
-    // console.log(res)
+    // console.log(res.data)
     localStorage.setItem('token', res.data.token)
-    localStorage.setItem('userInfo', res.data.userName)
+    localStorage.setItem('userInfo', JSON.stringify(res.data))
+    dialogTableVisible.value = false
+    loginFlag.value = true
+    setTimeout(() => {
+      ElMessage({
+        message: '登录成功',
+        type: 'success',
+      })
+    }, 1000)
   }
 }
 

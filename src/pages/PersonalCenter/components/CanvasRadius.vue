@@ -62,7 +62,7 @@ onMounted(() => {
 })
 
 onUnmounted(() => {
-  prizeWrap.value.removeEventListener('transitionend', stopRun)
+  prizeWrap.value?.removeEventListener('transitionend', stopRun)
 })
 
 // 获取随机数
