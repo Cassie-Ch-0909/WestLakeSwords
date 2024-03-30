@@ -177,7 +177,7 @@ async function login() {
     )
     // console.log(res.data)
     localStorage.setItem('token', res.data.token)
-    localStorage.setItem('userInfo', JSON.stringify(res.data))
+    // localStorage.setItem('userInfo', JSON.stringify(res.data))
     dialogTableVisible.value = false
     loginFlag.value = true
     setTimeout(() => {

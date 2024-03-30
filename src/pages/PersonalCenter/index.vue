@@ -40,7 +40,10 @@ import Personalized from './components/Personalized.vue'
 // 热点话题讨论
 // import HotTopicDiscussion from './components/HotTopicDiscussion.vue'
 import { useTwelveStore } from '@/stores/twelve.js'
+import { useUserStore } from '@/stores/user.js'
 
+const userStore = useUserStore()
+userStore.getUserInfo()
 /*
     定义一个变量用来切换是否签到的按钮状态
 */
@@ -209,29 +212,29 @@ function changeActiveMoudleIndex(index) {
         <div class="w-full flex flex-col items-center">
           <img class="rousnded-50% mt50px h70px w70px" src="/public/avator.jpeg" alt="">
           <p class="mt20px font-size-20px">
-            Cassie
+            {{ userStore.userInfo.username }}
           </p>
         </div>
         <!-- personal information -->
         <div class="ml40px mt35px">
           <span class="font-size-14px color-#555">公司：</span>
-          <span>宁波财经学院</span>
+          <span>{{ userStore.userInfo.company }}</span>
         </div>
         <div class="ml40px mt10px">
           <span class="font-size-14px color-#555">部门：</span>
-          <span>数字技术与工程学院</span>
+          <span>{{ userStore.userInfo.department }}</span>
         </div>
         <div class="ml40px mt10px">
           <span class="font-size-14px color-#555">职位：</span>
-          <span>学生</span>
+          <span>{{ userStore.userInfo.job }}</span>
         </div>
         <div class="ml40px mt10px">
           <span class="font-size-14px color-#555">电话：</span>
-          <span>13567686978</span>
+          <span>{{ userStore.userInfo.phone }}</span>
         </div>
         <div class="ml40px mt10px">
           <span class="font-size-14px color-#555">邮箱：</span>
-          <span>30822343978@qq.com</span>
+          <span>{{ userStore.userInfo.email }}</span>
         </div>
         <div class="mt30px w-full flex justify-center">
           <RotateBgButton @click="dialogTableVisible = true" />
