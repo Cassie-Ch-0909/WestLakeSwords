@@ -42,6 +42,7 @@ import Personalized from './components/Personalized.vue'
 // import HotTopicDiscussion from './components/HotTopicDiscussion.vue'
 import { useTwelveStore } from '@/stores/twelve.js'
 import { useUserStore } from '@/stores/user.js'
+import { getCategoryRulesListAPI } from '@/apis/category.js'
 
 /*
     定义一个变量用来切换是否签到的按钮状态
@@ -164,7 +165,13 @@ function changeImgToColor(index) {
   activeIndex.value = 100
 }
 
+// 修改资料的弹框
 const dialogTableVisible = ref(false)
+// 积分规则的弹框
+const categoryDialogTableVisible = ref(false)
+function showCategoryDialogTableVisible() {
+  categoryDialogTableVisible.value = true
+}
 
 /*
     执行方法得到twelveStore对象
@@ -224,10 +231,18 @@ function changeInfomations() {
     dialogTableVisible.value = false
   }, 1000)
   ElMessage({
-    message: '登录成功',
+    message: '修改成功',
     type: 'success',
   })
 }
+
+const categoryRulesList = ref()
+// TODO：调接口获取积分规则列表
+async function getCategoryRulesList() {
+  const res = await getCategoryRulesListAPI()
+  categoryRulesList.value = res.data
+}
+getCategoryRulesList()
 </script>
 
 <template>
@@ -282,13 +297,14 @@ function changeInfomations() {
       <div class="ml10px h-full flex flex-1 flex-col">
         <!-- 右边头部模块 -->
         <div
-          class="h80px w-full flex items-center justify-between bg-#fff pl20px pr20px font-size-20px color-[#00B4BC] font-bold shadow-lg"
+          class="h80px w-full flex items-center bg-#fff pl20px pr20px font-size-20px color-[#00B4BC] font-bold shadow-lg"
         >
           <p>
-            我的积分：<span class="color-[#333]">1648</span>
+            我的积分：<span class="color-[#333]">{{ userStore.userInfo.integral }}</span>
           </p>
-          <SignInRotateBgButton v-if="isSignInFlag" />
-          <button v-else class="h35px w120px rounded-20px font-size-13px">
+          <span class="ml8% font-size-16px hover:color-blue" @click="showCategoryDialogTableVisible">点击查看积分规则</span>
+          <SignInRotateBgButton v-if="isSignInFlag" class="ml50%" />
+          <button v-else class="ml20% h35px w120px rounded-20px font-size-13px">
             已签到
           </button>
         </div>
@@ -377,6 +393,18 @@ function changeInfomations() {
         >
           修改资料
         </button>
+      </div>
+    </el-dialog>
+
+    <!-- 查看积分规则的弹框 -->
+    <el-dialog v-model="categoryDialogTableVisible" width="800">
+      <div class="mb10px font-size-20px color-#00B4BC font-bold">
+        积分规则
+      </div>
+      <div v-for="(item, index) in categoryRulesList" :key="index" class="w-full">
+        <span class="inline-block w27%">{{ item.todo }}</span>
+        <span class="inline-block w7% color-#00B4BC">+{{ item.number }}</span>
+        <span class="inline-block w66% pl6%">{{ item.desc }}</span>
       </div>
     </el-dialog>
   </div>
