@@ -13,8 +13,8 @@ httpInstance.interceptors.request.use(
   (config) => {
     // 在发送请求之前做些什么
     // 判断是否存在token,如果存在将每个页面header添加token
-    // if (JSON.parse(localStorage.getItem('token')))
-    // config.headers.token = JSON.parse(localStorage.getItem('token'))
+    if (localStorage.getItem('token'))
+      config.headers.token = localStorage.getItem('token')
 
     return config
   },

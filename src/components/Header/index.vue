@@ -40,6 +40,9 @@ const navs = ref([
     定义一个函数changeActiveIndex用来改变activeIndex的值
 */
 const activeIndex = ref(0)
+function changeActiveIndex(index) {
+  activeIndex.value = index
+}
 
 /* 定义一个函数用于页面跳转 */
 function changeRouter(url) {

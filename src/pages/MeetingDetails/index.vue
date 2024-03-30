@@ -1,9 +1,7 @@
 <script setup>
-import NotBlockPeoplePhone from './components/NotBlockPeoplePhone.vue'
 import RightDetails from './components/RightDetails.vue'
 import UserComment from './components/UserComment.vue'
 import RelatedRecommendation from './components/RelatedRecommendation.vue'
-import NotBlockPeopleBarrage from './components/NotBlockPeopleBarrage.vue'
 
 // 移动端的点赞收藏保存转发
 const iconList = ref(
@@ -58,7 +56,9 @@ function selectIconOperate(index) {
   <!-- PC端会议详情 -->
   <div class="bg mb50px w-full bg-contain bg-top bg-no-repeat max-md:hidden">
     <div class="ml10% mr10% flex justify-between pt20px">
-      <NotBlockPeopleBarrage />
+      <video controls width="860" height="485">
+        <source src="/public/video.mp4">
+      </video>
       <RightDetails />
     </div>
     <div class="ml10% mr10% flex justify-between pt20px">
@@ -73,9 +73,11 @@ function selectIconOperate(index) {
         教育技术产业融合创新发展论坛
       </p>
     </div>
-    <NotBlockPeoplePhone />
+    <video controls width="375" height="300">
+      <source src="/public/video.mp4">
+    </video>
     <!-- 点赞投币。。。 -->
-    <div class="mt-[-200px] h80px w-full flex items-center justify-between pl30px pr30px">
+    <div class="mt-[10px] h80px w-full flex items-center justify-between pl30px pr30px">
       <div
         v-for="(item, index) in iconList" :key="index" class="flex flex-col color-[#00B4BC] hover:color-[#00F5FF]"
         :class="iconActiveIndex === index ? 'color-[#00F5FF]' : ''" @click="selectIconOperate(index)"
