@@ -1,5 +1,6 @@
 <script setup>
 import { useRouter } from 'vue-router'
+import { ElMessage } from 'element-plus'
 import RotateBgButton from './components/RotateBgButton.vue'
 import SignInRotateBgButton from './components/SignInRotateBgButton.vue'
 import DynamicTime from './components/DynamicTime.vue'
@@ -42,8 +43,6 @@ import Personalized from './components/Personalized.vue'
 import { useTwelveStore } from '@/stores/twelve.js'
 import { useUserStore } from '@/stores/user.js'
 
-const userStore = useUserStore()
-userStore.getUserInfo()
 /*
     定义一个变量用来切换是否签到的按钮状态
 */
@@ -195,6 +194,40 @@ function changeActiveMoudleIndex(index) {
     twelveStore.changeTwelveFlagtoFalse()
   }
 }
+
+const userStore = useUserStore()
+userStore.getUserInfo()
+const username = ref('')
+const company = ref('')
+const department = ref('')
+const position = ref('')
+const email = ref('')
+
+function gotoImproveInfomation() {
+  dialogTableVisible.value = true
+  username.value = userStore.userInfo.username
+  company.value = userStore.userInfo.company
+  department.value = userStore.userInfo.department
+  position.value = userStore.userInfo.job
+  email.value = userStore.userInfo.email
+}
+function changeInfomations() {
+  userStore.modifyUserInfo({
+    company: company.value,
+    department: department.value,
+    email: email.value,
+    job: position.value,
+    name: '',
+    username: username.value,
+  })
+  setTimeout(() => {
+    dialogTableVisible.value = false
+  }, 1000)
+  ElMessage({
+    message: '登录成功',
+    type: 'success',
+  })
+}
 </script>
 
 <template>
@@ -237,7 +270,7 @@ function changeActiveMoudleIndex(index) {
           <span>{{ userStore.userInfo.email }}</span>
         </div>
         <div class="mt30px w-full flex justify-center">
-          <RotateBgButton @click="dialogTableVisible = true" />
+          <RotateBgButton @click="gotoImproveInfomation" />
         </div>
       </div>
       <!-- TODO：签到功能 -->
@@ -315,36 +348,34 @@ function changeActiveMoudleIndex(index) {
       <div class="h45px w-full flex flex items-center pl50px pr50px">
         <span class="color-red">*</span>
         <span>姓名：</span>
-        <input type="text" class="h30px flex-1 border-1px border-#EAEAEA border-solid">
+        <input v-model="username" type="text" class="h30px flex-1 border-1px border-#EAEAEA border-solid pl10px">
       </div>
       <div class="h45px w-full flex flex items-center pl50px pr50px">
         <span class="color-red">*</span>
         <span>公司：</span>
-        <input type="text" class="h30px flex-1 border-1px border-#EAEAEA border-solid">
+        <input v-model="company" type="text" class="h30px flex-1 border-1px border-#EAEAEA border-solid pl10px">
       </div>
       <div class="h45px w-full flex flex items-center pl50px pr50px">
         <span class="color-red">*</span>
         <span>部门：</span>
-        <input type="text" class="h30px flex-1 border-1px border-#EAEAEA border-solid">
+        <input v-model="department" type="text" class="h30px flex-1 border-1px border-#EAEAEA border-solid pl10px">
       </div>
       <div class="h45px w-full flex flex items-center pl50px pr50px">
         <span class="color-red">*</span>
         <span>职位：</span>
-        <input type="text" class="h30px flex-1 border-1px border-#EAEAEA border-solid">
-      </div>
-      <div class="h45px w-full flex flex items-center pl23px pr50px">
-        <span class="color-red">*</span>
-        <span>手机号码：</span>
-        <input type="text" class="h30px flex-1 border-1px border-#EAEAEA border-solid">
+        <input v-model="position" type="text" class="h30px flex-1 border-1px border-#EAEAEA border-solid pl10px">
       </div>
       <div class="h45px w-full flex flex items-center pl23px pr50px">
         <span class="color-red">*</span>
         <span>邮箱地址：</span>
-        <input type="text" class="h30px flex-1 border-1px border-#EAEAEA border-solid">
+        <input v-model="email" type="text" class="h30px flex-1 border-1px border-#EAEAEA border-solid pl10px">
       </div>
       <div class="w-full flex justify-center">
-        <button class="mb40px mt30px h40px w350px from-[#00B4BC] to-[#37C0F7] bg-gradient-to-r color-#fff">
-          登录/注册
+        <button
+          class="mb40px mt30px h40px w350px from-[#00B4BC] to-[#37C0F7] bg-gradient-to-r color-#fff"
+          @click="changeInfomations"
+        >
+          修改资料
         </button>
       </div>
     </el-dialog>
