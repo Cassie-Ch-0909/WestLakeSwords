@@ -1,6 +1,7 @@
 <script setup>
 // TODO: 下拉展示更多和收起内容会触发全部的,应该是单个控制(调接口时再说)
 
+import { useRouter } from 'vue-router'
 import { getAgendaByDateAPI, getAgendaByTypeAPI, getAgendaByTypeAndDateAPI, getAllAgendasAPI } from '@/apis/agenda'
 
 // 需要v-for的数组
@@ -158,6 +159,14 @@ function selectedOptionChange(e) {
     })
   }
 }
+
+// TODO: 点击观看回放跳转到大会详情
+const router = useRouter()
+function watchReplay(id) {
+  // console.log(id)
+  // 通过path跳转传递
+  router.push({ path: '/meetingdetails', query: { id } })
+}
 </script>
 
 <template>
@@ -234,6 +243,7 @@ function selectedOptionChange(e) {
               <!-- 观看回放 -->
               <div
                 class="ml5% h30px w8% flex items-center justify-center rounded-[13px] bg-[#00B4BC] font-size-13px color-[#fff]"
+                @click="watchReplay(item3.id)"
               >
                 <p>观看回放</p>
               </div>

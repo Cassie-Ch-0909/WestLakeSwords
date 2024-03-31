@@ -49,3 +49,27 @@ export function getAllAgendasAPI() {
     method: 'GET',
   })
 }
+
+/*
+    根据id查询大会议程
+*/
+export function getAgendaByIdAPI(id) {
+  return request({
+    url: '/user/agenda/getById',
+    method: 'GET',
+    params: {
+      id,
+    },
+  })
+}
+
+/*
+    会议点赞
+*/
+export function likeForAgendaAPI(data) {
+  return request({
+    url: '/user/agenda/like',
+    method: 'POST',
+    data,
+  })
+}

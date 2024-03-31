@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import RotateBgButton from './RotateBgButton.vue'
 import RotateBgButtonD from './RotateBgButtonD.vue'
+import { getAgendaByIdAPI, likeForAgendaAPI } from '@/apis/agenda'
 
 const iconList = ref(
   [
@@ -31,24 +32,6 @@ const iconList = ref(
     },
   ],
 )
-
-/*
-    定义函数和变量来实现点赞和取消点赞功能
-*/
-const iconActiveIndex = ref()
-const iconActiveFlag = ref(false)
-function selectIconOperate(index) {
-  if (index === 0 && !iconActiveFlag.value) {
-    iconActiveIndex.value = index
-    iconList.value[0].name++
-    iconActiveFlag.value = true
-  }
-  else {
-    iconList.value[0].name--
-    iconActiveFlag.value = false
-    iconActiveIndex.value = 9
-  }
-}
 
 // 会议议程时间线
 const agendaTimeLineList = ref([
@@ -133,6 +116,57 @@ const agendaTimeLineList = ref([
     person: '苗春雨（主持人）   安恒信息高级副总裁、首席人才官 韩 霞',
   },
 ])
+
+// TODO1: 获取路由参数 发请求获取当前页的大会详情
+const route = useRoute()
+// 在组件挂载完成后通过 route.query.属性名 接收参数
+// console.log(route.query.id)
+
+const agendaDetails = ref()
+const title = ref()
+// TODO2: 发请求获取路由参数
+async function getAgendaById(id) {
+  const res = await getAgendaByIdAPI(id)
+  // console.log(res)
+  agendaDetails.value = res.data[0]
+  // TODO: 获取数据库中的点赞数和观看数
+  iconList.value[0].name = agendaDetails.value.like
+  iconList.value[4].name = agendaDetails.value.watch
+  title.value = res.data[0].title
+}
+getAgendaById(route.query.id)
+
+/*
+    定义函数和变量来实现点赞和取消点赞功能
+*/
+const iconActiveIndex = ref()
+const iconLikeActiveFlag = ref(false)
+
+// async function likeForAgenda(data){
+//   await likeForAgendaAPI({
+//     id:data
+//   })
+// }
+// likeForAgenda(4)
+function selectIconOperate(index) {
+  // if (index === 0 && !iconActiveFlag.value) {
+  //   iconActiveIndex.value = index
+  //   iconList.value[0].name++
+  //   iconActiveFlag.value = true
+  // }
+  // else {
+  //   iconList.value[0].name--
+  //   iconActiveFlag.value = false
+  //   iconActiveIndex.value = 9
+  // }
+  if (index === 0) {
+    // 进入点赞分支
+    if (!iconLikeActiveFlag.value) {
+      // TODO：调点赞接口为会议点赞
+      // likeForAgenda(4)
+    }
+  }
+}
 </script>
 
 <template>
@@ -145,7 +179,7 @@ const agendaTimeLineList = ref([
     <div class="title w-full flex-1">
       <!-- 标题 -->
       <p class="p15px font-size-22px color-#fff font-bold">
-        教育技术产业融合创新发展论坛
+        {{ title }}
       </p>
       <!-- 点赞投币。。。 -->
       <div class="w-full flex justify-between pl30px pr30px">

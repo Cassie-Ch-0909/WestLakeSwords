@@ -2,6 +2,7 @@
 import RightDetails from './components/RightDetails.vue'
 import UserComment from './components/UserComment.vue'
 import RelatedRecommendation from './components/RelatedRecommendation.vue'
+import { getAgendaByIdAPI } from '@/apis/agenda'
 
 // 移动端的点赞收藏保存转发
 const iconList = ref(
@@ -50,13 +51,29 @@ function selectIconOperate(index) {
     iconActiveIndex.value = 9
   }
 }
+
+// TODO1: 获取路由参数 发请求获取当前页的大会详情
+const route = useRoute()
+// 在组件挂载完成后通过 route.query.属性名 接收参数
+// console.log(route.query.id)
+
+const agendaDetails = ref()
+// TODO2: 发请求获取路由参数
+async function getAgendaById(id) {
+  const res = await getAgendaByIdAPI(id)
+  // console.log(res)
+  agendaDetails.value = res.data[0]
+  // TODO: 获取数据库图片进行渲染
+  // console.log(agendaDetails.value.img)
+}
+getAgendaById(route.query.id)
 </script>
 
 <template>
   <!-- PC端会议详情 -->
   <div class="bg mb50px w-full bg-contain bg-top bg-no-repeat max-md:hidden">
     <div class="ml10% mr10% flex justify-between pt20px">
-      <video controls width="860" height="485">
+      <video controls width="860" height="450" class="mt-[-50px]">
         <source src="/public/video.mp4">
       </video>
       <RightDetails />

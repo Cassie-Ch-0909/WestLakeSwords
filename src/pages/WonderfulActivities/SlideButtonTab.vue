@@ -309,53 +309,58 @@ onMounted(() => {
           </div>
         </div>
       </div>
-      <div v-for="(item, index) in btnList" v-show="activedBtnIndex === index" :key="index">
-        <div
-          v-for="(item2, index2) in item.list" :key="index2" class="mt20px h300px w-full flex"
-          :class="index2 % 2 === 1 ? ' justify-end' : ' justify-start'"
-        >
-          <div class="h-full w90% flex bg-white shadow-xl">
-            <div v-if="index2 % 2 === 0" class="h-full w50%">
-              <img :src="item2.img" alt="" class="h-full w-full">
-            </div>
-            <div v-if="index2 % 2 === 0" class="h-full w50% p20px">
-              <div class="h-30% w-full flex items-center justify-between">
-                <span class="w60% font-size-20px font-bold">{{ item2.title }}</span>
-                <span
-                  class="h20px w85px flex items-center justify-center rounded-10px bg-[#E6F5F7] font-size-12px color-[#00B4C1] font-bold"
-                >+订阅</span>
+      <div v-for="(item, index) in btnList" v-show="activedBtnIndex === index" :key="index" class="">
+        <template v-if="item.list.length > 0">
+          <div
+            v-for="(item2, index2) in item.list" :key="index2" class="mt20px h300px w-full flex"
+            :class="index2 % 2 === 1 ? ' justify-end' : ' justify-start'"
+          >
+            <div class="h-full w90% flex bg-white shadow-xl">
+              <div v-if="index2 % 2 === 0" class="h-full w50%">
+                <img :src="item2.img" alt="" class="h-full w-full">
               </div>
-              <div class="ellipsis h-57% w-full font-size-14px">
-                {{ item2.content }}
+              <div v-if="index2 % 2 === 0" class="h-full w50% p20px">
+                <div class="h-30% w-full flex items-center justify-between">
+                  <span class="w60% font-size-20px font-bold">{{ item2.title }}</span>
+                  <span
+                    class="h20px w85px flex items-center justify-center rounded-10px bg-[#E6F5F7] font-size-12px color-[#00B4C1] font-bold"
+                  >+订阅</span>
+                </div>
+                <div class="ellipsis h-57% w-full font-size-14px">
+                  {{ item2.content }}
+                </div>
+                <div class="h13% w-full flex items-center justify-between">
+                  <span class="font-size-13px color-[#00B4BC] font-bold">{{ item2.time }}</span>
+                  <span
+                    class="mr20px h28px w100px flex items-center justify-center border-2px border-[#00B4BC] rounded-15px bg-[#fff] font-size-14px color-[#00B4BC] font-bold hover:bg-[#00B4BC] hover:color-[#fff]"
+                  >了解详情</span>
+                </div>
               </div>
-              <div class="h13% w-full flex items-center justify-between">
-                <span class="font-size-13px color-[#00B4BC] font-bold">{{ item2.time }}</span>
-                <span
-                  class="mr20px h28px w100px flex items-center justify-center border-2px border-[#00B4BC] rounded-15px bg-[#fff] font-size-14px color-[#00B4BC] font-bold hover:bg-[#00B4BC] hover:color-[#fff]"
-                >了解详情</span>
+              <div v-if="index2 % 2 === 1" class="h-full w50% p20px">
+                <div class="h-30% w-full flex items-center justify-between">
+                  <span class="w60% font-size-20px font-bold">{{ item2.title }}</span>
+                  <span
+                    class="h20px w85px flex items-center justify-center rounded-10px bg-[#E6F5F7] font-size-12px color-[#00B4C1] font-bold"
+                  >+订阅</span>
+                </div>
+                <div class="ellipsis h-57% w-full font-size-14px">
+                  {{ item2.content }}
+                </div>
+                <div class="h13% w-full flex items-center justify-between">
+                  <span class="font-size-13px color-[#00B4BC] font-bold">{{ item2.time }}</span>
+                  <span
+                    class="mr20px h28px w100px flex items-center justify-center border-2px border-[#00B4BC] rounded-15px bg-[#fff] font-size-14px color-[#00B4BC] font-bold hover:bg-[#00B4BC] hover:color-[#fff]"
+                  >了解详情</span>
+                </div>
               </div>
-            </div>
-            <div v-if="index2 % 2 === 1" class="h-full w50% p20px">
-              <div class="h-30% w-full flex items-center justify-between">
-                <span class="w60% font-size-20px font-bold">{{ item2.title }}</span>
-                <span
-                  class="h20px w85px flex items-center justify-center rounded-10px bg-[#E6F5F7] font-size-12px color-[#00B4C1] font-bold"
-                >+订阅</span>
+              <div v-if="index2 % 2 === 1" class="h-full w50%">
+                <img :src="item2.img" alt="" class="h-full w-full">
               </div>
-              <div class="ellipsis h-57% w-full font-size-14px">
-                {{ item2.content }}
-              </div>
-              <div class="h13% w-full flex items-center justify-between">
-                <span class="font-size-13px color-[#00B4BC] font-bold">{{ item2.time }}</span>
-                <span
-                  class="mr20px h28px w100px flex items-center justify-center border-2px border-[#00B4BC] rounded-15px bg-[#fff] font-size-14px color-[#00B4BC] font-bold hover:bg-[#00B4BC] hover:color-[#fff]"
-                >了解详情</span>
-              </div>
-            </div>
-            <div v-if="index2 % 2 === 1" class="h-full w50%">
-              <img :src="item2.img" alt="" class="h-full w-full">
             </div>
           </div>
+        </template>
+        <div v-else class="mt20px h300px w-full rounded-20px bg-[#fff]">
+          <el-empty description="未查询到活动信息" />
         </div>
       </div>
     </div>
