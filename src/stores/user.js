@@ -9,7 +9,7 @@ export const useUserStore = defineStore(
         从localstorage获取token
     */
     const token = ref('')
-    token.value = localStorage.getItem('token')
+    // token.value = localStorage.getItem('token')
 
     const userInfo = ref()
     /*
@@ -18,6 +18,7 @@ export const useUserStore = defineStore(
     async function getUserInfo() {
       const res = await getUserInfoAPI()
       userInfo.value = res.data
+      token.value = res.data.token
     }
 
     /*
@@ -34,8 +35,5 @@ export const useUserStore = defineStore(
       getUserInfo,
       modifyUserInfo,
     }
-  },
-  {
-    persist: true,
   },
 )

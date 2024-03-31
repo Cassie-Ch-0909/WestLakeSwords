@@ -177,7 +177,7 @@ async function login() {
     )
     // console.log(res.data)
     localStorage.setItem('token', res.data.token)
-    // localStorage.setItem('userInfo', JSON.stringify(res.data))
+    localStorage.setItem('userInfo', JSON.stringify(res.data))
     dialogTableVisible.value = false
     loginFlag.value = true
     setTimeout(() => {
@@ -195,6 +195,13 @@ async function login() {
 onUnmounted(() => {
   clearInterval(timer.value)
 })
+
+/*
+    点击大会直播跳转到大会直播页面
+*/
+function gotoAgendaLive() {
+  router.push('/agendalive')
+}
 </script>
 
 <template>
@@ -296,7 +303,7 @@ onUnmounted(() => {
     </div>
     <!-- 右边大会直播和登陆注册 -->
     <div class="rightSide mr-8% h-full w17% flex items-center justify-between">
-      <RotateBgButton />
+      <RotateBgButton @click="gotoAgendaLive" />
       <div
         v-if="!loginFlag" class="ml6% flex items-center justify-center text-xs color-[#B0B0B0]"
         @click="dialogTableVisible = true"

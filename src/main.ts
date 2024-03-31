@@ -14,6 +14,7 @@ import {
   Tooltip,
 } from 'ant-design-vue'
 import { createPinia } from 'pinia'
+
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 import VueLuckyCanvas from '@lucky-canvas/vue'
 import App from './App.vue'
@@ -53,7 +54,6 @@ const i18n = createI18n({
 })
 const pinia = createPinia()
 pinia.use(piniaPluginPersistedstate)
-
 app.use(ElementPlus)
 app.use(router)
 app.use(i18n)

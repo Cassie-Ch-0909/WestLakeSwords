@@ -36,7 +36,7 @@ import MyActivities from './components/MyActivities.vue'
 import Personalized from './components/Personalized.vue'
 
 // 趣味活动
-// import FunActivities from './components/FunActivities.vue'
+import FunActivities from './components/FunActivities.vue'
 
 // 热点话题讨论
 // import HotTopicDiscussion from './components/HotTopicDiscussion.vue'
@@ -303,8 +303,8 @@ getCategoryRulesList()
             我的积分：<span class="color-[#333]">{{ userStore.userInfo.integral }}</span>
           </p>
           <span class="ml8% font-size-16px hover:color-blue" @click="showCategoryDialogTableVisible">点击查看积分规则</span>
-          <SignInRotateBgButton v-if="isSignInFlag" class="ml50%" />
-          <button v-else class="ml20% h35px w120px rounded-20px font-size-13px">
+          <SignInRotateBgButton v-if="isSignInFlag" class="ml30%" />
+          <button v-else class="ml30% h35px w120px rounded-20px font-size-13px">
             已签到
           </button>
         </div>
