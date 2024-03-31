@@ -175,9 +175,8 @@ async function login() {
         uuid: uuid.value,
       },
     )
-    // console.log(res.data)
-    localStorage.setItem('token', res.data.token)
-    localStorage.setItem('userInfo', JSON.stringify(res.data))
+    // TODO7: 将登录成功后的token和用户信息保存到pinia中，并实现pinia的数据存储到LocalStorage中实现持久化存储
+    userStore.setUserInfoAndToken(res.data, res.data.token)
     dialogTableVisible.value = false
     loginFlag.value = true
     setTimeout(() => {

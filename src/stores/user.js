@@ -8,17 +8,25 @@ export const useUserStore = defineStore(
     /*
         从localstorage获取token
     */
-    const token = ref('')
-    // token.value = localStorage.getItem('token')
+    const token = ref()
+    // token.value = localStorage.getItem("token");
 
     const userInfo = ref()
+
+    /*
+        设置userInfo和token的值
+    */
+    function setUserInfoAndToken(userInfoValue, tokenValue) {
+      userInfo.value = userInfoValue
+      token.value = tokenValue
+    }
+
     /*
         获取用户信息
     */
     async function getUserInfo() {
       const res = await getUserInfoAPI()
       userInfo.value = res.data
-      token.value = res.data.token
     }
 
     /*
@@ -34,6 +42,10 @@ export const useUserStore = defineStore(
       token,
       getUserInfo,
       modifyUserInfo,
+      setUserInfoAndToken,
     }
+  },
+  {
+    persist: true,
   },
 )
