@@ -22,11 +22,19 @@ export const useUserStore = defineStore(
     }
 
     /*
+        单独设置userInfo的值
+    */
+    function setUserInfo(userInfoValue) {
+      userInfo.value = userInfoValue
+    }
+
+    /*
         获取用户信息
     */
     async function getUserInfo() {
       const res = await getUserInfoAPI()
-      userInfo.value = res.data
+      // userInfo.value =
+      setUserInfo(res.data)
     }
 
     /*

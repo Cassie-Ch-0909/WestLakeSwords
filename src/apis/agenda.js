@@ -66,10 +66,12 @@ export function getAgendaByIdAPI(id) {
 /*
     会议点赞
 */
-export function likeForAgendaAPI(data) {
+export function likeForAgendaAPI(id) {
   return request({
     url: '/user/agenda/like',
     method: 'POST',
-    data,
+    data: {
+      id,
+    },
   })
 }

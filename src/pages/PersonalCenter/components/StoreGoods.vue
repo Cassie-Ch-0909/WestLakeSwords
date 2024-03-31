@@ -121,13 +121,13 @@ getAllGoods()
         {{ item.goodsName }}
       </p>
       <div class="w-full flex font-size-15px color-[#00B4BC]">
-        <span class="ml50px font-bold">￥2000</span>
+        <span class="ml50px font-bold">￥{{ item.price }}</span>
         <button class="ml30px w100px rounded-10px bg-[#00B4BC] font-size-13px color-#fff" @click="showDialog(1, index)">
           去购买
         </button>
       </div>
       <div class="mt10px w-full flex pb10px font-size-15px">
-        <span class="ml20px font-bold">兑换：2000</span>
+        <span class="ml20px font-bold">兑换：{{ item.integral }}</span>
         <button class="ml30px w100px rounded-10px bg-[#00B4BC] font-size-13px color-#fff" @click="showDialog(2, index)">
           去兑换
         </button>

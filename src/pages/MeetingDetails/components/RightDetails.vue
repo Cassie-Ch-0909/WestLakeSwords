@@ -142,12 +142,10 @@ getAgendaById(route.query.id)
 const iconActiveIndex = ref()
 const iconLikeActiveFlag = ref(false)
 
-// async function likeForAgenda(data){
-//   await likeForAgendaAPI({
-//     id:data
-//   })
-// }
-// likeForAgenda(4)
+async function likeForAgenda(id) {
+  await likeForAgendaAPI(id)
+}
+likeForAgenda(4)
 function selectIconOperate(index) {
   // if (index === 0 && !iconActiveFlag.value) {
   //   iconActiveIndex.value = index
