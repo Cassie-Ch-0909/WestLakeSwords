@@ -1,4 +1,6 @@
 <script setup>
+import { getHotTopicContentListAPI } from '@/apis/hotTopic'
+
 const carouselList = ref([
   {
     img: 'https://image.3001.net/images/20240319/1710837144_65f94d9860d390743cb1d.jpg',
@@ -213,6 +215,13 @@ const WebSecureList = ref([
     hot: '5833',
   },
 ])
+
+// TODO：调接口获取热点话题讨论数组
+async function getHotTopicContentList() {
+  const res = await getHotTopicContentListAPI()
+  WebSecureList.value = res.data
+}
+getHotTopicContentList()
 </script>
 
 <template>
@@ -229,7 +238,7 @@ const WebSecureList = ref([
       </el-carousel>
     </div>
     <!-- tab栏切换 最新|最热 -->
-    <div class="mt10px h55px w-full flex items-center rounded-t-10px bg-#fff pl10px">
+    <div class="mt10px h55px w-100% flex items-center rounded-t-10px bg-#fff pl10px">
       <span class="border-b-4 border-#00B4BC pt5px">最新</span>
       <span class="pl10px pr10px">|</span>
       <span>最热</span>
@@ -237,7 +246,7 @@ const WebSecureList = ref([
     <!-- 每条文章 -->
     <div
       v-for="(item, index) in WebSecureList" :key="index"
-      class="h240px w-full flex flex-col justify-between border-b-1 border-t-1 border-#E0E0E0 bg-#fff p20px"
+      class="h240px w-100% flex flex-col justify-between border-b-1 border-t-1 border-#E0E0E0 bg-#fff p20px"
     >
       <p class="font-size-20px font-bold">
         {{ item.title }}
