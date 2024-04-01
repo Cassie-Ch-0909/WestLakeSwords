@@ -1,7 +1,21 @@
 <script setup>
 import { useScroll } from '@vueuse/core'
+import { getArticleRankingAPI } from '@/apis/hotTopic'
 
 const { y } = useScroll(window)
+
+// TODO: 调接口获取文章榜数据 点击换一换重新获取文章里列表
+const articleRankingList = ref()
+async function getArticleRanking() {
+  const res = await getArticleRankingAPI()
+  // console.log(res)
+  articleRankingList.value = res.data
+}
+getArticleRanking()
+
+function changeArtivleRankings() {
+  getArticleRanking()
+}
 </script>
 
 <template>
@@ -25,7 +39,7 @@ const { y } = useScroll(window)
           <img class="w30px" src="/public/hottopic/article.png" alt="">
           <span class="ml5px">文章榜</span>
         </div>
-        <div class="flex items-center color-#999">
+        <div class="flex items-center color-#999" @click="changeArtivleRankings">
           <i class="iconfont icon-huanyihuan mr5px font-size-15px" />
           <p class="font-size-13px">
             换一换
@@ -34,9 +48,12 @@ const { y } = useScroll(window)
       </div>
       <div class="w-full flex-1 border-b-1 border-#E0E0E0 font-size-14px">
         <ul class="h-full w-full flex flex-col justify-evenly">
-          <li v-for="(item, index) in 5" :key="index" class="ml5% mr5% w-90% flex items-center p5px hover:bg-#E0E0E0">
-            <span class="font-size-16px font-bold">1</span>
-            <span class="ml25px">一个排查了一天的BUG，你在...</span>
+          <li
+            v-for="(item, index) in articleRankingList" :key="index"
+            class="ml5% mr5% w-90% flex items-center p5px hover:bg-#E0E0E0"
+          >
+            <span class="font-size-16px font-bold">{{ item.index }}</span>
+            <span class="shenglue ml25px">{{ item.content }}</span>
           </li>
         </ul>
       </div>
@@ -157,7 +174,7 @@ const { y } = useScroll(window)
             <img class="w30px" src="/public/hottopic/article.png" alt="">
             <span class="ml5px">文章榜</span>
           </div>
-          <div class="flex items-center color-#999">
+          <div class="flex items-center color-#999" @click="changeArtivleRankings">
             <i class="iconfont icon-huanyihuan mr5px font-size-15px" />
             <p class="font-size-13px">
               换一换
@@ -166,9 +183,12 @@ const { y } = useScroll(window)
         </div>
         <div class="w-full flex-1 border-b-1 border-#E0E0E0 font-size-14px">
           <ul class="h-full w-full flex flex-col justify-evenly">
-            <li v-for="(item, index) in 5" :key="index" class="ml5% mr5% w-90% flex items-center p5px hover:bg-#E0E0E0">
-              <span class="font-size-16px font-bold">1</span>
-              <span class="ml25px">一个排查了一天的BUG，你在...</span>
+            <li
+              v-for="(item, index) in articleRankingList" :key="index"
+              class="ml5% mr5% w-90% flex items-center p5px hover:bg-#E0E0E0"
+            >
+              <span class="font-size-16px font-bold">{{ item.index }}</span>
+              <span class="shenglue ml25px">{{ item.content }}</span>
             </li>
           </ul>
         </div>
@@ -183,3 +203,11 @@ const { y } = useScroll(window)
     </div>
   </div>
 </template>
+
+<style scoped>
+.shenglue {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+</style>

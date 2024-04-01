@@ -9,3 +9,13 @@ export function getHotTopicContentListAPI() {
     method: 'GET',
   })
 }
+
+/*
+    获取文章榜数据列表
+*/
+export function getArticleRankingAPI() {
+  return request({
+    method: 'GET',
+    url: '/user/article/list',
+  })
+}
