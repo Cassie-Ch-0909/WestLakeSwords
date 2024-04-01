@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue'
-import { ElMessage } from 'element-plus'
+import { ElMessage, ElMessageBox } from 'element-plus'
 import RotateBgButton from './RotateBgButton.vue'
 import RotateBgButtonD from './RotateBgButtonD.vue'
 import { getAgendaByIdAPI, likeForAgendaAPI, starForAgendaAPI, subscribeForAgendaAPI } from '@/apis/agenda'
@@ -147,7 +147,7 @@ const iconLikeActiveFlag = ref(false)
 const iconStarActiveFlag = ref(false)
 
 // 定义变量iconSubscribeActiveFlag来控制订阅还是取消订阅
-// const iconSubscribeActiveFlag = ref(false)
+const iconSubscribeActiveFlag = ref(false)
 
 // 定义一个数组来存放点赞和收藏的内容 便于给图标上色
 const selectList = ref([])
@@ -175,11 +175,11 @@ async function starForAgenda(id) {
 /*
     订阅
 */
-// async function subscribeForAgenda(id) {
-//   await subscribeForAgendaAPI(id)
-//   // 实时更新数据
-//   await getAgendaById(route.query.id)
-// }
+async function subscribeForAgenda(id) {
+  await subscribeForAgendaAPI(id)
+  // 实时更新数据
+  await getAgendaById(route.query.id)
+}
 
 /*
     实现点赞或收藏
@@ -247,6 +247,40 @@ function selectIconOperate(index) {
     }
   }
 }
+
+/*
+    实现订阅功能
+    点击订阅按钮 跳出一个弹框 选择确定 调用订阅接口 并给出一个订阅成功的提示
+*/
+
+// 是否确定订阅的弹框
+function open() {
+  ElMessageBox.confirm(
+    '您确定订阅这个会议吗',
+    '提示',
+    {
+      confirmButtonText: '确定',
+      cancelButtonText: '取消',
+      type: 'warning',
+    },
+  )
+    .then(() => {
+      // 进入确定订阅分支 调取订阅接口
+      subscribeForAgenda(route.query.id)
+      // 将订阅按钮的状态改成true
+      iconSubscribeActiveFlag.value = true
+      ElMessage({
+        type: 'success',
+        message: '订阅成功',
+      })
+    })
+    .catch(() => {
+      ElMessage({
+        type: 'info',
+        message: '取消订阅',
+      })
+    })
+}
 </script>
 
 <template>
@@ -274,7 +308,10 @@ function selectIconOperate(index) {
       <!-- 两个按钮 -->
       <div class="mt15px h35px w-full flex justify-between pl30px pr30px">
         <RotateBgButton />
-        <RotateBgButtonD />
+        <RotateBgButtonD v-if="!iconSubscribeActiveFlag" @click="open" />
+        <button v-else class="h26px w120px rounded-15px font-size-13px">
+          已订阅
+        </button>
       </div>
       <!-- 议程详情 -->
       <div
