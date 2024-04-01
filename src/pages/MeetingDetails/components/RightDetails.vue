@@ -1,8 +1,9 @@
 <script setup>
 import { ref } from 'vue'
+import { ElMessage } from 'element-plus'
 import RotateBgButton from './RotateBgButton.vue'
 import RotateBgButtonD from './RotateBgButtonD.vue'
-import { getAgendaByIdAPI, likeForAgendaAPI } from '@/apis/agenda'
+import { getAgendaByIdAPI, likeForAgendaAPI, starForAgendaAPI, subscribeForAgendaAPI } from '@/apis/agenda'
 
 const iconList = ref(
   [
@@ -129,39 +130,120 @@ async function getAgendaById(id) {
   const res = await getAgendaByIdAPI(id)
   // console.log(res)
   agendaDetails.value = res.data[0]
-  // TODO: 获取数据库中的点赞数和观看数
+  // TODO3: 获取数据库中的点赞数和观看数
   iconList.value[0].name = agendaDetails.value.like
   iconList.value[4].name = agendaDetails.value.watch
   title.value = res.data[0].title
 }
 getAgendaById(route.query.id)
 
-/*
-    定义函数和变量来实现点赞和取消点赞功能
-*/
+// 定义变量iconActiveIndex来控制当前点击的是谁
 const iconActiveIndex = ref()
+
+// 定义变量iconLikeActiveFlag来控制点赞还是取消点赞
 const iconLikeActiveFlag = ref(false)
 
+// 定义变量iconStarActiveFlag来控制收藏还是取消收藏
+const iconStarActiveFlag = ref(false)
+
+// 定义变量iconSubscribeActiveFlag来控制订阅还是取消订阅
+// const iconSubscribeActiveFlag = ref(false)
+
+// 定义一个数组来存放点赞和收藏的内容 便于给图标上色
+const selectList = ref([])
+
+// TODO: 调点赞接口 第一次调用是点赞 第二次调用是取消点赞。 收藏 订阅 接口同理
+
+/*
+    点赞接口
+*/
 async function likeForAgenda(id) {
   await likeForAgendaAPI(id)
+  // 实时更新数据
+  await getAgendaById(route.query.id)
 }
-likeForAgenda(4)
+
+/*
+    收藏接口
+*/
+async function starForAgenda(id) {
+  await starForAgendaAPI(id)
+  // 实时更新数据
+  await getAgendaById(route.query.id)
+}
+
+/*
+    订阅
+*/
+// async function subscribeForAgenda(id) {
+//   await subscribeForAgendaAPI(id)
+//   // 实时更新数据
+//   await getAgendaById(route.query.id)
+// }
+
+/*
+    实现点赞或收藏
+*/
 function selectIconOperate(index) {
-  // if (index === 0 && !iconActiveFlag.value) {
-  //   iconActiveIndex.value = index
-  //   iconList.value[0].name++
-  //   iconActiveFlag.value = true
-  // }
-  // else {
-  //   iconList.value[0].name--
-  //   iconActiveFlag.value = false
-  //   iconActiveIndex.value = 9
-  // }
   if (index === 0) {
-    // 进入点赞分支
+    // 当前选中的activeIndex切换到点赞
+    iconActiveIndex.value = index
+    /*
+        如果现在iconLikeActiveFlag为false，说明是第一次点击，此时调用点赞接口，
+        在selectList放入点赞的index，并把iconLikeActiveFlag改为true
+    */
     if (!iconLikeActiveFlag.value) {
-      // TODO：调点赞接口为会议点赞
-      // likeForAgenda(4)
+      likeForAgenda(route.query.id)
+      iconLikeActiveFlag.value = true
+      selectList.value.push(index)
+      ElMessage({
+        message: '点赞成功',
+        type: 'success',
+      })
+    }
+    else {
+      /*
+          如果现在iconLikeActiveFlag为true，说明是第二次点击，再调用一次点赞接口取消点赞，
+          并将iconLikeActiveFlag改为false,从selectList移除点赞的index
+      */
+      likeForAgenda(route.query.id)
+      iconLikeActiveFlag.value = false
+      selectList.value.pop()
+      ElMessage({
+        message: '取消点赞',
+        type: 'warning',
+      })
+    }
+  }
+
+  if (index === 2) {
+    // 当前选中的activeIndex切换到收藏
+    iconActiveIndex.value = index
+    /*
+        如果现在iconStarActiveFlag为false，说明是第一次点击，此时调用收藏接口，
+        在selectList放入收藏的index，并把iconStarActiveFlag改为true
+    */
+    if (!iconStarActiveFlag.value) {
+      starForAgenda(route.query.id)
+      iconStarActiveFlag.value = true
+      selectList.value.push(index)
+      ElMessage({
+        message: '收藏成功',
+        type: 'success',
+      })
+    }
+    else {
+      /*
+          如果现在iconStarActiveFlag为true，说明是第二次点击，再调用一次收藏接口取消点赞，
+          并将iconStarActiveFlag改为false,从selectList移除收藏的index
+      */
+      starForAgenda(route.query.id)
+      iconStarActiveFlag.value = false
+      selectList.value.pop()
+      ElMessage({
+        message: '取消收藏',
+        type: 'warning',
+      })
     }
   }
 }
@@ -183,7 +265,7 @@ function selectIconOperate(index) {
       <div class="w-full flex justify-between pl30px pr30px">
         <div
           v-for="(item, index) in iconList" :key="index" class="flex flex-col color-#fff hover:color-[#00F5FF]"
-          :class="iconActiveIndex === index ? 'color-[#00F5FF]' : ''" @click="selectIconOperate(index)"
+          :class="selectList.includes(index) ? 'color-[#00F5FF]' : ''" @click="selectIconOperate(index)"
         >
           <i :class="item.icon" class="iconfont font-size-25px" />
           <span class="font-size-12px">{{ item.name }}</span>

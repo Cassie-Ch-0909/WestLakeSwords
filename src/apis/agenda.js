@@ -68,7 +68,33 @@ export function getAgendaByIdAPI(id) {
 */
 export function likeForAgendaAPI(id) {
   return request({
-    url: '/user/agenda/like',
+    url: `/user/agenda/like/${id}`,
+    method: 'POST',
+    data: {
+      id,
+    },
+  })
+}
+
+/*
+    会议收藏
+*/
+export function starForAgendaAPI(id) {
+  return request({
+    url: `/user/agenda/star/${id}`,
+    method: 'POST',
+    data: {
+      id,
+    },
+  })
+}
+
+/*
+    会议订阅
+*/
+export function subscribeForAgendaAPI(id) {
+  return request({
+    url: `/user/agenda/subscribe/${id}`,
     method: 'POST',
     data: {
       id,

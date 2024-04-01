@@ -13,10 +13,12 @@ export function getAllGoodsAPI() {
 /*
     积分兑换商品
 */
-export function exchangeGoodsByIntegralAPI(data) {
+export function exchangeGoodsByIntegralAPI(id) {
   return request({
-    url: '/user/shop/integralBuy',
+    url: `/user/shop/integralBuy/${id}`,
     method: 'POST',
-    data,
+    data: {
+      id,
+    },
   })
 }

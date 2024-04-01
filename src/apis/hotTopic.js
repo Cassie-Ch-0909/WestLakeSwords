@@ -29,3 +29,13 @@ export function getAuthorRankingListAPI() {
     url: '/user/author/list',
   })
 }
+
+/*
+    获取推荐话题数据列表
+*/
+export function getRecommandTopicListAPI() {
+  return request({
+    method: 'GET',
+    url: '/user/recommendTopic/list',
+  })
+}

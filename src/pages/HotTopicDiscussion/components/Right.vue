@@ -1,6 +1,6 @@
 <script setup>
 import { useScroll } from '@vueuse/core'
-import { getArticleRankingAPI, getAuthorRankingListAPI } from '@/apis/hotTopic'
+import { getArticleRankingAPI, getAuthorRankingListAPI, getRecommandTopicListAPI } from '@/apis/hotTopic'
 
 const { y } = useScroll(window)
 
@@ -28,6 +28,18 @@ getAuthorRankingList()
 
 function changeAuthorRankingList() {
   getAuthorRankingList()
+}
+
+// TODO: 调接口获取话题榜数据 点击换一换重新获取话题列表
+const hotTopicList = ref()
+async function getHotTopicList() {
+  const res = await getRecommandTopicListAPI()
+  // console.log(res)
+  hotTopicList.value = res.data
+}
+getHotTopicList()
+function changeHotTopicList() {
+  getHotTopicList()
 }
 </script>
 
@@ -129,7 +141,7 @@ function changeAuthorRankingList() {
           <img class="w30px" src="/public/hottopic/recommand.png" alt="">
           <span class="ml5px">推荐话题</span>
         </div>
-        <div class="flex items-center color-#999">
+        <div class="flex items-center color-#999" @click="changeHotTopicList">
           <i class="iconfont icon-huanyihuan mr5px font-size-15px" />
           <p class="font-size-13px">
             换一换
@@ -139,11 +151,11 @@ function changeAuthorRankingList() {
       <div class="w-full flex-1 border-b-1 border-#E0E0E0 font-size-14px">
         <ul class="h-full w-full flex flex-col justify-evenly pb5px pt5px">
           <li
-            v-for="(item, index) in 5" :key="index"
+            v-for="(item, index) in hotTopicList" :key="index"
             class="ml5% mr5% h35px w-90% flex items-center justify-between p5px hover:bg-#E0E0E0 hover:color-[#00B4BC]"
           >
             <p class="">
-              #选择留在大城市工作
+              #{{ item.content }}
             </p>
             <p class="color-#999">
               110k
