@@ -18,6 +18,15 @@ defineProps({
   // method: String,
 })
 
+// TODO: 调接口获取数据库的商品列表
+const goodsList = ref()
+async function getAllGoods() {
+  const res = await getAllGoodsAPI()
+  // console.log(res)
+  goodsList.value = res.data
+}
+getAllGoods()
+
 /*
     定义一个变量来控制弹框的显示与隐藏
 */
@@ -44,6 +53,24 @@ function showDialog(num, index) {
     buyOrExchangeFlag.value = false
 }
 
+// TODO：调用积分兑换商品接口 如果res.code===1，那么提示兑换成功 如果res.code===0，那么提示兑换失败 积分不足
+async function exchangeGoodsByIntegral(data) {
+  const res = await exchangeGoodsByIntegralAPI(data)
+  if (res.code === 1) {
+    ElMessage({
+      type: 'success',
+      message: '兑换成功',
+    })
+  }
+  else {
+    ElMessage({
+      type: 'error',
+      message: '兑换失败，积分不足',
+    })
+  }
+}
+// exchangeGoodsByIntegral(1)
+
 /*
     打开是否确认兑换或购买
 */
@@ -58,10 +85,7 @@ function confirmExchange() {
     },
   )
     .then(() => {
-      ElMessage({
-        type: 'success',
-        message: '兑换成功',
-      })
+      exchangeGoodsByIntegral(goodsList.value[activeGoodsIndex.value].id)
     })
     .catch(() => {
       ElMessage({
@@ -93,22 +117,6 @@ function confirmBuyNow() {
       })
     })
 }
-
-// TODO: 调接口获取数据库的商品列表
-const goodsList = ref()
-async function getAllGoods() {
-  const res = await getAllGoodsAPI()
-  // console.log(res)
-  goodsList.value = res.data
-}
-getAllGoods()
-
-// TODO: 调接口积分兑换商品
-async function exchangeGoodsByIntegral(data) {
-  await exchangeGoodsByIntegralAPI(data)
-  // console.log(res)
-}
-exchangeGoodsByIntegral(1)
 </script>
 
 <template>
