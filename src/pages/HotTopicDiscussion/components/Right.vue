@@ -1,20 +1,33 @@
 <script setup>
 import { useScroll } from '@vueuse/core'
-import { getArticleRankingAPI } from '@/apis/hotTopic'
+import { getArticleRankingAPI, getAuthorRankingListAPI } from '@/apis/hotTopic'
 
 const { y } = useScroll(window)
 
-// TODO: 调接口获取文章榜数据 点击换一换重新获取文章里列表
+// TODO: 调接口获取文章榜数据 点击换一换重新获取文章列表
 const articleRankingList = ref()
-async function getArticleRanking() {
+async function getArticleRankingList() {
   const res = await getArticleRankingAPI()
   // console.log(res)
   articleRankingList.value = res.data
 }
-getArticleRanking()
+getArticleRankingList()
 
 function changeArtivleRankings() {
-  getArticleRanking()
+  getArticleRankingList()
+}
+
+// TODO: 调接口获取作者榜数据 点击换一换重新获取作者列表
+const authorRankingList = ref()
+async function getAuthorRankingList() {
+  const res = await getAuthorRankingListAPI()
+  // console.log(res)
+  authorRankingList.value = res.data
+}
+getAuthorRankingList()
+
+function changeAuthorRankingList() {
+  getAuthorRankingList()
 }
 </script>
 
@@ -73,7 +86,7 @@ function changeArtivleRankings() {
           <img class="w30px" src="/public/hottopic/author.png" alt="">
           <span class="ml5px">作者榜</span>
         </div>
-        <div class="flex items-center color-#999">
+        <div class="flex items-center color-#999" @click="changeAuthorRankingList">
           <i class="iconfont icon-huanyihuan mr5px font-size-15px" />
           <p class="font-size-13px">
             换一换
@@ -83,21 +96,17 @@ function changeArtivleRankings() {
       <div class="w-full flex-1 border-b-1 border-#E0E0E0 font-size-14px">
         <ul class="h-full w-full flex flex-col justify-evenly pb10px pt10px">
           <li
-            v-for="(item, index) in 5" :key="index"
+            v-for="(item, index) in authorRankingList" :key="index"
             class="ml5% mr5% w-90% flex items-center justify-between p5px hover:bg-#E0E0E0"
           >
-            <div class="h40px flex items-center font-size-12px">
-              <img
-                class="w-40px"
-                src="https://p3-passport.byteacctimg.com/img/user-avatar/06d48f05b22d366e72d9e10134610cd7~300x300.image"
-                alt=""
-              >
-              <div class="ml5px">
+            <div class="h40px w-80% flex items-center font-size-12px">
+              <img class="w23%" :src="item.img" alt="">
+              <div class="ml7% w70%">
                 <p class="font-size-13px">
-                  京东云开发者
+                  {{ item.name }}
                 </p>
-                <p class="color-#999">
-                  技术运营 @京东科技信...
+                <p class="shenglue w-full color-#999">
+                  {{ item.desc }}
                 </p>
               </div>
             </div>

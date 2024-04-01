@@ -19,3 +19,13 @@ export function getArticleRankingAPI() {
     url: '/user/article/list',
   })
 }
+
+/*
+    获取作者榜数据列表
+*/
+export function getAuthorRankingListAPI() {
+  return request({
+    method: 'GET',
+    url: '/user/author/list',
+  })
+}
