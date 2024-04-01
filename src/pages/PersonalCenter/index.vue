@@ -397,11 +397,11 @@ getCategoryRulesList()
     </el-dialog>
 
     <!-- 查看积分规则的弹框 -->
-    <el-dialog v-model="categoryDialogTableVisible" width="800">
-      <div class="mb10px font-size-20px color-#00B4BC font-bold">
+    <el-dialog v-model="categoryDialogTableVisible" width="800" class="pl4% pt2%">
+      <div class="mb10px mb5% font-size-20px color-#00B4BC font-bold">
         积分规则
       </div>
-      <div v-for="(item, index) in categoryRulesList" :key="index" class="w-full">
+      <div v-for="(item, index) in categoryRulesList" :key="index" class="mb5% w-full">
         <span class="inline-block w27%">{{ item.todo }}</span>
         <span class="inline-block w7% color-#00B4BC">+{{ item.number }}</span>
         <span class="inline-block w66% pl6%">{{ item.desc }}</span>
