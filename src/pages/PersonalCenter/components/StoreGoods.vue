@@ -103,11 +103,12 @@ async function getAllGoods() {
 }
 getAllGoods()
 
-// // TODO: 调接口积分兑换商品
+// // // TODO: 调接口积分兑换商品
 // async function exchangeGoodsByIntegral(data) {
 //   const res = await exchangeGoodsByIntegralAPI(data)
 //   console.log(res)
 // }
+// exchangeGoodsByIntegral(1)
 </script>
 
 <template>
