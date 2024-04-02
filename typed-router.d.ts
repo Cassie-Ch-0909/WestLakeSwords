@@ -124,6 +124,7 @@ declare module 'vue-router/auto/routes' {
     '/PersonalCenter/components/MyThumbsUp': RouteRecordInfo<'/PersonalCenter/components/MyThumbsUp', '/PersonalCenter/components/MyThumbsUp', Record<never, never>, Record<never, never>>,
     '/PersonalCenter/components/Personalized': RouteRecordInfo<'/PersonalCenter/components/Personalized', '/PersonalCenter/components/Personalized', Record<never, never>, Record<never, never>>,
     '/PersonalCenter/components/RotateBgButton': RouteRecordInfo<'/PersonalCenter/components/RotateBgButton', '/PersonalCenter/components/RotateBgButton', Record<never, never>, Record<never, never>>,
+    '/PersonalCenter/components/ShakeButton': RouteRecordInfo<'/PersonalCenter/components/ShakeButton', '/PersonalCenter/components/ShakeButton', Record<never, never>, Record<never, never>>,
     '/PersonalCenter/components/SignInRotateBgButton': RouteRecordInfo<'/PersonalCenter/components/SignInRotateBgButton', '/PersonalCenter/components/SignInRotateBgButton', Record<never, never>, Record<never, never>>,
     '/PersonalCenter/components/StoreGoods': RouteRecordInfo<'/PersonalCenter/components/StoreGoods', '/PersonalCenter/components/StoreGoods', Record<never, never>, Record<never, never>>,
     '/PersonalCenter/components/TakePhotos': RouteRecordInfo<'/PersonalCenter/components/TakePhotos', '/PersonalCenter/components/TakePhotos', Record<never, never>, Record<never, never>>,
