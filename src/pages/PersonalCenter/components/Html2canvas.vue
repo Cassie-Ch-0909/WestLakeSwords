@@ -24,61 +24,157 @@
 </script>
 
 <template>
-  <div class="w-full flex">
+  <div class="w-full flex bg-#fff pb10px pt10px font-size-20px">
+    <p class="ml18%">
+      模式选择
+    </p>
+    <p class="ml39%">
+      海报预览
+    </p>
+  </div>
+  <div class="w-full flex bg-#fff pb20px pl2%">
     <div class="w-50% flex flex-wrap">
-      <div class="relative mr5% h230px w40% rounded-10px bg-yellow font-size-10px">
+      <div class="relative mr5% h230px w40% rounded-10px font-size-7px">
         <img class="h-full w-full rounded-10px" src="/public/personalized/2.jpg" alt="">
-        <p class="absolute left-10px top-3% color-#00B4BC">
-          2024年3月27日 星期二
+        <p class="absolute left-10px top-3% color-#31A6F7">
+          2024年4月2日 星期二
         </p>
-        <p class="absolute left-10px top-11% font-bold">
+        <p class="absolute left-20% top-13% color-#31A6F7 font-bold">
           亲爱的Cassie燁：
         </p>
-        <p class="absolute right-10px top-19% ml25px font-bold">
-          “清风徐来，水波不兴”，愿您的生活一帆风顺，宁静而美好~
+        <p class="absolute left-25% top-21% ml25px h-full pr3% font-bold">
+          “清风徐来，水波不兴”，
+          <br>愿您的生活一帆风顺，宁静而美好
         </p>
+        <img src="/public/avator.jpeg" class="absolute left-1% top-10% mr3% w16% rounded-50%" alt="">
         <img class="absolute bottom-3% right-23% w-18%" src="/public/xcx.png">
         <img class="absolute bottom-3% right-3% w-18%" src="/public/about/1.webp">
       </div>
-      <div class="h230px w40% rounded-10px bg-yellow">
-        <img class="w-full rounded-t-10px" src="/public/personalized/3.png" alt="">
-        <img class="w-full" src="https://img2023.gcsis.cn/2023/4/62eaf1128543498d87fefbe31913a5a3.jpeg" alt="">
+      <div class="relative h230px w40% rounded-10px font-size-8px">
+        <img src="/public/personalized/3.jpg" class="h-full w-full rounded-10px" alt="">
+        <img class="absolute left-19% top-2% w-15%" src="/public/xcx.png">
+        <img class="absolute left-2% top-2% w-15%" src="/public/about/1.webp">
+        <div class="absolute left-2% top-28% w-full flex items-center font-size-10px font-size-20px">
+          <img src="/public/avator.jpeg" class="mr3% w16% rounded-50%" alt="">
+          <p>Hi~ Cassie燁</p>
+        </div>
+        <p class="absolute left-2% top-45% pr3% font-size-9px color-#fff">
+          愿您在真诚和努力中，扶摇直上九万里，不辜负所爱之人，亦不辜负少年时的自己。
+        </p>
       </div>
-      <div class="mr5% mt5% h230px w40% rounded-10px bg-yellow">
-        1
+      <div class="relative mr5% mt5% h230px w40% rounded-10px font-size-8px">
+        <img class="h45% w-full rounded-t-10px" src="/public/personalized/3.png" alt="">
+        <img class="absolute bottom-42% left-19% w-15%" src="/public/xcx.png">
+        <img class="absolute bottom-42% left-2% w-15%" src="/public/about/1.webp">
+        <p class="absolute left-40% top-45% pr3% color-#fff">
+          “ 道之所存，师之所存也 ” ，
+          愿您一直保持一颗学习的心，朝着更好的自己前进。
+        </p>
+        <div class="absolute left-40% top-26% h18% font-size-6px color-#00F5FF">
+          <div class="w-full flex items-center">
+            <img src="/public/avator.jpeg" class="mr3% w18% rounded-50%" alt="">
+            <p>Hi~ Cassie燁</p>
+          </div>
+          <p class="mt2%">
+            今天是2024年4月2日 西湖论剑祝您万事顺意！
+          </p>
+        </div>
+        <div class="h15% w-full from-[#0A2158] to-[#040819] bg-gradient-to-b" />
+        <img
+          class="h40% w-full rounded-b-10px"
+          src="https://img2023.gcsis.cn/2023/4/62eaf1128543498d87fefbe31913a5a3.jpeg" alt=""
+        >
       </div>
-      <div class="mt5% h230px w40% rounded-10px bg-yellow">
-        1
+      <div class="relative mt5% h230px w40% rounded-10px">
+        <img src="/public/personalized/7.jpg" class="h32% w-full rounded-t-10px" alt="">
+        <img src="/public/personalized/5.png" class="h29% w-full" alt="">
+        <img src="/public/personalized/6.jpg" class="h40% w-full rounded-b-10px" alt="">
+        <img class="absolute left-19% top-2% w-15%" src="/public/xcx.png">
+        <img class="absolute left-2% top-2% w-15%" src="/public/about/1.webp">
+        <p class="absolute left-2% top-16% font-size-9px color-#00F5FF">
+          “东隅已逝，桑榆非晚”，不要轻易放弃自己，你所浪费的今天，是未来的你回不去的曾经。
+        </p>
+        <div
+          class="absolute left-2% top-2% flex items-center justify-end pr3% font-size-20px font-size-9px color-#00F5FF"
+        >
+          <p>Hi~ Cassie燁</p>
+          <img src="/public/avator.jpeg" class="ml3% w16% rounded-50%" alt="">
+        </div>
       </div>
     </div>
-    <div class="w-50% bg-blue">
-      <!-- <div id="CodeImgBase64" class="relative h-full w80% rounded-20px bg-red">
-        <img class="h-full w-full rounded-10px" src="/public/personalized/2.jpg" alt="">
-        <p class="absolute left-10px top-3% color-#00B4BC">
+    <div class="w-50%">
+      <!-- <div id="CodeImgBase64" class="relative w80% bg-red">
+        <img class="h-full w-full" src="/public/personalized/2.jpg" alt="">
+        <p class="absolute left-10px top-3% color-#31A6F7">
           2024年4月2日 星期二
         </p>
-        <p class="absolute left-10px top-11% font-bold">
+        <p class="absolute left-20% top-13% color-#31A6F7 font-bold">
           亲爱的Cassie燁：
         </p>
-        <p class="absolute right-10px top-19% ml25px font-bold">
-          “清风徐来，水波不兴”，愿您的生活一帆风顺，宁静而美好~
+        <p
+          class="absolute left-25% top-21% ml25px h-full pr3% font-bold"
+        >
+          “清风徐来，水波不兴”，
+          <br>愿您的生活一帆风顺，宁静而美好
         </p>
+        <img src="/public/avator.jpeg" class="absolute left-1% top-10% mr3% w16% rounded-50%" alt="">
         <img class="absolute bottom-3% right-23% w-18%" src="/public/xcx.png">
         <img class="absolute bottom-3% right-3% w-18%" src="/public/about/1.webp">
       </div> -->
-      <div id="CodeImgBase64" class="relative h-full w80% rounded-20px bg-red">
-        <img class="h45% w-full rounded-t-10px" src="/public/personalized/3.png" alt="">
-        <p class="absolute color-#fff">
-          “道之所存，师之所存也”，愿您一直保持一颗学习的心，朝着更好的自己前进
+      <div id="CodeImgBase64" class="relative h-full w80%">
+        <img class="h45% w-full" src="/public/personalized/3.png" alt="">
+        <img class="absolute bottom-42% left-19% w-15%" src="/public/xcx.png">
+        <img class="absolute bottom-42% left-2% w-15%" src="/public/about/1.webp">
+        <p class="absolute left-40% top-45% pr3% color-#fff">
+          “ 道之所存，师之所存也 ” ，
+          愿您一直保持一颗学习的心，朝着更好的自己前进。
+        </p>
+        <img src="/public/avator.jpeg" class="absolute left-40% top-25% w12% rounded-50%" alt="">
+        <p class="absolute left-54% top-27% color-#00F5FF">
+          Hi~ Cassie燁
+        </p>
+        <p class="absolute left-45% top-36% mr5% font-size-12px color-#00F5FF">
+          今天是2024年4月2日，西湖论剑祝您万事顺意！
         </p>
         <div class="h15% w-full from-[#0A2158] to-[#040819] bg-gradient-to-b" />
-        <img class="h40% w-full rounded-b-10px" src="https://img2023.gcsis.cn/2023/4/62eaf1128543498d87fefbe31913a5a3.jpeg" alt="">
+        <img class="h40% w-full" src="https://img2023.gcsis.cn/2023/4/62eaf1128543498d87fefbe31913a5a3.jpeg" alt="">
       </div>
+      <!-- <div id="CodeImgBase64" class="relative h-full w80%  ">
+        <img src="/public/personalized/3.jpg" class="h-full w-full " alt="">
+        <img class="absolute left-19% top-2% w-15%" src="/public/xcx.png">
+        <img class="absolute left-2% top-2% w-15%" src="/public/about/1.webp">
+        <div class="absolute left-2% top-28% w-full flex items-center font-size-20px">
+          <img src="/public/avator.jpeg" class="mr3% w16% rounded-50%" alt="">
+          <p>Hi~ Cassie燁</p>
+        </div>
+        <p class="absolute left-2% top-45% pr3% color-#fff">
+          愿您在真诚和努力中，扶摇直上九万里，不辜负所爱之人，亦不辜负少年时的自己。
+        </p>
+      </div> -->
+      <!-- <div id="CodeImgBase64" class="relative h-full w80% flex flex-col ">
+        <img src="/public/personalized/7.jpg" class="w-full " alt="">
+        <img src="/public/personalized/5.png" alt="">
+        <img src="/public/personalized/6.jpg" class="w-full " alt="">
+        <img class="absolute left-19% top-2% w-15%" src="/public/xcx.png">
+        <img class="absolute left-2% top-2% w-15%" src="/public/about/1.webp">
+        <p class="absolute left-2% top-16% color-#00F5FF">
+          “东隅已逝，桑榆非晚”，不要轻易放弃自己，你所浪费的今天，是未来的你回不去的曾经。
+        </p>
+        <div class="absolute left-2% top-2% flex items-center justify-end pr3% font-size-20px color-#00F5FF">
+          <p>Hi~ Cassie燁</p>
+          <img src="/public/avator.jpeg" class="ml3% w16% rounded-50%" alt="">
+        </div>
+      </div> -->
     </div>
   </div>
-  <button @click="createPoster">
+  <!-- <button @click="createPoster">
     下载海报
-  </button>
+  </button> -->
+  <div class="w-full flex justify-center bg-#fff pb20px pt10px font-size-20px">
+    <button class="h50px w30% rounded-10px bg-#00B4BC color-#fff">
+      点击下载海报
+    </button>
+  </div>
 </template>
 
 <style scoped></style>
