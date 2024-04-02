@@ -65,6 +65,9 @@ dependencies:
   vue-router:
     specifier: ^4.2.5
     version: 4.2.5(vue@3.4.21)
+  vue3-puzzle-vcode:
+    specifier: ^1.1.7
+    version: 1.1.7
 
 devDependencies:
   '@antfu/eslint-config':
@@ -6570,6 +6573,10 @@ packages:
     dependencies:
       is-plain-object: 3.0.1
       vue: 3.4.21(typescript@5.4.2)
+    dev: false
+
+  /vue3-puzzle-vcode@1.1.7:
+    resolution: {integrity: sha512-mW780dz7HKjrElnE60CeYSeHGidKBKHoMjTDYfqF21330rTkFOsfDK1FQKZ22MktgMtTEoS/imfpEDlM1cxY/g==}
     dev: false
 
   /vue@3.4.21(typescript@5.4.2):
