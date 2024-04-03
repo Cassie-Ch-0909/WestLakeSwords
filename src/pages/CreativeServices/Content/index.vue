@@ -82,8 +82,62 @@ function changeReleaseMethodActiveIndex(index) {
         </div>
       </div>
     </div>
-    <div v-show="releaseMethodActiveIndex === 1" class="h400px w-full bg-yellow">
-      dsd
+    <div v-show="releaseMethodActiveIndex === 1" class="h600px w-full rounded-10px bg-#fff p3%">
+      <el-upload
+        class="upload-demo" drag action="https://run.mocky.io/v3/9d059bf9-4660-45f2-925d-ce80ad6c4d15"
+        multiple
+      >
+        <el-icon class="el-icon--upload">
+          <UploadFilled />
+        </el-icon>
+        <div class="el-upload__text">
+          拖拽图片到此<em>或点击上传</em>
+        </div>
+        <button class="mt20px h40px w15% rounded-5px bg-#00B4BC color-#fff">
+          上传图片
+        </button>
+      </el-upload>
+      <div class="h200px w-full flex items-center justify-between">
+        <div
+          class="border-grey h80% w-32% flex flex-col items-center justify-center border-1px rounded-10px border-dashed"
+        >
+          <p class="font-size-14px color-#262626">
+            图片大小
+          </p>
+          <p class="pb5px pt5px font-size-12px color-#8c8c8c">
+            支持上传的图片大小，
+          </p>
+          <p class="font-size-12px color-#8c8c8c">
+            最大20MB的图片文件
+          </p>
+        </div>
+        <div
+          class="border-grey h80% w-32% flex flex-col items-center justify-center border-1px rounded-10px border-dashed"
+        >
+          <p class="font-size-14px color-#262626">
+            图片格式
+          </p>
+          <p class="pb5px pt5px font-size-12px color-#8c8c8c">
+            支持上传的图片格式，
+          </p>
+          <p class="font-size-12px color-#8c8c8c">
+            推荐使用png、jpg、jpeg、webp
+          </p>
+        </div>
+        <div
+          class="border-grey h80% w-32% flex flex-col items-center justify-center border-1px rounded-10px border-dashed"
+        >
+          <p class="font-size-14px color-#262626">
+            图片分辨率
+          </p>
+          <p class="pb5px pt5px font-size-12px color-#8c8c8c">
+            推荐上传宽高比为3:4、分辨率不低于720*960的照片，
+          </p>
+          <p class="font-size-12px color-#8c8c8c">
+            超过1280P的图片用网页端上传画质更清晰
+          </p>
+        </div>
+      </div>
     </div>
   </div>
 </template>
