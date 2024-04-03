@@ -30,7 +30,7 @@ const list = ref([
 </script>
 
 <template>
-  <div class="w200px bg-#fff">
+  <div class="bg-#fff">
     <!-- 创作服务平台和发布笔记 -->
     <div class="w-full flex flex-col items-center border-b-1px border-#E0E0E0 border-solid pb15px pt15px">
       <p class="mb10px font-size-22px font-bold">
@@ -42,7 +42,7 @@ const list = ref([
     </div>
     <!-- 6个分模块 -->
     <div class="mt20px h600px w-full flex flex-col items-center">
-      <div v-for="(item, index) in list" :key="index" class="mb8px h40px w85% flex items-center rounded-5px bg-red-200">
+      <div v-for="(item, index) in list" :key="index" class="mb8px h40px w85% flex items-center rounded-5px">
         <i class="iconfont pl10px" :class="item.icon" />
         <span class="pl10px">{{ item.title }}</span>
       </div>

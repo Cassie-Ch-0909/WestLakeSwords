@@ -1,6 +1,7 @@
 <script setup lang="ts">
 // import html2canvas from 'html2canvas'
 // import { reactive, ref } from 'vue'
+
 // function createPoster() {
 //   // 生成海报
 //   const domObj = document.getElementById('CodeImgBase64')
@@ -56,7 +57,9 @@
         <img class="absolute left-2% top-2% w-15%" src="/public/about/1.webp">
         <div class="absolute left-2% top-28% w-full flex items-center font-size-10px font-size-20px">
           <img src="/public/avator.jpeg" class="mr3% w16% rounded-50%" alt="">
-          <p>Hi~ Cassie燁</p>
+          <p class="font-size-9px">
+            Hi~ Cassie燁
+          </p>
         </div>
         <p class="absolute left-2% top-45% pr3% font-size-9px color-#fff">
           愿您在真诚和努力中，扶摇直上九万里，不辜负所爱之人，亦不辜负少年时的自己。
@@ -167,7 +170,7 @@
       </div> -->
     </div>
   </div>
-  <!-- <button @click="createPoster">
+  <!-- <button @click="screatePoster">
     下载海报
   </button> -->
   <div class="w-full flex justify-center bg-#fff pb20px pt10px font-size-20px">

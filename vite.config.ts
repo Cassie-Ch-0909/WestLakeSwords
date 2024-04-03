@@ -10,11 +10,11 @@ import VueRouter from 'unplugin-vue-router/vite'
 import { VueRouterAutoImports } from 'unplugin-vue-router'
 
 export default defineConfig({
-  server: {
-    host: '0.0.0.0',
-    // public: '192.168.0.111:3333',
-    port: 3333,
-  },
+  // server: {
+  //   host: '0.0.0.0',
+  //   public: '10.171.4.29:3333',
+  //   port: 3333,
+  // },
   resolve: {
     alias: {
       //
