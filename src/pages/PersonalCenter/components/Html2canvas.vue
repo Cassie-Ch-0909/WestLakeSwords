@@ -200,7 +200,7 @@ function changeActiveSelectModuleIndex(index: number) {
     下载海报
   </button> -->
   <div class="w-full flex justify-center bg-#fff pb20px pt10px font-size-20px">
-    <button class="h50px w30% rounded-10px bg-#00B4BC color-#fff" @click="createPoster">
+    <button class="h50px w30% rounded-10px bg-#00B4BC color-#fff">
       点击下载海报
     </button>
   </div>

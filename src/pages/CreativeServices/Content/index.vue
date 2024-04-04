@@ -9,10 +9,13 @@ const releaseMethodActiveIndex = ref(0)
 function changeReleaseMethodActiveIndex(index) {
   releaseMethodActiveIndex.value = index
 }
+
+// 定义一个变量来控制page1 还是page2
+const isPage1Flag = ref(false)
 </script>
 
 <template>
-  <div class="rounded-10px bg-#fff">
+  <div v-if="isPage1Flag" class="rounded-10px bg-#fff">
     <div class="h80px w-full flex items-center pl2%">
       <span
         class="inline-block h-90% w8% flex justify-center font-size-16px line-height-80px"
@@ -84,8 +87,8 @@ function changeReleaseMethodActiveIndex(index) {
     </div>
     <div v-show="releaseMethodActiveIndex === 1" class="h600px w-full rounded-10px bg-#fff p3%">
       <el-upload
-        class="upload-demo" drag action="https://run.mocky.io/v3/9d059bf9-4660-45f2-925d-ce80ad6c4d15"
-        multiple
+        class="upload-demo" drag action="https://run.mocky.io/v3/9d059bf9-4660-45f2-925d-ce80ad6c4d15" multiple
+        :on-success="handleSuccess"
       >
         <el-icon class="el-icon--upload">
           <UploadFilled />
@@ -135,6 +138,142 @@ function changeReleaseMethodActiveIndex(index) {
           </p>
           <p class="font-size-12px color-#8c8c8c">
             超过1280P的图片用网页端上传画质更清晰
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div v-else class="h830px w-full rounded-10px bg-#fff p30px">
+    <!-- 发布图文 -->
+    <div class="w-full flex items-center">
+      <span class="mr10px inline-block h20px w6px bg-#00B4BC" />
+      发布图文
+    </div>
+    <!-- 图片编辑 -->
+    <div class="mt20px w-full flex">
+      <div class="w65%">
+        <!-- 图片编辑 +上传更多 -->
+        <div class="w-full flex items-center">
+          <p class="mr20px font-size-20px">
+            图片编辑
+          </p>
+          <div class="font-size-16px color-#00B4BC">
+            + 上传更多
+          </div>
+        </div>
+        <!-- 图片的框 -->
+        <div class="mt15px h120px w-full rounded-5px">
+          <img
+            src="/public/about/1.webp" class="h-120px w-120px border-1px border-#D9D9D9 rounded-5px border-solid"
+            alt=""
+          >
+        </div>
+        <!-- 填写标题，可能会有更多赞哦~ -->
+        <input
+          type="text" placeholder="填写标题，可能会有更多赞哦"
+          class="mt12px h35px w-98% border-1px border-#D9D9D9 rounded-3px border-solid pl10px"
+        >
+        <!-- 填写更全面的描述信息，让更多的人看到你吧! -->
+        <textarea
+          placeholder="填写更全面的描述信息，让更多的人看到你吧!"
+          class="mt12px h100px w-98% border-1px border-#D9D9D9 rounded-3px border-solid pl10px pt5px"
+          maxlength="1000"
+        />
+        <!-- #话题 @用户 表情 -->
+        <div class="mt5px h30px w-full flex">
+          <span
+            class="mr10px inline-block h-full w70px flex items-center justify-center border-1px border-#D9D9D9 rounded-5px border-solid"
+          >#
+            话题</span>
+          <span
+            class="mr10px inline-block h-full w70px flex items-center justify-center border-1px border-#D9D9D9 rounded-5px border-solid"
+          >@
+            用户</span>
+          <span
+            class="mr10px inline-block h-full w70px flex items-center justify-center border-1px border-#D9D9D9 rounded-5px border-solid"
+          >#
+            表情</span>
+        </div>
+        <!-- 在图片上标记人、位置 -->
+        <div class="mt15px h70px w-70% flex items-center justify-between bg-#FCFCFC">
+          <div class="h-full w-60% flex items-center">
+            <img class="h-full" src="https://fe-static.xhscdn.com/formula-static/ugc/public/img/mark.b7364a1.png">
+            <div class="flex flex-col">
+              <p>在图片上标记人、位置</p>
+              <p class="font-size-12px color-#999">
+                已添加0个标记
+              </p>
+            </div>
+          </div>
+          <button class="h55% w85px rounded-5px bg-#00B4BC color-#fff">
+            添加标记
+          </button>
+        </div>
+        <!-- 发布设置 -->
+        <p class="mt15px font-size-20px">
+          发布设置
+        </p>
+        <!-- 添加地点 -->
+        <div class="mt10px h40px w-full flex items-center pr20px">
+          <p class="mr20px">
+            添加地点
+          </p>
+          <input
+            type="text" placeholder="填写标题，可能会有更多赞哦"
+            class="h35px flex-1 border-1px border-#D9D9D9 rounded-3px border-solid pl10px"
+          >
+        </div>
+        <!-- 权限设置 -->
+        <div class="mt10px h40px w-full flex items-center pr20px">
+          <p class="mr20px">
+            添加地点
+          </p>
+          <label class="pr20px"><input type="radio" value="0" name="sex" checked="checked"><span class="color-#999">
+            公开(所有人可见)</span></label>
+          <label><input type="radio" value="1" name="sex"> 私密<span class="color-#999">(仅自己可见)</span></label>
+        </div>
+        <!-- 发布时间 -->
+        <div class="mt10px h40px w-full flex items-center pr20px">
+          <p class="mr20px">
+            发布时间
+          </p>
+          <label class="pr20px"><input type="radio" value="0" name="sex" checked="checked"><span class="color-#999">
+            立即发布</span></label>
+          <label><input type="radio" value="1" name="sex"> 定时发布</label>
+        </div>
+        <!-- 两个按钮 -->
+        <div class="items-centeer mt25px h50px w-full flex">
+          <button class="mr2% h90% w100px rounded-5px bg-#00B4BC color-#fff">
+            发布
+          </button>
+          <button class="h90% w100px border-1px border-#D9D9D9 rounded-5px border-solid bg-#fff">
+            取消
+          </button>
+        </div>
+      </div>
+      <div class="w35% flex justify-center">
+        <div
+          class="relative h75% w75% flex items-center justify-center border-1px border-#00B4BC rounded-30px border-solid"
+        >
+          <img
+            class="absolute right-0px top-60% h30% rounded-30px"
+            src="https://fe-static.xhscdn.com/formula-static/ugc/public/img/comment.3b617df.png"
+          >
+          <img
+            class="h-98% w-98%"
+            src="https://fe-static.xhscdn.com/formula-static/ugc/public/img/note-detail.e442d97.png"
+          >
+          <img class="absolute left-12% top-12% h40%" src="/public/about/1.webp">
+          <img src="/public/avator.jpeg" class="absolute left-10% top-6% w30px rounded-50%">
+          <img src="/public/avator.jpeg" class="absolute left-8% top-66.5% w30px rounded-50%">
+          <p class="absolute left-5% top-52% font-size-14px">
+            请先填写标题
+          </p>
+          <p class="absolute left-5% top-57% font-size-14px">
+            西湖论剑火热进行中，大家快来参加呀
+          </p>
+          <p class="absolute left-5% top-62% font-size-12px color-#999">
+            2024-04-04
           </p>
         </div>
       </div>
