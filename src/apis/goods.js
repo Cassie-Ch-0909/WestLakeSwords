@@ -35,3 +35,23 @@ export function buyGoodsByBalanceAPI(id) {
     },
   })
 }
+
+/*
+    展示所有已购买的商品
+*/
+export function showGoodsGetByBalanceBuyAPI() {
+  return request({
+    url: '/user/shop/buyList',
+    method: 'GET',
+  })
+}
+
+/*
+    展示所有已兑换的商品
+*/
+export function showGoodsGetByIntegralExchangeAPI() {
+  return request({
+    url: '/user/shop/exchangeList',
+    method: 'GET',
+  })
+}

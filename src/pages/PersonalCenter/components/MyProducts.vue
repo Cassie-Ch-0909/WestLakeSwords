@@ -3,11 +3,29 @@ import { ref } from 'vue'
 import MoudleHeader from './MoudleHeader.vue'
 import MyComponents from './MyComponents.vue'
 import GoodsComponent from './GoodsComponent.vue'
+import { showGoodsGetByBalanceBuyAPI, showGoodsGetByIntegralExchangeAPI } from '@/apis/goods'
 
 const activeIndex = ref(0)
 function changeActiveIndex(index) {
   activeIndex.value = index
 }
+
+// TODO: 调接口获取通过余额购买商品的商品列表
+const goodsGetByBalanceBuyList = ref([])
+async function showGoodsGetByBalanceBuy() {
+  const res = await showGoodsGetByBalanceBuyAPI()
+  goodsGetByBalanceBuyList.value = res.data
+  // console.log(res)
+}
+showGoodsGetByBalanceBuy()
+
+// TODO: 调接口获取通过积分兑换商品的商品列表
+const goodsGetByIntegralExchangeList = ref([])
+async function showGoodsGetByIntegralExchange() {
+  const res = await showGoodsGetByIntegralExchangeAPI()
+  goodsGetByIntegralExchangeList.value = res.data
+}
+showGoodsGetByIntegralExchange()
 </script>
 
 <template>
@@ -31,19 +49,14 @@ function changeActiveIndex(index) {
       </div>
     </div>
     <GoodsComponent
-      v-show="activeIndex === 0"
-      img="https://obs-xhlj.obs.cn-east-3.myhuaweicloud.com/2023/5/32766db3c132417ea4a09924efe87025.jpg"
-      title="2021年成都大运会赛事门票" desc="2021年成都大运会赛事门票" num="2100"
-      logo="/public/personalInfonmation/alreadyBuy.png"
-      method="￥"
+      v-for="(item, index) in goodsGetByBalanceBuyList" v-show="activeIndex === 0" :key="index"
+      :img="item.img" :title="item.goodsName" :desc="item.goodsDesc" :num="item.price"
+      logo="/public/personalInfonmation/alreadyBuy.png" method="￥"
     />
     <GoodsComponent
-      v-show="activeIndex === 1"
-      img="https://obs-xhlj.obs.cn-east-3.myhuaweicloud.com/2023/5/014a39c8a5c440ccbb9549db8bb8c0af.jpg"
-      title="2023数据安全能力洞察报告"
-      desc="安恒信息围绕国家数字化建设“2522”顶层布局规划，洞悉各行业和各领域数字化转型中的安全挑战和能力需求，梳理切实解决数字安全本质问题的方法和途径，并从安全模式、架构、能力、产业等方向对未来数字安全发展进行了展望。"
-      num="2100" logo="/public/personalInfonmation/alreadyExchange.png"
-      method="积分："
+      v-for="(item, index) in goodsGetByIntegralExchangeList"
+      v-show="activeIndex === 1" :key="index"
+      :img="item.img" :title="item.goodsName" :desc="item.goodsDesc" :num="item.integral" logo="/public/personalInfonmation/alreadyExchange.png" method="积分："
     />
   </div>
 </template>

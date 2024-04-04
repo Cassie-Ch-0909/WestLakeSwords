@@ -17,7 +17,7 @@ defineProps({
 <template>
   <div class="mt10px h180px w-full flex bg-#fff shadow-xl">
     <div class="h-full w33% flex items-center justify-center">
-      <img class="w-280px" :src="img">
+      <img class="h86% w-280px" :src="img">
     </div>
     <div class="relative h-full flex flex-1 flex-col pb10px pl20px pt10px pt15px">
       <p class="font-size-20px font-bold">
