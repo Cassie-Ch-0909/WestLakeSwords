@@ -4,7 +4,7 @@ import { ElMessage, ElMessageBox } from 'element-plus'
 import MagnifyingGlass from './MagnifyingGlass.vue'
 import ExchangeButton from './ExchangeButton.vue'
 import BuyButtom from './BuyButtom.vue'
-import { exchangeGoodsByIntegralAPI, getAllGoodsAPI } from '@/apis/goods'
+import { buyGoodsByBalanceAPI, exchangeGoodsByIntegralAPI, getAllGoodsAPI } from '@/apis/goods'
 
 /*
     封装一个组件用来存放商品信息
@@ -71,6 +71,23 @@ async function exchangeGoodsByIntegral(data) {
 }
 // exchangeGoodsByIntegral(1)
 
+async function buyGoodsByBalance(data) {
+  const res = await buyGoodsByBalanceAPI(data)
+  if (res.code === 1) {
+    ElMessage({
+      type: 'success',
+      message: '购买成功',
+    })
+  }
+  else {
+    ElMessage({
+      type: 'error',
+      message: '购买失败，余额不足',
+    })
+  }
+}
+// buyGoodsByBalance(1)
+
 /*
     打开是否确认兑换或购买
 */
@@ -105,10 +122,7 @@ function confirmBuyNow() {
     },
   )
     .then(() => {
-      ElMessage({
-        type: 'success',
-        message: '购买成功',
-      })
+      buyGoodsByBalance(goodsList.value[activeGoodsIndex.value].id)
     })
     .catch(() => {
       ElMessage({

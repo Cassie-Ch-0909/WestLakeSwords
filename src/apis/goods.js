@@ -22,3 +22,16 @@ export function exchangeGoodsByIntegralAPI(id) {
     },
   })
 }
+
+/*
+    余额购买商品
+*/
+export function buyGoodsByBalanceAPI(id) {
+  return request({
+    url: `/user/shop/moneyBuy/${id}`,
+    method: 'POST',
+    data: {
+      id,
+    },
+  })
+}
