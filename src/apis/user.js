@@ -40,3 +40,13 @@ export function getUserSubscriptionListAPI() {
     method: 'GET',
   })
 }
+
+/*
+    获取用户收藏列表
+*/
+export function getUserCollectionListAPI() {
+  return request({
+    url: '/user/user/getAgendaStar',
+    method: 'GET',
+  })
+}

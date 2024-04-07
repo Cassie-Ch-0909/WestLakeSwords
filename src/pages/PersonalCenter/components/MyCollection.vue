@@ -1,6 +1,16 @@
 <script setup>
+import { ref } from 'vue'
 import MoudleHeader from './MoudleHeader.vue'
 import MyComponents from './MyComponents.vue'
+import { getUserCollectionListAPI } from '@/apis/user'
+
+const myCollectionList = ref([])
+async function getUserCollectionList() {
+  const res = await getUserCollectionListAPI()
+  // console.log(res)
+  myCollectionList.value = res.data
+}
+getUserCollectionList()
 </script>
 
 <template>
@@ -9,7 +19,16 @@ import MyComponents from './MyComponents.vue'
     <MoudleHeader title="我的收藏" />
 
     <!-- 每个订阅的议程 -->
-    <MyComponents img="/public/activity/2.webp" title="西湖论剑网络特训营" type="掌上论剑" time="11:30-20:33" />
+    <div class="flex flex-wrap">
+      <MyComponents
+        v-for="(item, index) in myCollectionList"
+        :key="index"
+        :img="item.img"
+        :title="item.title"
+        :type="item.type"
+        :time="item.time"
+      />
+    </div>
   </div>
 </template>
 
