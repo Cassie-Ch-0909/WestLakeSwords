@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import { UploadFilled } from '@element-plus/icons-vue'
+import { ElMessage } from 'element-plus'
 
 /*
     定义一个变量来控制发布视频还是发布图片
@@ -11,7 +12,50 @@ function changeReleaseMethodActiveIndex(index) {
 }
 
 // 定义一个变量来控制page1 还是page2
-const isPage1Flag = ref(false)
+const isPage1Flag = ref(true)
+
+function changeIsPage1Flag(flag) {
+  isPage1Flag.value = flag
+}
+
+// 输入框
+const title = ref('')
+const desc = ref('')
+
+// 获取当前日期
+const date = new Date()
+
+// 获取当前月份
+let nowMonth = date.getMonth() + 1
+
+// 获取当前是几号
+let strDate = date.getDate()
+
+// 添加分隔符“-”
+const seperator = '-'
+
+// 对月份进行处理，1-9月在前面添加一个“0”
+if (nowMonth >= 1 && nowMonth <= 9)
+  nowMonth = `0${nowMonth}`
+
+// 对月份进行处理，1-9号在前面添加一个“0”
+if (strDate >= 0 && strDate <= 9)
+  strDate = `0${strDate}`
+
+// 最后拼接字符串，得到一个格式为(yyyy-MM-dd)的日期
+const nowDate = date.getFullYear() + seperator + nowMonth + seperator + strDate
+// console.log(nowDate)
+
+// 发布笔记 跳转到true
+function publishNote() {
+  ElMessage({
+    message: '发布成功',
+    type: 'success',
+  })
+  setTimeout(() => {
+    changeIsPage1Flag(true)
+  }, 2000)
+}
 </script>
 
 <template>
@@ -19,18 +63,31 @@ const isPage1Flag = ref(false)
     <div class="h80px w-full flex items-center pl2%">
       <span
         class="inline-block h-90% w8% flex justify-center font-size-16px line-height-80px"
-        :class="releaseMethodActiveIndex === 0 ? 'border-b-2px border-#00B4BC border-solid' : ''"
+        :class="
+          releaseMethodActiveIndex === 0
+            ? 'border-b-2px border-#00B4BC border-solid'
+            : ''
+        "
         @click="changeReleaseMethodActiveIndex(0)"
       >上传视频</span>
       <span
         class="inline-block h-90% w8% flex justify-center font-size-16px line-height-80px"
-        :class="releaseMethodActiveIndex === 1 ? 'border-b-2px border-#00B4BC border-solid' : ''"
+        :class="
+          releaseMethodActiveIndex === 1
+            ? 'border-b-2px border-#00B4BC border-solid'
+            : ''
+        "
         @click="changeReleaseMethodActiveIndex(1)"
       >上传图文</span>
     </div>
-    <div v-show="releaseMethodActiveIndex === 0" class="h600px w-full rounded-10px bg-#fff p3%">
+    <div
+      v-show="releaseMethodActiveIndex === 0"
+      class="h600px w-full rounded-10px bg-#fff p3%"
+    >
       <el-upload
-        class="upload-demo" drag action="https://run.mocky.io/v3/9d059bf9-4660-45f2-925d-ce80ad6c4d15"
+        class="upload-demo"
+        drag
+        action="https://run.mocky.io/v3/9d059bf9-4660-45f2-925d-ce80ad6c4d15"
         multiple
       >
         <el-icon class="el-icon--upload">
@@ -85,11 +142,21 @@ const isPage1Flag = ref(false)
         </div>
       </div>
     </div>
-    <div v-show="releaseMethodActiveIndex === 1" class="h600px w-full rounded-10px bg-#fff p3%">
+    <div
+      v-show="releaseMethodActiveIndex === 1"
+      class="relative h600px w-full rounded-10px bg-#fff p3%"
+    >
       <el-upload
-        class="upload-demo" drag action="https://run.mocky.io/v3/9d059bf9-4660-45f2-925d-ce80ad6c4d15" multiple
+        class="upload-demo"
+        drag
+        action="https://run.mocky.io/v3/9d059bf9-4660-45f2-925d-ce80ad6c4d15"
+        multiple
         :on-success="handleSuccess"
       >
+        <span
+          class="absolute right-10px top-10px h10px w10px rounded-50% bg-#00B4BC"
+          @click="changeIsPage1Flag(false)"
+        />
         <el-icon class="el-icon--upload">
           <UploadFilled />
         </el-icon>
@@ -164,17 +231,21 @@ const isPage1Flag = ref(false)
         <!-- 图片的框 -->
         <div class="mt15px h120px w-full rounded-5px">
           <img
-            src="/public/about/1.webp" class="h-120px w-120px border-1px border-#D9D9D9 rounded-5px border-solid"
+            src="/public/about/1.webp"
+            class="h-120px w-120px border-1px border-#D9D9D9 rounded-5px border-solid"
             alt=""
           >
         </div>
         <!-- 填写标题，可能会有更多赞哦~ -->
         <input
-          type="text" placeholder="填写标题，可能会有更多赞哦"
+          v-model="title"
+          type="text"
+          placeholder="填写标题，可能会有更多赞哦"
           class="mt12px h35px w-98% border-1px border-#D9D9D9 rounded-3px border-solid pl10px"
         >
         <!-- 填写更全面的描述信息，让更多的人看到你吧! -->
         <textarea
+          v-model="desc"
           placeholder="填写更全面的描述信息，让更多的人看到你吧!"
           class="mt12px h100px w-98% border-1px border-#D9D9D9 rounded-3px border-solid pl10px pt5px"
           maxlength="1000"
@@ -183,21 +254,23 @@ const isPage1Flag = ref(false)
         <div class="mt5px h30px w-full flex">
           <span
             class="mr10px inline-block h-full w70px flex items-center justify-center border-1px border-#D9D9D9 rounded-5px border-solid"
-          >#
-            话题</span>
+          ># 话题</span>
           <span
             class="mr10px inline-block h-full w70px flex items-center justify-center border-1px border-#D9D9D9 rounded-5px border-solid"
-          >@
-            用户</span>
+          >@ 用户</span>
           <span
             class="mr10px inline-block h-full w70px flex items-center justify-center border-1px border-#D9D9D9 rounded-5px border-solid"
-          >#
-            表情</span>
+          ># 表情</span>
         </div>
         <!-- 在图片上标记人、位置 -->
-        <div class="mt15px h70px w-70% flex items-center justify-between bg-#FCFCFC">
+        <div
+          class="mt15px h70px w-70% flex items-center justify-between bg-#FCFCFC"
+        >
           <div class="h-full w-60% flex items-center">
-            <img class="h-full" src="https://fe-static.xhscdn.com/formula-static/ugc/public/img/mark.b7364a1.png">
+            <img
+              class="h-full"
+              src="https://fe-static.xhscdn.com/formula-static/ugc/public/img/mark.b7364a1.png"
+            >
             <div class="flex flex-col">
               <p>在图片上标记人、位置</p>
               <p class="font-size-12px color-#999">
@@ -219,7 +292,8 @@ const isPage1Flag = ref(false)
             添加地点
           </p>
           <input
-            type="text" placeholder="填写标题，可能会有更多赞哦"
+            type="text"
+            placeholder="填写标题，可能会有更多赞哦"
             class="h35px flex-1 border-1px border-#D9D9D9 rounded-3px border-solid pl10px"
           >
         </div>
@@ -228,25 +302,32 @@ const isPage1Flag = ref(false)
           <p class="mr20px">
             添加地点
           </p>
-          <label class="pr20px"><input type="radio" value="0" name="sex" checked="checked"><span class="color-#999">
-            公开(所有人可见)</span></label>
-          <label><input type="radio" value="1" name="sex"> 私密<span class="color-#999">(仅自己可见)</span></label>
+          <label class="pr20px"><input type="radio" value="0" name="status" checked="checked">
+            公开<span class="color-#999">(所有人可见)</span></label>
+          <label><input type="radio" value="1" name="status"> 私密<span
+            class="color-#999"
+          >(仅自己可见)</span></label>
         </div>
         <!-- 发布时间 -->
         <div class="mt10px h40px w-full flex items-center pr20px">
           <p class="mr20px">
             发布时间
           </p>
-          <label class="pr20px"><input type="radio" value="0" name="sex" checked="checked"><span class="color-#999">
-            立即发布</span></label>
+          <label class="pr20px"><input type="radio" value="0" name="sex" checked="checked">
+            立即发布</label>
           <label><input type="radio" value="1" name="sex"> 定时发布</label>
         </div>
         <!-- 两个按钮 -->
         <div class="items-centeer mt25px h50px w-full flex">
-          <button class="mr2% h90% w100px rounded-5px bg-#00B4BC color-#fff">
+          <button
+            class="mr2% h90% w100px rounded-5px bg-#00B4BC color-#fff"
+            @click="publishNote"
+          >
             发布
           </button>
-          <button class="h90% w100px border-1px border-#D9D9D9 rounded-5px border-solid bg-#fff">
+          <button
+            class="h90% w100px border-1px border-#D9D9D9 rounded-5px border-solid bg-#fff"
+          >
             取消
           </button>
         </div>
@@ -263,17 +344,26 @@ const isPage1Flag = ref(false)
             class="h-98% w-98%"
             src="https://fe-static.xhscdn.com/formula-static/ugc/public/img/note-detail.e442d97.png"
           >
-          <img class="absolute left-12% top-12% h40%" src="/public/about/1.webp">
-          <img src="/public/avator.jpeg" class="absolute left-10% top-6% w30px rounded-50%">
-          <img src="/public/avator.jpeg" class="absolute left-8% top-66.5% w30px rounded-50%">
+          <img
+            class="absolute left-12% top-12% h40%"
+            src="/public/about/1.webp"
+          >
+          <img
+            src="/public/avator.jpeg"
+            class="absolute left-10% top-6% w30px rounded-50%"
+          >
+          <img
+            src="/public/avator.jpeg"
+            class="absolute left-8% top-66.5% w30px rounded-50%"
+          >
           <p class="absolute left-5% top-52% font-size-14px">
-            请先填写标题
+            {{ title }}
           </p>
           <p class="absolute left-5% top-57% font-size-14px">
-            西湖论剑火热进行中，大家快来参加呀
+            {{ desc }}
           </p>
           <p class="absolute left-5% top-62% font-size-12px color-#999">
-            2024-04-04
+            {{ nowDate }}
           </p>
         </div>
       </div>
