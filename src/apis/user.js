@@ -30,3 +30,13 @@ export function getUserIntegraDetailslListAPI() {
     method: 'GET',
   })
 }
+
+/*
+    获取用户订阅列表
+*/
+export function getUserSubscriptionListAPI() {
+  return request({
+    url: '/user/user/getAgendaSubscribe',
+    method: 'GET',
+  })
+}

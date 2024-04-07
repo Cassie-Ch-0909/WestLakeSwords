@@ -13,18 +13,18 @@ defineProps({
 </script>
 
 <template>
-  <div class="mt15px w-full pb20px pl20px">
-    <div class="w220px">
-      <img class="h120px w-full" :src="img" alt="">
+  <div class="mt15px pb20px pl20px">
+    <div class="w209px">
+      <img class="h130px w-full" :src="img" alt="">
       <div class="bg-#fff shadow-lg">
-        <div class="h30px w-full flex items-center font-size-13px">
+        <div class="ellipsis h40px w-full flex items-center pt5px font-size-13px">
           {{ title }}
         </div>
-        <div class="h30px w-full flex justify-between">
-          <div class="h20px rounded-5px bg-#00B4C2 pl10px pr10px font-size-12px color-#ff color-#fff">
+        <div class="h40px w-full flex justify-between">
+          <div class="mt10px h20px rounded-5px bg-#00B4C2 pl10px pr10px font-size-12px color-#ff color-#fff">
             {{ type }}
           </div>
-          <p class="ml10px flex flex-1 justify-end pr10px font-size-13px">
+          <p class="ml10px mt10px flex flex-1 justify-end pr10px font-size-13px">
             {{ time }}
           </p>
         </div>
@@ -32,3 +32,14 @@ defineProps({
     </div>
   </div>
 </template>
+
+<style scoped>
+.ellipsis {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  -webkit-line-clamp: 1;
+  height: 20px;
+  text-overflow: ellipsis;
+}
+</style>

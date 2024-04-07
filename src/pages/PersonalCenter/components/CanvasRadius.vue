@@ -128,7 +128,15 @@ function start() {
     state.value.prizeId = prizeId
     activeIndex.value = prizeId
     // console.log(activeIndex.value)
-    startRun()
+    if (userStore.userInfo.integral >= 500) {
+      startRun()
+    }
+    else {
+      ElMessage({
+        message: '抱歉，您的积分不足',
+        type: 'error',
+      })
+    }
   }
 }
 
@@ -140,6 +148,21 @@ function startRun() {
             transform: rotate(${totalRunAngle.value}deg);
             transition: all 4s ease;
           `
+  // TODO3: 获取中奖的商品名称
+  if (
+    state.value.prizeId === 1
+    || state.value.prizeId === 3
+    || state.value.prizeId === 5
+    || state.value.prizeId === 7
+  ) {
+    lotteryParamsObj.value.shopName
+      = state.value.prizeList[activeIndex.value].name
+  }
+  // TODO4: 发请求调用抽奖接口 减去积分 加上已抽中的商品 并重新计算用户积分
+  lottery(lotteryParamsObj.value)
+  // TODO: 更新积分
+  const userStore = useUserStore()
+  userStore.getUserInfo()
   // 监听transition动效停止事件
   prizeWrap.value.addEventListener('transitionend', stopRun)
   // 停顿一会显示中奖
@@ -161,26 +184,12 @@ function startRun() {
     }
   }, 4800)
   // console.log(state.value.prizeId)
-  // TODO3: 获取中奖的商品名称
-  if (
-    state.value.prizeId === 1
-    || state.value.prizeId === 3
-    || state.value.prizeId === 5
-    || state.value.prizeId === 7
-  ) {
-    lotteryParamsObj.value.shopName
-      = state.value.prizeList[activeIndex.value].name
-  }
-  // TODO4: 发请求调用抽奖接口 减去积分 加上已抽中的商品 并重新计算用户积分
-  lottery(lotteryParamsObj.value)
-  // TODO: 更新积分
-  const userStore = useUserStore()
-  userStore.getUserInfo()
 }
 
 function stopRun() {
   // console.log(e)
   // 关闭抽奖
+  lotteryParamsObj.value.shopName = ''
   state.value.isRunning = false
   prizeWrap.value.style = `
             ${bgColor.value}
