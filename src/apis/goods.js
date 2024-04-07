@@ -55,3 +55,14 @@ export function showGoodsGetByIntegralExchangeAPI() {
     method: 'GET',
   })
 }
+
+/*
+    抽奖接口
+*/
+export function lotteryAPI(params) {
+  return request({
+    url: '/user/shop/lucky',
+    method: 'GET',
+    params,
+  })
+}

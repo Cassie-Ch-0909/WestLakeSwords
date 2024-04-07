@@ -4,7 +4,12 @@ import { ElMessage, ElMessageBox } from 'element-plus'
 import MagnifyingGlass from './MagnifyingGlass.vue'
 import ExchangeButton from './ExchangeButton.vue'
 import BuyButtom from './BuyButtom.vue'
-import { buyGoodsByBalanceAPI, exchangeGoodsByIntegralAPI, getAllGoodsAPI } from '@/apis/goods'
+import { useUserStore } from '@/stores/user.js'
+import {
+  buyGoodsByBalanceAPI,
+  exchangeGoodsByIntegralAPI,
+  getAllGoodsAPI,
+} from '@/apis/goods'
 
 /*
     封装一个组件用来存放商品信息
@@ -48,7 +53,6 @@ function showDialog(num, index) {
   dialogTableVisible.value = true
   if (num === 1)
     buyOrExchangeFlag.value = true
-
   else if (num === 2)
     buyOrExchangeFlag.value = false
 }
@@ -57,6 +61,9 @@ function showDialog(num, index) {
 async function exchangeGoodsByIntegral(data) {
   const res = await exchangeGoodsByIntegralAPI(data)
   if (res.code === 1) {
+    // TODO: 更新积分
+    const userStore = useUserStore()
+    userStore.getUserInfo()
     ElMessage({
       type: 'success',
       message: '兑换成功',
@@ -93,14 +100,11 @@ async function buyGoodsByBalance(data) {
 */
 
 function confirmExchange() {
-  ElMessageBox.confirm(
-    '您确认用积分兑换这件商品吗',
-    {
-      confirmButtonText: 'OK',
-      cancelButtonText: 'Cancel',
-      type: 'warning',
-    },
-  )
+  ElMessageBox.confirm('您确认用积分兑换这件商品吗', {
+    confirmButtonText: 'OK',
+    cancelButtonText: 'Cancel',
+    type: 'warning',
+  })
     .then(() => {
       exchangeGoodsByIntegral(goodsList.value[activeGoodsIndex.value].id)
     })
@@ -113,14 +117,11 @@ function confirmExchange() {
 }
 
 function confirmBuyNow() {
-  ElMessageBox.confirm(
-    '您确认用购买这件商品吗',
-    {
-      confirmButtonText: 'OK',
-      cancelButtonText: 'Cancel',
-      type: 'warning',
-    },
-  )
+  ElMessageBox.confirm('您确认用购买这件商品吗', {
+    confirmButtonText: 'OK',
+    cancelButtonText: 'Cancel',
+    type: 'warning',
+  })
     .then(() => {
       buyGoodsByBalance(goodsList.value[activeGoodsIndex.value].id)
     })
@@ -136,22 +137,33 @@ function confirmBuyNow() {
 <template>
   <div class="mt20px w-full flex flex-wrap">
     <div
-      v-for="(item, index) in goodsList" :key="index"
+      v-for="(item, index) in goodsList"
+      :key="index"
       class="mb20px ml2% w280px flex flex-col items-center bg-#fff shadow-xl"
     >
       <img class="h220px w-full" :src="item.img">
       <p class="pb10px pt10px font-size-16px font-bold">
         {{ item.goodsName }}
       </p>
-      <div class="w-full flex justify-between pl50px pr50px font-size-15px color-[#00B4BC]">
+      <div
+        class="w-full flex justify-between pl50px pr50px font-size-15px color-[#00B4BC]"
+      >
         <span class="font-bold">￥{{ item.price }}</span>
-        <button class="w100px rounded-10px bg-[#00B4BC] font-size-13px color-#fff" @click="showDialog(1, index)">
+        <button
+          class="w100px rounded-10px bg-[#00B4BC] font-size-13px color-#fff"
+          @click="showDialog(1, index)"
+        >
           去购买
         </button>
       </div>
-      <div class="mt10px w-full flex justify-between pb10px pl20px pr50px font-size-15px">
+      <div
+        class="mt10px w-full flex justify-between pb10px pl20px pr50px font-size-15px"
+      >
         <span class="font-bold">兑换：{{ item.integral }}</span>
-        <button class="w100px rounded-10px bg-[#00B4BC] font-size-13px color-#fff" @click="showDialog(2, index)">
+        <button
+          class="w100px rounded-10px bg-[#00B4BC] font-size-13px color-#fff"
+          @click="showDialog(2, index)"
+        >
           去兑换
         </button>
       </div>
@@ -166,7 +178,9 @@ function confirmBuyNow() {
         </p>
         <p v-if="!buyOrExchangeFlag" class="mb10px mt15px flex items-center">
           <span class="font-size-13px">积分兑换：</span>
-          <span class="font-size-20px color-[#00B4BC] font-bold">{{ goodsList[activeGoodsIndex].integral }}</span>
+          <span class="font-size-20px color-[#00B4BC] font-bold">{{
+            goodsList[activeGoodsIndex].integral
+          }}</span>
         </p>
         <p v-else class="mb10px mt15px flex items-center">
           <span class="font-size-13px">价格：</span>
@@ -175,13 +189,20 @@ function confirmBuyNow() {
         <p class="mt15px">
           {{ goodsList[activeGoodsIndex].goodsDesc }}
         </p>
-        <ExchangeButton v-if="!buyOrExchangeFlag" class="mt100px" @click="confirmExchange" />
+        <ExchangeButton
+          v-if="!buyOrExchangeFlag"
+          class="mt100px"
+          @click="confirmExchange"
+        />
         <BuyButtom v-else class="mt100px" @click="confirmBuyNow" />
       </div>
     </div>
     <div class="w-full flex pt20px">
       <div class="flex">
-        <img class="h50px w50px" src="/public/personalInfonmation/zhengpin.png">
+        <img
+          class="h50px w50px"
+          src="/public/personalInfonmation/zhengpin.png"
+        >
         <span class="mt10px pl10px font-size-20px">正品保证</span>
       </div>
       <div class="ml50px flex">
@@ -191,11 +212,17 @@ function confirmBuyNow() {
     </div>
     <div class="ml5px w-full flex pb50px pt20px">
       <div class="flex">
-        <img class="h40px w40px" src="/public/personalInfonmation/recommand.png">
+        <img
+          class="h40px w40px"
+          src="/public/personalInfonmation/recommand.png"
+        >
         <span class="mt10px pl15px font-size-20px">官方推荐</span>
       </div>
       <div class="ml55px flex">
-        <img class="h40px w40px" src="/public/personalInfonmation/qianggou.png">
+        <img
+          class="h40px w40px"
+          src="/public/personalInfonmation/qianggou.png"
+        >
         <span class="mt10px pl18px font-size-20px">限时抢购</span>
       </div>
     </div>
