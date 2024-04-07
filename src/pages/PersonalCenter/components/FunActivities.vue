@@ -73,9 +73,12 @@ function gotoCheck(index) {
       class="bg h580px w-full flex flex-col items-center bg-contain bg-left bg-no-repeat"
     >
       <p class="mt5% font-size-50px font-bold">
-        西湖论剑·网络安全知识竞赛
+        网络安全知识竞赛
       </p>
-      <button class="mt25% h8% w-15% rounded-10px bg-#2B7BBB color-#fff shadow-2xl" @click="pptActiveIndexAdd1(-1)">
+      <p class="mt2% font-size-50px font-bold">
+        西湖论剑
+      </p>
+      <button class="mt15% h8% w-15% rounded-10px bg-#2B7BBB color-#fff shadow-2xl" @click="pptActiveIndexAdd1(-1)">
         开始答题
       </button>
     </div>
