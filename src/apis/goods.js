@@ -66,3 +66,13 @@ export function lotteryAPI(params) {
     params,
   })
 }
+
+/*
+    获取抽奖抽中的奖品列表
+*/
+export function prizeListAPI() {
+  return request({
+    url: '/user/shop/luckyList',
+    method: 'GET',
+  })
+}
