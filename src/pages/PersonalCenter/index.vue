@@ -43,11 +43,15 @@ import FunActivities from './components/FunActivities.vue'
 import { useTwelveStore } from '@/stores/twelve.js'
 import { useUserStore } from '@/stores/user.js'
 import { getCategoryRulesListAPI } from '@/apis/category.js'
+import { everyDaySignInAPI } from '@/apis/user.js'
+import { signInStatusStore } from '@/stores/signInStatus.js'
+
+const signInStatus = signInStatusStore()
 
 /*
-    定义一个变量用来切换是否签到的按钮状态
+    定义一个变量用来切换是否签到的按钮状态 => 后来已经存储到signInStatusStore中了
 */
-const isSignInFlag = ref(true)
+// const isSignInFlag = ref(true)
 
 /*
     定义个人信息12个模块
@@ -182,7 +186,7 @@ const twelveStore = useTwelveStore()
 // */
 // const activeMoudleIndex = twelveStore.activeMoudleIndex
 // console.log(activeMoudleIndex.value);
-const router = useRouter()// 用于页面的跳转
+const router = useRouter() // 用于页面的跳转
 
 /*
     定义一个函数用来灵活控制模块之间的显示和隐藏
@@ -243,12 +247,31 @@ async function getCategoryRulesList() {
   categoryRulesList.value = res.data
 }
 getCategoryRulesList()
+
+// TODO：调接口签到
+async function everyDaySignIn() {
+  await everyDaySignInAPI()
+  signInStatus.changeIsSignInFlag()
+  ElMessage({
+    message: '签到成功',
+    type: 'success',
+  })
+}
+
+function sorryForAlreadySignIn() {
+  ElMessage({
+    message: '今日已签到，不可重复签到',
+    type: 'error',
+  })
+}
 </script>
 
 <template>
   <!-- PC端个人中心 -->
   <div class="w-full bg-#F7F9FC pb50px max-md:hidden">
-    <div class="bg h-full w-full bg-contain bg-left bg-no-repeat pt50px font-size-35px color-#fff font-bold">
+    <div
+      class="bg h-full w-full bg-contain bg-left bg-no-repeat pt50px font-size-35px color-#fff font-bold"
+    >
       <p class="pl10%">
         个人中心
       </p>
@@ -258,7 +281,11 @@ getCategoryRulesList()
       <div class="h100% h600px w23% flex flex-col bg-#fff shadow-lg">
         <!-- username and avator -->
         <div class="w-full flex flex-col items-center">
-          <img class="rousnded-50% mt50px h70px w70px" src="/public/avator.jpeg" alt="">
+          <img
+            class="rousnded-50% mt50px h70px w70px"
+            src="/public/avator.jpeg"
+            alt=""
+          >
           <p class="mt20px font-size-20px">
             {{ userStore.userInfo.username }}
           </p>
@@ -300,24 +327,50 @@ getCategoryRulesList()
           class="h80px w-full flex items-center bg-#fff pl20px pr20px font-size-20px color-[#00B4BC] font-bold shadow-lg"
         >
           <p>
-            我的积分：<span class="color-[#333]">{{ userStore.userInfo.integral }}</span>
+            我的积分：<span class="color-[#333]">{{
+              userStore.userInfo.integral
+            }}</span>
           </p>
-          <span class="ml8% font-size-16px hover:color-blue" @click="showCategoryDialogTableVisible">点击查看积分规则</span>
-          <SignInRotateBgButton v-if="isSignInFlag" class="ml30%" />
-          <button v-else class="ml30% h35px w120px rounded-20px font-size-13px">
+          <span
+            class="ml8% font-size-16px hover:color-blue"
+            @click="showCategoryDialogTableVisible"
+          >点击查看积分规则</span>
+          <SignInRotateBgButton
+            v-if="signInStatus.isSignInFlag"
+            class="ml30%"
+            @click="everyDaySignIn"
+          />
+          <button
+            v-else
+            class="ml30% h35px w120px rounded-20px font-size-13px"
+            @click="sorryForAlreadySignIn"
+          >
             已签到
           </button>
         </div>
         <!-- 右侧底下模块 点击可进入分模块 -->
-        <div v-show="twelveStore.twelve" class="mt10px h510px w-full flex-1 bg-#fff shadow-lg">
-          <ul class="rightBottomUl h510px w-full flex flex-wrap justify-evenly pb50px pt50px">
+        <div
+          v-show="twelveStore.twelve"
+          class="mt10px h510px w-full flex-1 bg-#fff shadow-lg"
+        >
+          <ul
+            class="rightBottomUl h510px w-full flex flex-wrap justify-evenly pb50px pt50px"
+          >
             <li
-              v-for="(item, index) in list" :key="index" :class="activeIndex === index ? 'active' : ''"
+              v-for="(item, index) in list"
+              :key="index"
+              :class="activeIndex === index ? 'active' : ''"
               class="lii h120px w200px flex items-center justify-evenly border-0.1px border-[#00B4BC] rounded-10px border-solid bg-#EFFBFF shadow-2xl hover:bg-[#00B4BC]"
-              @mouseleave="changeImgToColor(index)" @mouseover="changeImgToWhite(index)"
+              @mouseleave="changeImgToColor(index)"
+              @mouseover="changeImgToWhite(index)"
               @click="changeActiveMoudleIndex(index)"
             >
-              <img :src="item.img" alt="" class="w50px" :class="index === 8 || index === 5 ? 'w70px ' : ''">
+              <img
+                :src="item.img"
+                alt=""
+                class="w50px"
+                :class="index === 8 || index === 5 ? 'w70px ' : ''"
+              >
               <div>
                 <p class="color-[#333] font-bold">
                   {{ item.name }}
@@ -364,27 +417,47 @@ getCategoryRulesList()
       <div class="h45px w-full flex flex items-center pl50px pr50px">
         <span class="color-red">*</span>
         <span>姓名：</span>
-        <input v-model="username" type="text" class="h30px flex-1 border-1px border-#EAEAEA border-solid pl10px">
+        <input
+          v-model="username"
+          type="text"
+          class="h30px flex-1 border-1px border-#EAEAEA border-solid pl10px"
+        >
       </div>
       <div class="h45px w-full flex flex items-center pl50px pr50px">
         <span class="color-red">*</span>
         <span>公司：</span>
-        <input v-model="company" type="text" class="h30px flex-1 border-1px border-#EAEAEA border-solid pl10px">
+        <input
+          v-model="company"
+          type="text"
+          class="h30px flex-1 border-1px border-#EAEAEA border-solid pl10px"
+        >
       </div>
       <div class="h45px w-full flex flex items-center pl50px pr50px">
         <span class="color-red">*</span>
         <span>部门：</span>
-        <input v-model="department" type="text" class="h30px flex-1 border-1px border-#EAEAEA border-solid pl10px">
+        <input
+          v-model="department"
+          type="text"
+          class="h30px flex-1 border-1px border-#EAEAEA border-solid pl10px"
+        >
       </div>
       <div class="h45px w-full flex flex items-center pl50px pr50px">
         <span class="color-red">*</span>
         <span>职位：</span>
-        <input v-model="position" type="text" class="h30px flex-1 border-1px border-#EAEAEA border-solid pl10px">
+        <input
+          v-model="position"
+          type="text"
+          class="h30px flex-1 border-1px border-#EAEAEA border-solid pl10px"
+        >
       </div>
       <div class="h45px w-full flex flex items-center pl23px pr50px">
         <span class="color-red">*</span>
         <span>邮箱地址：</span>
-        <input v-model="email" type="text" class="h30px flex-1 border-1px border-#EAEAEA border-solid pl10px">
+        <input
+          v-model="email"
+          type="text"
+          class="h30px flex-1 border-1px border-#EAEAEA border-solid pl10px"
+        >
       </div>
       <div class="w-full flex justify-center">
         <button
@@ -397,11 +470,19 @@ getCategoryRulesList()
     </el-dialog>
 
     <!-- 查看积分规则的弹框 -->
-    <el-dialog v-model="categoryDialogTableVisible" width="800" class="pl4% pt2%">
+    <el-dialog
+      v-model="categoryDialogTableVisible"
+      width="800"
+      class="pl4% pt2%"
+    >
       <div class="mb10px mb5% font-size-20px color-#00B4BC font-bold">
         积分规则
       </div>
-      <div v-for="(item, index) in categoryRulesList" :key="index" class="mb5% w-full">
+      <div
+        v-for="(item, index) in categoryRulesList"
+        :key="index"
+        class="mb5% w-full"
+      >
         <span class="inline-block w27%">{{ item.todo }}</span>
         <span class="inline-block w7% color-#00B4BC">+{{ item.number }}</span>
         <span class="inline-block w66% pl6%">{{ item.desc }}</span>
@@ -414,7 +495,8 @@ getCategoryRulesList()
     <DynamicTime class="from-blue-400 to-blue-200 bg-gradient-to-l" />
     <div class="mt20px flex justify-evenly">
       <div
-        v-for="(item, index) in list.slice(0, 4)" :key="index"
+        v-for="(item, index) in list.slice(0, 4)"
+        :key="index"
         class="h90px w80px flex flex-col items-center justify-evenly bg-#EFFBFF shadow-2xl"
       >
         <img :src="item.img" class="w35px" alt="">
@@ -425,7 +507,8 @@ getCategoryRulesList()
     </div>
     <div class="mt15px flex justify-evenly">
       <div
-        v-for="(item, index) in list.slice(4, 8)" :key="index"
+        v-for="(item, index) in list.slice(4, 8)"
+        :key="index"
         class="h90px w80px flex flex-col items-center justify-evenly bg-#EFFBFF shadow-2xl"
       >
         <img :src="item.img" class="w35px" alt="">
@@ -436,7 +519,8 @@ getCategoryRulesList()
     </div>
     <div class="mt15px flex justify-evenly">
       <div
-        v-for="(item, index) in list.slice(8, 12)" :key="index"
+        v-for="(item, index) in list.slice(8, 12)"
+        :key="index"
         class="h90px w80px flex flex-col items-center justify-evenly bg-#EFFBFF shadow-2xl"
       >
         <img :src="item.img" class="w35px" alt="">
@@ -446,7 +530,9 @@ getCategoryRulesList()
       </div>
     </div>
     <div class="w-full flex justify-center">
-      <button class="mb40px mt25px h40px w350px rounded-15px from-[#5FD6E3] to-[#00A7F5] bg-gradient-to-r color-#fff">
+      <button
+        class="mb40px mt25px h40px w350px rounded-15px from-[#5FD6E3] to-[#00A7F5] bg-gradient-to-r color-#fff"
+      >
         退出登录
       </button>
     </div>

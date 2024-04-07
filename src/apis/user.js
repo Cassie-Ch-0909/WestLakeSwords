@@ -50,3 +50,13 @@ export function getUserCollectionListAPI() {
     method: 'GET',
   })
 }
+
+/*
+    用户签到
+*/
+export function everyDaySignInAPI() {
+  return request({
+    url: '/user/user/signIn',
+    method: 'GET',
+  })
+}
