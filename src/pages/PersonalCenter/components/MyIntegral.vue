@@ -1,6 +1,17 @@
 <script setup>
+import { ref } from 'vue'
 import MoudleHeader from './MoudleHeader.vue'
 import Echarts from './Echarts.vue'
+import { getUserIntegraDetailslListAPI } from '@/apis/user'
+
+// 积分明细列表
+const userIntegraDetailsList = ref([])
+async function getUserIntegraDetailslList() {
+  const res = await getUserIntegraDetailslListAPI()
+  // console.log(res.data)
+  userIntegraDetailsList.value = res.data
+}
+getUserIntegraDetailslList()
 </script>
 
 <template>
@@ -18,10 +29,10 @@ import Echarts from './Echarts.vue'
             <span class="ml95px">操作</span>
             <span class="">积分变动</span>
           </div>
-          <div v-for="(item, index) in 10" :key="index" :class="index % 2 === 0 ? 'bg-#F9FBFC' : 'bg-#fff'" class="h40px w-full flex items-center justify-between font-size-13px">
-            <span class="">2024-03-20 14:40:13</span>
-            <span class="">签到</span>
-            <span class="">+100积分</span>
+          <div v-for="(item, index) in userIntegraDetailsList" :key="index" :class="index % 2 === 0 ? 'bg-#F9FBFC' : 'bg-#fff'" class="h40px w-full flex items-center justify-between font-size-13px">
+            <span class="">{{ item.time }}</span>
+            <span class="">{{ item.operation }}</span>
+            <span class="">+{{ item.integral }}</span>
           </div>
         </div>
         <Echarts />

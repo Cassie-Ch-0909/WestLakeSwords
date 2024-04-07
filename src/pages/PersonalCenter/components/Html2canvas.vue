@@ -26,10 +26,18 @@
 /*
     定义一个变量用来激活选中的海报样式
 */
+import { useUserStore } from '@/stores/user.js'
+
 const activeSelectModuleIndex = ref(0)
 function changeActiveSelectModuleIndex(index: number) {
   activeSelectModuleIndex.value = index
 }
+
+const userStore = useUserStore()
+userStore.getUserInfo()
+const avatar = ref('')
+avatar.value = userStore.userInfo.avatar
+// console.log(avatar.value)
 </script>
 
 <template>
@@ -60,7 +68,7 @@ function changeActiveSelectModuleIndex(index: number) {
             “清风徐来，水波不兴”，
             <br>愿您的生活一帆风顺，宁静而美好
           </p>
-          <img src="/public/avator.jpeg" class="absolute left-1% top-10% mr3% w16% rounded-50%" alt="">
+          <img :src="avatar" class="absolute left-1% top-10% mr3% w16% rounded-50%" alt="">
           <img class="absolute bottom-3% right-23% w-18%" src="/public/xcx.png">
           <img class="absolute bottom-3% right-3% w-18%" src="/public/about/1.webp">
         </div>

@@ -31,11 +31,11 @@ let isDrawing = false // 是否正在抽奖
 const currentIndex = ref<number | null>(null) // 当前选中的奖品
 const circle = 32 // 一圈8个奖品，至少转4圈
 
-// 获取随机数
-function getRandomNum() {
-  const num = Math.floor(Math.random() * pirzeList.length)
-  return num
-}
+// // 获取随机数
+// function getRandomNum() {
+//   const num = Math.floor(Math.random() * pirzeList.length)
+//   return num
+// }
 
 function draw(index: number) {
   if (index === 4) {
@@ -45,18 +45,18 @@ function draw(index: number) {
 
     isDrawing = true
 
-    const position = getRandomNum() // 假设后台返回的中奖位置是5
+    const position = ref(8) // 假设后台返回的中奖位置是5
     // console.log(position)
 
     const timer = setInterval(() => {
       currentIndex.value = drawOrder[count % drawOrder.length]
       count++
-      if (count > circle && currentIndex.value === drawOrder[position - 1]) {
+      if (count > circle && currentIndex.value === drawOrder[position.value - 1]) {
         // 抽奖结束
         clearInterval(timer)
         // 停顿一会显示中奖
         setTimeout(() => {
-          if (position - 1 === 5 || position - 1 === 7) {
+          if (position.value - 1 === 5 || position.value - 1 === 7) {
             ElMessage({
               message: '谢谢参与，很遗憾未抽中奖品',
               type: 'error',
@@ -64,7 +64,7 @@ function draw(index: number) {
           }
           else {
             ElMessage({
-              message: `恭喜您，抽中奖品${pirzeList[position - 1].desc}`,
+              message: `恭喜您，抽中奖品${pirzeList[position.value - 1].desc}`,
               type: 'success',
             })
           }

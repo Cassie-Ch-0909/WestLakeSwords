@@ -20,3 +20,13 @@ export function getUserInfoAPI() {
     method: 'GET',
   })
 }
+
+/*
+    获取用户积分明细列表
+*/
+export function getUserIntegraDetailslListAPI() {
+  return request({
+    url: '/user/user/getIntegralList',
+    method: 'GET',
+  })
+}

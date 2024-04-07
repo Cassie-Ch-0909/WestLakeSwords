@@ -1,9 +1,20 @@
 <script setup>
 import { onMounted, ref } from 'vue'
 import * as echarts from 'echarts'
+import { getUserIntegraDetailslListAPI } from '@/apis/user'
 
+// 积分明细列表
+const userIntegralDetailsList = ref([])
+async function getUserIntegraDetailslList() {
+  const res = await getUserIntegraDetailslListAPI()
+  // console.log(res.data)
+  userIntegralDetailsList.value = res.data
+  userIntegralDetailsList.value = userIntegralDetailsList.value.map(
+    (item) => { return { name: item.operation, value: item.integral } },
+  )
+}
 const chartDom = ref()
-onMounted(() => {
+onMounted(async () => {
   const myChart = echarts.init(chartDom.value)
   const option = {
     title: {
@@ -52,11 +63,16 @@ onMounted(() => {
           { value: 300, name: '分享' },
           { value: 300, name: '线下展商打卡' },
           { value: 300, name: '邀请好友参会' },
+          { value: 300, name: '答题' },
         ],
       },
     ],
   }
+  await getUserIntegraDetailslList()
 
+  // console.log(option.series[0].data)
+  option.series[0].data = userIntegralDetailsList.value
+  // console.log(option.series[0].data)
   option && myChart.setOption(option)
 })
 </script>
