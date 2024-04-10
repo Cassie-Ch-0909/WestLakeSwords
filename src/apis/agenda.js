@@ -55,7 +55,7 @@ export function getAllAgendasAPI() {
 */
 export function getAgendaByIdAPI(id) {
   return request({
-    url: '/user/agenda/getById',
+    url: `/user/agenda/getByAgendaId/${id}`,
     method: 'GET',
     params: {
       id,

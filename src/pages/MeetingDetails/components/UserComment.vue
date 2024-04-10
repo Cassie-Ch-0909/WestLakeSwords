@@ -5,6 +5,7 @@ import { getAllCommentAPI } from '@/apis/comment'
 // TODO：调接口获取评论列表
 async function getAllComment() {
   await getAllCommentAPI()
+  // console.log(res)
 }
 getAllComment()
 

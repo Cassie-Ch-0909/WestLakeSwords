@@ -5,7 +5,9 @@ import axios from 'axios'
 // import router from '@/router/index'
 
 const httpInstance = axios.create({
-  baseURL: 'http://127.0.0.1:8080',
+  // baseURL: 'http://127.0.0.1:8080',
+  // baseURL: 'http://47.99.123.84:8080'
+  baseURL: 'http://localhost:8080',
   timeout: 5000,
 })
 // 拦截器
