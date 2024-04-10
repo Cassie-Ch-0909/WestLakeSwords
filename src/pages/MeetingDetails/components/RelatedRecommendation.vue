@@ -96,11 +96,14 @@ const relatedRecommendationList = ref([
     </div>
     <ul>
       <li
-        v-for="(item, index) in relatedRecommendationList" :key="index"
-        class="mt3px h210px w-full flex flex-col bg-green"
+        v-for="(item, index) in relatedRecommendationList"
+        :key="index"
+        class="mt3px h210px w-full flex flex-col cursor-pointer bg-green"
       >
         <img :src="item.img" alt="" class="w100%">
-        <div class="flex flex-1 items-center justify-between from-[#6CB9F7] to-[#59afb8] bg-gradient-to-b color-[#fff]">
+        <div
+          class="flex flex-1 items-center justify-between from-[#6CB9F7] to-[#59afb8] bg-gradient-to-b color-[#fff]"
+        >
           <span class="pl5px font-size-14px">{{ item.content }}</span>
           <span class="pr5px font-size-12px">{{ item.name }}</span>
         </div>
@@ -109,5 +112,4 @@ const relatedRecommendationList = ref([
   </div>
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>

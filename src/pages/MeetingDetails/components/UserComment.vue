@@ -109,9 +109,9 @@ function changeIsShowNextCommentsFlag() {
         <span class="font-size-14px">14857</span>
       </div>
       <div class="h-full w-100px flex items-center justify-center">
-        <span class="font-size-13px">最热</span>
+        <span class="cursor-pointer font-size-13px">最热</span>
         <span class="ml8px mr8px h15px w1px bg-black" />
-        <span class="font-size-13px">最新</span>
+        <span class="cursor-pointer font-size-13px">最新</span>
       </div>
     </div>
     <!-- 第二行 发表评论和判断是否需要登录 -->
@@ -284,16 +284,16 @@ function changeIsShowNextCommentsFlag() {
             <!-- 评论时间 -->
             <span class="mr20px">{{ item.time }}</span>
             <!-- 点赞 -->
-            <span class="mr20px">
+            <span class="mr20px cursor-pointer">
               <i class="iconfont icon-dianzan_kuai" />
               {{ item.likeCount }}
             </span>
             <!-- 拉踩 -->
-            <span class="mr20px">
+            <span class="mr20px cursor-pointer">
               <i class="iconfont icon-badreview-full font-size-14px" />
             </span>
             <!-- 回复 -->
-            <span>回复</span>
+            <span class="cursor-pointer">回复</span>
           </div>
         </div>
       </div>

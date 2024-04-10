@@ -185,7 +185,7 @@ function watchReplay(id) {
           <div
             v-for="(item, index) in dateList" :key="index"
             :class="activeIndex === index ? 'bg-[#00B4BC]' : 'bg-[#EFFBFF]'"
-            class="mr2% h-60% w-18% flex items-center justify-center rounded-[10px]" @click="selectDate(index)"
+            class="mr2% h-60% w-18% flex cursor-pointer items-center justify-center rounded-[10px]" @click="selectDate(index)"
           >
             <div
               :class="activeIndex === index ? 'color-[#EFFBFF]' : 'color-[#00B4BC]'"
@@ -242,13 +242,13 @@ function watchReplay(id) {
               </div>
               <!-- 观看回放 -->
               <div
-                class="ml5% h30px w8% flex items-center justify-center rounded-[13px] bg-[#00B4BC] font-size-13px color-[#fff]"
+                class="ml5% h30px w8% flex cursor-pointer items-center justify-center rounded-[13px] bg-[#00B4BC] font-size-13px color-[#fff]"
                 @click="watchReplay(item3.id)"
               >
                 <p>观看回放</p>
               </div>
               <!-- 右边箭头 -->
-              <div class="ml40% w5% flex items-center justify-center color-[#00B4BC]" @click="showMoreContent">
+              <div class="ml40% w5% flex cursor-pointer items-center justify-center color-[#00B4BC]" @click="showMoreContent">
                 <i class="iconfont icon-arrow-down" />
               </div>
             </div>

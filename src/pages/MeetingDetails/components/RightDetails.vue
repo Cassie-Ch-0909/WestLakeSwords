@@ -3,36 +3,39 @@ import { ref } from 'vue'
 import { ElMessage, ElMessageBox } from 'element-plus'
 import RotateBgButton from './RotateBgButton.vue'
 import RotateBgButtonD from './RotateBgButtonD.vue'
-import { getAgendaByIdAPI, likeForAgendaAPI, starForAgendaAPI, subscribeForAgendaAPI } from '@/apis/agenda'
+import {
+  getAgendaByIdAPI,
+  likeForAgendaAPI,
+  starForAgendaAPI,
+  subscribeForAgendaAPI,
+} from '@/apis/agenda'
 
-const iconList = ref(
-  [
-    {
-      icon: 'icon-dianzan_kuai',
-      name: 8995,
-    },
-    {
-      icon: 'icon-toubi-copy',
-      name: '投币',
-    },
-    {
-      icon: 'icon-shoucang',
-      name: '收藏',
-    },
-    {
-      icon: 'icon-zhuanfa',
-      name: '转发',
-    },
-    {
-      icon: 'icon-icon204',
-      name: 5677,
-    },
-    {
-      icon: 'icon-baocundaobendi',
-      name: '保存',
-    },
-  ],
-)
+const iconList = ref([
+  {
+    icon: 'icon-dianzan_kuai',
+    name: 8995,
+  },
+  {
+    icon: 'icon-toubi-copy',
+    name: '投币',
+  },
+  {
+    icon: 'icon-shoucang',
+    name: '收藏',
+  },
+  {
+    icon: 'icon-zhuanfa',
+    name: '转发',
+  },
+  {
+    icon: 'icon-icon204',
+    name: 5677,
+  },
+  {
+    icon: 'icon-baocundaobendi',
+    name: '保存',
+  },
+])
 
 // 会议议程时间线
 const agendaTimeLineList = ref([
@@ -64,7 +67,8 @@ const agendaTimeLineList = ref([
   {
     time: '08:55 - 09:00',
     content: '揭牌仪式1：台州科技职业学院-安恒信息产业学院揭牌仪式',
-    person: '任 娜    台州科技职业学院副校长苗春雨 安恒信息高级副总裁、首席人才官',
+    person:
+      '任 娜    台州科技职业学院副校长苗春雨 安恒信息高级副总裁、首席人才官',
   },
   {
     time: '09:00 - 09:05',
@@ -255,15 +259,11 @@ function selectIconOperate(index) {
 
 // 是否确定订阅的弹框
 function open() {
-  ElMessageBox.confirm(
-    '您确定订阅这个会议吗',
-    '提示',
-    {
-      confirmButtonText: '确定',
-      cancelButtonText: '取消',
-      type: 'warning',
-    },
-  )
+  ElMessageBox.confirm('您确定订阅这个会议吗', '提示', {
+    confirmButtonText: '确定',
+    cancelButtonText: '取消',
+    type: 'warning',
+  })
     .then(() => {
       // 进入确定订阅分支 调取订阅接口
       subscribeForAgenda(route.query.id)
@@ -298,8 +298,11 @@ function open() {
       <!-- 点赞投币。。。 -->
       <div class="w-full flex justify-between pl30px pr30px">
         <div
-          v-for="(item, index) in iconList" :key="index" class="flex flex-col color-#fff hover:color-[#00F5FF]"
-          :class="selectList.includes(index) ? 'color-[#00F5FF]' : ''" @click="selectIconOperate(index)"
+          v-for="(item, index) in iconList"
+          :key="index"
+          class="flex flex-col cursor-pointer color-#fff hover:color-[#00F5FF]"
+          :class="selectList.includes(index) ? 'color-[#00F5FF]' : ''"
+          @click="selectIconOperate(index)"
         >
           <i :class="item.icon" class="iconfont font-size-25px" />
           <span class="font-size-12px">{{ item.name }}</span>
@@ -315,11 +318,17 @@ function open() {
       </div>
       <!-- 议程详情 -->
       <div
-        class="mb15px ml15px mr15px mt20px h-265px w-full w297px flex flex-col items-center overflow-y-scroll bg-#fff pt10px"
+        class="mb15px ml15px mr15px mt20px h-315px w-full w297px flex flex-col items-center overflow-y-scroll bg-#fff pt10px"
       >
-        <div v-for="(item, index) in agendaTimeLineList" :key="index" class="w-90% flex">
+        <div
+          v-for="(item, index) in agendaTimeLineList"
+          :key="index"
+          class="w-90% flex"
+        >
           <div class="h100% w15px flex flex-col items-center">
-            <span class="inline-block h15px w15px border-2px border-#2DB1BA rounded-50% border-solid" />
+            <span
+              class="inline-block h15px w15px border-2px border-#2DB1BA rounded-50% border-solid"
+            />
             <span class="inline-block h120px w2px bg-#2DB1BA" />
           </div>
           <div class="h100% flex-1 pl15px">
