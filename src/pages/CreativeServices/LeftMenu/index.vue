@@ -1,5 +1,8 @@
 <script setup>
-import { ref } from 'vue'
+import { defineEmits, ref } from 'vue'
+
+// 使用defineEmits创建名称，接受一个数组
+const emit = defineEmits(['showBigPannelActiveIndex'])
 
 const list = ref([
   {
@@ -27,6 +30,12 @@ const list = ref([
     icon: 'icon-dytnshaomabaike',
   },
 ])
+
+const showBigPannelActiveIndex = ref(999)
+function changeShowBigPannelActiveIndex(index) {
+  showBigPannelActiveIndex.value = index
+  emit('showBigPannelActiveIndex', showBigPannelActiveIndex.value)
+}
 </script>
 
 <template>
@@ -36,13 +45,16 @@ const list = ref([
       <p class="mb10px font-size-22px font-bold">
         创作服务平台
       </p>
-      <button class="h40px w85% rounded-5px bg-#00B4BC color-#fff">
+      <button class="h40px w85% rounded-5px bg-#00B4BC color-#fff" @click="changeShowBigPannelActiveIndex(-1)">
         发布笔记
       </button>
     </div>
     <!-- 6个分模块 -->
     <div class="mt20px h600px w-full flex flex-col items-center">
-      <div v-for="(item, index) in list" :key="index" class="mb8px h40px w85% flex items-center rounded-5px">
+      <div
+        v-for="(item, index) in list" :key="index" class="mb8px h40px w85% flex items-center rounded-5px hover:bg-[#00B4BC] hover:color-#fff" :class="showBigPannelActiveIndex === index ? 'bg-[#00B4BC] color-#fff' : ''"
+        @click="changeShowBigPannelActiveIndex(index)"
+      >
         <i class="iconfont pl10px" :class="item.icon" />
         <span class="pl10px">{{ item.title }}</span>
       </div>

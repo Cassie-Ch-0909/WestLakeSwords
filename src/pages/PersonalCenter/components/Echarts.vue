@@ -9,9 +9,10 @@ async function getUserIntegraDetailslList() {
   const res = await getUserIntegraDetailslListAPI()
   // console.log(res.data)
   userIntegralDetailsList.value = res.data
-  userIntegralDetailsList.value = userIntegralDetailsList.value.map(
-    (item) => { return { name: item.operation, value: item.integral } },
-  )
+  userIntegralDetailsList.value = userIntegralDetailsList.value.map((item) => {
+    return { name: item.operation, value: item.integral }
+  })
+  // console.log(11,userIntegralDetailsList.value)
 }
 const chartDom = ref()
 onMounted(async () => {

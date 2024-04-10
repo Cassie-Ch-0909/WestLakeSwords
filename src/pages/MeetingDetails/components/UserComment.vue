@@ -3,9 +3,10 @@ import { ref } from 'vue'
 import { getAllCommentAPI } from '@/apis/comment'
 
 // TODO：调接口获取评论列表
+const commentList = ref([])
 async function getAllComment() {
-  await getAllCommentAPI()
-  // console.log(res)
+  const res = await getAllCommentAPI()
+  commentList.value = res.data
 }
 getAllComment()
 
@@ -262,34 +263,30 @@ function changeIsShowNextCommentsFlag() {
     </div>
 
     <!-- 需要v-for的评论 -->
-    <div class="w-865px flex">
+    <div v-for="(item, index) in commentList" :key="index" class="w-865px flex">
       <!-- 用户头像 -->
       <div class="left mt15px h-full w78px">
-        <img
-          src="/public/avator.jpeg"
-          alt=""
-          class="ml15px h48px w48px rounded-50%"
-        >
+        <img :src="item.avatar" alt="" class="ml15px h48px w48px rounded-50%">
       </div>
       <div class="mt15px h-full flex-1">
         <!-- 用户名 -->
         <div
           class="h-30px w-full flex items-center font-size-14px color-#61666d"
         >
-          山竹醇单推人
+          {{ item.username }}
         </div>
         <div class="mt10px font-size-15px">
           <!-- 评论内容 -->
           <p>
-            西湖论剑网络安全大会是一场引领行业发展的盛会，为网络安全领域提供了重要的交流和学习平台。
+            {{ item.content }}
           </p>
           <div class="mt5px font-size-12px color-#9499A0">
             <!-- 评论时间 -->
-            <span class="mr20px">2024-03-17&nbsp; 13:30</span>
+            <span class="mr20px">{{ item.time }}</span>
             <!-- 点赞 -->
             <span class="mr20px">
               <i class="iconfont icon-dianzan_kuai" />
-              {{ 4785 }}
+              {{ item.likeCount }}
             </span>
             <!-- 拉踩 -->
             <span class="mr20px">

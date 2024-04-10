@@ -54,6 +54,7 @@ declare module 'vue-router/auto/routes' {
     '/BigNames/': RouteRecordInfo<'/BigNames/', '/BigNames', Record<never, never>, Record<never, never>>,
     '/CreativeServices/': RouteRecordInfo<'/CreativeServices/', '/CreativeServices', Record<never, never>, Record<never, never>>,
     '/CreativeServices/Content/': RouteRecordInfo<'/CreativeServices/Content/', '/CreativeServices/Content', Record<never, never>, Record<never, never>>,
+    '/CreativeServices/Home/': RouteRecordInfo<'/CreativeServices/Home/', '/CreativeServices/Home', Record<never, never>, Record<never, never>>,
     '/CreativeServices/LeftMenu/': RouteRecordInfo<'/CreativeServices/LeftMenu/', '/CreativeServices/LeftMenu', Record<never, never>, Record<never, never>>,
     '/ExhibitorStyle/': RouteRecordInfo<'/ExhibitorStyle/', '/ExhibitorStyle', Record<never, never>, Record<never, never>>,
     '/Fingerpost/': RouteRecordInfo<'/Fingerpost/', '/Fingerpost', Record<never, never>, Record<never, never>>,
