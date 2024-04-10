@@ -10,13 +10,14 @@ export function getAnswerListAPI() {
   })
 }
 
+// TODO：修改校对答案的接口调用
 /*
     校对每题答案
 */
-export function checkAnswerAPI(params) {
+export function checkAnswerAPI(questionId, userAnswer) {
   return request({
-    url: '/user/user/checkAnswer',
+    url: `/user/user/checkAnswer/${questionId}`,
     method: 'GET',
-    params,
+    params: { userAnswer },
   })
 }

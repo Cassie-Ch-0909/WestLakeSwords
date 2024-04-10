@@ -36,15 +36,15 @@ function changeOptionActiveIndex(index) {
 
 // TODO3：调接口校对每题答案
 
-const checkObj = ref({
-  questionId: '',
-  userAnswer: '',
-})
+// const checkObj = ref({
+//   questionId: '',
+//   userAnswer: '',
+// })
 
 const correctNumber = ref()
 
-async function checkAnswer(obj) {
-  const res = await checkAnswerAPI(obj)
+async function checkAnswer(questionId, userAnswer) {
+  const res = await checkAnswerAPI(questionId, userAnswer)
   correctNumber.value = res.correctCount
   if (correctNumber.value === 5) {
     // TODO: 更新积分
@@ -55,10 +55,9 @@ async function checkAnswer(obj) {
 
 function gotoCheck(index) {
   // 跳到下一题
-  checkObj.value.questionId = answerList.value[pptActiveIndex.value].id
-  checkObj.value.userAnswer = answerList.value[pptActiveIndex.value].optionsList[optionActiveIndex.value]
-  // console.log(checkObj.value)
-  checkAnswer(checkObj.value)
+  const questionId = answerList.value[pptActiveIndex.value].id
+  const userAnswer = answerList.value[pptActiveIndex.value].optionsList[optionActiveIndex.value]
+  checkAnswer(questionId, userAnswer)
   pptActiveIndexAdd1(index)
 }
 </script>

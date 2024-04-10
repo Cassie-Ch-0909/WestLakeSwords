@@ -1,5 +1,12 @@
 <script setup>
 import { ref } from 'vue'
+import { getAllCommentAPI } from '@/apis/comment'
+
+// TODO：调接口获取评论列表
+async function getAllComment() {
+  await getAllCommentAPI()
+}
+getAllComment()
 
 const firstCommentList = ref([
   {
@@ -11,7 +18,8 @@ const firstCommentList = ref([
   },
   {
     avator: '/public/firstComment/2.jpg',
-    comment: '大会汇聚了业界顶尖专家和企业，共同探讨前沿技术和解决方案，为推动网络安全发展做出了积极贡献。',
+    comment:
+      '大会汇聚了业界顶尖专家和企业，共同探讨前沿技术和解决方案，为推动网络安全发展做出了积极贡献。',
     name: '我要月亮奔我而来',
     time: '2023-09-20 13:33:30',
     like: 90,
@@ -30,55 +38,53 @@ const firstCommentList2 = ref([
     avator: '/public/firstComment/4.jpg',
     comment: '大会的组织和安排高效有序',
     name: '月野氿桃',
-
   },
   {
     avator: '/public/firstComment/5.jpg',
     comment: '演讲嘉宾们的专业水平和丰富经验让人受益匪浅',
     name: '星星跌入梦境',
-
   },
   {
     avator: '/public/firstComment/6.jpg',
-    comment: '西湖论剑网络安全大会的影响力不断扩大，已成为国内网络安全领域的标志性活动，他们的观点和建议对提升网络安全具有重要指导意义。',
+    comment:
+      '西湖论剑网络安全大会的影响力不断扩大，已成为国内网络安全领域的标志性活动，他们的观点和建议对提升网络安全具有重要指导意义。',
     name: '桃奈叶子',
-
   },
   {
     avator: '/public/firstComment/7.jpg',
-    comment: '大会关注热点问题，探讨解决方案，为应对网络安全挑战提供了有益的思路和方法。',
+    comment:
+      '大会关注热点问题，探讨解决方案，为应对网络安全挑战提供了有益的思路和方法。',
     name: '知更鸟的死因',
-
   },
   {
     avator: '/public/firstComment/8.jpg',
-    comment: '会议的举办有助于提高公众对网络安全的认识和重视程度，促进全社会共同参与网络安全建设。大会的专业性和权威性得到了业界的广泛认可，是网络安全从业者不可错过的盛会。',
+    comment:
+      '会议的举办有助于提高公众对网络安全的认识和重视程度，促进全社会共同参与网络安全建设。大会的专业性和权威性得到了业界的广泛认可，是网络安全从业者不可错过的盛会。',
     name: '放鹤归舟',
-
   },
   {
     avator: '/public/firstComment/9.jpg',
-    comment: '西湖论剑网络安全大会展示了最新的技术成果和创新应用，推动了网络安全技术的进步和应用落地。',
+    comment:
+      '西湖论剑网络安全大会展示了最新的技术成果和创新应用，推动了网络安全技术的进步和应用落地。',
     name: '春日樱亭',
-
   },
   {
     avator: '/public/firstComment/10.jpg',
-    comment: '大会的专业性和权威性得到了业界的广泛认可，是网络安全从业者不可错过的盛会。',
+    comment:
+      '大会的专业性和权威性得到了业界的广泛认可，是网络安全从业者不可错过的盛会。',
     name: '宇宙热恋期',
-
   },
   {
     avator: '/public/firstComment/11.jpg',
-    comment: '会议的成功举办离不开主办方的精心筹备和辛勤付出，向他们表示衷心的感谢和赞美。',
+    comment:
+      '会议的成功举办离不开主办方的精心筹备和辛勤付出，向他们表示衷心的感谢和赞美。',
     name: '今夜星潮暗涌',
-
   },
   {
     avator: '/public/firstComment/12.jpg',
-    comment: '期待西湖论剑网络安全大会继续发挥引领作用，为网络安全事业的发展注入新的活力和动力。',
+    comment:
+      '期待西湖论剑网络安全大会继续发挥引领作用，为网络安全事业的发展注入新的活力和动力。',
     name: '与银河邂逅',
-
   },
 ])
 
@@ -109,8 +115,14 @@ function changeIsShowNextCommentsFlag() {
     <!-- 第二行 发表评论和判断是否需要登录 -->
     <div class="h-60px w-full flex items-center">
       <i class="iconfont icon-touxiang ml15px font-size-45px color-#00B4BC" />
-      <input type="text" class="ml15px h40px w-710px rounded-5px bg-#D6E5E5 pl20px" placeholder="请先登录后发表评论 (・ω・)">
-      <button class="ml15px h40px w65px rounded-5px hover:bg-[#00B4BC] hover:color-#fff">
+      <input
+        type="text"
+        class="ml15px h40px w-710px rounded-5px bg-#D6E5E5 pl20px"
+        placeholder="请先登录后发表评论 (・ω・)"
+      >
+      <button
+        class="ml15px h40px w65px rounded-5px hover:bg-[#00B4BC] hover:color-#fff"
+      >
         发表
       </button>
     </div>
@@ -118,11 +130,17 @@ function changeIsShowNextCommentsFlag() {
     <div class="w-865px flex">
       <!-- 用户头像 -->
       <div class="left mt15px h-full w78px">
-        <img src="/public/avator.jpeg" alt="" class="ml15px h48px w48px rounded-50%">
+        <img
+          src="/public/avator.jpeg"
+          alt=""
+          class="ml15px h48px w48px rounded-50%"
+        >
       </div>
       <div class="mt15px h-full flex-1">
         <!-- 用户名 -->
-        <div class="h-30px w-full flex items-center font-size-14px color-#61666d">
+        <div
+          class="h-30px w-full flex items-center font-size-14px color-#61666d"
+        >
           山竹醇单推人
         </div>
         <div class="mt10px font-size-15px">
@@ -149,10 +167,18 @@ function changeIsShowNextCommentsFlag() {
         <!-- 回复第一条评论 -->
         <!-- 用户头像 -->
         <div>
-          <div v-for="(item, index) in firstCommentList" :key="index" class="mt15px h-full w-full flex flex-col">
+          <div
+            v-for="(item, index) in firstCommentList"
+            :key="index"
+            class="mt15px h-full w-full flex flex-col"
+          >
             <div class="flex">
               <div class="h30px w30px">
-                <img :src="item.avator" alt="" class="h100% w100% rounded-50%">
+                <img
+                  :src="item.avator"
+                  alt=""
+                  class="h100% w100% rounded-50%"
+                >
               </div>
               <span class="ml10px">
                 <span class="font-size-14px color-#61666d">
@@ -180,10 +206,18 @@ function changeIsShowNextCommentsFlag() {
             </div>
           </div>
           <template v-if="isShowNextCommentsFlag">
-            <div v-for="(item, index) in firstCommentList2" :key="index" class="mt15px h-full w-full flex flex-col">
+            <div
+              v-for="(item, index) in firstCommentList2"
+              :key="index"
+              class="mt15px h-full w-full flex flex-col"
+            >
               <div class="flex">
                 <div class="h30px w30px">
-                  <img :src="item.avator" alt="" class="h100% w100% rounded-50%">
+                  <img
+                    :src="item.avator"
+                    alt=""
+                    class="h100% w100% rounded-50%"
+                  >
                 </div>
                 <span class="ml10px">
                   <span class="font-size-14px color-#61666d">
@@ -211,7 +245,10 @@ function changeIsShowNextCommentsFlag() {
               </div>
             </div>
           </template>
-          <div class="mt10px font-size-12px color-#9499A0" @click="changeIsShowNextCommentsFlag">
+          <div
+            class="mt10px font-size-12px color-#9499A0"
+            @click="changeIsShowNextCommentsFlag"
+          >
             <p v-if="!isShowNextCommentsFlag">
               共12条回复，点击查看
             </p>
@@ -227,11 +264,17 @@ function changeIsShowNextCommentsFlag() {
     <div class="w-865px flex">
       <!-- 用户头像 -->
       <div class="left mt15px h-full w78px">
-        <img src="/public/avator.jpeg" alt="" class="ml15px h48px w48px rounded-50%">
+        <img
+          src="/public/avator.jpeg"
+          alt=""
+          class="ml15px h48px w48px rounded-50%"
+        >
       </div>
       <div class="mt15px h-full flex-1">
         <!-- 用户名 -->
-        <div class="h-30px w-full flex items-center font-size-14px color-#61666d">
+        <div
+          class="h-30px w-full flex items-center font-size-14px color-#61666d"
+        >
           山竹醇单推人
         </div>
         <div class="mt10px font-size-15px">
@@ -276,8 +319,14 @@ function changeIsShowNextCommentsFlag() {
     <!-- 第二行 发表评论和判断是否需要登录 -->
     <div class="h-60px w-full flex items-center">
       <i class="iconfont icon-touxiang ml5px font-size-30px color-#00B4BC" />
-      <input type="text" class="ml8px h30px w290px rounded-5px bg-#D6E5E5 pl20px font-size-14px" placeholder="请先登录后发表评论 (・ω・)">
-      <button class="ml8px h30px w65px rounded-5px font-size-14px hover:bg-[#00B4BC] hover:color-#fff">
+      <input
+        type="text"
+        class="ml8px h30px w290px rounded-5px bg-#D6E5E5 pl20px font-size-14px"
+        placeholder="请先登录后发表评论 (・ω・)"
+      >
+      <button
+        class="ml8px h30px w65px rounded-5px font-size-14px hover:bg-[#00B4BC] hover:color-#fff"
+      >
         发表
       </button>
     </div>
@@ -285,11 +334,17 @@ function changeIsShowNextCommentsFlag() {
     <div class="w-375px flex">
       <!-- 用户头像 -->
       <div class="left mr[-25px] mt15px h-full w78px">
-        <img src="/public/avator.jpeg" alt="" class="ml8px h35px w35px rounded-50%">
+        <img
+          src="/public/avator.jpeg"
+          alt=""
+          class="ml8px h35px w35px rounded-50%"
+        >
       </div>
       <div class="mt15px h-full flex-1">
         <!-- 用户名 -->
-        <div class="h-30px w-full flex items-center font-size-14px color-#61666d">
+        <div
+          class="h-30px w-full flex items-center font-size-14px color-#61666d"
+        >
           山竹醇单推人
         </div>
         <div class="mt10px w-full font-size-15px">
@@ -316,7 +371,11 @@ function changeIsShowNextCommentsFlag() {
         <!-- 回复第一条评论 -->
         <!-- 用户头像 -->
         <div>
-          <div v-for="(item, index) in firstCommentList" :key="index" class="mt15px h-full w-full flex flex-col">
+          <div
+            v-for="(item, index) in firstCommentList"
+            :key="index"
+            class="mt15px h-full w-full flex flex-col"
+          >
             <div class="flex">
               <img :src="item.avator" alt="" class="h8% w8% rounded-50%">
               <span class="ml10px">
@@ -345,7 +404,11 @@ function changeIsShowNextCommentsFlag() {
             </div>
           </div>
           <template v-if="isShowNextCommentsFlag">
-            <div v-for="(item, index) in firstCommentList2" :key="index" class="mt15px h-full w-full flex flex-col">
+            <div
+              v-for="(item, index) in firstCommentList2"
+              :key="index"
+              class="mt15px h-full w-full flex flex-col"
+            >
               <div class="flex">
                 <!-- <div class="h30px w30px"> -->
                 <img :src="item.avator" alt="" class="h8% w8% rounded-50%">
@@ -376,7 +439,10 @@ function changeIsShowNextCommentsFlag() {
               </div>
             </div>
           </template>
-          <div class="mt10px font-size-12px color-#9499A0" @click="changeIsShowNextCommentsFlag">
+          <div
+            class="mt10px font-size-12px color-#9499A0"
+            @click="changeIsShowNextCommentsFlag"
+          >
             <p v-if="!isShowNextCommentsFlag">
               共12条回复，点击查看
             </p>
@@ -392,11 +458,17 @@ function changeIsShowNextCommentsFlag() {
     <div class="w-375px flex">
       <!-- 用户头像 -->
       <div class="left mr[-25px] mt15px h-full w78px">
-        <img src="/public/avator.jpeg" alt="" class="ml8px h35px w35px rounded-50%">
+        <img
+          src="/public/avator.jpeg"
+          alt=""
+          class="ml8px h35px w35px rounded-50%"
+        >
       </div>
       <div class="mt15px h-full flex-1">
         <!-- 用户名 -->
-        <div class="h-30px w-full flex items-center font-size-14px color-#61666d">
+        <div
+          class="h-30px w-full flex items-center font-size-14px color-#61666d"
+        >
           山竹醇单推人
         </div>
         <div class="mt10px w-full font-size-15px">
@@ -425,4 +497,4 @@ function changeIsShowNextCommentsFlag() {
   </div>
 </template>
 
-  <style scoped></style>
+<style scoped></style>
