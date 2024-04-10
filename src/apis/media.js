@@ -15,10 +15,7 @@ export function getNewsListAPI() {
 */
 export function getNewsByNewsIdAPI(newsId) {
   return request({
-    url: '/user/news/news/id',
+    url: `/user/news/news/${newsId}`,
     method: 'GET',
-    params: {
-      id: newsId,
-    },
   })
 }
