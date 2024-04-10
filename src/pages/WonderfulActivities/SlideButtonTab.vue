@@ -257,15 +257,15 @@ getActivityByType()
 
 function onBtnClick(index: number) {
   if (contentRef.value && activedBtnIndex.value !== index) {
-    const left = `${contentPaddingLeft + btnWidth * index + index * btnMarginLeftRight * 2
-      }px`
+    const left = `${contentPaddingLeft
+      + btnWidth * index
+      + index * btnMarginLeftRight * 2}px`
     contentRef.value.style.setProperty('--groove-left', left)
 
     let rotate = '0deg'
     if (index < activedBtnIndex.value)
       rotate = '-8deg'
-    else
-      rotate = '8deg'
+    else rotate = '8deg'
 
     contentRef.value.style.setProperty('--wraper-rotate', rotate)
     window.setTimeout(() => {
@@ -276,8 +276,7 @@ function onBtnClick(index: number) {
     activedBtnIndex.value = index
     if (activedBtnIndex.value === 0)
       getActivityByType()
-    else
-      getActivityByType(btnList.value[activedBtnIndex.value].title)
+    else getActivityByType(btnList.value[activedBtnIndex.value].title)
 
     // console.log('22', btnList.value)
   }
@@ -300,19 +299,32 @@ onMounted(() => {
   <div style="width: 100%" class="flex items-center">
     <div class="">
       <div class="container">
-        <div ref="contentRef" class="content from-[#00B4BC] to-[#2FABF3] bg-gradient-to-t">
+        <div
+          ref="contentRef"
+          class="content from-[#fff] to-[#00B4BC] bg-gradient-to-t"
+        >
           <div
-            v-for="(item, index) in btnList" :key="index" class="btn22"
-            :class="{ actived: activedBtnIndex === index }" @click="() => onBtnClick(index)"
+            v-for="(item, index) in btnList"
+            :key="index"
+            class="btn22"
+            :class="{ actived: activedBtnIndex === index }"
+            @click="() => onBtnClick(index)"
           >
             {{ item.title }}
           </div>
         </div>
       </div>
-      <div v-for="(item, index) in btnList" v-show="activedBtnIndex === index" :key="index" class="">
+      <div
+        v-for="(item, index) in btnList"
+        v-show="activedBtnIndex === index"
+        :key="index"
+        class=""
+      >
         <template v-if="item.list.length > 0">
           <div
-            v-for="(item2, index2) in item.list" :key="index2" class="mt20px h300px w-full flex"
+            v-for="(item2, index2) in item.list"
+            :key="index2"
+            class="mt20px h300px w-full flex"
             :class="index2 % 2 === 1 ? ' justify-end' : ' justify-start'"
           >
             <div class="h-full w90% flex bg-white shadow-xl">
@@ -321,7 +333,9 @@ onMounted(() => {
               </div>
               <div v-if="index2 % 2 === 0" class="h-full w50% p20px">
                 <div class="h-30% w-full flex items-center justify-between">
-                  <span class="w60% font-size-20px font-bold">{{ item2.title }}</span>
+                  <span class="w60% font-size-20px font-bold">{{
+                    item2.title
+                  }}</span>
                   <span
                     class="h20px w85px flex items-center justify-center rounded-10px bg-[#E6F5F7] font-size-12px color-[#00B4C1] font-bold"
                   >+订阅</span>
@@ -330,15 +344,19 @@ onMounted(() => {
                   {{ item2.content }}
                 </div>
                 <div class="h13% w-full flex items-center justify-between">
-                  <span class="font-size-13px color-[#00B4BC] font-bold">{{ item2.time }}</span>
+                  <span class="font-size-13px color-[#00B4BC] font-bold">{{
+                    item2.time
+                  }}</span>
                   <span
-                    class="mr20px h28px w100px flex items-center justify-center border-2px border-[#00B4BC] rounded-15px bg-[#fff] font-size-14px color-[#00B4BC] font-bold hover:bg-[#00B4BC] hover:color-[#fff]"
+                    class="mr20px h28px w100px flex cursor-pointer items-center justify-center border-2px border-[#00B4BC] rounded-15px bg-[#fff] font-size-14px color-[#00B4BC] font-bold hover:bg-[#00B4BC] hover:color-[#fff]"
                   >了解详情</span>
                 </div>
               </div>
               <div v-if="index2 % 2 === 1" class="h-full w50% p20px">
                 <div class="h-30% w-full flex items-center justify-between">
-                  <span class="w60% font-size-20px font-bold">{{ item2.title }}</span>
+                  <span class="w60% font-size-20px font-bold">{{
+                    item2.title
+                  }}</span>
                   <span
                     class="h20px w85px flex items-center justify-center rounded-10px bg-[#E6F5F7] font-size-12px color-[#00B4C1] font-bold"
                   >+订阅</span>
@@ -347,9 +365,11 @@ onMounted(() => {
                   {{ item2.content }}
                 </div>
                 <div class="h13% w-full flex items-center justify-between">
-                  <span class="font-size-13px color-[#00B4BC] font-bold">{{ item2.time }}</span>
+                  <span class="font-size-13px color-[#00B4BC] font-bold">{{
+                    item2.time
+                  }}</span>
                   <span
-                    class="mr20px h28px w100px flex items-center justify-center border-2px border-[#00B4BC] rounded-15px bg-[#fff] font-size-14px color-[#00B4BC] font-bold hover:bg-[#00B4BC] hover:color-[#fff]"
+                    class="mr20px h28px w100px flex cursor-pointer items-center justify-center border-2px border-[#00B4BC] rounded-15px bg-[#fff] font-size-14px color-[#00B4BC] font-bold hover:bg-[#00B4BC] hover:color-[#fff]"
                   >了解详情</span>
                 </div>
               </div>
@@ -419,9 +439,9 @@ onMounted(() => {
     border-radius: 12px;
     overflow: hidden;
     // background-color: #5ee0f9;
-    box-shadow:
-      -10px -10px 15px #fff,
-      10px 10px 15px #fff;
+    // box-shadow:
+    //   -10px -10px 15px #fff,
+    //   10px 10px 15px #fff;
     display: flex;
     justify-content: space-between;
     transform-origin: center; // 添加转换原点
@@ -451,7 +471,7 @@ onMounted(() => {
       align-items: center;
       font-size: 15px;
       font-weight: 600;
-      color: #fff;
+      color: #1a2424;
       cursor: pointer;
       user-select: none;
       transition: color 1.2s linear 0.4s; // 添加文字颜色过渡效果
