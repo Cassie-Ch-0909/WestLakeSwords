@@ -97,7 +97,7 @@ function gotoWonderfulActivities() {
   <div style="width: 100%" class="flex items-center">
     <div class="animation-delay-1 animate__slideInLeft wow animate-duration-2500">
       <div class="container">
-        <div ref="contentRef" class="content from-[#70E9E4] to-[#0EBEFF] bg-gradient-to-b shadow-xl">
+        <div ref="contentRef" class="content from-[#00B4BC] to-[#fff] bg-gradient-to-b shadow-xl">
           <div
             v-for="(item, index) in btnList" :key="index" class="btn22" :class="{ actived: activedBtnIndex === index }"
             @click="() => onBtnClick(index)"

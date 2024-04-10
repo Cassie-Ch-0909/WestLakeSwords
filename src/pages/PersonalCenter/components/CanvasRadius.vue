@@ -140,7 +140,7 @@ function start() {
   }
 }
 
-function startRun() {
+async function startRun() {
   // console.log(state.value.isRunning, totalRunAngle.value,'909090909090')
   // 设置动效
   prizeWrap.value.style = `
@@ -158,11 +158,14 @@ function startRun() {
     lotteryParamsObj.value.shopName
       = state.value.prizeList[activeIndex.value].name
   }
+  else {
+    lotteryParamsObj.value.shopName = ''
+  }
   // TODO4: 发请求调用抽奖接口 减去积分 加上已抽中的商品 并重新计算用户积分
-  lottery(lotteryParamsObj.value)
+  await lottery(lotteryParamsObj.value)
   // TODO: 更新积分
   const userStore = useUserStore()
-  userStore.getUserInfo()
+  await userStore.getUserInfo()
   // 监听transition动效停止事件
   prizeWrap.value.addEventListener('transitionend', stopRun)
   // 停顿一会显示中奖

@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { useRouter } from 'vue-router'
+
 const spanList = [
   {
     img: '/public/news/1.jpg',
@@ -36,13 +38,21 @@ const spanList = [
     time: '2023-05-07',
   },
 ]
+
+/*
+    点击重磅嘉宾跳转到大咖云集页面
+*/
+const router = useRouter()
+function gotoMediaCenter() {
+  router.push({ path: '/mediacenter' })
+}
 </script>
 
 <template>
   <div style="width: 100%">
     <div class="bg shadow-xl container">
       <div class="content">
-        <div v-for="(item, index) in spanList" :key="index" class="card2 shadow-xl">
+        <div v-for="(item, index) in spanList" :key="index" class="card2 shadow-xl" @click="gotoMediaCenter">
           <p class="h-35% w-full p-5% font-size-[16px] font-bold">
             {{ item.title }}
           </p>

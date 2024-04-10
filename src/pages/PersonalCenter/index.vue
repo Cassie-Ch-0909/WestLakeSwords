@@ -282,7 +282,7 @@ function sorryForAlreadySignIn() {
         <!-- username and avator -->
         <div class="w-full flex flex-col items-center">
           <img
-            class="rousnded-50% mt50px h70px w70px"
+            class="mt50px h75px w75px rounded-50%"
             src="/public/avator.jpeg"
             alt=""
           >

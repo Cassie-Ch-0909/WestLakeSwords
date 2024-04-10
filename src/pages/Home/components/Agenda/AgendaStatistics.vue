@@ -48,39 +48,67 @@ function gotoAgenda() {
       <span class="font-size-[23px]">Conference Agenda</span>
     </div>
     <div class="mb5% h30% w100% flex justify-between">
-      <div class="relative h100% w49% rounded-[10px] from-[#70E9E4] to-[#139AE6] bg-gradient-to-t shadow-xl" @click="gotoAgenda">
+      <div
+        class="relative h100% w49% cursor-pointer rounded-[10px] from-[#70E9E4] to-[#139AE6] bg-gradient-to-t color-white shadow-xl hover:color-black"
+        @click="gotoAgenda"
+      >
         <div class="ml5%">
-          <span class="font-size-[60px] color-white font-bold">10</span>
-          <span class="font-size-[20px] color-white font-bold"> 场</span><br>
-          <span class="font-size-[20px] color-white font-bold">平行论坛</span>
+          <span class="font-size-[60px] font-bold">10</span>
+          <span class="font-size-[20px] font-bold"> 场</span><br>
+          <span class="font-size-[20px] font-bold">平行论坛</span>
         </div>
-        <img src="@/assets/icon/talk.png" alt="" class="absolute bottom-5% right-3% w47%">
+        <img
+          src="@/assets/icon/talk.png"
+          alt=""
+          class="absolute bottom-5% right-3% w47%"
+        >
       </div>
-      <div class="relative h100% w49% rounded-[10px] from-[#70E9E4] to-[#139AE6] bg-gradient-to-t shadow-xl" @click="gotoAgenda">
+      <div
+        class="relative h100% w49% cursor-pointer rounded-[10px] from-[#70E9E4] to-[#139AE6] bg-gradient-to-t color-white shadow-xl hover:color-black"
+        @click="gotoAgenda"
+      >
         <div class="ml5%">
-          <span class="font-size-[60px] color-white font-bold">1</span>
-          <span class="font-size-[20px] color-white font-bold"> 场</span><br>
-          <span class="font-size-[20px] color-white font-bold">科普论坛</span>
+          <span class="font-size-[60px] font-bold">1</span>
+          <span class="font-size-[20px] font-bold"> 场</span><br>
+          <span class="font-size-[20px] font-bold">科普论坛</span>
         </div>
-        <img src="@/assets/icon/science.png" alt="" class="absolute bottom-5% right-1% w56%">
+        <img
+          src="@/assets/icon/science.png"
+          alt=""
+          class="absolute bottom-5% right-1% w56%"
+        >
       </div>
     </div>
-    <div class="mb5% h30% w100% flex justify-between">
-      <div class="relative h100% w49% rounded-[10px] from-[#70E9E4] to-[#139AE6] bg-gradient-to-t shadow-xl" @click="gotoAgenda">
+    <div class="mb5% h30% w100% flex cursor-pointer justify-between">
+      <div
+        class="relative h100% w49% rounded-[10px] from-[#70E9E4] to-[#139AE6] bg-gradient-to-t color-white shadow-xl hover:color-black"
+        @click="gotoAgenda"
+      >
         <div class="ml5%">
-          <span class="font-size-[60px] color-white font-bold">8</span>
-          <span class="font-size-[20px] color-white font-bold"> 场</span><br>
-          <span class="font-size-[20px] color-white font-bold">掌上论剑</span>
+          <span class="font-size-[60px] font-bold">8</span>
+          <span class="font-size-[20px] font-bold"> 场</span><br>
+          <span class="font-size-[20px] font-bold">掌上论剑</span>
         </div>
-        <img src="@/assets/icon/mobile2.png" alt="" class="absolute bottom-5% right-1% w56%">
+        <img
+          src="@/assets/icon/mobile2.png"
+          alt=""
+          class="absolute bottom-5% right-1% w56%"
+        >
       </div>
-      <div class="relative h100% w49% rounded-[10px] from-[#70E9E4] to-[#139AE6] bg-gradient-to-t shadow-xl" @click="gotoAgenda">
+      <div
+        class="relative h100% w49% cursor-pointer rounded-[10px] from-[#70E9E4] to-[#139AE6] bg-gradient-to-t color-white shadow-xl hover:color-black"
+        @click="gotoAgenda"
+      >
         <div class="ml5%">
-          <span class="font-size-[60px] color-white font-bold">1</span>
-          <span class="font-size-[20px] color-white font-bold"> 场</span><br>
-          <span class="font-size-[20px] color-white font-bold">生态合作论坛</span>
+          <span class="font-size-[60px] font-bold">1</span>
+          <span class="font-size-[20px] font-bold"> 场</span><br>
+          <span class="font-size-[20px] font-bold">生态合作论坛</span>
         </div>
-        <img src="@/assets/icon/shengTai.png" alt="" class="absolute bottom-5% right-1% w56%">
+        <img
+          src="@/assets/icon/shengTai.png"
+          alt=""
+          class="absolute bottom-5% right-1% w56%"
+        >
       </div>
     </div>
   </div>
@@ -95,11 +123,14 @@ function gotoAgenda() {
     </div>
     <div class="h-75% w-full flex justify-between">
       <div
-        v-for="(item, index) in list "
-        :key="index" class="relative h-full w23% rounded-[10px] from-[#70E9E4] to-[#139AE6] bg-gradient-to-t"
+        v-for="(item, index) in list"
+        :key="index"
+        class="relative h-full w23% rounded-[10px] from-[#70E9E4] to-[#139AE6] bg-gradient-to-t"
         @click="gotoAgenda"
       >
-        <span class="ml5% font-size-[30px] color-white font-bold">{{ item.num }}</span>
+        <span class="ml5% font-size-[30px] color-white font-bold">{{
+          item.num
+        }}</span>
         <span class="color-white font-bold"> 场</span>
         <p class="mt3% font-size-[14px] color-white font-bold">
           {{ item.name }}

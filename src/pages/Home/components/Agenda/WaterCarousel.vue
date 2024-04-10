@@ -76,10 +76,14 @@ function gotoAgenda() {
                   5月7日&nbsp;9:00~12:00
                 </div>
               </div>
-              <div class="card-middle mb-[4px] mt-[4px] text-lg text-[#23A2AB] font-bold">
+              <div
+                class="card-middle mb-[4px] mt-[4px] text-lg text-[#23A2AB] font-bold"
+              >
                 主论坛
               </div>
-              <div class="card-bottom flex items-center justify-between text-xs">
+              <div
+                class="card-bottom flex items-center justify-between text-xs"
+              >
                 <div class="place flex">
                   <i class="iconfont icon-dingwei text-[#23A2AB]" />
                   <p class="text-slate-50">
@@ -113,10 +117,14 @@ function gotoAgenda() {
                   5月6日&nbsp;10:00~10:30
                 </div>
               </div>
-              <div class="card-middle mb-[4px] mt-[4px] text-lg text-[#23A2AB] font-bold">
+              <div
+                class="card-middle mb-[4px] mt-[4px] text-lg text-[#23A2AB] font-bold"
+              >
                 95后极客青年Talk
               </div>
-              <div class="card-bottom flex items-center justify-between text-xs">
+              <div
+                class="card-bottom flex items-center justify-between text-xs"
+              >
                 <div class="place flex">
                   <i class="iconfont icon-dingwei text-[#23A2AB]" />
                   <p class="text-slate-50">
@@ -150,10 +158,14 @@ function gotoAgenda() {
                   5月5日&nbsp;8:30~12:10
                 </div>
               </div>
-              <div class="card-middle mb-[4px] mt-[4px] text-lg text-[#23A2AB] font-bold">
+              <div
+                class="card-middle mb-[4px] mt-[4px] text-lg text-[#23A2AB] font-bold"
+              >
                 教育技术产业融合创新发展论坛
               </div>
-              <div class="card-bottom flex items-center justify-between text-xs">
+              <div
+                class="card-bottom flex items-center justify-between text-xs"
+              >
                 <div class="place flex">
                   <i class="iconfont icon-dingwei text-[#23A2AB]" />
                   <p class="text-slate-50">
@@ -190,10 +202,14 @@ function gotoAgenda() {
                   5月6日&nbsp;13:00~13:30
                 </div>
               </div>
-              <div class="card-middle mb-[4px] mt-[4px] text-lg text-[#23A2AB] font-bold">
+              <div
+                class="card-middle mb-[4px] mt-[4px] text-lg text-[#23A2AB] font-bold"
+              >
                 当科幻照进显示我们会更安全吗？
               </div>
-              <div class="card-bottom flex items-center justify-between text-xs">
+              <div
+                class="card-bottom flex items-center justify-between text-xs"
+              >
                 <div class="place flex">
                   <i class="iconfont icon-dingwei text-[#23A2AB]" />
                   <p class="text-slate-50">
@@ -227,10 +243,14 @@ function gotoAgenda() {
                   5月6日&nbsp;15:00~15:30
                 </div>
               </div>
-              <div class="card-middle mb-[4px] mt-[4px] text-lg text-[#23A2AB] font-bold">
+              <div
+                class="card-middle mb-[4px] mt-[4px] text-lg text-[#23A2AB] font-bold"
+              >
                 人工智能会颠覆安全行业吗？
               </div>
-              <div class="card-bottom flex items-center justify-between text-xs">
+              <div
+                class="card-bottom flex items-center justify-between text-xs"
+              >
                 <div class="place flex">
                   <i class="iconfont icon-dingwei text-[#23A2AB]" />
                   <p class="text-slate-50">
@@ -264,10 +284,14 @@ function gotoAgenda() {
                   5月6日&nbsp;15:30~16:30
                 </div>
               </div>
-              <div class="card-middle mb-[4px] mt-[4px] text-lg text-[#23A2AB] font-bold">
+              <div
+                class="card-middle mb-[4px] mt-[4px] text-lg text-[#23A2AB] font-bold"
+              >
                 反炸直播间@西湖论剑
               </div>
-              <div class="card-bottom flex items-center justify-between text-xs">
+              <div
+                class="card-bottom flex items-center justify-between text-xs"
+              >
                 <div class="place flex">
                   <i class="iconfont icon-dingwei text-[#23A2AB]" />
                   <p class="text-slate-50">
@@ -298,10 +322,14 @@ function gotoAgenda() {
                   5月7日&nbsp;13:30~18:00
                 </div>
               </div>
-              <div class="card-middle mb-[4px] mt-[4px] text-lg text-[#23A2AB] font-bold">
+              <div
+                class="card-middle mb-[4px] mt-[4px] text-lg text-[#23A2AB] font-bold"
+              >
                 数字中国&安全治理论坛
               </div>
-              <div class="card-bottom flex items-center justify-between text-xs">
+              <div
+                class="card-bottom flex items-center justify-between text-xs"
+              >
                 <div class="place flex">
                   <i class="iconfont icon-dingwei text-[#23A2AB]" />
                   <p class="area">
@@ -329,10 +357,14 @@ function gotoAgenda() {
                   5月7日&nbsp;13:30~17:10
                 </div>
               </div>
-              <div class="card-middle mb-[4px] mt-[4px] text-lg text-[#23A2AB] font-bold">
+              <div
+                class="card-middle mb-[4px] mt-[4px] text-lg text-[#23A2AB] font-bold"
+              >
                 信创软件供应链安全论坛
               </div>
-              <div class="card-bottom flex items-center justify-between text-xs">
+              <div
+                class="card-bottom flex items-center justify-between text-xs"
+              >
                 <div class="place flex">
                   <i class="iconfont icon-dingwei text-[#23A2AB]" />
                   <p class="text-slate-50">
@@ -360,10 +392,14 @@ function gotoAgenda() {
                   5月7日&nbsp;13:30~17:00
                 </div>
               </div>
-              <div class="card-middle mb-[4px] mt-[4px] text-lg text-[#23A2AB] font-bold">
+              <div
+                class="card-middle mb-[4px] mt-[4px] text-lg text-[#23A2AB] font-bold"
+              >
                 车联网安全论坛
               </div>
-              <div class="card-bottom flex items-center justify-between text-xs">
+              <div
+                class="card-bottom flex items-center justify-between text-xs"
+              >
                 <div class="place flex">
                   <i class="iconfont icon-dingwei text-[#23A2AB]" />
                   <p class="">
@@ -391,10 +427,14 @@ function gotoAgenda() {
                   5月7日&nbsp;13:00~17:30
                 </div>
               </div>
-              <div class="card-middle mb-[4px] mt-[4px] text-lg text-[#23A2AB] font-bold">
+              <div
+                class="card-middle mb-[4px] mt-[4px] text-lg text-[#23A2AB] font-bold"
+              >
                 工业领域网络和数据安全论坛
               </div>
-              <div class="card-bottom flex items-center justify-between text-xs">
+              <div
+                class="card-bottom flex items-center justify-between text-xs"
+              >
                 <div class="place flex">
                   <i class="iconfont icon-dingwei text-[#23A2AB]" />
                   <p class="text-slate-50">
@@ -422,10 +462,14 @@ function gotoAgenda() {
                   5月7日&nbsp;12:30~14:00
                 </div>
               </div>
-              <div class="card-middle mb-[4px] mt-[4px] text-lg text-[#23A2AB] font-bold">
+              <div
+                class="card-middle mb-[4px] mt-[4px] text-lg text-[#23A2AB] font-bold"
+              >
                 独家探营·数字安全创新成果展
               </div>
-              <div class="card-bottom flex items-center justify-between text-xs">
+              <div
+                class="card-bottom flex items-center justify-between text-xs"
+              >
                 <div class="place flex">
                   <i class="iconfont icon-dingwei text-[#23A2AB]" />
                   <p class="">
@@ -453,10 +497,14 @@ function gotoAgenda() {
                   5月6日&nbsp;14:00~15:00
                 </div>
               </div>
-              <div class="card-middle mb-[4px] mt-[4px] text-lg text-[#23A2AB] font-bold">
+              <div
+                class="card-middle mb-[4px] mt-[4px] text-lg text-[#23A2AB] font-bold"
+              >
                 第二直播间
               </div>
-              <div class="card-bottom flex items-center justify-between text-xs">
+              <div
+                class="card-bottom flex items-center justify-between text-xs"
+              >
                 <div class="place flex">
                   <i class="iconfont icon-dingwei text-[#23A2AB]" />
                   <p class="text-slate-50">
@@ -493,10 +541,14 @@ function gotoAgenda() {
                   5月8日&nbsp;8:30~12:10
                 </div>
               </div>
-              <div class="card-middle mb-[4px] mt-[4px] text-lg text-[#23A2AB] font-bold">
+              <div
+                class="card-middle mb-[4px] mt-[4px] text-lg text-[#23A2AB] font-bold"
+              >
                 教育技术产业融合创新发展论坛
               </div>
-              <div class="card-bottom flex items-center justify-between text-xs">
+              <div
+                class="card-bottom flex items-center justify-between text-xs"
+              >
                 <div class="place flex">
                   <i class="iconfont icon-dingwei text-[#23A2AB]" />
                   <p class="text-slate-50">
@@ -530,10 +582,14 @@ function gotoAgenda() {
                   5月8日&nbsp;9:00~12:00
                 </div>
               </div>
-              <div class="card-middle mb-[4px] mt-[4px] text-lg text-[#23A2AB] font-bold">
+              <div
+                class="card-middle mb-[4px] mt-[4px] text-lg text-[#23A2AB] font-bold"
+              >
                 商用密码应用论坛
               </div>
-              <div class="card-bottom flex items-center justify-between text-xs">
+              <div
+                class="card-bottom flex items-center justify-between text-xs"
+              >
                 <div class="place flex">
                   <i class="iconfont icon-dingwei text-[#23A2AB]" />
                   <p class="text-slate-50">
@@ -567,10 +623,14 @@ function gotoAgenda() {
                   5月8日&nbsp;9:30~12:00
                 </div>
               </div>
-              <div class="card-middle mb-[4px] mt-[4px] text-lg text-[#23A2AB] font-bold">
+              <div
+                class="card-middle mb-[4px] mt-[4px] text-lg text-[#23A2AB] font-bold"
+              >
                 第二直播间
               </div>
-              <div class="card-bottom flex items-center justify-between text-xs">
+              <div
+                class="card-bottom flex items-center justify-between text-xs"
+              >
                 <div class="place flex">
                   <i class="iconfont icon-dingwei text-[#23A2AB]" />
                   <p class="text-slate-50">
@@ -607,10 +667,14 @@ function gotoAgenda() {
                   5月8日&nbsp;13:30~18:00
                 </div>
               </div>
-              <div class="card-middle mb-[4px] mt-[4px] text-lg text-[#23A2AB] font-bold">
+              <div
+                class="card-middle mb-[4px] mt-[4px] text-lg text-[#23A2AB] font-bold"
+              >
                 MSS安全托管运营服务论坛
               </div>
-              <div class="card-bottom flex items-center justify-between text-xs">
+              <div
+                class="card-bottom flex items-center justify-between text-xs"
+              >
                 <div class="place flex">
                   <i class="iconfont icon-dingwei text-[#23A2AB]" />
                   <p class="text-slate-50">
@@ -644,10 +708,14 @@ function gotoAgenda() {
                   5月8日&nbsp;13:30~18:00
                 </div>
               </div>
-              <div class="card-middle mb-[4px] mt-[4px] text-lg text-[#23A2AB] font-bold">
+              <div
+                class="card-middle mb-[4px] mt-[4px] text-lg text-[#23A2AB] font-bold"
+              >
                 金融行业网络安全论坛
               </div>
-              <div class="card-bottom flex items-center justify-between text-xs">
+              <div
+                class="card-bottom flex items-center justify-between text-xs"
+              >
                 <div class="place flex">
                   <i class="iconfont icon-dingwei text-[#23A2AB]" />
                   <p class="text-slate-50">
@@ -681,10 +749,14 @@ function gotoAgenda() {
                   5月8日&nbsp;12:30~13:00
                 </div>
               </div>
-              <div class="card-middle mb-[4px] mt-[4px] text-lg text-[#23A2AB] font-bold">
+              <div
+                class="card-middle mb-[4px] mt-[4px] text-lg text-[#23A2AB] font-bold"
+              >
                 生态“朋友圈”
               </div>
-              <div class="card-bottom flex items-center justify-between text-xs">
+              <div
+                class="card-bottom flex items-center justify-between text-xs"
+              >
                 <div class="place flex">
                   <i class="iconfont icon-dingwei text-[#23A2AB]" />
                   <p class="text-slate-50">
@@ -708,31 +780,66 @@ function gotoAgenda() {
       </div>
       <!-- 按钮绑定点击事件 -->
       <div class="mask relative flex flex-col">
-        <el-button type="primary" plain class="absolute left-42% top-28% shadow-xl" color="#333" @click="changeFiveAM">
-          5th PM /
-          6th AM /
-          7th AM
+        <el-button
+          type="primary"
+          plain
+          class="absolute left-42% top-28% shadow-xl"
+          color="#333"
+          @click="changeFiveAM"
+        >
+          5th PM / 6th AM / 7th AM
         </el-button>
-        <el-button type="primary" plain class="absolute left-30% top-45% shadow-xl" color="#333" @click="changeSixPM">
+        <el-button
+          type="primary"
+          plain
+          class="absolute left-30% top-45% shadow-xl"
+          color="#333"
+          @click="changeSixPM"
+        >
           6th PM
         </el-button>
-        <el-button type="primary" plain class="absolute left-30% top-50% shadow-xl" color="#333" @click="changeSevenPM">
+        <el-button
+          type="primary"
+          plain
+          class="absolute left-30% top-50% shadow-xl"
+          color="#333"
+          @click="changeSevenPM"
+        >
           7th PM
         </el-button>
-        <el-button type="primary" plain class="absolute left-45% top-68% shadow-xl" color="#333" @click="changeEightAM">
+        <el-button
+          type="primary"
+          plain
+          class="absolute left-45% top-68% shadow-xl"
+          color="#333"
+          @click="changeEightAM"
+        >
           8th AM
         </el-button>
-        <el-button type="primary" plain class="absolute left-70% top-68% shadow-xl" color="#333" @click="changeEightPM">
+        <el-button
+          type="primary"
+          plain
+          class="absolute left-70% top-68% shadow-xl"
+          color="#333"
+          @click="changeEightPM"
+        >
           8th PM
         </el-button>
       </div>
       <!-- 大会议程 -->
-      <div class="center-circle flex flex-col items-center justify-center from-sky-500 to-indigo-700 bg-gradient-to-r" @click="gotoAgenda">
-        <div class="h20% w45% flex items-center justify-evenly text-[40px] font-bold">
+      <div
+        class="center-circle flex flex-col cursor-pointer items-center justify-center from-sky-500 to-indigo-700 bg-gradient-to-r hover:color-#00F7FF"
+        @click="gotoAgenda"
+      >
+        <div
+          class="h20% w45% flex items-center justify-evenly text-[40px] font-bold"
+        >
           <span>大</span>
           <span>会</span>
         </div>
-        <div class="h20% w45% flex items-center justify-evenly text-[40px] font-bold">
+        <div
+          class="h20% w45% flex items-center justify-evenly text-[40px] font-bold"
+        >
           <span>议</span>
           <span>程</span>
         </div>
