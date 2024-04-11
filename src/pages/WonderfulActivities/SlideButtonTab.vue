@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
+import { useRouter } from 'vue-router'
 import { getActivityByTypeAPI } from '@/apis/activity'
 
 // const btnList = Array.from({ length: 6 }).fill(0)
@@ -293,6 +294,24 @@ onMounted(() => {
     contentRef.value.style.setProperty('--btnWidth', `${btnWidth}px`)
   }
 })
+
+// TODO: 点击了解详情跳转到活动详情页面
+const router = useRouter()
+function gotoActivityDetails(index) {
+  // console.log(btnList.value[activedBtnIndex.value].list[index].id)
+  router.push({
+    path: '/activitydetails',
+    query: {
+      id: btnList.value[activedBtnIndex.value].list[index].id,
+    },
+  })
+}
+// function gotoNewsInfo(id) {
+//   // 通过name跳转传递
+//   //  router.push({ name: 'guest', query: { id: 1 } });
+//   // 通过path跳转传递
+//   router.push({ path: 'newsinfo', query: { id } })
+// }
 </script>
 
 <template>
@@ -349,6 +368,7 @@ onMounted(() => {
                   }}</span>
                   <span
                     class="mr20px h28px w100px flex cursor-pointer items-center justify-center border-2px border-[#00B4BC] rounded-15px bg-[#fff] font-size-14px color-[#00B4BC] font-bold hover:bg-[#00B4BC] hover:color-[#fff]"
+                    @click="gotoActivityDetails(index2)"
                   >了解详情</span>
                 </div>
               </div>
@@ -370,6 +390,7 @@ onMounted(() => {
                   }}</span>
                   <span
                     class="mr20px h28px w100px flex cursor-pointer items-center justify-center border-2px border-[#00B4BC] rounded-15px bg-[#fff] font-size-14px color-[#00B4BC] font-bold hover:bg-[#00B4BC] hover:color-[#fff]"
+                    @click="gotoActivityDetails(index2)"
                   >了解详情</span>
                 </div>
               </div>

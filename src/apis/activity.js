@@ -13,3 +13,16 @@ export function getActivityByTypeAPI(params) {
     },
   })
 }
+
+/*
+    根据活动id查询活动
+*/
+export function getActivityByIdAPI(id) {
+  return request({
+    url: `/user/activity/getActivityById/${id}`,
+    method: 'GET',
+    params: {
+      id,
+    },
+  })
+}
