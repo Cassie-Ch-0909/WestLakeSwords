@@ -133,11 +133,11 @@ const title = ref()
 async function getAgendaById(id) {
   const res = await getAgendaByIdAPI(id)
   // console.log(res)
-  agendaDetails.value = res.data[0]
+  agendaDetails.value = res.data
   // TODO3: 获取数据库中的点赞数和观看数
   iconList.value[0].name = agendaDetails.value.like
   iconList.value[4].name = agendaDetails.value.watch
-  title.value = res.data[0].title
+  title.value = res.data.title
 }
 getAgendaById(route.query.id)
 

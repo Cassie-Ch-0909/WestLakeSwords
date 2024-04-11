@@ -1,14 +1,14 @@
 <script setup>
 import { ref } from 'vue'
-import { getAllCommentAPI } from '@/apis/comment'
+import { useRoute } from 'vue-router'
+import { getAgendaByIdAPI } from '@/apis/agenda'
+import {
+  getAgendaCommentByAgendaIdAPI,
+  getChildCommentsByParentCommentIdAPI,
+} from '@/apis/comment'
+import { loginDialogFlagStore } from '@/stores/loginDialogFlag.js'
 
-// TODO：调接口获取评论列表
-const commentList = ref([])
-async function getAllComment() {
-  const res = await getAllCommentAPI()
-  commentList.value = res.data
-}
-getAllComment()
+const loginDialogVisibleStore = loginDialogFlagStore()
 
 const firstCommentList = ref([
   {
@@ -97,6 +97,57 @@ const isShowNextCommentsFlag = ref(false)
 function changeIsShowNextCommentsFlag() {
   isShowNextCommentsFlag.value = !isShowNextCommentsFlag.value
 }
+
+const route = useRoute()
+// 根据AgendaId获取的评论列表
+const commentList = ref([])
+// 将commentList中每个对象的id也就是每条评论id拿出来，组成一个数组，用于发请求
+const commentIdList = ref([])
+// 搞一个数组用来装评论的子评论
+const childCommentList = ref([])
+
+// TODO4: 发请求根据现有评论id查询子评论
+async function getChildCommentsByParentCommentId(id) {
+  const res = await getChildCommentsByParentCommentIdAPI(id)
+  // console.log(res);
+  childCommentList.value.push(res.data)
+  // console.log(childCommentList.value, "child");
+}
+
+// TODO2：调获取评论接口
+async function getAgendaCommentByAgendaId(id) {
+  const res = await getAgendaCommentByAgendaIdAPI(id)
+  // console.log(res)
+  commentList.value = res.data
+  // TODO：搞一个数组用来装评论Id
+  commentIdList.value = commentList.value.map(item => item.id)
+  // console.log(commentIdList.value)
+  commentIdList.value.forEach((item) => {
+    getChildCommentsByParentCommentId(item)
+  })
+}
+
+// TODO3: 发请求获取会议信息
+function getAgendaById(id) {
+  getAgendaByIdAPI(id).then((res) => {
+    // agendaId.value = res.data.id
+    getAgendaCommentByAgendaId(res.data.id)
+    // console.log("评论")
+  })
+}
+const id = route.query.id
+getAgendaById(id)
+
+// TODO: 根据token判断用户是否登录
+const isLogin = ref(true)
+if (localStorage.getItem('token'))
+  isLogin.value = true
+else isLogin.value = false
+
+function send() {
+  loginDialogVisibleStore.changeLoginDialogFlagTrue()
+  // console.log(loginDialogVisibleStore.loginDialogFlag);
+}
 </script>
 
 <template>
@@ -115,12 +166,26 @@ function changeIsShowNextCommentsFlag() {
       </div>
     </div>
     <!-- 第二行 发表评论和判断是否需要登录 -->
-    <div class="h-60px w-full flex items-center">
+    <div v-if="!isLogin" class="h-60px w-full flex items-center">
       <i class="iconfont icon-touxiang ml15px font-size-45px color-#00B4BC" />
       <input
         type="text"
         class="ml15px h40px w-710px rounded-5px bg-#D6E5E5 pl20px"
         placeholder="请先登录后发表评论 (・ω・)"
+      >
+      <button
+        class="ml15px h40px w65px rounded-5px hover:bg-[#00B4BC] hover:color-#fff"
+        @click="send"
+      >
+        发表
+      </button>
+    </div>
+    <div v-else class="h-60px w-full flex items-center">
+      <i class="iconfont icon-touxiang ml15px font-size-45px color-#00B4BC" />
+      <input
+        type="text"
+        class="ml15px h40px w-710px rounded-5px bg-#D6E5E5 pl20px"
+        placeholder="请输入您的评论 (・ω・)"
       >
       <button
         class="ml15px h40px w65px rounded-5px hover:bg-[#00B4BC] hover:color-#fff"
@@ -273,7 +338,7 @@ function changeIsShowNextCommentsFlag() {
         <div
           class="h-30px w-full flex items-center font-size-14px color-#61666d"
         >
-          {{ item.username }}
+          {{ item.username }}{{ index }}
         </div>
         <div class="mt10px font-size-15px">
           <!-- 评论内容 -->
@@ -296,7 +361,46 @@ function changeIsShowNextCommentsFlag() {
             <span class="cursor-pointer">回复</span>
           </div>
         </div>
+        <div
+          v-for="(item3, index3) in childCommentList[index]"
+          :key="index3"
+          class="mt15px h-full w-full flex flex-col"
+        >
+          <div class="flex">
+            <div class="h30px w30px">
+              <img
+                :src="item3.avatar"
+                alt=""
+                class="roundesd-50% h100% w100%"
+              >
+            </div>
+            <span class="ml10px">
+              <span class="font-size-14px color-#61666d">
+                {{ item3.username }}
+              </span>
+              <span class="ml15px">
+                {{ item3.contented }}
+              </span>
+            </span>
+          </div>
+          <div class="mt5px font-size-12px color-#9499A0">
+            <!-- 评论时间 -->
+            <span class="mr20px">{{ item3.time }}</span>
+            <!-- 点赞 -->
+            <span class="mr20px">
+              <i class="iconfont icon-dianzan_kuai" />
+              {{ item3.likeCount }}
+            </span>
+            <!-- 拉踩 -->
+            <span class="mr20px">
+              <i class="iconfont icon-badreview-full font-size-14px" />
+            </span>
+            <!-- 回复 -->
+            <span>回复</span>
+          </div>
+        </div>
       </div>
+      <div />
     </div>
   </div>
 

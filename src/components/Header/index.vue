@@ -5,6 +5,11 @@ import { ElMessage } from 'element-plus'
 import RotateBgButton from '@/components/Header/components/RotateBgButton.vue'
 import { getCaptchaAPI, getPhoneCodeAPI, loginAPI } from '@/apis/login'
 import { useUserStore } from '@/stores/user.js'
+import { loginDialogFlagStore } from '@/stores/loginDialogFlag.js'
+
+const loginDialogVisibleStore = loginDialogFlagStore()
+// console.log(loginDialogVisibleStore)
+// console.log(loginDialogVisibleStore.loginDialogFlag)
 
 const userStore = useUserStore()
 // TODO：从pinia中拿出token的值判断当前是否处于登陆状态 使用v-if判断 登录|注册 还是 个人中心
@@ -59,7 +64,7 @@ function gotoLogin() {
 /*
     定义一个变量用来控制登陆注册的Dialog的显示和隐藏
 */
-const dialogTableVisible = ref(false)
+// const dialogTableVisible = ref(false)
 
 // 图形验证码图片的src
 const captcha = ref('')
@@ -178,7 +183,8 @@ async function login() {
     // TODO7: 将登录成功后的token和用户信息保存到pinia中，并实现pinia的数据存储到LocalStorage中实现持久化存储
     userStore.setUserInfoAndToken(res.data, res.data.token)
     localStorage.setItem('token', res.data.token)
-    dialogTableVisible.value = false
+    // dialogTableVisible.value = false
+    loginDialogVisibleStore.changeLoginDialogFlagFalse()
     loginFlag.value = true
     setTimeout(() => {
       ElMessage({
@@ -212,7 +218,7 @@ function gotoAgendaLive() {
    -->
   <!-- PC端Header -->
   <div class="nav sticky left-0 top-0 z-999 w-full flex justify-between bg-slate-50 max-md:hidden md:h-20">
-    <el-dialog v-model="dialogTableVisible" width="800">
+    <el-dialog v-model="loginDialogVisibleStore.loginDialogFlag" width="800">
       <div class="relative flex">
         <!-- 左边输入框部分 -->
         <div class="h420px w56%">
@@ -306,7 +312,7 @@ function gotoAgendaLive() {
       <RotateBgButton @click="gotoAgendaLive" />
       <div
         v-if="!loginFlag" class="ml6% flex items-center justify-center text-xs color-[#B0B0B0]"
-        @click="dialogTableVisible = true"
+        @click="loginDialogVisibleStore.changeLoginDialogFlagTrue"
       >
         <i class="iconfont icon-yonghu" />&nbsp;
         <span>登录</span>&nbsp;
