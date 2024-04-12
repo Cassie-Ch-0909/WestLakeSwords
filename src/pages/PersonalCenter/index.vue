@@ -283,7 +283,7 @@ function sorryForAlreadySignIn() {
         <div class="w-full flex flex-col items-center">
           <img
             class="mt50px h75px w75px rounded-50%"
-            src="/public/avator.jpeg"
+            :src="userStore.userInfo.avatar"
             alt=""
           >
           <p class="mt20px font-size-20px">

@@ -93,7 +93,7 @@ const nowDate = `${date.getFullYear()}年${nowMonth}月${strDate}日`
             {{ nowDate }}
           </p>
           <p class="absolute left-20% top-13% color-#31A6F7 font-bold">
-            亲爱的Cassie燁：
+            亲爱的{{ userStore.userInfo.username }}：
           </p>
           <p class="absolute left-25% top-21% ml25px h-full pr3% font-bold">
             “清风徐来，水波不兴”，
@@ -136,12 +136,12 @@ const nowDate = `${date.getFullYear()}年${nowMonth}月${strDate}日`
             class="absolute left-2% top-28% w-full flex items-center font-size-10px font-size-20px"
           >
             <img
-              src="/public/avator.jpeg"
+              :src="avatar"
               class="mr3% w16% rounded-50%"
               alt=""
             >
             <p class="font-size-9px">
-              Hi~ Cassie燁
+              Hi~ {{ userStore.userInfo.username }}
             </p>
           </div>
           <p class="absolute left-2% top-45% pr3% font-size-9px color-#fff">
@@ -181,11 +181,11 @@ const nowDate = `${date.getFullYear()}年${nowMonth}月${strDate}日`
           >
             <div class="w-full flex items-center">
               <img
-                src="/public/avator.jpeg"
+                :src="avatar"
                 class="mr3% w18% rounded-50%"
                 alt=""
               >
-              <p>Hi~ Cassie燁</p>
+              <p>Hi~ {{ userStore.userInfo.username }}</p>
             </div>
             <p class="mt2%">
               今天是{{ nowDate }} 西湖论剑祝您万事顺意！
@@ -231,9 +231,9 @@ const nowDate = `${date.getFullYear()}年${nowMonth}月${strDate}日`
           <div
             class="absolute left-2% top-2% flex items-center justify-end pr3% font-size-20px font-size-9px color-#00F5FF"
           >
-            <p>Hi~ Cassie燁</p>
+            <p>Hi~ {{ userStore.userInfo.username }}</p>
             <img
-              src="/public/avator.jpeg"
+              :src="avatar"
               class="ml3% w16% rounded-50%"
               alt=""
             >
@@ -252,14 +252,14 @@ const nowDate = `${date.getFullYear()}年${nowMonth}月${strDate}日`
           {{ nowDate }}
         </p>
         <p class="absolute left-20% top-13% color-#31A6F7 font-bold">
-          亲爱的Cassie燁：
+          亲爱的{{ userStore.userInfo.username }}：
         </p>
         <p class="absolute left-25% top-21% ml25px h-full pr3% font-bold">
           “清风徐来，水波不兴”，
           <br>愿您的生活一帆风顺，宁静而美好
         </p>
         <img
-          src="/public/avator.jpeg"
+          :src="avatar"
           class="absolute left-1% top-10% mr3% w16% rounded-50%"
           alt=""
         >
@@ -285,12 +285,12 @@ const nowDate = `${date.getFullYear()}年${nowMonth}月${strDate}日`
           愿您一直保持一颗学习的心，朝着更好的自己前进。
         </p>
         <img
-          src="/public/avator.jpeg"
+          :src="avatar"
           class="absolute left-40% top-25% w12% rounded-50%"
           alt=""
         >
         <p class="absolute left-54% top-27% color-#00F5FF">
-          Hi~ Cassie燁
+          Hi~ {{ userStore.userInfo.username }}
         </p>
         <p class="absolute left-45% top-36% mr5% font-size-12px color-#00F5FF">
           今天是{{ nowDate }}，西湖论剑祝您万事顺意！
@@ -313,8 +313,8 @@ const nowDate = `${date.getFullYear()}年${nowMonth}月${strDate}日`
         <div
           class="absolute left-2% top-28% w-full flex items-center font-size-20px"
         >
-          <img src="/public/avator.jpeg" class="mr3% w16% rounded-50%" alt="">
-          <p>Hi~ Cassie燁</p>
+          <img :src="avatar" class="mr3% w16% rounded-50%" alt="">
+          <p>Hi~ {{ userStore.userInfo.username }}</p>
         </div>
         <p class="absolute left-2% top-45% pr3% color-#fff">
           愿您在真诚和努力中，扶摇直上九万里，不辜负所爱之人，亦不辜负少年时的自己。
@@ -336,8 +336,8 @@ const nowDate = `${date.getFullYear()}年${nowMonth}月${strDate}日`
         <div
           class="absolute left-2% top-2% flex items-center justify-end pr3% font-size-20px color-#00F5FF"
         >
-          <p>Hi~ Cassie燁</p>
-          <img src="/public/avator.jpeg" class="ml3% w16% rounded-50%" alt="">
+          <p>Hi~ {{ userStore.userInfo.username }}</p>
+          <img :src="avatar" class="ml3% w16% rounded-50%" alt="">
         </div>
       </div>
     </div>

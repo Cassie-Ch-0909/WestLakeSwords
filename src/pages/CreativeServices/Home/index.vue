@@ -1,6 +1,8 @@
 <script setup>
 import { ref } from 'vue'
+import { useUserStore } from '@/stores/user.js'
 
+const userStore = useUserStore()
 const list = ref([
   {
     title: '高颜值巧克力',
@@ -34,10 +36,10 @@ const list = ref([
     <div class="h300px w70%">
       <!-- 顶部作者简介 -->
       <div class="h130px w-full flex items-center rounded-t-10px bg-#fff">
-        <img src="/public/avator.jpeg" class="ml20px h70% rounded-50%" alt="">
+        <img :src="userStore.userInfo.avatar" class="ml20px h70% rounded-50%" alt="">
         <div class="ml40px h-full flex flex-1 flex-col justify-evenly">
           <p class="font-size-18px font-bold">
-            Cassie燁
+            {{ userStore.userInfo.username }}
           </p>
           <div>
             <span class="mr30px">{{ 0 }}关注</span>

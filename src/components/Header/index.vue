@@ -371,7 +371,7 @@ function gotoAgendaLive() {
       >
         <img
           class="mr5% h35px w35px rounded-50%"
-          src="/public/avator.jpeg"
+          :src="userStore.userInfo.avatar"
           alt=""
         >
         个人中心

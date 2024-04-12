@@ -2,7 +2,8 @@
 import { ref } from 'vue'
 import { UploadFilled } from '@element-plus/icons-vue'
 import { ElMessage } from 'element-plus'
-
+import { useUserStore } from '@/stores/user.js'
+const userStore = useUserStore()
 /*
     定义一个变量来控制发布视频还是发布图片
 */
@@ -349,11 +350,11 @@ function publishNote() {
             src="/public/about/1.webp"
           >
           <img
-            src="/public/avator.jpeg"
+            :src="userStore.userInfo.avatar"
             class="absolute left-10% top-6% w30px rounded-50%"
           >
           <img
-            src="/public/avator.jpeg"
+            :src="userStore.userInfo.avatar"
             class="absolute left-8% top-66.5% w30px rounded-50%"
           >
           <p class="absolute left-5% top-52% font-size-14px">
