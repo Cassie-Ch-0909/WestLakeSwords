@@ -1,33 +1,39 @@
 <script setup lang="ts">
-// import html2canvas from 'html2canvas'
-// import { reactive, ref } from 'vue'
+import html2canvas from 'html2canvas'
+import { ref } from 'vue'
+import { downloadImageAPI } from '@/apis/download'
+import { useUserStore } from '@/stores/user.js'
 
-// function createPoster() {
-//   // 生成海报
-//   const domObj = document.getElementById('CodeImgBase64')
-//   // 显示海报
-//   html2canvas(domObj, {
-//     useCORS: true,
-//     allowTaint: false,
-//     logging: false,
-//     letterRendering: true,
-//     onclone(doc: any) {
-//       const e = doc.querySelector('#CodeImgBase64')
-//       e.style.display = 'block'
-//       console.log(doc)
-//     },
-//   }).then((canvas: any) => {
-//     // 在微信里,可长按保存或转发
-//     const a = canvas.toDataURL('image/png')
-//     console.log(a)
-//   })
-// }
+async function downloadImage(imgBase64) {
+  await downloadImageAPI(imgBase64)
+  // console.log(res)
+}
 
+function createPoster() {
+  // 生成海报
+  const domObj = document.getElementById('CodeImgBase64')
+  // 显示海报
+  html2canvas(domObj, {
+    useCORS: true,
+    allowTaint: false,
+    logging: false,
+    letterRendering: true,
+    onclone(doc: any) {
+      const e = doc.querySelector('#CodeImgBase64')
+      e.style.display = 'block'
+      // console.log(doc,'111')
+    },
+  }).then((canvas: any) => {
+    // 在微信里,可长按保存或转发
+    const a = canvas.toDataURL('image/png')
+    // console.log(a)
+    // console.log(a.slice(22))
+    downloadImage(a.slice(22))
+  })
+}
 /*
     定义一个变量用来激活选中的海报样式
 */
-import { useUserStore } from '@/stores/user.js'
-
 const activeSelectModuleIndex = ref(0)
 function changeActiveSelectModuleIndex(index: number) {
   activeSelectModuleIndex.value = index
@@ -100,7 +106,7 @@ const nowDate = `${date.getFullYear()}年${nowMonth}月${strDate}日`
             <br>愿您的生活一帆风顺，宁静而美好
           </p>
           <img
-            :src="avatar"
+            src="/public/avator.jpeg"
             class="absolute left-1% top-10% mr3% w16% rounded-50%"
             alt=""
           >
@@ -136,7 +142,7 @@ const nowDate = `${date.getFullYear()}年${nowMonth}月${strDate}日`
             class="absolute left-2% top-28% w-full flex items-center font-size-10px font-size-20px"
           >
             <img
-              :src="avatar"
+              src="/public/avator.jpeg"
               class="mr3% w16% rounded-50%"
               alt=""
             >
@@ -181,7 +187,7 @@ const nowDate = `${date.getFullYear()}年${nowMonth}月${strDate}日`
           >
             <div class="w-full flex items-center">
               <img
-                :src="avatar"
+                src="/public/avator.jpeg"
                 class="mr3% w18% rounded-50%"
                 alt=""
               >
@@ -233,7 +239,7 @@ const nowDate = `${date.getFullYear()}年${nowMonth}月${strDate}日`
           >
             <p>Hi~ {{ userStore.userInfo.username }}</p>
             <img
-              :src="avatar"
+              src="/public/avator.jpeg"
               class="ml3% w16% rounded-50%"
               alt=""
             >
@@ -259,7 +265,7 @@ const nowDate = `${date.getFullYear()}年${nowMonth}月${strDate}日`
           <br>愿您的生活一帆风顺，宁静而美好
         </p>
         <img
-          :src="avatar"
+          src="/public/avator.jpeg"
           class="absolute left-1% top-10% mr3% w16% rounded-50%"
           alt=""
         >
@@ -285,7 +291,7 @@ const nowDate = `${date.getFullYear()}年${nowMonth}月${strDate}日`
           愿您一直保持一颗学习的心，朝着更好的自己前进。
         </p>
         <img
-          :src="avatar"
+          src="/public/avator.jpeg"
           class="absolute left-40% top-25% w12% rounded-50%"
           alt=""
         >
@@ -313,7 +319,7 @@ const nowDate = `${date.getFullYear()}年${nowMonth}月${strDate}日`
         <div
           class="absolute left-2% top-28% w-full flex items-center font-size-20px"
         >
-          <img :src="avatar" class="mr3% w16% rounded-50%" alt="">
+          <img src="/public/avator.jpeg" class="mr3% w16% rounded-50%" alt="">
           <p>Hi~ {{ userStore.userInfo.username }}</p>
         </div>
         <p class="absolute left-2% top-45% pr3% color-#fff">
@@ -337,7 +343,7 @@ const nowDate = `${date.getFullYear()}年${nowMonth}月${strDate}日`
           class="absolute left-2% top-2% flex items-center justify-end pr3% font-size-20px color-#00F5FF"
         >
           <p>Hi~ {{ userStore.userInfo.username }}</p>
-          <img :src="avatar" class="ml3% w16% rounded-50%" alt="">
+          <img src="/public/avator.jpeg" class="ml3% w16% rounded-50%" alt="">
         </div>
       </div>
     </div>
@@ -346,7 +352,7 @@ const nowDate = `${date.getFullYear()}年${nowMonth}月${strDate}日`
     下载海报
   </button> -->
   <div class="w-full flex justify-center bg-#fff pb20px pt10px font-size-20px">
-    <button class="h50px w30% rounded-10px bg-#00B4BC color-#fff">
+    <button class="h50px w30% rounded-10px bg-#00B4BC color-#fff" @click="createPoster">
       点击下载海报
     </button>
   </div>
