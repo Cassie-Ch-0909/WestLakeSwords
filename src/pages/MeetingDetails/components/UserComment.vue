@@ -8,6 +8,7 @@ import {
   getChildCommentsByParentCommentIdAPI,
   getCommentByLikeAPI,
   getCommentByTimeAPI,
+  getCommentNumberByAgendaIdAPI,
 } from '@/apis/comment'
 import { loginDialogFlagStore } from '@/stores/loginDialogFlag.js'
 import { useUserStore } from '@/stores/user.js'
@@ -210,6 +211,15 @@ async function getAgendaCommentByTime(agendaId) {
     item.child = res.data
   })
 }
+
+// TODO：调接口获取评论总数
+const totalComments = ref()
+async function getCommentNumberByAgendaId(agendaId) {
+  const res = await getCommentNumberByAgendaIdAPI(agendaId)
+  // console.log(res)
+  totalComments.value = res.data
+}
+getCommentNumberByAgendaId(route.query.id)
 </script>
 
 <template>
@@ -219,7 +229,7 @@ async function getAgendaCommentByTime(agendaId) {
     <div class="h50px w-full flex">
       <div class="h-full w-120px flex items-center justify-evenly">
         <span class="font-size-22px font-bold">评论</span>
-        <span class="font-size-14px">14857</span>
+        <span class="font-size-14px">{{ totalComments }}</span>
       </div>
       <div class="h-full w-100px flex items-center justify-center">
         <span

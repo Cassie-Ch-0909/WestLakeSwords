@@ -49,3 +49,16 @@ export function getCommentByTimeAPI(agendaId) {
     },
   })
 }
+
+/*
+    根据agendaId查询评论总数量
+*/
+export function getCommentNumberByAgendaIdAPI(agendaId) {
+  return request({
+    url: `/admin/community/totalCommentsCount/${agendaId}`,
+    method: 'get',
+    params: {
+      agendaId,
+    },
+  })
+}
