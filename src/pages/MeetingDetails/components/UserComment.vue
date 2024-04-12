@@ -9,6 +9,7 @@ import {
   getCommentByLikeAPI,
   getCommentByTimeAPI,
   getCommentNumberByAgendaIdAPI,
+  likeForParentCommentAPI,
 } from '@/apis/comment'
 import { loginDialogFlagStore } from '@/stores/loginDialogFlag.js'
 import { useUserStore } from '@/stores/user.js'
@@ -142,8 +143,7 @@ function getAgendaById(id) {
     else getAgendaCommentByTime(res.data.id)
   })
 }
-const id = route.query.id
-getAgendaById(id)
+getAgendaById(route.query.id)
 
 // // TODO: 根据token判断用户是否登录
 const userStore = useUserStore()
@@ -161,7 +161,7 @@ watch(
   () => loginStatusStore.loginStatusFlag,
   (newValue) => {
     if (newValue)
-      getAgendaById(id)
+      getAgendaById(route.query.id)
   },
   { immediate: true, deep: true },
 )
@@ -220,6 +220,28 @@ async function getCommentNumberByAgendaId(agendaId) {
   totalComments.value = res.data
 }
 getCommentNumberByAgendaId(route.query.id)
+
+// TODO: 调接口给parent评论点赞
+async function likeForParentComment(commentId, index) {
+  const res = await likeForParentCommentAPI(commentId)
+  // console.log(res.isLike)
+  commentList.value[index].isLike = res.isLike
+  // console.log(commentList.value[index])
+  await getAgendaById(route.query.id)
+}
+// likeForParentComment(1)
+
+function likeParentComment(commentId, index) {
+  likeForParentComment(commentId, index)
+}
+
+/*
+    定义一个变量activeReplyIndex，用来标记回复评论的输入框展示与隐藏
+*/
+const activeReplyIndex = ref(999)
+function changeActiveReplyIndex(index) {
+  activeReplyIndex.value = index
+}
 </script>
 
 <template>
@@ -423,7 +445,7 @@ getCommentNumberByAgendaId(route.query.id)
         <div
           class="h-30px w-full flex items-center font-size-14px color-#61666d"
         >
-          {{ item.username }}{{ index }}
+          {{ item.username }}
         </div>
         <div class="mt10px font-size-15px">
           <!-- 评论内容 -->
@@ -434,8 +456,14 @@ getCommentNumberByAgendaId(route.query.id)
             <!-- 评论时间 -->
             <span class="mr20px">{{ item.time }}</span>
             <!-- 点赞 -->
-            <span class="mr20px cursor-pointer">
-              <i class="iconfont icon-dianzan_kuai" />
+            <span
+              class="mr20px cursor-pointer"
+              @click="likeParentComment(item.id, index)"
+            >
+              <i
+                class="iconfont icon-dianzan_kuai hover:color-#00B4BC"
+                :class="item.isLike ? 'color-#00B4BC' : ''"
+              />
               {{ item.likeCount }}
             </span>
             <!-- 拉踩 -->
@@ -443,7 +471,41 @@ getCommentNumberByAgendaId(route.query.id)
               <i class="iconfont icon-badreview-full font-size-14px" />
             </span>
             <!-- 回复 -->
-            <span class="cursor-pointer">回复</span>
+            <span
+              class="cursor-pointer hover:color-#00B4BC"
+              @click="changeActiveReplyIndex(index)"
+            >回复</span>
+          </div>
+          <div v-show="activeReplyIndex === index" class="">
+            <div class="h-70px w-full flex items-center">
+              <i
+                class="iconfont icon-touxiang ml15px font-size-45px color-#00B4BC"
+              />
+              <input
+                v-model="myComment"
+                type="text"
+                class="ml15px h40px w-650px border-2px border-#D6E5E5 rounded-5px border-solid pl20px"
+                placeholder="回复"
+              >
+            </div>
+            <div class="mt-[-5px] flex items-center">
+              <span
+                class="ml80px mr5px inline-block h30px w35px flex items-center justify-center border-1px border-#D6E5E5 rounded-5px border-solid"
+              >
+                <i class="iconfont icon-biaoqing_xiao_o font-size-22px" />
+              </span>
+              <span
+                class="inline-block h30px w35px flex items-center justify-center border-1px border-#D6E5E5 rounded-5px border-solid"
+              >
+                @
+              </span>
+              <button
+                class="ml505px inline-block h40px w65px rounded-5px hover:bg-[#00B4BC] hover:color-#fff"
+                @click="sendWhenLogin"
+              >
+                发布
+              </button>
+            </div>
           </div>
         </div>
         <div
@@ -477,7 +539,7 @@ getCommentNumberByAgendaId(route.query.id)
               <i class="iconfont icon-badreview-full font-size-14px" />
             </span>
             <!-- 回复 -->
-            <span>回复</span>
+            <span class="hover:color-#00B4BC">回复</span>
           </div>
         </div>
       </div>

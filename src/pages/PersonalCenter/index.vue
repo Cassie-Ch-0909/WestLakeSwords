@@ -332,7 +332,7 @@ function sorryForAlreadySignIn() {
             }}</span>
           </p>
           <span
-            class="ml8% font-size-16px hover:color-blue"
+            class="ml8% cursor-pointer font-size-16px hover:color-blue"
             @click="showCategoryDialogTableVisible"
           >点击查看积分规则</span>
           <SignInRotateBgButton
@@ -360,7 +360,7 @@ function sorryForAlreadySignIn() {
               v-for="(item, index) in list"
               :key="index"
               :class="activeIndex === index ? 'active' : ''"
-              class="lii h120px w200px flex items-center justify-evenly border-0.1px border-[#00B4BC] rounded-10px border-solid bg-#EFFBFF shadow-2xl hover:bg-[#00B4BC]"
+              class="lii h120px w200px flex cursor-pointer items-center justify-evenly border-0.1px border-[#00B4BC] rounded-10px border-solid bg-#EFFBFF shadow-2xl hover:bg-[#00B4BC]"
               @mouseleave="changeImgToColor(index)"
               @mouseover="changeImgToWhite(index)"
               @click="changeActiveMoudleIndex(index)"

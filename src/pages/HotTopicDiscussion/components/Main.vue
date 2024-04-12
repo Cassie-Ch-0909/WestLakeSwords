@@ -239,9 +239,9 @@ getHotTopicContentList()
     </div>
     <!-- tab栏切换 最新|最热 -->
     <div class="mt10px h55px w-100% flex items-center rounded-t-10px bg-#fff pl10px">
-      <span class="border-b-4 border-#00B4BC pt5px">最新</span>
-      <span class="pl10px pr10px">|</span>
-      <span>最热</span>
+      <span class="cursor-pointer border-b-4 border-#00B4BC pt5px">最新</span>
+      <span class="cursor-pointer pl10px pr10px">|</span>
+      <span class="cursor-pointer">最热</span>
     </div>
     <!-- 每条文章 -->
     <div

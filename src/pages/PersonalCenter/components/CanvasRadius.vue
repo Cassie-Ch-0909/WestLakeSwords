@@ -212,7 +212,7 @@ function stopRun() {
         class="prize-item absolute left-0 right-0 top-[-55px]"
         :style="prizeStyle(index)"
       >
-        <img :src="item.pic" alt="">
+        <img :src="item.pic" alt="" class="cursor-pointer">
         <p>{{ item.name }}</p>
       </div>
     </div>

@@ -52,7 +52,7 @@ function changeShowBigPannelActiveIndex(index) {
     <!-- 6个分模块 -->
     <div class="mt20px h600px w-full flex flex-col items-center">
       <div
-        v-for="(item, index) in list" :key="index" class="mb8px h40px w85% flex items-center rounded-5px hover:bg-[#00B4BC] hover:color-#fff" :class="showBigPannelActiveIndex === index ? 'bg-[#00B4BC] color-#fff' : ''"
+        v-for="(item, index) in list" :key="index" class="mb8px h40px w85% flex cursor-pointer items-center rounded-5px hover:bg-[#00B4BC] hover:color-#fff" :class="showBigPannelActiveIndex === index ? 'bg-[#00B4BC] color-#fff' : ''"
         @click="changeShowBigPannelActiveIndex(index)"
       >
         <i class="iconfont pl10px" :class="item.icon" />

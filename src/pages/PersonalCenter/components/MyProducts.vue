@@ -43,21 +43,21 @@ getPrizeList()
     <div class="mb10px mt10px h50px w-full flex items-center bg-#fff">
       <div
         :class="activeIndex === 0 ? 'border-b-3px border-[#00B4BC] border-solid color-[#00B4BC]' : ''"
-        class="ml20px h-full w80px flex items-center justify-center font-size-16px font-bold"
+        class="ml20px h-full w80px flex cursor-pointer items-center justify-center font-size-16px font-bold"
         @click="changeActiveIndex(0)"
       >
         已购买
       </div>
       <div
         :class="activeIndex === 1 ? 'border-b-3px border-[#00B4BC] border-solid color-[#00B4BC]' : ''"
-        class="ml20px h-full w80px flex items-center justify-center font-size-16px font-bold"
+        class="ml20px h-full w80px flex cursor-pointer items-center justify-center font-size-16px font-bold"
         @click="changeActiveIndex(1)"
       >
         已兑换
       </div>
       <div
         :class="activeIndex === 2 ? 'border-b-3px border-[#00B4BC] border-solid color-[#00B4BC]' : ''"
-        class="ml20px h-full w80px flex items-center justify-center font-size-16px font-bold"
+        class="ml20px h-full w80px flex cursor-pointer items-center justify-center font-size-16px font-bold"
         @click="changeActiveIndex(2)"
       >
         已抽中

@@ -366,7 +366,7 @@ function gotoAgendaLive() {
       </div>
       <div
         v-else
-        class="w55% flex items-center justify-center text-xs color-[#B0B0B0]"
+        class="w55% flex cursor-pointer items-center justify-center text-xs color-[#B0B0B0]"
         @click="gotoPersonalCenter"
       >
         <img

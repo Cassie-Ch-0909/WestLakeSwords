@@ -62,3 +62,16 @@ export function getCommentNumberByAgendaIdAPI(agendaId) {
     },
   })
 }
+
+/*
+    给parent评论点赞
+*/
+export function likeForParentCommentAPI(id) {
+  return request({
+    url: `/user/user/CommunityLike/${id}`,
+    method: 'post',
+    data: {
+      id,
+    },
+  })
+}

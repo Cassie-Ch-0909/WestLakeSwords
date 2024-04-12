@@ -76,7 +76,7 @@ const nowDate = `${date.getFullYear()}年${nowMonth}月${strDate}日`
     <div class="h520px w-50%">
       <div class="flex">
         <div
-          class="relative mr5% h230px w40% rounded-10px font-size-7px"
+          class="relative mr5% h230px w40% cursor-pointer rounded-10px font-size-7px"
           :class="
             activeSelectModuleIndex === 0
               ? 'border-5px border-#00F5F6 bg-#00F5F6 border-solid'
@@ -114,7 +114,7 @@ const nowDate = `${date.getFullYear()}年${nowMonth}月${strDate}日`
           >
         </div>
         <div
-          class="relative h230px w40% rounded-10px font-size-8px"
+          class="relative h230px w40% cursor-pointer rounded-10px font-size-8px"
           :class="
             activeSelectModuleIndex === 1
               ? 'border-5px border-#00F5F6 bg-#00F5F6 border-solid'
@@ -151,7 +151,7 @@ const nowDate = `${date.getFullYear()}年${nowMonth}月${strDate}日`
       </div>
       <div class="flex">
         <div
-          class="relative mr5% mt5% h230px w40% rounded-10px font-size-8px"
+          class="relative mr5% mt5% h230px w40% cursor-pointer rounded-10px font-size-8px"
           :class="
             activeSelectModuleIndex === 2
               ? 'border-5px border-#00F5F6 bg-#00F5F6 border-solid'
@@ -201,7 +201,7 @@ const nowDate = `${date.getFullYear()}年${nowMonth}月${strDate}日`
           >
         </div>
         <div
-          class="relative mt5% h230px w40% rounded-10px"
+          class="relative mt5% h230px w40% cursor-pointer rounded-10px"
           :class="
             activeSelectModuleIndex === 3
               ? 'border-5px border-#00F5F6 bg-#00F5F6 border-solid'

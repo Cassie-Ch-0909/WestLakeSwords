@@ -62,7 +62,7 @@ function publishNote() {
   <div v-if="isPage1Flag" class="rounded-10px bg-#fff">
     <div class="h80px w-full flex items-center pl2%">
       <span
-        class="inline-block h-90% w8% flex justify-center font-size-16px line-height-80px"
+        class="inline-block h-90% w8% flex cursor-pointer justify-center font-size-16px line-height-80px"
         :class="
           releaseMethodActiveIndex === 0
             ? 'border-b-2px border-#00B4BC border-solid'
@@ -71,7 +71,7 @@ function publishNote() {
         @click="changeReleaseMethodActiveIndex(0)"
       >上传视频</span>
       <span
-        class="inline-block h-90% w8% flex justify-center font-size-16px line-height-80px"
+        class="inline-block h-90% w8% flex cursor-pointer justify-center font-size-16px line-height-80px"
         :class="
           releaseMethodActiveIndex === 1
             ? 'border-b-2px border-#00B4BC border-solid'
@@ -241,26 +241,26 @@ function publishNote() {
           v-model="title"
           type="text"
           placeholder="填写标题，可能会有更多赞哦"
-          class="mt12px h35px w-98% border-1px border-#D9D9D9 rounded-3px border-solid pl10px"
+          class="mt12px h35px w-98% cursor-pointer border-1px border-#D9D9D9 rounded-3px border-solid pl10px"
         >
         <!-- 填写更全面的描述信息，让更多的人看到你吧! -->
         <textarea
           v-model="desc"
           placeholder="填写更全面的描述信息，让更多的人看到你吧!"
-          class="mt12px h100px w-98% border-1px border-#D9D9D9 rounded-3px border-solid pl10px pt5px"
+          class="mt12px h100px w-98% cursor-pointer border-1px border-#D9D9D9 rounded-3px border-solid pl10px pt5px"
           maxlength="1000"
         />
         <!-- #话题 @用户 表情 -->
         <div class="mt5px h30px w-full flex">
           <span
-            class="mr10px inline-block h-full w70px flex items-center justify-center border-1px border-#D9D9D9 rounded-5px border-solid"
+            class="mr10px inline-block h-full w70px flex cursor-pointer items-center justify-center border-1px border-#D9D9D9 rounded-5px border-solid"
           ># 话题</span>
           <span
-            class="mr10px inline-block h-full w70px flex items-center justify-center border-1px border-#D9D9D9 rounded-5px border-solid"
+            class="mr10px inline-block h-full w70px flex cursor-pointer items-center justify-center border-1px border-#D9D9D9 rounded-5px border-solid"
           >@ 用户</span>
           <span
-            class="mr10px inline-block h-full w70px flex items-center justify-center border-1px border-#D9D9D9 rounded-5px border-solid"
-          ># 表情</span>
+            class="mr10px inline-block h-full w70px flex cursor-pointer items-center justify-center border-1px border-#D9D9D9 rounded-5px border-solid"
+          ><i class="iconfont icon-biaoqing_xiao_o font-size-18px" /> &nbsp;表情</span>
         </div>
         <!-- 在图片上标记人、位置 -->
         <div
@@ -278,7 +278,7 @@ function publishNote() {
               </p>
             </div>
           </div>
-          <button class="h55% w85px rounded-5px bg-#00B4BC color-#fff">
+          <button class="h55% w85px cursor-pointer rounded-5px bg-#00B4BC color-#fff">
             添加标记
           </button>
         </div>
@@ -294,7 +294,7 @@ function publishNote() {
           <input
             type="text"
             placeholder="填写标题，可能会有更多赞哦"
-            class="h35px flex-1 border-1px border-#D9D9D9 rounded-3px border-solid pl10px"
+            class="h35px flex-1 cursor-pointer border-1px border-#D9D9D9 rounded-3px border-solid pl10px"
           >
         </div>
         <!-- 权限设置 -->
@@ -320,13 +320,13 @@ function publishNote() {
         <!-- 两个按钮 -->
         <div class="items-centeer mt25px h50px w-full flex">
           <button
-            class="mr2% h90% w100px rounded-5px bg-#00B4BC color-#fff"
+            class="mr2% h90% w100px cursor-pointer rounded-5px bg-#00B4BC color-#fff"
             @click="publishNote"
           >
             发布
           </button>
           <button
-            class="h90% w100px border-1px border-#D9D9D9 rounded-5px border-solid bg-#fff"
+            class="h90% w100px cursor-pointer border-1px border-#D9D9D9 rounded-5px border-solid bg-#fff"
           >
             取消
           </button>

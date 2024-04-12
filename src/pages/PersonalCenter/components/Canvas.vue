@@ -87,7 +87,7 @@ function draw(index: number) {
       :class="currentIndex === index ? 'active' : ''"
       @click="() => draw(index)"
     >
-      <img :src="item.url" alt="" class="w-60px">
+      <img :src="item.url" alt="" class="w-60px cursor-pointer">
       <p class="desc">
         {{ item.desc }}
       </p>
