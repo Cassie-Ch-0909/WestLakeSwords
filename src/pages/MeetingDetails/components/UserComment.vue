@@ -5,8 +5,9 @@ import { ElMessage } from 'element-plus'
 import { getAgendaByIdAPI } from '@/apis/agenda'
 import {
   addCommentAPI,
-  getAgendaCommentByAgendaIdAPI,
   getChildCommentsByParentCommentIdAPI,
+  getCommentByLikeAPI,
+  getCommentByTimeAPI,
 } from '@/apis/comment'
 import { loginDialogFlagStore } from '@/stores/loginDialogFlag.js'
 import { useUserStore } from '@/stores/user.js'
@@ -102,61 +103,48 @@ const isShowNextCommentsFlag = ref(false)
 function changeIsShowNextCommentsFlag() {
   isShowNextCommentsFlag.value = !isShowNextCommentsFlag.value
 }
-
 const route = useRoute()
-// 根据AgendaId获取的评论列表
-const commentList = ref([])
-// 将commentList中每个对象的id也就是每条评论id拿出来，组成一个数组，用于发请求
-const commentIdList = ref([])
-// 搞一个数组用来装评论的子评论
-const childCommentList = ref([])
 
-// TODO4: 发请求根据现有评论id查询子评论
-async function getChildCommentsByParentCommentId(id) {
-  const res = await getChildCommentsByParentCommentIdAPI(id)
-  // console.log(res);
-  // TODO：发现问题：当新增评论的时候会重新调用这个方法，重新forEach和push，所以数组越来越长
-  childCommentList.value.push(res.data)
-  if (childCommentList.value.length > commentIdList.value.length) {
-    childCommentList.value = childCommentList.value.slice(
-      0,
-      commentIdList.value.length - 1,
-    )
-  }
+/*
+    定义一个变量用来切换最热还是最新 默认是最热
+*/
+const activeGetMethod = ref(0)
+function changeActiveGetMethod(index) {
+  activeGetMethod.value = index
+  getAgendaById(route.query.id)
 }
 
+// TODO: 最热评论
+// 根据AgendaId获取的评论列表
+const commentList = ref([])
+
 // TODO2：调获取评论接口
-async function getAgendaCommentByAgendaId(id) {
-  const res = await getAgendaCommentByAgendaIdAPI(id)
-  // console.log(res)
+async function getAgendaCommentByLike(id) {
+  const res = await getCommentByLikeAPI(id)
   commentList.value = res.data
-  // TODO：搞一个数组用来装评论Id
-  commentIdList.value = commentList.value.map(item => item.id)
-  // parent评论
-  // console.log(commentIdList.value)
-  commentIdList.value.forEach((item) => {
-    getChildCommentsByParentCommentId(item)
-    // console.log('item', item)
+  /*
+      将通过大会Id获取到的评论数组进行遍历
+      将item.id作为父评论id，调用getChildCommentsByParentCommentIdAPI接口获取子评论
+      给每条评论新增一个child属性，它的值就是发请求获取的子评论
+  */
+  commentList.value.forEach(async (item) => {
+    const res = await getChildCommentsByParentCommentIdAPI(item.id)
+    item.child = res.data
   })
 }
 
 // TODO3: 发请求获取会议信息
 function getAgendaById(id) {
   getAgendaByIdAPI(id).then((res) => {
-    // agendaId.value = res.data.id
-    getAgendaCommentByAgendaId(res.data.id)
-    // console.log("评论")
+    if (activeGetMethod.value === 0)
+      getAgendaCommentByLike(res.data.id)
+    else getAgendaCommentByTime(res.data.id)
   })
 }
 const id = route.query.id
 getAgendaById(id)
 
 // // TODO: 根据token判断用户是否登录
-// const isLogin = ref(true)
-// if (localStorage.getItem('token'))
-//   isLogin.value = true
-// else isLogin.value = false
-
 const userStore = useUserStore()
 // TODO：从pinia中拿出token的值判断当前是否处于登陆状态 使用v-if判断 登录|注册 还是 个人中心
 const token = ref('')
@@ -201,7 +189,6 @@ async function addComment(obj) {
 */
 function sendWhenLogOut() {
   loginDialogVisibleStore.changeLoginDialogFlagTrue()
-  // console.log(loginDialogVisibleStore.loginDialogFlag);
 }
 
 /*
@@ -210,6 +197,18 @@ function sendWhenLogOut() {
 function sendWhenLogin() {
   addComment(addCommentObj.value)
   myComment.value = ''
+}
+
+// TODO：最新评论
+
+// TODO: 调接口获取根据时间查询的评论列表
+async function getAgendaCommentByTime(agendaId) {
+  const res = await getCommentByTimeAPI(agendaId)
+  commentList.value = res.data
+  commentList.value.forEach(async (item) => {
+    const res = await getChildCommentsByParentCommentIdAPI(item.id)
+    item.child = res.data
+  })
 }
 </script>
 
@@ -223,9 +222,17 @@ function sendWhenLogin() {
         <span class="font-size-14px">14857</span>
       </div>
       <div class="h-full w-100px flex items-center justify-center">
-        <span class="cursor-pointer font-size-13px">最热</span>
+        <span
+          class="cursor-pointer font-size-13px hover:color-#00B4BC"
+          :class="activeGetMethod === 0 ? 'color-#00B4BC' : ''"
+          @click="changeActiveGetMethod(0)"
+        >最热</span>
         <span class="ml8px mr8px h15px w1px bg-black" />
-        <span class="cursor-pointer font-size-13px">最新</span>
+        <span
+          class="cursor-pointer font-size-13px hover:color-#00B4BC"
+          :class="activeGetMethod === 1 ? 'color-#00B4BC' : ''"
+          @click="changeActiveGetMethod(1)"
+        >最新</span>
       </div>
     </div>
     <!-- 第二行 发表评论和判断是否需要登录 -->
@@ -430,17 +437,13 @@ function sendWhenLogin() {
           </div>
         </div>
         <div
-          v-for="(item3, index3) in childCommentList[index]"
+          v-for="(item3, index3) in item.child"
           :key="index3"
           class="mt15px h-full w-full flex flex-col"
         >
           <div class="flex">
             <div class="h30px w30px">
-              <img
-                :src="item3.avatar"
-                alt=""
-                class="roundesd-50% h100% w100%"
-              >
+              <img :src="item3.avatar" alt="" class="h100% w100% rounded-50%">
             </div>
             <span class="ml10px">
               <span class="font-size-14px color-#61666d">

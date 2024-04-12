@@ -3,9 +3,9 @@ import request from '@/utils/http'
 /*
     根据大会议程的AgendaId查询评论
 */
-export function getAgendaCommentByAgendaIdAPI(agendaId) {
+export function getCommentByLikeAPI(agendaId) {
   return request({
-    url: `/admin/community/${agendaId}`,
+    url: `/admin/community/like/${agendaId}`,
     method: 'get',
     params: {
       agendaId,
@@ -34,5 +34,18 @@ export function addCommentAPI(data) {
     url: '/admin/community',
     method: 'post',
     data,
+  })
+}
+
+/*
+    根据时间查询评论
+*/
+export function getCommentByTimeAPI(agendaId) {
+  return request({
+    url: `/admin/community/time/${agendaId}`,
+    method: 'get',
+    params: {
+      agendaId,
+    },
   })
 }
