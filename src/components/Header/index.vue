@@ -6,22 +6,23 @@ import RotateBgButton from '@/components/Header/components/RotateBgButton.vue'
 import { getCaptchaAPI, getPhoneCodeAPI, loginAPI } from '@/apis/login'
 import { useUserStore } from '@/stores/user.js'
 import { loginDialogFlagStore } from '@/stores/loginDialogFlag.js'
-
+import { useLoginStatusStore } from '@/stores/loginStatus.js'
 const loginDialogVisibleStore = loginDialogFlagStore()
 // console.log(loginDialogVisibleStore)
 // console.log(loginDialogVisibleStore.loginDialogFlag)
 
 const userStore = useUserStore()
+const loginStatusStore = useLoginStatusStore()
 // TODO：从pinia中拿出token的值判断当前是否处于登陆状态 使用v-if判断 登录|注册 还是 个人中心
 const token = ref('')
 token.value = userStore.token
 // console.log(token.value)
 // 如果token有值 那么loginFlag就是true
-const loginFlag = ref(false)
+// const loginFlag = ref(false)
 if (token.value)
-  loginFlag.value = true
+  loginStatusStore.changeLoginStatusFlagTrue()
 
-const router = useRouter()// 用于页面的跳转
+const router = useRouter() // 用于页面的跳转
 
 function gotoPersonalCenter() {
   router.push('/personalcenter')
@@ -172,20 +173,19 @@ function checkCaptchaValue() {
 async function login() {
   if (checkPhoneNumber() && checkPhoneCode() && checkCaptchaValue()) {
     // console.log('可以调登录接口啦')
-    const res = await loginAPI(
-      {
-        captcha: captchaValue.value,
-        phone: phoneNumer.value,
-        phoneCode: phoneCode.value,
-        uuid: uuid.value,
-      },
-    )
+    const res = await loginAPI({
+      captcha: captchaValue.value,
+      phone: phoneNumer.value,
+      phoneCode: phoneCode.value,
+      uuid: uuid.value,
+    })
     // TODO7: 将登录成功后的token和用户信息保存到pinia中，并实现pinia的数据存储到LocalStorage中实现持久化存储
     userStore.setUserInfoAndToken(res.data, res.data.token)
     localStorage.setItem('token', res.data.token)
     // dialogTableVisible.value = false
     loginDialogVisibleStore.changeLoginDialogFlagFalse()
-    loginFlag.value = true
+    // loginFlag.value = true
+    loginStatusStore.changeLoginStatusFlagTrue()
     setTimeout(() => {
       ElMessage({
         message: '登录成功',
@@ -217,7 +217,9 @@ function gotoAgendaLive() {
       ()*4=px
    -->
   <!-- PC端Header -->
-  <div class="nav sticky left-0 top-0 z-999 w-full flex justify-between bg-slate-50 max-md:hidden md:h-20">
+  <div
+    class="nav sticky left-0 top-0 z-999 w-full flex justify-between bg-slate-50 max-md:hidden md:h-20"
+  >
     <el-dialog v-model="loginDialogVisibleStore.loginDialogFlag" width="800">
       <div class="relative flex">
         <!-- 左边输入框部分 -->
@@ -233,24 +235,58 @@ function gotoAgendaLive() {
           <div class="mt30px h40px w-full pl60px">
             <input
               v-model="phoneNumer"
-              class="h40px w240px border-1px border-#E0E0E0 border-solid pl10px font-size-12px" placeholder="请输入手机号码"
+              class="h40px w240px border-1px border-#E0E0E0 border-solid pl10px font-size-12px"
+              placeholder="请输入手机号码"
             >
           </div>
           <!-- 请输入短信验证码 -->
-          <div class="ml60px mt20px h40px w240px flex border-1px border-#E0E0E0 border-solid">
-            <input v-model="phoneCode" class="h40px w140px pl10px font-size-12px" placeholder="输入短信验证码">
-            <button class="inline-block h40px w100px font-size-11.5px" @click="getPhoneCode">
-              {{ second === totalSecond ? "获取验证码" : `${second}秒后重新发送` }}
+          <div
+            class="ml60px mt20px h40px w240px flex border-1px border-#E0E0E0 border-solid"
+          >
+            <input
+              v-model="phoneCode"
+              class="h40px w140px pl10px font-size-12px"
+              placeholder="输入短信验证码"
+            >
+            <button
+              class="inline-block h40px w100px font-size-11.5px"
+              @click="getPhoneCode"
+            >
+              {{
+                second === totalSecond ? "获取验证码" : `${second}秒后重新发送`
+              }}
             </button>
           </div>
           <!-- 请输入图形验证码 -->
-          <div class="ml60px mt20px h40px w240px flex border-1px border-#E0E0E0 border-solid">
-            <input v-model="captchaValue" class="h40px w140px pl10px font-size-12px" placeholder="输入图形验证码">
-            <img :src="captcha" class="inline-block h40px w100px" alt="" @click="changeCaptcha">
+          <div
+            class="ml60px mt20px h40px w240px flex border-1px border-#E0E0E0 border-solid"
+          >
+            <input
+              v-model="captchaValue"
+              class="h40px w140px pl10px font-size-12px"
+              placeholder="输入图形验证码"
+            >
+            <img
+              :src="captcha"
+              class="inline-block h40px w100px"
+              alt=""
+              @click="changeCaptcha"
+            >
           </div>
-          <div class="mt15px h30px w-full flex items-center pl60px font-size-12px">
-            <input id="scales" type="checkbox" name="scales" checked class="mr5px">
-            <span>我已阅读并同意<a class="color-#198CFF" href="#">服务条款</a>、<a class="color-#198CFF" href="#">隐私政策</a></span>
+          <div
+            class="mt15px h30px w-full flex items-center pl60px font-size-12px"
+          >
+            <input
+              id="scales"
+              type="checkbox"
+              name="scales"
+              checked
+              class="mr5px"
+            >
+            <span>我已阅读并同意<a class="color-#198CFF" href="#">服务条款</a>、<a
+              class="color-#198CFF"
+              href="#"
+            >隐私政策</a></span>
           </div>
           <button
             class="ml60px mt15px h40px w240px from-[#00B4BC] to-[#37C0F7] bg-gradient-to-r color-#fff"
@@ -259,7 +295,9 @@ function gotoAgendaLive() {
             登录/注册
           </button>
           <!-- 其他登陆方式 -->
-          <div class="mt10px h30px w-full flex items-center pl60px font-size-12px">
+          <div
+            class="mt10px h30px w-full flex items-center pl60px font-size-12px"
+          >
             <span>其他登陆方式</span>
             <i class="iconfont icon-weibo ml15px" />
           </div>
@@ -274,7 +312,9 @@ function gotoAgendaLive() {
             </p>
           </div>
           <!-- 使用微信快速扫码登陆 -->
-          <div class="mt10px h30px w-full flex items-center pl80px font-size-12px">
+          <div
+            class="mt10px h30px w-full flex items-center pl80px font-size-12px"
+          >
             <p>使用<span class="color-#00B4BC">微信</span>快速扫码登陆</p>
           </div>
           <!-- 二维码 -->
@@ -292,15 +332,20 @@ function gotoAgendaLive() {
     </el-dialog>
 
     <!-- logo -->
-    <div class="leftLogo h100% flex items-center justify-center md:ml-11% md:w-18%">
+    <div
+      class="leftLogo h100% flex items-center justify-center md:ml-11% md:w-18%"
+    >
       <img src="@/assets/logo.png" alt="" class="h-auto w-auto pl5% pr5%">
     </div>
     <!-- 中间导航选项 PC端 -->
     <div class="center h-full w65% flex items-center justify-end">
       <!-- <div v-for="(item, index) in navs" :key="index" class="h-full w-10% w-full flex items-center justify-center"> -->
       <router-link
-        v-for="(item, index) in navs" :key="index" :to="`${item.url}`"
-        class="mr3% inline-block text-[13.5px]" :class="index === activeIndex ? 'text-[#005AAD]' : ''"
+        v-for="(item, index) in navs"
+        :key="index"
+        :to="`${item.url}`"
+        class="mr3% inline-block text-[13.5px]"
+        :class="index === activeIndex ? 'text-[#005AAD]' : ''"
         @click="changeActiveIndex(index)"
       >
         {{ item.name }}
@@ -311,23 +356,33 @@ function gotoAgendaLive() {
     <div class="rightSide mr-8% h-full w17% flex items-center justify-between">
       <RotateBgButton @click="gotoAgendaLive" />
       <div
-        v-if="!loginFlag" class="ml6% flex items-center justify-center text-xs color-[#B0B0B0]"
+        v-if="!loginStatusStore.loginStatusFlag"
+        class="ml6% flex items-center justify-center text-xs color-[#B0B0B0]"
         @click="loginDialogVisibleStore.changeLoginDialogFlagTrue"
       >
-        <i class="iconfont icon-yonghu" />&nbsp;
-        <span>登录</span>&nbsp;
+        <i class="iconfont icon-yonghu" />&nbsp; <span>登录</span>&nbsp;
         <span>|</span>&nbsp;
         <span>注册</span>
       </div>
-      <div v-else class="w55% flex items-center justify-center text-xs color-[#B0B0B0]" @click="gotoPersonalCenter">
-        <img class="mr5% h35px w35px rounded-50%" src="/public/avator.jpeg" alt="">
+      <div
+        v-else
+        class="w55% flex items-center justify-center text-xs color-[#B0B0B0]"
+        @click="gotoPersonalCenter"
+      >
+        <img
+          class="mr5% h35px w35px rounded-50%"
+          src="/public/avator.jpeg"
+          alt=""
+        >
         个人中心
       </div>
     </div>
   </div>
 
   <!-- 移动端Header -->
-  <div class="nav sticky left-0 top-0 z-999 h-[53px] w-full flex justify-between bg-slate-50 md-hidden">
+  <div
+    class="nav sticky left-0 top-0 z-999 h-[53px] w-full flex justify-between bg-slate-50 md-hidden"
+  >
     <!-- logo -->
     <div class="leftLogo h100% w35% flex items-center justify-center">
       <img src="@/assets/logo.png" alt="" class="h-auto w-auto pl5% pr5%">
@@ -337,7 +392,9 @@ function gotoAgendaLive() {
       <RotateBgButton />
       <!-- 移动端下拉菜单导航条 -->
       <el-dropdown>
-        <i class="iconfont icon-xiangmumulu bg-transparent text-[25px] text-[#2db1ba]" />
+        <i
+          class="iconfont icon-xiangmumulu bg-transparent text-[25px] text-[#2db1ba]"
+        />
         <template #dropdown>
           <el-dropdown-menu>
             <el-dropdown-item @click="gotoLogin">

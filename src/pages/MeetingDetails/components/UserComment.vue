@@ -7,8 +7,11 @@ import {
   getChildCommentsByParentCommentIdAPI,
 } from '@/apis/comment'
 import { loginDialogFlagStore } from '@/stores/loginDialogFlag.js'
+import { useUserStore } from '@/stores/user.js'
+import { useLoginStatusStore } from '@/stores/loginStatus.js'
 
 const loginDialogVisibleStore = loginDialogFlagStore()
+const loginStatusStore = useLoginStatusStore()
 
 const firstCommentList = ref([
   {
@@ -138,16 +141,35 @@ function getAgendaById(id) {
 const id = route.query.id
 getAgendaById(id)
 
-// TODO: 根据token判断用户是否登录
-const isLogin = ref(true)
-if (localStorage.getItem('token'))
-  isLogin.value = true
-else isLogin.value = false
+// // TODO: 根据token判断用户是否登录
+// const isLogin = ref(true)
+// if (localStorage.getItem('token'))
+//   isLogin.value = true
+// else isLogin.value = false
+
+const userStore = useUserStore()
+// TODO：从pinia中拿出token的值判断当前是否处于登陆状态 使用v-if判断 登录|注册 还是 个人中心
+const token = ref('')
+token.value = userStore.token
+// console.log(token.value)
+// 如果token有值 那么loginFlag就是true
+// const loginFlag = ref(false);
+if (token.value)
+  loginStatusStore.changeLoginStatusFlagTrue()
 
 function send() {
   loginDialogVisibleStore.changeLoginDialogFlagTrue()
   // console.log(loginDialogVisibleStore.loginDialogFlag);
 }
+
+watch(
+  () => loginStatusStore.loginStatusFlag,
+  (newValue) => {
+    if (newValue)
+      getAgendaById(id)
+  },
+  { immediate: true, deep: true },
+)
 </script>
 
 <template>
@@ -166,7 +188,10 @@ function send() {
       </div>
     </div>
     <!-- 第二行 发表评论和判断是否需要登录 -->
-    <div v-if="!isLogin" class="h-60px w-full flex items-center">
+    <div
+      v-if="!loginStatusStore.loginStatusFlag"
+      class="h-60px w-full flex items-center"
+    >
       <i class="iconfont icon-touxiang ml15px font-size-45px color-#00B4BC" />
       <input
         type="text"
