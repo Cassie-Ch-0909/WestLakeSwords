@@ -25,3 +25,14 @@ export function getChildCommentsByParentCommentIdAPI(communityId) {
     },
   })
 }
+
+/*
+    新增评论
+*/
+export function addCommentAPI(data) {
+  return request({
+    url: '/admin/community',
+    method: 'post',
+    data,
+  })
+}

@@ -3,6 +3,7 @@ import { ref } from 'vue'
 import { useRoute } from 'vue-router'
 import { getAgendaByIdAPI } from '@/apis/agenda'
 import {
+  addCommentAPI,
   getAgendaCommentByAgendaIdAPI,
   getChildCommentsByParentCommentIdAPI,
 } from '@/apis/comment'
@@ -113,8 +114,14 @@ const childCommentList = ref([])
 async function getChildCommentsByParentCommentId(id) {
   const res = await getChildCommentsByParentCommentIdAPI(id)
   // console.log(res);
+  // TODO：发现问题：当新增评论的时候会重新调用这个方法，重新forEach和push，所以数组越来越长
   childCommentList.value.push(res.data)
-  // console.log(childCommentList.value, "child");
+  if (childCommentList.value.length > commentIdList.value.length) {
+    childCommentList.value = childCommentList.value.slice(
+      0,
+      commentIdList.value.length - 1,
+    )
+  }
 }
 
 // TODO2：调获取评论接口
@@ -124,9 +131,11 @@ async function getAgendaCommentByAgendaId(id) {
   commentList.value = res.data
   // TODO：搞一个数组用来装评论Id
   commentIdList.value = commentList.value.map(item => item.id)
+  // parent评论
   // console.log(commentIdList.value)
   commentIdList.value.forEach((item) => {
     getChildCommentsByParentCommentId(item)
+    // console.log('item', item)
   })
 }
 
@@ -157,11 +166,7 @@ token.value = userStore.token
 if (token.value)
   loginStatusStore.changeLoginStatusFlagTrue()
 
-function send() {
-  loginDialogVisibleStore.changeLoginDialogFlagTrue()
-  // console.log(loginDialogVisibleStore.loginDialogFlag);
-}
-
+// watch监听登陆状态的改变 实现评论区的刷新
 watch(
   () => loginStatusStore.loginStatusFlag,
   (newValue) => {
@@ -170,6 +175,36 @@ watch(
   },
   { immediate: true, deep: true },
 )
+
+/*
+    获取路由参数赋值给agendaId
+    获取输入框输入的内容赋值给content
+*/
+const myComment = ref()
+const addCommentObj = ref({
+  agendaId: route.query.id,
+  content: myComment,
+})
+// TODO：调取新增评论接口
+async function addComment(obj) {
+  await addCommentAPI(obj)
+  await getAgendaCommentByAgendaId(route.query.id)
+}
+
+/*
+    当用户未登录的时候，点击发送按钮，跳出登陆注册的弹框
+*/
+function sendWhenLogOut() {
+  loginDialogVisibleStore.changeLoginDialogFlagTrue()
+  // console.log(loginDialogVisibleStore.loginDialogFlag);
+}
+
+/*
+    当用户登录的时候，点击发送按钮，增加一条评论
+*/
+function sendWhenLogin() {
+  addComment(addCommentObj.value)
+}
 </script>
 
 <template>
@@ -200,7 +235,7 @@ watch(
       >
       <button
         class="ml15px h40px w65px rounded-5px hover:bg-[#00B4BC] hover:color-#fff"
-        @click="send"
+        @click="sendWhenLogOut"
       >
         发表
       </button>
@@ -208,12 +243,14 @@ watch(
     <div v-else class="h-60px w-full flex items-center">
       <i class="iconfont icon-touxiang ml15px font-size-45px color-#00B4BC" />
       <input
+        v-model="myComment"
         type="text"
         class="ml15px h40px w-710px rounded-5px bg-#D6E5E5 pl20px"
         placeholder="请输入您的评论 (・ω・)"
       >
       <button
         class="ml15px h40px w65px rounded-5px hover:bg-[#00B4BC] hover:color-#fff"
+        @click="sendWhenLogin"
       >
         发表
       </button>
