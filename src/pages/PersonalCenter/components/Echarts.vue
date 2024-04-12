@@ -1,19 +1,18 @@
 <script setup>
 import { onMounted, ref } from 'vue'
 import * as echarts from 'echarts'
-import { getUserIntegraDetailslListAPI } from '@/apis/user'
+import { interfaceForEchartsAPI } from '@/apis/user'
 
 // 积分明细列表
 const userIntegralDetailsList = ref([])
-async function getUserIntegraDetailslList() {
-  const res = await getUserIntegraDetailslListAPI()
-  // console.log(res.data)
+async function interfaceForEcharts() {
+  const res = await interfaceForEchartsAPI()
   userIntegralDetailsList.value = res.data
   userIntegralDetailsList.value = userIntegralDetailsList.value.map((item) => {
-    return { name: item.operation, value: item.integral }
+    return { name: item.todo, value: item.totalPoints }
   })
-  // console.log(11,userIntegralDetailsList.value)
 }
+
 const chartDom = ref()
 onMounted(async () => {
   const myChart = echarts.init(chartDom.value)
@@ -69,7 +68,7 @@ onMounted(async () => {
       },
     ],
   }
-  await getUserIntegraDetailslList()
+  await interfaceForEcharts()
 
   // console.log(option.series[0].data)
   option.series[0].data = userIntegralDetailsList.value

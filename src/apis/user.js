@@ -62,5 +62,11 @@ export function everyDaySignInAPI() {
 }
 
 /*
-
+    Echarts图的数据统计
 */
+export function interfaceForEchartsAPI() {
+  return request({
+    url: '/user/user/getTotalPointsByRuleAndUser',
+    method: 'GET',
+  })
+}
