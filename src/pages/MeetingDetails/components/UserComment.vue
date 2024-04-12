@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import { useRoute } from 'vue-router'
+import { ElMessage } from 'element-plus'
 import { getAgendaByIdAPI } from '@/apis/agenda'
 import {
   addCommentAPI,
@@ -188,7 +189,11 @@ const addCommentObj = ref({
 // TODO：调取新增评论接口
 async function addComment(obj) {
   await addCommentAPI(obj)
-  await getAgendaCommentByAgendaId(route.query.id)
+  ElMessage({
+    message: '发送成功',
+    type: 'success',
+  })
+  await getAgendaById(route.query.id)
 }
 
 /*
@@ -200,10 +205,11 @@ function sendWhenLogOut() {
 }
 
 /*
-    当用户登录的时候，点击发送按钮，增加一条评论
+    当用户登录的时候，点击发送按钮，增加一条评论，清空输入框
 */
 function sendWhenLogin() {
   addComment(addCommentObj.value)
+  myComment.value = ''
 }
 </script>
 
