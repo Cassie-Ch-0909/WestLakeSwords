@@ -88,3 +88,14 @@ export function getCommentDetailsByCommentIdAPI(id) {
     },
   })
 }
+
+/*
+    新增被评论
+*/
+export function addChildCommentAPI(data) {
+  return request({
+    url: '/admin/Commented',
+    method: 'post',
+    data,
+  })
+}

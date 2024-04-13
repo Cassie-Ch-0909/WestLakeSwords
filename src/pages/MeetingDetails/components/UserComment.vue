@@ -4,6 +4,7 @@ import { useRoute } from 'vue-router'
 import { ElMessage } from 'element-plus'
 import { getAgendaByIdAPI } from '@/apis/agenda'
 import {
+  addChildCommentAPI,
   addCommentAPI,
   getChildCommentsByParentCommentIdAPI,
   getCommentByLikeAPI,
@@ -258,6 +259,17 @@ function likeParentComment(commentId, index) {
   likeForParentComment(commentId, index)
 }
 
+const myChildComment = ref()
+// TODO: 调接口新增被评论
+const addChildObj = ref({
+  communityId: '',
+  contented: '',
+  id: route.query.id,
+})
+async function addChildComment(obj) {
+  await addChildCommentAPI(obj)
+}
+
 /*
     定义一个变量activeReplyIndex，用来标记回复评论的输入框展示与隐藏
 */
@@ -268,6 +280,23 @@ async function changeActiveReplyIndex(id, index) {
   // console.log(res)
   commentDetails.value = res
   placeholder.value = `回复${commentDetails.value.username}`
+  addChildObj.value.communityId = id
+}
+
+// TODO: 发布子评论
+async function sendChildComment(id, index) {
+  addChildObj.value.contented = myChildComment.value
+  // console.log(addChildObj.value)
+  await addChildComment(addChildObj.value)
+  myChildComment.value = ''
+  const res = await getChildCommentsByParentCommentIdAPI(id)
+  // console.log(res)
+  commentList.value[index].child = res.data
+  ElMessage({
+    message: '回复成功',
+    type: 'success',
+  })
+  activeReplyIndex.value = 999
 }
 </script>
 
@@ -509,7 +538,7 @@ async function changeActiveReplyIndex(id, index) {
                 class="iconfont icon-touxiang ml15px font-size-45px color-#00B4BC"
               />
               <input
-                v-model="myComment"
+                v-model="myChildComment"
                 type="text"
                 class="ml15px h40px w-650px border-2px border-#D6E5E5 rounded-5px border-solid pl20px"
                 :placeholder="placeholder"
@@ -528,7 +557,7 @@ async function changeActiveReplyIndex(id, index) {
               </span>
               <button
                 class="ml505px inline-block h40px w65px rounded-5px hover:bg-[#00B4BC] hover:color-#fff"
-                @click="sendWhenLogin"
+                @click="sendChildComment(item.id, index)"
               >
                 发布
               </button>
