@@ -6,11 +6,13 @@ import { getAgendaByIdAPI } from '@/apis/agenda'
 import {
   addChildCommentAPI,
   addCommentAPI,
+  getChildCommentDetailsByChildCommentIdAPI,
   getChildCommentsByParentCommentIdAPI,
   getCommentByLikeAPI,
   getCommentByTimeAPI,
   getCommentDetailsByCommentIdAPI,
   getCommentNumberByAgendaIdAPI,
+  likeForChildCommentAPI,
   likeForParentCommentAPI,
 } from '@/apis/comment'
 import { loginDialogFlagStore } from '@/stores/loginDialogFlag.js'
@@ -297,6 +299,31 @@ async function sendChildComment(id, index) {
     type: 'success',
   })
   activeReplyIndex.value = 999
+}
+
+// TODO: 调接口根据子评论id获取子评论详细信息
+async function getChildCommentDetailsByChildCommentId(id, childIndex, parentIndex) {
+  const res = await getChildCommentDetailsByChildCommentIdAPI(id)
+  // console.log(res)
+  commentList.value[parentIndex].child[childIndex] = res
+  // console.log(commentList.value[parentIndex].child[childIndex])
+  if (commentList.value[parentIndex].child[childIndex].isLike) {
+    ElMessage({
+      message: '点赞成功',
+      type: 'success',
+    })
+  }
+  else {
+    ElMessage({
+      message: '取消点赞',
+    })
+  }
+}
+
+// TODO: 调接口给child评论点赞
+async function likeForChildComment(id, childIndex, parentIndex) {
+  await likeForChildCommentAPI(id)
+  await getChildCommentDetailsByChildCommentId(id, childIndex, parentIndex)
 }
 </script>
 
@@ -586,8 +613,11 @@ async function sendChildComment(id, index) {
             <!-- 评论时间 -->
             <span class="mr20px">{{ item3.time }}</span>
             <!-- 点赞 -->
-            <span class="mr20px">
-              <i class="iconfont icon-dianzan_kuai" />
+            <span class="mr20px" @click="likeForChildComment(item3.id, index3, index)">
+              <i
+                class="iconfont icon-dianzan_kuai cursor-pointer hover:color-#00B4BC"
+                :class="item3.isLike ? 'color-#00B4BC' : ''"
+              />
               {{ item3.likeCount }}
             </span>
             <!-- 拉踩 -->

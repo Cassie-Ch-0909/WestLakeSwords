@@ -99,3 +99,29 @@ export function addChildCommentAPI(data) {
     data,
   })
 }
+
+/*
+    给child评论点赞
+*/
+export function likeForChildCommentAPI(id) {
+  return request({
+    url: `/user/user/CommentedLike/${id}`,
+    method: 'post',
+    data: {
+      id,
+    },
+  })
+}
+
+/*
+    根据childCommentId查询评论详情
+*/
+export function getChildCommentDetailsByChildCommentIdAPI(id) {
+  return request({
+    url: `/admin/Commented/CommentedLike/${id}`,
+    method: 'POST',
+    data: {
+      id,
+    },
+  })
+}
