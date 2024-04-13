@@ -2,6 +2,7 @@
 import { useRouter } from 'vue-router'
 import { ElMessage } from 'element-plus'
 import RotateBgButton from './components/RotateBgButton.vue'
+import LogoutButton from './components/LogoutButton.vue'
 import SignInRotateBgButton from './components/SignInRotateBgButton.vue'
 import DynamicTime from './components/DynamicTime.vue'
 
@@ -264,6 +265,12 @@ function sorryForAlreadySignIn() {
     type: 'error',
   })
 }
+
+// TODO: 退出登录
+function logOut() {
+  localstorage.clear()
+  router.push('/')
+}
 </script>
 
 <template>
@@ -313,6 +320,9 @@ function sorryForAlreadySignIn() {
         </div>
         <div class="mt30px w-full flex justify-center">
           <RotateBgButton @click="gotoImproveInfomation" />
+        </div>
+        <div class="mt10px w-full flex justify-center">
+          <LogoutButton @click="logOut" />
         </div>
       </div>
       <!-- TODO：签到功能 -->

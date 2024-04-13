@@ -102,7 +102,7 @@
           <p>扫码进入小程序</p>
         </div>
         <div class="ml10% mt-[55px]">
-          <img src="/public/footer/logo.png" class="w-[300px]">
+          <img src="https://www.gcsis.cn/img/logo_bottom.png" class="w-[300px]">
         </div>
       </div>
       <!-- 第三行 -->

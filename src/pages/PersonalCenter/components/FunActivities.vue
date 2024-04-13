@@ -138,31 +138,31 @@ function gotoCheck(index) {
 
 <style scoped>
 .bg {
-  background-image: url('/public/answer/1.jpg');
+  background-image: url('/public/answer/1.png');
 }
 
 .bg2 {
-  background-image: url('/public/answer/8.jpg');
+  background-image: url('/public/answer/8.png');
 }
 
 .bg3 {
-  background-image: url('/public/answer/9.jpg');
+  background-image: url('/public/answer/9.png');
 }
 
 .bg4 {
-  background-image: url('/public/answer/10.jpg');
+  background-image: url('/public/answer/10.png');
 }
 
 .bg5 {
-  background-image: url('/public/answer/11.jpg');
+  background-image: url('/public/answer/11.png');
 }
 
 .bg6 {
-  background-image: url('/public/answer/12.jpg');
+  background-image: url('/public/answer/12.png');
 }
 
 .bg7 {
-  background-image: url('/public/answer/3.jpg');
+  background-image: url('/public/answer/3.png');
 }
 
 .custom-btn {

@@ -115,6 +115,7 @@ declare module 'vue-router/auto/routes' {
     '/PersonalCenter/components/GoodThingsMall': RouteRecordInfo<'/PersonalCenter/components/GoodThingsMall', '/PersonalCenter/components/GoodThingsMall', Record<never, never>, Record<never, never>>,
     '/PersonalCenter/components/Html2canvas': RouteRecordInfo<'/PersonalCenter/components/Html2canvas', '/PersonalCenter/components/Html2canvas', Record<never, never>, Record<never, never>>,
     '/PersonalCenter/components/IntegralLottery': RouteRecordInfo<'/PersonalCenter/components/IntegralLottery', '/PersonalCenter/components/IntegralLottery', Record<never, never>, Record<never, never>>,
+    '/PersonalCenter/components/LogoutButton': RouteRecordInfo<'/PersonalCenter/components/LogoutButton', '/PersonalCenter/components/LogoutButton', Record<never, never>, Record<never, never>>,
     '/PersonalCenter/components/MagnifyingGlass': RouteRecordInfo<'/PersonalCenter/components/MagnifyingGlass', '/PersonalCenter/components/MagnifyingGlass', Record<never, never>, Record<never, never>>,
     '/PersonalCenter/components/MoudleHeader': RouteRecordInfo<'/PersonalCenter/components/MoudleHeader', '/PersonalCenter/components/MoudleHeader', Record<never, never>, Record<never, never>>,
     '/PersonalCenter/components/MyActivities': RouteRecordInfo<'/PersonalCenter/components/MyActivities', '/PersonalCenter/components/MyActivities', Record<never, never>, Record<never, never>>,

@@ -3,8 +3,9 @@ import { ref } from 'vue'
 import Vcode from 'vue3-puzzle-vcode'
 import MoudleHeader from './MoudleHeader.vue'
 import ShakeButton from './ShakeButton.vue'
-import Img1 from '/public/activity/1.webp'
-import Img2 from '/public/activity/2.webp'
+import Img1 from '/public/personalized/a.jpg'
+import Img2 from '/public/personalized/b.jpg'
+import Img3 from '/public/personalized/c.jpg'
 import Html2canvas from './Html2canvas.vue'
 
 /*
@@ -12,7 +13,7 @@ import Html2canvas from './Html2canvas.vue'
 */
 const activeIndex = ref(0)
 
-const imgs = [Img1, Img2]
+const imgs = [Img1, Img2, Img3]
 const isShow = ref(false)
 
 function onShow() {

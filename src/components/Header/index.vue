@@ -333,9 +333,9 @@ function gotoAgendaLive() {
 
     <!-- logo -->
     <div
-      class="leftLogo h100% flex items-center justify-center md:ml-11% md:w-18%"
+      class="leftLogo h100% flex items-center justify-center md:ml-8% md:w-21%"
     >
-      <img src="@/assets/logo.png" alt="" class="h-auto w-auto pl5% pr5%">
+      <img src="https://www.gcsis.cn/img/logo.png" alt="" class="h-auto w-auto pl5% pr5%">
     </div>
     <!-- 中间导航选项 PC端 -->
     <div class="center h-full w65% flex items-center justify-end">
@@ -357,7 +357,7 @@ function gotoAgendaLive() {
       <RotateBgButton @click="gotoAgendaLive" />
       <div
         v-if="!loginStatusStore.loginStatusFlag"
-        class="ml6% flex items-center justify-center text-xs color-[#B0B0B0]"
+        class="ml6% flex cursor-pointer items-center justify-center text-xs color-[#B0B0B0]"
         @click="loginDialogVisibleStore.changeLoginDialogFlagTrue"
       >
         <i class="iconfont icon-yonghu" />&nbsp; <span>登录</span>&nbsp;
@@ -371,7 +371,7 @@ function gotoAgendaLive() {
       >
         <img
           class="mr5% h35px w35px rounded-50%"
-          :src="userStore.userInfo.avatar"
+          src="https://www.qzqn8.com/wp-content/uploads/2018/11/6B4BAAD2-686D-4F13-8DEF-3DB7B7BE5027.jpeg"
           alt=""
         >
         个人中心

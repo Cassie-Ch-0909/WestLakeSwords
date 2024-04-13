@@ -192,11 +192,11 @@ function gotoNewsInfo(id) {
         v-for="(item, index) in newsCenterList"
         v-show="activeIndex === 0"
         :key="index"
-        class="mt25px h-180px w-86% flex bg-[#EFFBFF]"
+        class="mr3% mt25px h-180px w-88% flex bg-[#EFFBFF]"
         :class="
           index % 2 === 1
-            ? 'ml20% animation-delay-1 animate__fadeInRight wow  animate-duration-2000'
-            : 'animation-delay-1 animate__fadeInLeft wow  animate-duration-2000'
+            ? 'ml15% animation-delay-1 animate__fadeInRight wow  animate-duration-2000'
+            : 'animation-delay-1 animate__fadeInLeft wow animate-duration-2000'
         "
         @click="gotoNewsInfo(item.id)"
       >

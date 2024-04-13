@@ -1,13 +1,31 @@
 <script setup lang="ts">
 import html2canvas from 'html2canvas'
 import { ref } from 'vue'
-import { downloadImageAPI } from '@/apis/download'
+
+// import { downloadImageAPI } from '@/apis/download'
 import { useUserStore } from '@/stores/user.js'
 
-async function downloadImage(imgBase64) {
-  await downloadImageAPI(imgBase64)
-  // console.log(res)
-}
+// async function downloadImage(imgBase64) {
+//   await downloadImageAPI(imgBase64)
+//   // console.log(res)
+// }
+
+// function handleDownload(){
+//   // 下载图片地址和图片名
+//   const image = new Image();
+//   // 解决跨域 Canvas 污染问题
+//   image.setAttribute('crossOrigin', 'anonymous');
+//   image.onload = function () {
+//     const canvas = document.createElement('canvas');
+//     canvas.width = image.width;
+//     canvas.height = image.height;
+//     const context = canvas.getContext('2d');
+//     context?.drawImage(image, 0, 0, image.width, image.height);
+//     const url = canvas.toDataURL('image/png'); // 得到图片的base64编码数据
+//     downloadFile(url);
+//   };
+//   image.src = 'https://nb.ltcx.cn/image/xhlj/photo.png';
+// }
 
 function createPoster() {
   // 生成海报
@@ -21,14 +39,13 @@ function createPoster() {
     onclone(doc: any) {
       const e = doc.querySelector('#CodeImgBase64')
       e.style.display = 'block'
-      // console.log(doc,'111')
     },
   }).then((canvas: any) => {
     // 在微信里,可长按保存或转发
-    const a = canvas.toDataURL('image/png')
+    canvas.toDataURL('image/png')
     // console.log(a)
     // console.log(a.slice(22))
-    downloadImage(a.slice(22))
+    // downloadImage(a.slice(22))
   })
 }
 /*
@@ -352,8 +369,17 @@ const nowDate = `${date.getFullYear()}年${nowMonth}月${strDate}日`
     下载海报
   </button> -->
   <div class="w-full flex justify-center bg-#fff pb20px pt10px font-size-20px">
-    <button class="h50px w30% rounded-10px bg-#00B4BC color-#fff" @click="createPoster">
-      点击下载海报
+    <button
+      class="h50px w30% rounded-10px bg-#00B4BC color-#fff"
+      @click="createPoster"
+    >
+      <!-- <a href="https://nb.ltcx.cn/image/xhlj/photo.png" download></a> -->
+
+      <a
+        target="_blank"
+        href="https://nb.ltcx.cn/image/xhlj/pdf/safe.pdf?response-content-type=application/octet-stream"
+        download
+      >点击下载海报</a>
     </button>
   </div>
 </template>
