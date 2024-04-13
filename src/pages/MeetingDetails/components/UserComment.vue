@@ -8,6 +8,7 @@ import {
   getChildCommentsByParentCommentIdAPI,
   getCommentByLikeAPI,
   getCommentByTimeAPI,
+  getCommentDetailsByCommentIdAPI,
   getCommentNumberByAgendaIdAPI,
   likeForParentCommentAPI,
 } from '@/apis/comment'
@@ -221,13 +222,35 @@ async function getCommentNumberByAgendaId(agendaId) {
 }
 getCommentNumberByAgendaId(route.query.id)
 
+// TODO：调接口根据评论Id获取评论详情
+const commentDetails = ref()
+const placeholder = ref()
+async function getCommentDetailsByCommentId(commentId, index) {
+  const res = await getCommentDetailsByCommentIdAPI(commentId)
+  // console.log(res)
+  commentDetails.value = res
+  commentList.value[index].isLike = commentDetails.value.isLike
+  commentList.value[index].likeCount = commentDetails.value.likeCount
+  if (commentList.value[index].isLike) {
+    ElMessage({
+      message: '点赞成功',
+      type: 'success',
+    })
+  }
+  else {
+    ElMessage({
+      message: '取消点赞',
+    })
+  }
+}
+
 // TODO: 调接口给parent评论点赞
 async function likeForParentComment(commentId, index) {
-  const res = await likeForParentCommentAPI(commentId)
+  await likeForParentCommentAPI(commentId)
   // console.log(res.isLike)
-  commentList.value[index].isLike = res.isLike
+  // commentList.value[index].isLike = res.isLike
   // console.log(commentList.value[index])
-  await getAgendaById(route.query.id)
+  await getCommentDetailsByCommentId(commentId, index)
 }
 // likeForParentComment(1)
 
@@ -239,8 +262,12 @@ function likeParentComment(commentId, index) {
     定义一个变量activeReplyIndex，用来标记回复评论的输入框展示与隐藏
 */
 const activeReplyIndex = ref(999)
-function changeActiveReplyIndex(index) {
+async function changeActiveReplyIndex(id, index) {
   activeReplyIndex.value = index
+  const res = await getCommentDetailsByCommentIdAPI(id)
+  // console.log(res)
+  commentDetails.value = res
+  placeholder.value = `回复${commentDetails.value.username}`
 }
 </script>
 
@@ -473,7 +500,7 @@ function changeActiveReplyIndex(index) {
             <!-- 回复 -->
             <span
               class="cursor-pointer hover:color-#00B4BC"
-              @click="changeActiveReplyIndex(index)"
+              @click="changeActiveReplyIndex(item.id, index)"
             >回复</span>
           </div>
           <div v-show="activeReplyIndex === index" class="">
@@ -485,7 +512,7 @@ function changeActiveReplyIndex(index) {
                 v-model="myComment"
                 type="text"
                 class="ml15px h40px w-650px border-2px border-#D6E5E5 rounded-5px border-solid pl20px"
-                placeholder="回复"
+                :placeholder="placeholder"
               >
             </div>
             <div class="mt-[-5px] flex items-center">

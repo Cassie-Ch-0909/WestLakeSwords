@@ -75,3 +75,16 @@ export function likeForParentCommentAPI(id) {
     },
   })
 }
+
+/*
+    根据评论id查询评论
+*/
+export function getCommentDetailsByCommentIdAPI(id) {
+  return request({
+    url: `/admin/community/CommunityLike/${id}`,
+    method: 'POST',
+    data: {
+      id,
+    },
+  })
+}
