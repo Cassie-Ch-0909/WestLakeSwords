@@ -2,15 +2,15 @@
 </script>
 
 <template>
-  <div style="width: 100%">
-    <div class="container">
-      <div class="content">
-        <div class="btn1">
-          大会直播
-        </div>
+  <!-- <div style="width: 100%"> -->
+  <div class="container">
+    <div class="content">
+      <div class="btn1">
+        大会直播
       </div>
     </div>
   </div>
+  <!-- </div> -->
 </template>
 
 <style scoped lang="scss">

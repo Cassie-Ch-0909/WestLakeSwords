@@ -411,7 +411,7 @@ async function likeForChildComment(id, childIndex, parentIndex) {
       <!-- 用户头像 -->
       <div class="left mt15px h-full w78px">
         <img
-          src="/public/avator.jpeg"
+          src="/public/h.jpg"
           alt=""
           class="ml15px h48px w48px rounded-50%"
         >

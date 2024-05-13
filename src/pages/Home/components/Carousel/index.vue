@@ -29,10 +29,12 @@ const carouselList = ref([
       <!-- 每一张图片 -->
       <img :src="item" alt="" class="h-[200px] w-full md:h-[780px]">
       <!-- button -->
-      <BoxReflect
-        class="animate__animated animate__flipInX animate__delay-1s absolute md:left-2.5% md:top-30%"
-        :class="index !== 0 ? 'hidden' : ''"
-      />
+      <button
+        v-if="index === 0 "
+        class="animate__animated animate__flipInX animate__delay-1s absolute h-70px w-12% flex items-center justify-center rounded-10px bg-#000 font-size-22px text-#0ebeff font-bold md:left-44% md:top-65% hover:bg-#0ebeff hover:text-#fff"
+      >
+        大会直播
+      </button>
     </el-carousel-item>
   </el-carousel>
 </template>

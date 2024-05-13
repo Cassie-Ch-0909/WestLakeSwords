@@ -377,7 +377,7 @@ const nowDate = `${date.getFullYear()}年${nowMonth}月${strDate}日`
 
       <a
         target="_blank"
-        href="https://nb.ltcx.cn/image/xhlj/pdf/safe.pdf?response-content-type=application/octet-stream"
+        href="https://nb.ltcx.cn/image/xhlj/photo.png"
         download
       >点击下载海报</a>
     </button>

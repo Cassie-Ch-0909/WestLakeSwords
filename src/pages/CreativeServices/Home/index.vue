@@ -42,9 +42,9 @@ const list = ref([
             {{ userStore.userInfo.username }}
           </p>
           <div>
-            <span class="mr30px">{{ 0 }}关注</span>
-            <span class="mr30px">{{ 0 }}粉丝</span>
-            <span class="mr30px">{{ 0 }}获赞与收藏</span>
+            <span class="mr30px">{{ 0 }} 关注</span>
+            <span class="mr30px">{{ 34783 }} 粉丝</span>
+            <span class="mr30px">1.2w 获赞与收藏</span>
           </div>
           <div>简介：西湖论剑VIP用户</div>
         </div>
