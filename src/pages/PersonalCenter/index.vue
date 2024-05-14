@@ -363,14 +363,12 @@ function logOut() {
           v-show="twelveStore.twelve"
           class="mt10px h510px w-full flex-1 bg-#fff shadow-lg"
         >
-          <ul
-            class="rightBottomUl h510px w-full flex flex-wrap justify-evenly pb50px pt50px"
-          >
+          <ul class="rightBottomUl h510px w-full flex flex-wrap pb50px pt50px">
             <li
               v-for="(item, index) in list"
               :key="index"
               :class="activeIndex === index ? 'active' : ''"
-              class="lii h120px w200px flex cursor-pointer items-center justify-evenly border-0.1px border-[#00B4BC] rounded-10px border-solid bg-#EFFBFF shadow-2xl hover:bg-[#00B4BC]"
+              class="lii ml2.8% h120px w21.5% flex cursor-pointer items-center justify-evenly border-0.1px border-[#00B4BC] rounded-10px border-solid bg-#EFFBFF shadow-2xl hover:bg-[#00B4BC]"
               @mouseleave="changeImgToColor(index)"
               @mouseover="changeImgToWhite(index)"
               @click="changeActiveMoudleIndex(index)"

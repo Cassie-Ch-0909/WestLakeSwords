@@ -36,10 +36,10 @@ function onSuccess() {
     <!-- step1 -->
     <div v-show="activeIndex === 0" class="bg relative h500px w-full bg-auto bg-left bg-no-repeat">
       <img src="https://img2023.gcsis.cn/2023/4/3dd1997060ca4d8f95dc01e1e8be8b48.jpg">
-      <p class="absolute left-300px top-120px font-size-50px color-#fff font-bold">
+      <p class="absolute left-30% top-25% font-size-50px color-#fff font-bold">
         西湖论剑@数字安全
       </p>
-      <ShakeButton class="absolute left-370px top-280px" @click="onShow" />
+      <ShakeButton class="absolute left-35% top-60%" @click="onShow" />
       <Vcode :show="isShow" :imgs="imgs" class="absolute left-600px top-400px" @success="onSuccess" @close="onClose" />
     </div>
     <!-- step3 -->

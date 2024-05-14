@@ -48,7 +48,7 @@ function changeHotTopicList() {
 </script>
 
 <template>
-  <div class="mt20px w-260px rounded-10px">
+  <div class="mt20px w-21.5% rounded-10px">
     <!-- 限时领取西湖会员模块 -->
     <div
       class="h90px w-full flex items-center justify-between rounded-10px bg-#fff p20px"
@@ -207,9 +207,9 @@ function changeHotTopicList() {
   <!-- 当前滚动距离大于1400时显示 -->
   <div
     v-show="y > 1400"
-    class="animation-delay-1 animate__fadeInRight wow fixed right-10% z-999 animate-duration-2000 max-md:hidden"
+    class="animation-delay-1 wow animate__fadeInRight fixed right-10% z-999 w-17.2% animate-duration-2000 max-md:hidden"
   >
-    <div class="mt20px w-260px rounded-10px">
+    <div class="mt20px rounded-10px">
       <!-- 限时领取西湖会员模块 -->
       <div
         class="h90px w-full flex items-center justify-between rounded-10px bg-#fff p20px"

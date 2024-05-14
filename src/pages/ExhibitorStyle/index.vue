@@ -125,7 +125,7 @@ getAllExhibitor()
           </a>
         </div>
       </div>
-      <div class="mt20px">
+      <div class="mt20px flex justify-center">
         <embed
           class="h-730px w-1300px"
           src="https://live.vhall.com/v3/lives/embedclient/subscribe/347881970?embed=video"

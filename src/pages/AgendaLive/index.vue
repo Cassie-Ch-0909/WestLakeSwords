@@ -70,10 +70,9 @@ getAgendaById(route.query.id)
 </script>
 
 <template>
-  <!-- PC端会议详情 -->
   <div class="bg mb50px w-full bg-contain bg-top bg-no-repeat max-md:hidden">
     <div class="ml10% mr10% flex justify-between pt20px">
-      <video controls width="860" height="450" class="mt-[-50px]">
+      <video controls class="w68% flex flex-col bg-black">
         <source src="/public/video.mp4">
       </video>
       <RightDetails />

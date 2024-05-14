@@ -56,7 +56,8 @@ async function checkAnswer(questionId, userAnswer) {
 function gotoCheck(index) {
   // 跳到下一题
   const questionId = answerList.value[pptActiveIndex.value].id
-  const userAnswer = answerList.value[pptActiveIndex.value].optionsList[optionActiveIndex.value]
+  const userAnswer
+    = answerList.value[pptActiveIndex.value].optionsList[optionActiveIndex.value]
   checkAnswer(questionId, userAnswer)
   pptActiveIndexAdd1(index)
 }
@@ -64,12 +65,12 @@ function gotoCheck(index) {
 
 <template>
   <!-- 原始高度是h600px -->
-  <div class="mt10px w-full flex-1 shadow-lg">
+  <div class="relative mt10px w-full flex-1 shadow-lg">
     <MoudleHeader title="趣味活动" />
     <!-- 开始答题 -->
     <div
       v-show="pptActiveIndex === -1"
-      class="bg h580px w-full flex flex-col items-center bg-contain bg-left bg-no-repeat"
+      class="bg w-full flex flex-col items-center bg-red bg-contain bg-left bg-no-repeat"
     >
       <p class="mt5% font-size-50px font-bold">
         网络安全知识竞赛
@@ -77,12 +78,17 @@ function gotoCheck(index) {
       <p class="mt2% font-size-50px font-bold">
         西湖论剑
       </p>
-      <button class="mt15% h8% w-15% rounded-10px bg-#2B7BBB color-#fff shadow-2xl" @click="pptActiveIndexAdd1(-1)">
+      <button
+        class="mt15% h8% w-15% rounded-10px bg-#2B7BBB color-#fff shadow-2xl"
+        @click="pptActiveIndexAdd1(-1)"
+      >
         开始答题
       </button>
     </div>
     <div
-      v-for="(item, index) in answerList" v-show="pptActiveIndex === index" :key="index"
+      v-for="(item, index) in answerList"
+      v-show="pptActiveIndex === index"
+      :key="index"
       class="bg2 h520px w-full flex flex-col items-center bg-contain bg-left bg-no-repeat"
     >
       <p class="mt5% font-size-30px color-#00B4BC font-bold">
@@ -92,16 +98,28 @@ function gotoCheck(index) {
         {{ item.title }}
       </p>
       <div class="flex flex-wrap justify-center">
-        <button class="custom-btn btn-7 mt2% flex" @click="changeOptionActiveIndex(0)">
+        <button
+          class="custom-btn btn-7 mt2% flex"
+          @click="changeOptionActiveIndex(0)"
+        >
           <span>A.&nbsp;&nbsp;&nbsp;&nbsp;{{ item.optionsList[0] }}</span>
         </button>
-        <button class="custom-btn btn-7 mt2% flex" @click="changeOptionActiveIndex(1)">
+        <button
+          class="custom-btn btn-7 mt2% flex"
+          @click="changeOptionActiveIndex(1)"
+        >
           <span>B.&nbsp;&nbsp;&nbsp;&nbsp;{{ item.optionsList[1] }}</span>
         </button><br>
-        <button class="custom-btn btn-7 mt2% flex" @click="changeOptionActiveIndex(2)">
+        <button
+          class="custom-btn btn-7 mt2% flex"
+          @click="changeOptionActiveIndex(2)"
+        >
           <span>C.&nbsp;&nbsp;&nbsp;&nbsp;{{ item.optionsList[2] }}</span>
         </button>
-        <button class="custom-btn btn-7 mt2% flex" @click="changeOptionActiveIndex(3)">
+        <button
+          class="custom-btn btn-7 mt2% flex"
+          @click="changeOptionActiveIndex(3)"
+        >
           <span>D.&nbsp;&nbsp;&nbsp;&nbsp;{{ item.optionsList[3] }}</span>
         </button>
       </div>
@@ -109,8 +127,11 @@ function gotoCheck(index) {
         <button class="mr5% h50px w20% rounded-10px bg-yellow">
           上一题
         </button>
-        <button class="h50px w20% rounded-10px bg-yellow" @click="gotoCheck(index)">
-          {{ pptActiveIndex === 4 ? '提交' : '下一题' }}
+        <button
+          class="h50px w20% rounded-10px bg-yellow"
+          @click="gotoCheck(index)"
+        >
+          {{ pptActiveIndex === 4 ? "提交" : "下一题" }}
         </button>
       </div>
     </div>
@@ -122,13 +143,18 @@ function gotoCheck(index) {
         答题完成
       </p>
       <p class="mt2% font-size-50px color-green font-bold">
-        恭喜您，答对{{ correctNumber }}题。获得{{ correctNumber === 5 ? 10 : 0 }}积分
+        恭喜您，答对{{ correctNumber }}题。获得{{
+          correctNumber === 5 ? 10 : 0
+        }}积分
       </p>
       <div class="mt5% w-full flex justify-center">
         <button class="mr5% h50px w20% rounded-10px bg-yellow">
           查看题目列表
         </button>
-        <button class="h50px w20% rounded-10px bg-yellow" @click="pptActiveIndexAdd1(-2)">
+        <button
+          class="h50px w20% rounded-10px bg-yellow"
+          @click="pptActiveIndexAdd1(-2)"
+        >
           再来一次
         </button>
       </div>
@@ -139,30 +165,93 @@ function gotoCheck(index) {
 <style scoped>
 .bg {
   background-image: url('/public/answer/1.png');
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  top: 50px;
+  left: 0;
+  width: 100%;
+  /* height: 100%;
+   */
+  height: 580px;
 }
 
 .bg2 {
   background-image: url('/public/answer/8.png');
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  top: 50px;
+  left: 0;
+  width: 100%;
+  /* height: 100%;
+   */
+  height: 580px;
 }
 
 .bg3 {
   background-image: url('/public/answer/9.png');
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  top: 50px;
+  left: 0;
+  width: 100%;
+  /* height: 100%;
+   */
+  height: 580px;
 }
 
 .bg4 {
   background-image: url('/public/answer/10.png');
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  top: 50px;
+  left: 0;
+  width: 100%;
+  /* height: 100%;
+   */
+  height: 580px;
 }
 
 .bg5 {
   background-image: url('/public/answer/11.png');
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  top: 50px;
+  left: 0;
+  width: 100%;
+  /* height: 100%;
+   */
+  height: 580px;
 }
 
 .bg6 {
   background-image: url('/public/answer/12.png');
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  top: 50px;
+  left: 0;
+  width: 100%;
+  /* height: 100%;
+   */
+  height: 580px;
 }
 
 .bg7 {
   background-image: url('/public/answer/3.png');
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  top: 50px;
+  left: 0;
+  width: 100%;
+  /* height: 100%;
+   */
+  height: 580px;
 }
 
 .custom-btn {

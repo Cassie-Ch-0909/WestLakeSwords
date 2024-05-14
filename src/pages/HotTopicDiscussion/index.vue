@@ -8,7 +8,7 @@ import Right from './components/Right.vue'
   <div class="w-full bg-#F2F3F5">
     <div class="ml10% mr10% h-full w-80% flex justify-between">
       <LeftNav class="fixed left-10%" />
-      <Main class="ml210px w-720px" />
+      <Main class="ml17% mr2% flex-1" />
       <Right class="" />
     </div>
   </div>

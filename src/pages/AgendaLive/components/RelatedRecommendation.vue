@@ -88,7 +88,7 @@ const relatedRecommendationList = ref([
 
 <template>
   <!-- 右下方相关推荐 -->
-  <div class="h600px w450px overflow-y-scroll">
+  <div class="h600px w30% overflow-y-scroll">
     <div
       class="h40px w-full flex items-center justify-center from-[#1d7acf] to-[#59afb8] bg-gradient-to-r font-size-20px color-[#fff]"
     >

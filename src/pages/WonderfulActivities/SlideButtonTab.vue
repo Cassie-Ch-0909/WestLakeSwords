@@ -316,11 +316,11 @@ function gotoActivityDetails(index) {
 
 <template>
   <div style="width: 100%" class="flex items-center">
-    <div class="">
+    <div class="w-full">
       <div class="container">
         <div
           ref="contentRef"
-          class="content from-[#fff] to-[#00B4BC] bg-gradient-to-t"
+          class="content w-full from-[#fff] to-[#00B4BC] bg-gradient-to-t"
         >
           <div
             v-for="(item, index) in btnList"
@@ -454,7 +454,7 @@ function gotoActivityDetails(index) {
     }
 
     position: relative;
-    width: 1200px;
+    // width: 1200px;
     height: 80px;
     padding: $contentPaddingTop $contentPaddingLeft;
     border-radius: 12px;

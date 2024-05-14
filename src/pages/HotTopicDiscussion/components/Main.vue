@@ -227,7 +227,7 @@ getHotTopicContentList()
 <template>
   <div class="flex flex-col">
     <!-- 轮播图模块 -->
-    <div class="mt20px w-720px border-2px border-#E0E0E0 rounded-10px border-solid bg-#fff pb10px pl10px pr10px pt10px">
+    <div class="mt20px w-full border-2px border-#E0E0E0 rounded-10px border-solid bg-#fff pb10px pl10px pr10px pt10px">
       <el-carousel :interval="5000" arrow="always">
         <el-carousel-item v-for="(item, index) in carouselList" :key="index">
           <img :src="item.img" alt="" class="h-full w-full">

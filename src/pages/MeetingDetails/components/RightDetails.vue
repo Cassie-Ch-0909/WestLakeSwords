@@ -284,7 +284,7 @@ function open() {
 </script>
 
 <template>
-  <div class="h536px w330px flex flex-col">
+  <div class="h516px w30% flex flex-col">
     <div
       class="h50px w-full flex items-center justify-center from-[#1d7acf] to-[#59afb8] bg-gradient-to-r font-size-20px color-[#fff]"
     >
@@ -318,7 +318,7 @@ function open() {
       </div>
       <!-- 议程详情 -->
       <div
-        class="mb15px ml15px mr15px mt20px h-315px w-full w297px flex flex-col items-center overflow-y-scroll bg-#fff pt10px"
+        class="mb15px ml5% mt20px h-265px w-90% flex flex-col items-center overflow-y-scroll bg-#fff pt10px"
       >
         <div
           v-for="(item, index) in agendaTimeLineList"

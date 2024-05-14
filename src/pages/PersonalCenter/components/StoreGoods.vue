@@ -139,7 +139,7 @@ function confirmBuyNow() {
     <div
       v-for="(item, index) in goodsList"
       :key="index"
-      class="mb20px ml2% w280px flex flex-col items-center bg-#fff shadow-xl"
+      class="mb20px ml2.125% w30.5% flex flex-col items-center bg-#fff shadow-xl"
     >
       <img class="h220px w-full" :src="item.img">
       <p class="pb10px pt10px font-size-16px font-bold">

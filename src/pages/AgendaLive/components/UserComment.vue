@@ -93,7 +93,7 @@ function changeIsShowNextCommentsFlag() {
 
 <template>
   <!-- PC端评论区 -->
-  <div class="w-full max-md:hidden">
+  <div class="mr2% w-68% max-md:hidden">
     <!-- 第一行 标头 -->
     <div class="h50px w-full flex">
       <div class="h-full w-120px flex items-center justify-evenly">
@@ -115,7 +115,7 @@ function changeIsShowNextCommentsFlag() {
       </button>
     </div>
     <!-- 第三行 写死 用户的相互评论 -->
-    <div class="w-865px flex">
+    <div class="w-full flex">
       <!-- 用户头像 -->
       <div class="left mt15px h-full w78px">
         <img src="/public/avator.jpeg" alt="" class="ml15px h48px w48px rounded-50%">
