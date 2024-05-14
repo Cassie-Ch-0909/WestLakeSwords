@@ -3,6 +3,9 @@ import { ref } from 'vue'
 import { ElMessage } from 'element-plus'
 import { lotteryAPI } from '@/apis/goods'
 import { useUserStore } from '@/stores/user.js'
+import { useMyGoodsStore } from '@/stores/mygoods.js'
+
+const myGoodsStore = useMyGoodsStore()
 
 // TODO1：调用抽奖接口
 const lotteryParamsObj = ref({
@@ -166,6 +169,9 @@ async function startRun() {
   // TODO: 更新积分
   const userStore = useUserStore()
   await userStore.getUserInfo()
+  // 更新我的商品列表
+  myGoodsStore.getPrizeList()
+
   // 监听transition动效停止事件
   prizeWrap.value.addEventListener('transitionend', stopRun)
   // 停顿一会显示中奖

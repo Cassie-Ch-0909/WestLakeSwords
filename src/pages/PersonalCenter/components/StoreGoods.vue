@@ -9,7 +9,9 @@ import {
   buyGoodsByBalanceAPI,
   exchangeGoodsByIntegralAPI,
   getAllGoodsAPI,
+  showGoodsGetByIntegralExchangeAPI,
 } from '@/apis/goods'
+import { useMyGoodsStore } from '@/stores/mygoods.js'
 
 /*
     封装一个组件用来存放商品信息
@@ -22,6 +24,8 @@ defineProps({
   // logo: String,
   // method: String,
 })
+
+const myGoodsStore = useMyGoodsStore()
 
 // TODO: 调接口获取数据库的商品列表
 const goodsList = ref()
@@ -64,6 +68,8 @@ async function exchangeGoodsByIntegral(data) {
     // TODO: 更新积分
     const userStore = useUserStore()
     userStore.getUserInfo()
+    // 更新我的商品列表
+    myGoodsStore.showGoodsGetByIntegralExchange()
     ElMessage({
       type: 'success',
       message: '兑换成功',
@@ -81,6 +87,8 @@ async function exchangeGoodsByIntegral(data) {
 async function buyGoodsByBalance(data) {
   const res = await buyGoodsByBalanceAPI(data)
   if (res.code === 1) {
+    // 更新我的商品列表
+    myGoodsStore.showGoodsGetByBalanceBuy()
     ElMessage({
       type: 'success',
       message: '购买成功',
