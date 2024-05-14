@@ -193,8 +193,8 @@ function selectIconOperate(index) {
       </div>
       <!-- 两个按钮 -->
       <div class="mt15px h35px w-full flex justify-between pl30px pr30px">
-        <RotateBgButton />
-        <RotateBgButtonD />
+        <RotateBgButton class="w45%" />
+        <RotateBgButtonD class="w45%" />
       </div>
       <!-- 议程详情 -->
       <div

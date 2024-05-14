@@ -310,8 +310,8 @@ function open() {
       </div>
       <!-- 两个按钮 -->
       <div class="mt15px h35px w-full flex justify-between pl30px pr30px">
-        <RotateBgButton />
-        <RotateBgButtonD v-if="!iconSubscribeActiveFlag" @click="open" />
+        <RotateBgButton class="w45%" />
+        <RotateBgButtonD v-if="!iconSubscribeActiveFlag" class="w45%" @click="open" />
         <button v-else class="h26px w120px rounded-15px font-size-13px">
           已订阅
         </button>

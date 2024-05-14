@@ -60,7 +60,7 @@ onUnmounted(() => frameId && cancelAnimationFrame(frameId))
 }
 .container {
   position: relative;
-  width: 120px;
+  width: 100%;
   height: 26px;
   border-radius: 15px;
   background-size: 200% 600%;
