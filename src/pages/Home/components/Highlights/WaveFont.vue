@@ -1,11 +1,10 @@
 <script setup lang="ts">
-import ModuleTitle from './ModuleTitle.vue'
 </script>
 
 <template>
   <div style="width: 100%">
     <div class="container">
-      <ModuleTitle i18n-title="page.cssDynamicEffect.richDynamicEffect.wavyText" />
+      <!-- <ModuleTitle i18n-title="page.cssDynamicEffect.richDynamicEffect.wavyText" /> -->
       <h2 class="firstText">
         西湖论剑·引领网络安全新趋势
       </h2>
@@ -27,7 +26,7 @@ import ModuleTitle from './ModuleTitle.vue'
   @mixin text {
     position: absolute;
     top: calc(50% + 20px);
-    left: 50%;
+    left: 45%;
     font-size: 45px;
     font-weight: 800;
     transform: translate(-50%, -50%);
