@@ -186,6 +186,7 @@ async function login() {
     loginDialogVisibleStore.changeLoginDialogFlagFalse()
     // loginFlag.value = true
     loginStatusStore.changeLoginStatusFlagTrue()
+    userStore.getUserInfo()
     setTimeout(() => {
       ElMessage({
         message: '登录成功',
@@ -371,7 +372,7 @@ function gotoAgendaLive() {
       >
         <img
           class="mr5% h35px w35px rounded-50%"
-          src="https://www.qzqn8.com/wp-content/uploads/2018/11/6B4BAAD2-686D-4F13-8DEF-3DB7B7BE5027.jpeg"
+          :src="userStore.userInfo.avatar"
           alt=""
         >
         个人中心
