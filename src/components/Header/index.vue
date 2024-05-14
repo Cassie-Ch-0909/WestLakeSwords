@@ -336,7 +336,11 @@ function gotoAgendaLive() {
     <div
       class="leftLogo h100% flex items-center justify-center md:ml-8% md:w-21%"
     >
-      <img src="https://www.gcsis.cn/img/logo.png" alt="" class="h-auto w-auto pl5% pr5%">
+      <img
+        src="https://www.gcsis.cn/img/logo.png"
+        alt=""
+        class="h-auto w-auto pl5% pr5%"
+      >
     </div>
     <!-- 中间导航选项 PC端 -->
     <div class="center h-full w65% flex items-center justify-end">

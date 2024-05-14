@@ -70,3 +70,13 @@ export function interfaceForEchartsAPI() {
     method: 'GET',
   })
 }
+
+/*
+    用户退出登录
+*/
+export function logoutAPI() {
+  return request({
+    url: '/user/user/logout',
+    method: 'POST',
+  })
+}

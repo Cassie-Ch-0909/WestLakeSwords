@@ -1,6 +1,7 @@
 <script setup>
 import { useRouter } from 'vue-router'
-import { ElMessage } from 'element-plus'
+import { ElMessage, ElMessageBox } from 'element-plus'
+import { createPinia } from 'pinia'
 import RotateBgButton from './components/RotateBgButton.vue'
 import LogoutButton from './components/LogoutButton.vue'
 import SignInRotateBgButton from './components/SignInRotateBgButton.vue'
@@ -38,13 +39,13 @@ import Personalized from './components/Personalized.vue'
 
 // 趣味活动
 import FunActivities from './components/FunActivities.vue'
+import { useUserStore } from '@/stores/user.js'
 
 // 热点话题讨论
 // import HotTopicDiscussion from './components/HotTopicDiscussion.vue'
 import { useTwelveStore } from '@/stores/twelve.js'
-import { useUserStore } from '@/stores/user.js'
 import { getCategoryRulesListAPI } from '@/apis/category.js'
-import { everyDaySignInAPI } from '@/apis/user.js'
+import { everyDaySignInAPI, logoutAPI } from '@/apis/user.js'
 import { signInStatusStore } from '@/stores/signInStatus.js'
 
 const signInStatus = signInStatusStore()
@@ -266,10 +267,33 @@ function sorryForAlreadySignIn() {
   })
 }
 
+async function logout() {
+  await logoutAPI()
+}
 // TODO: 退出登录
 function logOut() {
-  localstorage.clear()
-  router.push('/')
+  ElMessageBox.confirm('你确定退出登录吗?', 'Warning', {
+    confirmButtonText: '确定',
+    cancelButtonText: '取消',
+    type: 'warning',
+  })
+    .then(() => {
+      // 清除 localStorage 中的数据
+      logout()
+      localStorage.clear()
+      // userStore.getUserInfo();
+      router.push('/')
+      ElMessage({
+        type: 'success',
+        message: '退出登录成功',
+      })
+    })
+    .catch(() => {
+      ElMessage({
+        type: 'info',
+        message: '取消退出登录',
+      })
+    })
 }
 </script>
 
@@ -495,6 +519,26 @@ function logOut() {
         <span class="inline-block w7% color-#00B4BC">+{{ item.number }}</span>
         <span class="inline-block w66% pl6%">{{ item.desc }}</span>
       </div>
+    </el-dialog>
+
+    <!-- 退出登录的对话框 -->
+    <el-dialog
+      v-model="centerDialogVisible"
+      title="提示"
+      width="500"
+      align-center
+    >
+      <span>你确定退出登录吗</span>
+      <template #footer>
+        <div class="dialog-footer">
+          <el-button @click="centerDialogVisible = false">
+            取消
+          </el-button>
+          <el-button type="primary" @click="confirmLogout">
+            确定
+          </el-button>
+        </div>
+      </template>
     </el-dialog>
   </div>
 
